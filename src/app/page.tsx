@@ -915,22 +915,41 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Key Metrics Section */}
+      <section className="py-16 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: DollarSign, value: '$7.5M+', label: 'Annual Savings', gradient: 'from-emerald-400 to-teal-400', bg: 'from-emerald-500/20 to-teal-500/20' },
+              { icon: Clock, value: '80x', label: 'Faster Processing', gradient: 'from-blue-400 to-cyan-400', bg: 'from-blue-500/20 to-cyan-500/20' },
+              { icon: TrendingUp, value: '96%', label: 'Accuracy Rate', gradient: 'from-purple-400 to-pink-400', bg: 'from-purple-500/20 to-pink-500/20' },
+              { icon: Shield, value: '4+', label: 'Core Applications', gradient: 'from-orange-400 to-red-400', bg: 'from-orange-500/20 to-red-500/20' }
+            ].map((metric, index) => (
+              <div key={index} className="group relative">
+                <div className={`absolute inset-0 bg-gradient-to-r ${metric.bg} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-300`} />
+                <div className="relative bg-slate-800/40 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center justify-center mb-4">
+                    <div className={`p-3 bg-gradient-to-r ${metric.bg} rounded-xl`}>
+                      <metric.icon className={`h-6 w-6 text-white`} />
+                    </div>
+                  </div>
+                  <div className={`text-2xl font-black text-transparent bg-gradient-to-r ${metric.gradient} bg-clip-text mb-2`}>
+                    {metric.value}
+                  </div>
+                  <p className="text-sm text-slate-400 font-medium">{metric.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Live Demo Section */}
+      <ClinicalDemo />
+
       {/* ChartR Smart Review Process */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              How It Works
-            </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Our <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">AI-assisted, human-validated</span> workflow transforms unstructured EMR data into precise, actionable clinical intelligence.
-            </p>
-          </motion.div>
 
           {/* Smart Review Process Steps */}
           <div className="relative group">
@@ -1020,30 +1039,7 @@ const Homepage = () => {
                       </div>
                     </div>
 
-                    {/* Impact Metrics */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                      {[
-                        { icon: DollarSign, value: '$7.5M+', label: 'Annual Savings', gradient: 'from-emerald-400 to-teal-400', bg: 'from-emerald-500/20 to-teal-500/20' },
-                        { icon: Clock, value: '80x', label: 'Faster Processing', gradient: 'from-blue-400 to-cyan-400', bg: 'from-blue-500/20 to-cyan-500/20' },
-                        { icon: TrendingUp, value: '96%', label: 'Accuracy Rate', gradient: 'from-purple-400 to-pink-400', bg: 'from-purple-500/20 to-pink-500/20' },
-                        { icon: Shield, value: '4+', label: 'Core Applications', gradient: 'from-orange-400 to-red-400', bg: 'from-orange-500/20 to-red-500/20' }
-                      ].map((metric, index) => (
-                        <div key={index} className="group relative">
-                          <div className={`absolute inset-0 bg-gradient-to-r ${metric.bg} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-300`} />
-                          <div className="relative bg-slate-800/40 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105">
-                            <div className="flex items-center justify-center mb-4">
-                              <div className={`p-3 bg-gradient-to-r ${metric.bg} rounded-xl`}>
-                                <metric.icon className={`h-6 w-6 text-white`} />
-                              </div>
-                            </div>
-                            <div className={`text-2xl font-black text-transparent bg-gradient-to-r ${metric.gradient} bg-clip-text mb-2`}>
-                              {metric.value}
-                            </div>
-                            <p className="text-sm text-slate-400 font-medium">{metric.label}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+
                   </div>
                 </motion.div>
               </div>
@@ -1051,9 +1047,6 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-
-      {/* Live Demo Section */}
-      <ClinicalDemo />
 
       {/* Model Improvement Section with Enhanced Animations */}
       <section className="py-20 relative">
