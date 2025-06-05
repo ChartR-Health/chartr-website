@@ -463,14 +463,14 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
                               <div className="flex flex-wrap gap-1">
                                 {Array.isArray(data.source) ? (
                                   data.source.map((src: string, idx: number) => (
-                                    <Badge key={idx} variant="outline" className="text-xs">
+                                    <span key={idx} className="inline-block bg-blue-600 text-white px-2 py-1 rounded text-xs font-medium">
                                       {src}
-                                    </Badge>
+                                    </span>
                                   ))
                                 ) : (
-                                  <Badge variant="outline" className="text-xs">
+                                  <span className="inline-block bg-blue-600 text-white px-2 py-1 rounded text-xs font-medium">
                                     {data.source}
-                                  </Badge>
+                                  </span>
                                 )}
                               </div>
                             </TableCell>
@@ -521,7 +521,7 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
                                       Confirm
                                     </Button>
                                   </>
-                                ) : (
+                                ) : data.confidence < 90 ? (
                                   <Button
                                     variant="ghost"
                                     size="sm"
@@ -531,6 +531,10 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
                                     <Info className="h-4 w-4 mr-1" />
                                     View Source
                                   </Button>
+                                ) : (
+                                  <span className="text-xs text-slate-500 italic">
+                                    Confirmed
+                                  </span>
                                 )}
                               </div>
                             </TableCell>
@@ -577,14 +581,14 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
                 <div className="mt-1 flex flex-wrap gap-1">
                   {Array.isArray(currentExtractedData[selectedVariable]?.source) ? (
                     currentExtractedData[selectedVariable]?.source.map((src: string, idx: number) => (
-                      <Badge key={idx} variant="outline" className="text-sm p-2">
+                      <span key={idx} className="inline-block bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium">
                         {src.replace(' (user verified)', '')}
-                      </Badge>
+                      </span>
                     ))
                   ) : (
-                    <Badge variant="outline" className="text-sm p-2">
+                    <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium">
                       {String(currentExtractedData[selectedVariable]?.source).replace(' (user verified)', '')}
-                    </Badge>
+                    </span>
                   )}
                 </div>
               </div>
@@ -675,14 +679,14 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
                   <div className="mt-1 flex flex-wrap gap-1">
                     {Array.isArray(currentExtractedData[viewingVariable]?.source) ? (
                       currentExtractedData[viewingVariable]?.source.map((src: string, idx: number) => (
-                        <Badge key={idx} variant="outline" className="text-sm p-2">
+                        <span key={idx} className="inline-block bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium border border-blue-500">
                           {src}
-                        </Badge>
+                        </span>
                       ))
                     ) : (
-                      <Badge variant="outline" className="text-sm p-2">
+                      <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-md text-sm font-medium border border-blue-500">
                         {currentExtractedData[viewingVariable]?.source}
-                      </Badge>
+                      </span>
                     )}
                   </div>
                 </div>
@@ -850,11 +854,10 @@ export function ExtractionResults({ onNavigate }: ExtractionResultsProps) {
               Ready for Actionable Intelligence
             </h3>
             <p className="text-sm text-slate-700 mt-1">
-              {highConfidenceCount} of {totalVariables} variables extracted with high confidence. 
-              This process typically saves 45+ minutes per patient vs manual review.
+              AI-assisted extraction typically saves 45+ minutes per patient vs manual review.
             </p>
             <div className="mt-2 text-xs text-slate-600">
-              <strong>ROI Impact:</strong> ChartR saves hospitals $7.5M+ annually through automated registry reporting
+              <strong>ROI Impact:</strong> ChartR saves hospitals $7.5M+ annually.
             </div>
           </div>
           <Button onClick={() => onNavigate('applications', selectedPatient)} className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700">

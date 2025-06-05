@@ -16,35 +16,7 @@ const Homepage = () => {
     { label: 'Market Size', value: '$100B+', description: 'Total healthcare data market' },
   ]
 
-  const products = [
-    {
-      name: 'ChartR Clinical',
-      description: 'AI-powered clinical data curation platform - the structured layer on top of your EMR system of record',
-      icon: Building,
-      features: ['Automated Registry Reporting', 'Smart Review Process', 'Real-time Compliance Monitoring', 'Evidence-Based Practice'],
-      highlight: 'Saves $7.5M+ annually per hospital',
-      demoLink: '/products/clinical',
-      color: 'from-blue-600 to-indigo-700'
-    },
-    {
-      name: 'ChartR Literature',
-      description: 'AI-powered systematic literature review and meta-analysis platform',
-      icon: FileText,
-      features: ['Automated Paper Screening', 'Data Extraction', 'Quality Assessment', 'Evidence Synthesis'],
-      highlight: 'Complete SLR in days, not months',
-      demoLink: '/products/literature',
-      color: 'from-purple-600 to-pink-700'
-    },
-    {
-      name: 'ChartR Accelerate',
-      description: 'Intelligent research funding discovery and mentor matching platform',
-      icon: GraduationCap,
-      features: ['Grant Discovery', 'AI Matching', 'Research Mentors', 'Funding Analytics'],
-      highlight: 'Connect with relevant $40B+ in grants',
-      demoLink: '/products/accelerate',
-      color: 'from-green-600 to-teal-700'
-    },
-  ]
+
 
   const testimonials = [
     {
@@ -915,34 +887,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Key Metrics Section */}
-      <section className="py-16 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: DollarSign, value: '$7.5M+', label: 'Annual Savings', gradient: 'from-emerald-400 to-teal-400', bg: 'from-emerald-500/20 to-teal-500/20' },
-              { icon: Clock, value: '80x', label: 'Faster Processing', gradient: 'from-blue-400 to-cyan-400', bg: 'from-blue-500/20 to-cyan-500/20' },
-              { icon: TrendingUp, value: '96%', label: 'Accuracy Rate', gradient: 'from-purple-400 to-pink-400', bg: 'from-purple-500/20 to-pink-500/20' },
-              { icon: Shield, value: '4+', label: 'Core Applications', gradient: 'from-orange-400 to-red-400', bg: 'from-orange-500/20 to-red-500/20' }
-            ].map((metric, index) => (
-              <div key={index} className="group relative">
-                <div className={`absolute inset-0 bg-gradient-to-r ${metric.bg} rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-300`} />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className={`p-3 bg-gradient-to-r ${metric.bg} rounded-xl`}>
-                      <metric.icon className={`h-6 w-6 text-white`} />
-                    </div>
-                  </div>
-                  <div className={`text-2xl font-black text-transparent bg-gradient-to-r ${metric.gradient} bg-clip-text mb-2`}>
-                    {metric.value}
-                  </div>
-                  <p className="text-sm text-slate-400 font-medium">{metric.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Live Demo Section */}
       <ClinicalDemo />
@@ -1319,7 +1264,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Products Overview Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
@@ -1335,52 +1280,42 @@ const Homepage = () => {
                 One Solution
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
               Comprehensive AI-powered tools for clinical data, literature review, and research acceleration
             </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <motion.div
-                key={index}
-                className="relative group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 * index }}
-              >
-                <div className={`absolute -inset-1 bg-gradient-to-r ${product.color.replace('from-', 'from-').replace('to-', 'to-').replace('-600', '-500/20').replace('-700', '-600/20')} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300">
-                  <div className={`h-1 bg-gradient-to-r ${product.color}`}></div>
-                  <div className="p-8">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${product.color.replace('-600', '-500/30').replace('-700', '-600/30')} rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20`}>
-                        <product.icon className="w-7 h-7 text-white" />
-                      </div>
-                      <h3 className="text-xl font-black text-white">{product.name}</h3>
-                    </div>
-                    
-                    <p className="text-slate-300 mb-6 leading-relaxed">{product.description}</p>
-                    
-                    <ul className="space-y-3 mb-8">
-                      {product.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center space-x-3 text-sm text-slate-300">
-                          <div className={`w-2 h-2 bg-gradient-to-r ${product.color.replace('-600', '-400').replace('-700', '-500')} rounded-full`}></div>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    
-                    <div className={`bg-gradient-to-r ${product.color.replace('-600', '-500/20').replace('-700', '-600/20')} rounded-xl p-4 text-center backdrop-blur-sm border border-white/10`}>
-                      <div className={`text-sm font-bold text-transparent bg-gradient-to-r ${product.color.replace('-600', '-300').replace('-700', '-400')} bg-clip-text`}>
-                        {product.highlight}
-                      </div>
-                    </div>
-                  </div>
+            
+            {/* Call-to-Action to Explore Products */}
+            <motion.div 
+              className="relative group max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="relative bg-white/10 rounded-2xl p-8 backdrop-blur-xl border border-white/20">
+                <div className="text-2xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-3">
+                  Explore Our Product Suite
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="text-lg text-slate-300 mb-6">
+                  Discover how each platform can transform your workflow
+                </div>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Link href="/products/clinical" className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 flex items-center space-x-2">
+                    <Building className="w-5 h-5" />
+                    <span>ChartR Clinical</span>
+                  </Link>
+                  <Link href="/products/literature" className="bg-gradient-to-r from-purple-600 to-pink-700 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-700 hover:to-pink-800 transition-all duration-300 flex items-center space-x-2">
+                    <FileText className="w-5 h-5" />
+                    <span>ChartR Literature</span>
+                  </Link>
+                  <Link href="/products/accelerate" className="bg-gradient-to-r from-green-600 to-teal-700 text-white px-6 py-3 rounded-lg font-medium hover:from-green-700 hover:to-teal-800 transition-all duration-300 flex items-center space-x-2">
+                    <GraduationCap className="w-5 h-5" />
+                    <span>ChartR Accelerate</span>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

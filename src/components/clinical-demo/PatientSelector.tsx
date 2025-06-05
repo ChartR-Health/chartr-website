@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Calendar, Stethoscope, User, Eye } from 'lucide-react';
+import { ArrowRight, Calendar, Stethoscope, User, Eye, X } from 'lucide-react';
 import { mockPatients } from './data/mockPatients';
 
 type DemoStep = 'selection' | 'extraction' | 'applications';
@@ -52,18 +52,7 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
           Experience how ChartR's AI transforms clinical documentation into structured registry data. 
           Choose a patient case to see automated data extraction in action.
         </p>
-        <div className="p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-400/20 backdrop-blur-sm">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-white">
-                Real-World Impact: $7.5M+ Annual Savings Per Hospital
-              </p>
-              <p className="text-xs text-slate-400 mt-1">
-                45+ minutes saved per patient • 96.4% accuracy rate
-              </p>
-            </div>
-          </div>
-        </div>
+
       </div>
 
       <div className="space-y-8">
@@ -170,20 +159,36 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
 
       {/* Clinical Notes Modal */}
       {notesModal.isOpen && notesModal.patient && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-lg max-w-4xl max-h-[80vh] overflow-hidden shadow-2xl">
+        <div 
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={closeNotesModal}
+        >
+          <div 
+            className="bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-lg max-w-4xl max-h-[80vh] overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="p-6 border-b border-slate-700/50">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-white">
                   Clinical Notes - {notesModal.patient.demographics.name}
                 </h3>
-                <Button 
-                  variant="outline" 
-                  onClick={closeNotesModal}
-                  className="bg-slate-700/50 border-slate-600/50 text-slate-200 hover:bg-slate-600/50"
-                >
-                  Close
-                </Button>
+                <div className="flex items-center space-x-2">
+                  <Button 
+                    variant="outline" 
+                    onClick={closeNotesModal}
+                    className="bg-slate-700/50 border-slate-600/50 text-slate-200 hover:bg-slate-600/50"
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={closeNotesModal}
+                    className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-700/50"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
             <div className="p-6 overflow-y-auto max-h-[60vh]">

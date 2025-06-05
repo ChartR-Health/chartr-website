@@ -138,9 +138,12 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
             <button
               key={app.id}
               onClick={() => setSelectedApplication(app.id)}
-              className={`p-4 rounded-lg border-2 text-left transition-all hover:shadow-md ${
+              className={`p-4 rounded-lg border text-left transition-all hover:shadow-md ${
                 isSelected 
-                  ? `border-${app.color.split('-')[1]}-400/50 bg-gradient-to-r ${app.color}/10 shadow-md backdrop-blur-sm` 
+                  ? app.id === 'registry-reporting' ? 'border-orange-400/50 bg-orange-500/10 shadow-md backdrop-blur-sm' :
+                    app.id === 'quality-improvement' ? 'border-green-400/50 bg-green-500/10 shadow-md backdrop-blur-sm' :
+                    app.id === 'patient-screening' ? 'border-purple-400/50 bg-purple-500/10 shadow-md backdrop-blur-sm' :
+                    'border-blue-400/50 bg-blue-500/10 shadow-md backdrop-blur-sm'
                   : 'border-slate-600/50 bg-slate-800/40 hover:border-slate-500/50 backdrop-blur-xl'
               }`}
             >
@@ -166,7 +169,7 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       <div className="grid lg:grid-cols-3 gap-6 mb-6">
         {/* Main Application Card */}
         <div className="lg:col-span-2">
-          <Card className="shadow-lg border-l-4 bg-slate-800/40 backdrop-blur-xl border border-white/10" style={{ borderLeftColor: currentApp.color.includes('orange') ? '#f97316' : currentApp.color.includes('green') ? '#10b981' : currentApp.color.includes('purple') ? '#8b5cf6' : '#3b82f6' }}>
+          <Card className="shadow-lg bg-slate-800/40 backdrop-blur-xl border border-white/10">
             <CardHeader>
               <div className="flex items-center space-x-3">
                 <div className={`p-3 rounded-xl bg-gradient-to-r ${currentApp.color}`}>
@@ -217,7 +220,12 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
               <CardTitle className="text-lg text-white">Impact Metrics</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className={`p-4 rounded-lg bg-gradient-to-r ${currentApp.color}/20 border border-white/20 backdrop-blur-sm`}>
+              <div className={`p-4 rounded-lg border backdrop-blur-sm ${
+                currentApp.id === 'registry-reporting' ? 'bg-orange-500/20 border-orange-400/30' :
+                currentApp.id === 'quality-improvement' ? 'bg-green-500/20 border-green-400/30' :
+                currentApp.id === 'patient-screening' ? 'bg-purple-500/20 border-purple-400/30' :
+                'bg-blue-500/20 border-blue-400/30'
+              }`}>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-white">
                     {currentApp.metrics.primary}
@@ -273,9 +281,17 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
             <div className="flex space-x-2">
               {applications.map((app) => {
                 const AppIcon = app.icon;
+                const iconColor = app.id === 'registry-reporting' ? 'text-orange-400' :
+                                app.id === 'quality-improvement' ? 'text-green-400' :
+                                app.id === 'patient-screening' ? 'text-purple-400' :
+                                'text-blue-400';
+                const bgColor = app.id === 'registry-reporting' ? 'bg-orange-500/10 border-orange-400/30' :
+                               app.id === 'quality-improvement' ? 'bg-green-500/10 border-green-400/30' :
+                               app.id === 'patient-screening' ? 'bg-purple-500/10 border-purple-400/30' :
+                               'bg-blue-500/10 border-blue-400/30';
                 return (
-                  <div key={app.id} className="p-2 bg-slate-700/50 rounded-lg shadow-sm border border-slate-600/50">
-                    <AppIcon className="h-5 w-5 text-slate-400" />
+                  <div key={app.id} className={`p-2 rounded-lg shadow-sm border ${bgColor}`}>
+                    <AppIcon className={`h-5 w-5 ${iconColor}`} />
                   </div>
                 );
               })}
