@@ -1320,50 +1320,61 @@ const Homepage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-              Three AI Platforms, One Solution
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+              Three AI Platforms
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+                One Solution
+              </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Comprehensive AI-powered tools for clinical data, literature review, and research acceleration
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <motion.div
                 key={index}
-                className="bg-slate-100 dark:bg-slate-900 rounded-xl shadow-lg overflow-hidden border border-slate-200 dark:border-slate-700"
-                initial={{ opacity: 0, y: 20 }}
+                className="relative group"
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                transition={{ duration: 0.8, delay: 0.2 * index }}
               >
-                <div className={`h-2 bg-gradient-to-r ${product.color}`}></div>
-                <div className="p-8">
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${product.color} rounded-lg flex items-center justify-center`}>
-                      <product.icon className="w-6 h-6 text-white" />
+                <div className={`absolute -inset-1 bg-gradient-to-r ${product.color.replace('from-', 'from-').replace('to-', 'to-').replace('-600', '-500/20').replace('-700', '-600/20')} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
+                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300">
+                  <div className={`h-1 bg-gradient-to-r ${product.color}`}></div>
+                  <div className="p-8">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className={`w-14 h-14 bg-gradient-to-r ${product.color.replace('-600', '-500/30').replace('-700', '-600/30')} rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20`}>
+                        <product.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <h3 className="text-xl font-black text-white">{product.name}</h3>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">{product.name}</h3>
-                  </div>
-                  
-                  <p className="text-slate-600 dark:text-slate-300 mb-6">{product.description}</p>
-                  
-                  <ul className="space-y-2 mb-6">
-                    {product.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center space-x-2 text-sm text-slate-600 dark:text-slate-300">
-                        <div className="w-1.5 h-1.5 bg-chartr-blue-500 rounded-full"></div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div className="bg-gradient-to-r from-chartr-blue-50 to-purple-50 dark:from-chartr-blue-900/20 dark:to-purple-900/20 rounded-lg p-4 text-center">
-                    <div className="text-sm font-semibold text-chartr-blue-700 dark:text-chartr-blue-300">
-                      {product.highlight}
+                    
+                    <p className="text-slate-300 mb-6 leading-relaxed">{product.description}</p>
+                    
+                    <ul className="space-y-3 mb-8">
+                      {product.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center space-x-3 text-sm text-slate-300">
+                          <div className={`w-2 h-2 bg-gradient-to-r ${product.color.replace('-600', '-400').replace('-700', '-500')} rounded-full`}></div>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className={`bg-gradient-to-r ${product.color.replace('-600', '-500/20').replace('-700', '-600/20')} rounded-xl p-4 text-center backdrop-blur-sm border border-white/10`}>
+                      <div className={`text-sm font-bold text-transparent bg-gradient-to-r ${product.color.replace('-600', '-300').replace('-700', '-400')} bg-clip-text`}>
+                        {product.highlight}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1374,61 +1385,105 @@ const Homepage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-              Trusted by Healthcare Leaders
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+              Trusted by
+              <br />
+              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                Healthcare Leaders
+              </span>
             </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
               See what leading healthcare organizations are saying about ChartR
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700">
-                <div className="mb-4">
-                  <p className="text-slate-700 dark:text-slate-300 italic">"{testimonial.quote}"</p>
+              <motion.div 
+                key={index} 
+                className="relative group"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 * index }}
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-slate-600/20 to-slate-700/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                  <div className="flex-1 mb-6">
+                    <div className="text-3xl text-emerald-400/30 mb-4">"</div>
+                    <p className="text-slate-300 italic leading-relaxed text-lg">{testimonial.quote}</p>
+                    <div className="text-3xl text-emerald-400/30 text-right mt-2">"</div>
+                  </div>
+                  <div className="border-t border-white/10 pt-6">
+                    <div className="font-bold text-white text-lg">{testimonial.author}</div>
+                    <div className="text-sm text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text font-medium mt-1">{testimonial.role}</div>
+                  </div>
                 </div>
-                <div className="border-t border-slate-200 dark:border-slate-600 pt-4">
-                  <div className="font-semibold text-slate-900 dark:text-white">{testimonial.author}</div>
-                  <div className="text-sm text-slate-500 dark:text-slate-400">{testimonial.role}</div>
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-chartr-blue-gradient text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-3xl lg:text-4xl font-bold">
-            Ready to Transform Your Healthcare Data?
-          </h2>
-          <p className="text-xl opacity-90">
-            Join leading healthcare organizations saving millions with ChartR's AI platform. 
-            See how our human-AI integration can revolutionize your clinical data management.
-          </p>
-          
-          {/* Removed non-functional buttons as requested */}
-          <div className="bg-white/10 rounded-lg p-6 backdrop-blur-sm">
-            <div className="text-lg font-semibold mb-2">Leading the Future of Healthcare Intelligence</div>
-            <div className="text-white/90">AI-assisted, human-validated clinical data curation at scale</div>
-          </div>
-          
-          <div className="pt-8 border-t border-white/20">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl lg:text-3xl font-bold mb-1">{stat.value}</div>
-                  <div className="text-sm opacity-80">{stat.description}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="py-24 relative overflow-hidden">
+        {/* Enhanced Background with Multiple Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-teal-600/20" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-teal-500/25 to-cyan-500/25 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-500" />
         </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight leading-tight">
+              Ready to Transform
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+                Your Healthcare Data?
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              Join leading healthcare organizations saving millions with ChartR's AI platform. 
+              See how our <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">human-AI integration</span> can revolutionize your clinical data management.
+            </p>
+            
+            {/* Enhanced Feature Highlight */}
+            <motion.div 
+              className="relative group max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="relative bg-white/10 rounded-2xl p-8 backdrop-blur-xl border border-white/20">
+                <div className="text-2xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-3">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-lg text-slate-300">AI-assisted, human-validated clinical data curation at scale</div>
+              </div>
+            </motion.div>
+            
+            
+          </motion.div>
+        </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-20 w-4 h-4 bg-blue-400/30 rounded-full animate-pulse" />
+        <div className="absolute bottom-32 right-32 w-6 h-6 bg-purple-400/30 rounded-full animate-pulse delay-700" />
+        <div className="absolute top-1/2 left-16 w-3 h-3 bg-teal-400/30 rounded-full animate-pulse delay-1000" />
       </section>
     </div>
   )
