@@ -99,6 +99,26 @@ const DeviceCompaniesSolutionsPage = () => {
       ]
     },
     {
+      title: "Patient Screening & Identification",
+      description: "AI-powered patient screening for clinical trials and device eligibility assessment",
+      features: [
+        "Automated patient eligibility screening for clinical trials",
+        "Device indication and contraindication assessment",
+        "Patient population stratification and analysis",
+        "Recruitment optimization and timeline acceleration"
+      ]
+    },
+    {
+      title: "Outcomes Database Building",
+      description: "Build comprehensive real-world outcomes databases for device performance tracking",
+      features: [
+        "Automated collection of device performance metrics",
+        "Patient-reported outcomes (PRO) integration",
+        "Long-term follow-up data management",
+        "Comparative effectiveness research support"
+      ]
+    },
+    {
       title: "Regulatory Submission Optimization",
       description: "Accelerate FDA submission preparation with AI-powered data curation",
       features: [

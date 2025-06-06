@@ -2,93 +2,113 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ChevronRight, Users, BookOpen, TrendingUp, Award, Clock, Shield, Target, CheckCircle, BarChart3 } from 'lucide-react'
+import { ChevronRight, Users, BookOpen, TrendingUp, Award, Clock, Shield, Target, CheckCircle, BarChart3, Database, FileText, Settings, Download, Stethoscope } from 'lucide-react'
 
 const MedicalSocietiesSolutionsPage = () => {
   const benefits = [
     {
-      icon: BookOpen,
-      title: "Accelerated Evidence Synthesis",
-      description: "Complete systematic literature reviews 70% faster with AI-powered analysis",
-      metric: "70% faster reviews"
+      icon: FileText,
+      title: "Streamlined Data Collection",
+      description: "Reduce data entry time by 65% with intuitive interfaces and automated validation",
+      metric: "65% faster data entry"
     },
     {
-      icon: Users,
-      title: "Enhanced Registry Management",
-      description: "Streamline clinical registry operations with automated data collection and analysis",
-      metric: "95% data accuracy"
+      icon: Settings,
+      title: "Dynamic Variable Management",
+      description: "Instantly propagate guideline updates across the entire registry infrastructure",
+      metric: "Real-time updates"
     },
     {
-      icon: Clock,
-      title: "Rapid Guideline Development",
-      description: "Reduce guideline development time from years to months with AI evidence extraction",
-      metric: "60% time reduction"
+      icon: BarChart3,
+      title: "Advanced Risk Modeling",
+      description: "Build and validate clinical prediction models with 95% accuracy for quality improvement",
+      metric: "95% model accuracy"
     },
     {
-      icon: Award,
-      title: "Superior Evidence Quality",
-      description: "Ensure highest standards with PRISMA-compliant workflows and bias detection",
-      metric: "99% compliance rate"
+      icon: Stethoscope,
+      title: "Point of Care Integration",
+      description: "Deliver clinical insights directly to physician workflows for better patient outcomes",
+      metric: "Seamless integration"
     }
   ]
 
   const marketStats = [
-    { stat: "$345M", description: "Healthcare chatbots market by 2026" },
-    { stat: "53%", description: "Of EU healthcare orgs using AI" },
-    { stat: "89%", description: "Believe AI speeds up processes" },
-    { stat: "56%", description: "Say AI improves diagnosis quality" }
+    { stat: "150+", description: "Medical society registries worldwide" },
+    { stat: "75%", description: "Report data quality challenges" },
+    { stat: "60%", description: "Struggle with variable management" },
+    { stat: "90%", description: "Want integrated clinical tools" }
   ]
 
   const challenges = [
     {
-      icon: Clock,
-      title: "Time-Intensive Reviews",
-      description: "Traditional systematic reviews take 6-24 months to complete",
-      impact: "18-month average review cycle"
+      icon: Settings,
+      title: "Complex Variable Management",
+      description: "Evolving clinical guidelines require constant database updates and variable modifications",
+      impact: "6-month delays for guideline updates"
     },
     {
-      icon: Users,
-      title: "Resource Constraints",
-      description: "Limited expert reviewers and increasing evidence volume create bottlenecks",
-      impact: "60% of societies report resource shortage"
+      icon: Database,
+      title: "Data Entry Burden",
+      description: "Manual data collection creates administrative burden for participating sites and partners",
+      impact: "40+ minutes per case entry"
     },
     {
-      icon: BarChart3,
-      title: "Data Quality Issues",
-      description: "Manual registry data collection leads to inconsistencies and errors",
-      impact: "30% error rate in manual collection"
+      icon: Shield,
+      title: "Research Data Access",
+      description: "Complex PHI requirements and data export processes limit research collaboration",
+      impact: "3-month delays for data requests"
     }
   ]
 
   const solutions = [
     {
-      title: "AI-Powered Literature Analysis",
-      description: "Automate evidence extraction and synthesis for faster, more comprehensive reviews",
+      title: "Streamlined Electronic Data Entry",
+      description: "Simplified, intuitive data collection platform for registry partners and participating sites",
       features: [
-        "Automated paper screening and categorization",
-        "AI-driven evidence extraction and summarization",
-        "Real-time bias and quality assessment",
-        "PRISMA-compliant reporting generation"
+        "User-friendly web-based data entry interfaces",
+        "Automated data validation and quality checks",
+        "Real-time error detection and correction prompts",
+        "Mobile-responsive design for clinical workflow integration"
       ]
     },
     {
-      title: "Intelligent Registry Platform",
-      description: "Transform clinical registries with automated data collection and real-time insights",
+      title: "Variable Management & Real-Time Updates",
+      description: "Dynamic database architecture that adapts to evolving clinical guidelines and definitions",
       features: [
-        "Automated data ingestion from EMR systems",
-        "Real-time quality monitoring and validation",
-        "Advanced analytics and outcome tracking",
-        "Regulatory compliance automation"
+        "Flexible variable definition and modification system",
+        "Automated propagation of guideline updates",
+        "Version control for data element changes",
+        "Backward compatibility for historical data analysis"
       ]
     },
     {
-      title: "Evidence-Based Guidelines Engine",
-      description: "Accelerate guideline development with AI-assisted evidence evaluation",
+      title: "Risk Models & Algorithm Development",
+      description: "Build and validate sophisticated clinical risk prediction models and quality algorithms",
       features: [
-        "Rapid evidence grading and recommendation generation",
-        "Conflict of interest detection and management",
-        "Collaborative review workflows",
-        "Automated update notifications for new evidence"
+        "Machine learning model development and validation",
+        "Risk stratification and outcome prediction tools",
+        "Automated algorithm testing and performance monitoring",
+        "Statistical analysis and model refinement capabilities"
+      ]
+    },
+    {
+      title: "PHI-Anonymized Data Exports",
+      description: "Secure, analysis-ready data exports for research and quality improvement initiatives",
+      features: [
+        "Automated de-identification and anonymization",
+        "Customizable data export formats and specifications",
+        "Researcher-friendly data dictionaries and documentation",
+        "Secure data sharing protocols and compliance tools"
+      ]
+    },
+    {
+      title: "Point of Care Clinical Modules",
+      description: "Real-time clinical decision support tools integrated into partner practice workflows",
+      features: [
+        "Risk calculator integration at point of care",
+        "Clinical guideline alerts and recommendations",
+        "Patient-specific outcome predictions and insights",
+        "Performance benchmarking and quality metrics display"
       ]
     }
   ]
@@ -102,16 +122,16 @@ const MedicalSocietiesSolutionsPage = () => {
 
   const testimonials = [
     {
-      quote: "ChartR Literature has transformed our evidence synthesis process. What used to take our team 18 months now takes 6 months with better accuracy.",
-      author: "Dr. Sarah Chen",
-      role: "Chief Medical Officer, American Heart Association",
-      society: "Leading Cardiovascular Society"
+      quote: "ChartR's variable management system allows us to implement guideline updates instantly across all participating sites. What used to take 6 months now happens in real-time.",
+      author: "Anonymous",
+      role: "Registry Director",
+      society: "Leading Cardiac Surgery Society"
     },
     {
-      quote: "The registry management capabilities have revolutionized our data collection. We're seeing 95% accuracy rates and real-time insights.",
-      author: "Dr. Michael Rodriguez",
-      role: "Registry Director, Thoracic Surgery Society",
-      society: "National Surgical Society"
+      quote: "The point-of-care modules have transformed how our members interact with registry data. Risk calculators integrated directly into their workflow have improved both data quality and patient care.",
+      author: "Anonymous",
+      role: "Database Chair",
+      society: "National Quality Improvement Initiative"
     }
   ]
 
@@ -131,12 +151,12 @@ const MedicalSocietiesSolutionsPage = () => {
               <ChevronRight className="w-4 h-4" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Transform Evidence Synthesis with
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> AI Intelligence</span>
+              Next-Generation Registry Platform with
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Clinical Intelligence</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Accelerate systematic reviews, streamline registry management, and develop evidence-based guidelines 
-              faster than ever with ChartR's AI-powered research platform.
+              Transform your medical society registry operations with streamlined data entry, dynamic variable management, 
+              and integrated point-of-care clinical decision support. Built for the modern healthcare ecosystem.
             </p>
           </motion.div>
 
@@ -167,10 +187,10 @@ const MedicalSocietiesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              The Evidence Synthesis Challenge
+              The Registry Management Challenge
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Medical societies face increasing pressure to develop evidence-based guidelines faster while maintaining the highest quality standards.
+              Medical societies need robust registry platforms that can adapt to evolving guidelines while delivering clinical insights to participating providers.
             </p>
           </motion.div>
 

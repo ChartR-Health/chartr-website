@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ChevronRight, DollarSign, Shield, Clock, TrendingUp, Heart, FileCheck, AlertTriangle, CheckCircle, BarChart3 } from 'lucide-react'
+import { ChevronRight, DollarSign, Shield, Clock, TrendingUp, Heart, FileCheck, AlertTriangle, CheckCircle, BarChart3, Stethoscope, Users, Search, Database, Target, Brain } from 'lucide-react'
 
 const HospitalsSolutionsPage = () => {
   const benefits = [
@@ -62,13 +62,13 @@ const HospitalsSolutionsPage = () => {
 
   const solutions = [
     {
-      title: "Automated Registry Reporting",
-      description: "Transform manual processes into automated, accurate regulatory submissions",
+      title: "Universal Registry Adaptability",
+      description: "One platform that exports to any registry format and adapts to evolving requirements",
       features: [
-        "Real-time data extraction from EMR systems",
-        "Automated quality measure calculations",
-        "Continuous compliance monitoring",
-        "Instant submission to regulatory bodies"
+        "Export to any registry specification (CMS, Joint Commission, specialty societies)",
+        "Automatic adaptation to changing registry requirements and guidelines",
+        "Real-time data synchronization across multiple registries simultaneously",
+        "Custom field mapping and validation for any quality program"
       ]
     },
     {
@@ -116,12 +116,12 @@ const HospitalsSolutionsPage = () => {
               <ChevronRight className="w-4 h-4" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Save $7.5M+ Annually with
-              <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"> AI Clinical Intelligence</span>
+              One Solution for All Your Registry Needs:
+              <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"> Save $7.5M+ Annually</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Transform your EMR system into a system of action. ChartR automates regulatory reporting, ensures compliance, 
-              and delivers measurable cost savings while improving patient outcomes.
+              The comprehensive registry platform that adapts to any requirements and evolves with changing guidelines. 
+              ChartR automates reporting, ensures compliance, and delivers measurable cost savings across all registries.
             </p>
           </motion.div>
 
@@ -234,10 +234,11 @@ const HospitalsSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              ChartR Clinical: Complete Platform Solution
+              Universal Registry Platform: One Solution, All Requirements
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Our comprehensive platform transforms your EMR data into actionable intelligence with human-AI integration.
+              Seamlessly export and adapt to any registry specification. Our platform automatically updates to changing requirements 
+              while maintaining continuous compliance across all quality programs and reporting mandates.
             </p>
           </motion.div>
 
@@ -262,6 +263,261 @@ const HospitalsSolutionsPage = () => {
                 </ul>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Universal Registry Capabilities */}
+      <section className="py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="bg-gradient-to-br from-green-600/10 to-blue-600/10 backdrop-blur-lg rounded-3xl p-12 border border-green-400/20 text-center"
+          >
+            <div className="flex items-center justify-center gap-3 text-green-400 mb-6">
+              <Database className="w-8 h-8" />
+              <span className="text-2xl font-bold">Universal Registry Solution</span>
+            </div>
+            <h3 className="text-3xl font-bold text-white mb-6">
+              Stop Managing Multiple Registry Systems
+            </h3>
+            <p className="text-xl text-slate-300 mb-8 max-w-4xl mx-auto">
+              ChartR's universal platform automatically exports to <strong>any registry format</strong> — from CMS Quality Programs 
+              to Joint Commission requirements to specialty society registries. When requirements change, our platform adapts 
+              automatically without disruption to your workflows.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-white/5 rounded-xl">
+                <div className="text-2xl font-bold text-green-400 mb-2">Any Format</div>
+                <div className="text-slate-300">Export to CMS, TJC, specialty societies, and custom registries</div>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl">
+                <div className="text-2xl font-bold text-green-400 mb-2">Auto-Update</div>
+                <div className="text-slate-300">Instantly adapt to changing requirements and new guidelines</div>
+              </div>
+              <div className="p-6 bg-white/5 rounded-xl">
+                <div className="text-2xl font-bold text-green-400 mb-2">Zero Disruption</div>
+                <div className="text-slate-300">Seamless transitions without workflow interruption</div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* For Clinicians Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 text-blue-400 mb-6">
+              <Stethoscope className="w-6 h-6" />
+              <span className="text-lg font-medium tracking-wide uppercase">For Clinicians</span>
+            </div>
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Patient Screening & Evidence-Based Decision Support
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Empower clinicians with AI-driven patient screening and real-time access to evidence-based guidelines for optimal care decisions.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 backdrop-blur-lg rounded-3xl p-8 border border-blue-400/20"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-blue-500/20 rounded-lg">
+                  <Target className="w-8 h-8 text-blue-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Patient Screening</h3>
+              </div>
+              <p className="text-slate-300 mb-6">
+                AI-powered patient identification and screening for clinical conditions, treatments, and risk factors
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Automated risk stratification and screening alerts</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Population health management and patient identification</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Preventive care opportunity identification</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Clinical trial eligibility screening</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="bg-gradient-to-br from-green-600/20 to-teal-600/20 backdrop-blur-lg rounded-3xl p-8 border border-green-400/20"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-green-500/20 rounded-lg">
+                  <Brain className="w-8 h-8 text-green-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-white">Evidence-Based Decision Support</h3>
+              </div>
+              <p className="text-slate-300 mb-6">
+                Real-time access to clinical guidelines, research evidence, and treatment recommendations
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Real-time clinical guideline integration</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Evidence synthesis and treatment recommendations</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Drug interaction and contraindication alerts</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Personalized treatment pathway optimization</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* For Researchers Section */}
+      <section className="py-20 px-6 bg-slate-800/30">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 text-purple-400 mb-6">
+              <Users className="w-6 h-6" />
+              <span className="text-lg font-medium tracking-wide uppercase">For Researchers</span>
+            </div>
+            <h2 className="text-4xl font-bold text-white mb-6">
+              Outcomes Research & Clinical Trial Infrastructure
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Accelerate clinical research with automated outcomes database building, patient screening, and real-world evidence generation.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-lg rounded-3xl p-8 border border-purple-400/20"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-purple-500/20 rounded-lg">
+                  <BarChart3 className="w-8 h-8 text-purple-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white">Outcomes Research</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Real-world outcomes data collection</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Comparative effectiveness research</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Health economics and value assessment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Quality improvement research</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="bg-gradient-to-br from-indigo-600/20 to-blue-600/20 backdrop-blur-lg rounded-3xl p-8 border border-indigo-400/20"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-indigo-500/20 rounded-lg">
+                  <Database className="w-8 h-8 text-indigo-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white">Database Building</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Automated clinical database creation</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Longitudinal patient data tracking</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Registry and biobank integration</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Multi-site data harmonization</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+              className="bg-gradient-to-br from-teal-600/20 to-cyan-600/20 backdrop-blur-lg rounded-3xl p-8 border border-teal-400/20"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-teal-500/20 rounded-lg">
+                  <Search className="w-8 h-8 text-teal-400" />
+                </div>
+                <h3 className="text-xl font-bold text-white">Clinical Trials Screening</h3>
+              </div>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Automated patient eligibility screening</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Clinical trial feasibility assessment</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Recruitment optimization</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-slate-300">Site selection and performance analysis</span>
+                </li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
