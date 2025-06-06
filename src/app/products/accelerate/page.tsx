@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
 import { motion } from 'framer-motion'
 import { ArrowRight, LightbulbIcon, DollarSign, Zap, ExternalLink, GraduationCap, Building, Brain, Target, Users, Search, Sparkle, BookOpen } from 'lucide-react'
 import AIDemoServerWrapper from '@/components/demos/ai-demo-server-wrapper'
@@ -10,7 +9,6 @@ import AIDemoServerWrapper from '@/components/demos/ai-demo-server-wrapper'
 const AcceleratePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-      <Navigation />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 overflow-hidden">

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
+
 import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Search, Users, Zap, CheckCircle, BookOpen, FileSearch, Brain, Database, Clock, Eye } from 'lucide-react'
 
@@ -96,7 +96,6 @@ const LiteraturePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-      <Navigation />
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">

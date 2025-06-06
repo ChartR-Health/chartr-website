@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Navigation from '@/components/Navigation'
 import ClinicalDemo from '@/components/demos/ClinicalDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity } from 'lucide-react'
@@ -728,8 +727,6 @@ const Homepage = () => {
           }} />
         </div>
       </div>
-
-      <Navigation />
       
       {/* Hero Section with Strategic Layout */}
       <section className="relative pt-24 pb-12 px-4 sm:px-6 lg:px-8">

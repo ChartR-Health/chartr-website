@@ -1,12 +1,11 @@
 'use client'
 
-import Navigation from '@/components/Navigation'
+
 import LiteratureDemo from '@/components/demos/LiteratureDemo'
 
 export default function LiteratureDemoPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">

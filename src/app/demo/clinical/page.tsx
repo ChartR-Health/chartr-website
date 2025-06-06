@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import Navigation from '@/components/Navigation'
+
 import { PatientSelector } from '@/components/clinical-demo/PatientSelector';
 import { NotesViewer } from '@/components/clinical-demo/NotesViewer';
 import { ExtractionResults } from '@/components/clinical-demo/ExtractionResults';
@@ -76,7 +76,6 @@ export default function ClinicalDemoPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Enhanced Header */}
