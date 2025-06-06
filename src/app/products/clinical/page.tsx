@@ -278,65 +278,7 @@ const ClinicalPage = () => {
         </div>
       </section>
 
-      {/* Demo Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              Experience Clinical in Action
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              See how our platform transforms clinical data management and registry reporting
-            </p>
-          </motion.div>
 
-          <motion.div 
-            className="relative group max-w-5xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-indigo-500/30 to-purple-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-            <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
-              <div className="p-8 text-center">
-                <div className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text mb-4">
-                  Clinical Data Platform Demo
-                </div>
-                <p className="text-lg text-slate-300 mb-8">
-                  Experience AI-powered clinical data curation and registry reporting
-                </p>
-                <div className="aspect-video bg-slate-900/50 rounded-xl border border-white/20 flex items-center justify-center mb-8">
-                  <div className="text-center">
-                    <BarChart3 className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-                    <p className="text-lg text-slate-300 mb-4">Interactive Clinical Dashboard</p>
-                    <p className="text-sm text-slate-400">AI extraction • Quality review • Registry compliance • Real-time monitoring</p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link 
-                    href="/demo/clinical" 
-                    className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 transition-all duration-300"
-                  >
-                    <span>Try Demo</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                  <Link 
-                    href="/contact" 
-                    className="inline-flex items-center space-x-2 bg-white/10 text-white px-8 py-4 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 backdrop-blur-xl border border-white/20"
-                  >
-                    <span>Request Access</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
@@ -362,16 +304,13 @@ const ClinicalPage = () => {
               Save <span className="text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text font-medium">$7.5M+ annually</span> while improving compliance and outcomes.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6 mt-12">
+            <div className="flex justify-center mt-12">
               <Link 
-                href="/demo/clinical" 
+                href="/contact" 
                 className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 flex items-center space-x-2"
               >
-                <span>Try Demo</span>
+                <span>Contact Us</span>
                 <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link href="/contact" className="bg-white/10 text-white px-8 py-4 rounded-lg font-medium hover:bg-white/20 transition-all duration-300 backdrop-blur-xl border border-white/20">
-                Contact Sales
               </Link>
             </div>
           </motion.div>

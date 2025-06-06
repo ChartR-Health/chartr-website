@@ -274,32 +274,39 @@ const AcceleratePage = () => {
       <AIDemoServerWrapper />
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white py-16 px-6 text-center relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90" />
-        <div className="absolute top-0 left-0 w-full h-full opacity-20">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-white/30 to-blue-200/30 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-gradient-to-r from-purple-200/30 to-white/30 rounded-full blur-3xl animate-pulse delay-1000" />
-        </div>
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20" />
         
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
-            Ready to Accelerate Research?
-          </h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Discover how Accelerate can help your university's students and faculty find relevant grants faster with AI-powered matching technology.
-          </p>
-          <div className="flex justify-center">
-            <a
-              href="https://chartrhealth.com/contact" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-8 py-6 text-lg font-medium rounded-lg transition-all duration-300 flex items-center space-x-2 border border-white/20 hover:border-white/30"
-            >
-              <span>Contact Us</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight leading-tight">
+              Accelerate Your
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                Research Funding
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+              Join leading universities in revolutionizing grant discovery and research networking. 
+              Find <span className="text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text font-medium">relevant funding faster</span> with AI-powered matching technology.
+            </p>
+            
+            <div className="flex justify-center mt-12">
+              <Link 
+                href="/contact" 
+                className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 flex items-center space-x-2"
+              >
+                <span>Contact Us</span>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
