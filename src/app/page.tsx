@@ -818,6 +818,23 @@ const Homepage = () => {
       {/* Data Transformation Flow */}
       <section className="py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+              From <span className="bg-gradient-to-r from-slate-400 to-slate-500 bg-clip-text text-transparent">System of Record</span>
+              <br />
+              To <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">System of Action</span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              ChartR creates an intelligent bridge between your EMR data and actionable clinical intelligence
+            </p>
+          </motion.div>
+
           {/* Visual Layer Architecture Cards */}
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
             <motion.div 
