@@ -44,7 +44,7 @@ const DeviceCompaniesSolutionsPage = () => {
       submission: "PMA Submission",
       standardFee: "$540,783",
       smallBusinessFee: "$135,196",
-      description: "Pre-market Approval for high-risk devices"
+      description: "Premarket approval for high-risk devices"
     },
     {
       submission: "De Novo Classification",
@@ -214,7 +214,7 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              FDA User Fees 2025: The Rising Cost of Compliance
+              2025 Costs: The Rising Burden of Compliance
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               FDA user fees continue to increase, making efficient regulatory processes more critical than ever.
