@@ -44,7 +44,7 @@ const DeviceCompaniesSolutionsPage = () => {
       submission: "PMA Submission",
       standardFee: "$540,783",
       smallBusinessFee: "$135,196",
-      description: "Pre-market Approval for high-risk devices"
+      description: "Premarket approval for high-risk devices"
     },
     {
       submission: "De Novo Classification",
