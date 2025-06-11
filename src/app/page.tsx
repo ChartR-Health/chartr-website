@@ -871,7 +871,7 @@ const Homepage = () => {
                       </div>
                       <div>
                         <div className="text-white font-bold mb-2">AI Extraction: <span className="text-blue-400">Automated data identification and extraction</span></div>
-                        <div className="text-sm text-slate-400">Advanced AI models analyze clinical data with 50x faster processing than manual review</div>
+                        <div className="text-sm text-slate-400">Advanced AI models collect clinical data with 50x faster processing than manual review</div>
                       </div>
                     </div>
                     
@@ -930,8 +930,8 @@ const Homepage = () => {
                         <Database className="w-6 h-6 text-teal-400" />
                       </div>
                       <div>
-                        <div className="text-white font-bold mb-2">Structured Output: <span className="text-teal-400">Ready-to-use clinical databases</span></div>
-                        <div className="text-sm text-slate-400">System improves with each interaction, building institutional knowledge and reducing review time</div>
+                        <div className="text-white font-bold mb-2">Review Tools: <span className="text-teal-400">AI-assisted review tools streamline the verification process</span></div>
+                        <div className="text-sm text-slate-400">Source highlighting and confidence intervals create a more efficient review process</div>
                       </div>
                     </div>
 
