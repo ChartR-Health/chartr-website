@@ -3,6 +3,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Users, Target, Award, Lightbulb, Heart, Globe, ArrowRight, Linkedin, Twitter, Mail, Shield } from 'lucide-react'
+// Import team images
+import alexandraParkImage from '@/assets/team/alexandra-park.jpg'
+// import isabellaZangariImage from '@/assets/team/isabella-zangari.jpg'
+// import jordanWilliamsImage from '@/assets/team/jordan-williams.jpg'
+// import priyaPatelImage from '@/assets/team/priya-patel.jpg'
+// import marcusJohnsonImage from '@/assets/team/marcus-johnson.jpg'
+// import aishaKumarImage from '@/assets/team/aisha-kumar.jpg'
+// import ryanZhangImage from '@/assets/team/ryan-zhang.jpg'
 
 const AboutPage = () => {
   // Animation variants
@@ -84,62 +92,65 @@ const AboutPage = () => {
     }
   ]
 
-  const summerFellows = {
-    strategy: [
-      {
-        name: "Alexandra Park",
-        role: "Strategy Fellow",
-        school: "Harvard Business School",
-        focus: "Market expansion and strategic partnerships",
-        image: "/team/alexandra-park.jpg", // Replace with actual image path
-        linkedin: "#"
-      },
-      {
-        name: "Jordan Williams",
-        role: "Strategy Fellow", 
-        school: "Wharton School",
-        focus: "Healthcare economics and value-based care models",
-        image: "/team/jordan-williams.jpg", // Replace with actual image path
-        linkedin: "#"
-      }
-    ],
-    business: [
-      {
-        name: "Priya Patel",
-        role: "Business Development Fellow",
-        school: "Columbia Business School",
-        focus: "Partnership development and customer success",
-        image: "/team/priya-patel.jpg", // Replace with actual image path
-        linkedin: "#"
-      },
-      {
-        name: "Marcus Johnson",
-        role: "Business Development Fellow",
-        school: "MIT Sloan",
-        focus: "Enterprise sales and market penetration",
-        image: "/team/marcus-johnson.jpg", // Replace with actual image path
-        linkedin: "#"
-      }
-    ],
-    tech: [
-      {
-        name: "Aisha Kumar",
-        role: "Tech Fellow",
-        school: "Stanford Computer Science",
-        focus: "Machine learning and natural language processing",
-        image: "/team/aisha-kumar.jpg", // Replace with actual image path
-        linkedin: "#"
-      },
-      {
-        name: "Ryan Zhang",
-        role: "Tech Fellow",
-        school: "MIT EECS",
-        focus: "Healthcare data infrastructure and security",
-        image: "/team/ryan-zhang.jpg", // Replace with actual image path
-        linkedin: "#"
-      }
-    ]
-  }
+  const fellows = [
+    // Lead Fellow (if you want to keep, otherwise remove)
+    // {
+    //   name: "[Lead Fellow Name]",
+    //   role: "Lead Fellow",
+    //   school: "[School or Program]",
+    //   focus: "[Lead fellow focus area]",
+    //   image: undefined, // Add image if available
+    //   linkedin: "#"
+    // },
+    {
+      name: "Isabella Zangari",
+      role: "Strategy Fellow",
+      school: "MPH Candidate at Columbia",
+      focus: "Market expansion and strategic partnerships",
+      image: "/team/isabella-zangari.jpg",
+      linkedin: "#"
+    },
+    {
+      name: "Shailen Sampath",
+      role: "Strategy Fellow", 
+      school: "MD/MBA Candidate at Columbia",
+      focus: "Healthcare economics and value-based care models",
+      image: undefined, // No image available
+      linkedin: "#"
+    },
+    {
+      name: "Priya Patel",
+      role: "Business Development Fellow",
+      school: "Columbia Business School",
+      focus: "Partnership development and customer success",
+      image: undefined, // No image available
+      linkedin: "#"
+    },
+    {
+      name: "Marcus Johnson",
+      role: "Business Development Fellow",
+      school: "MIT Sloan",
+      focus: "Enterprise sales and market penetration",
+      image: undefined, // No image available
+      linkedin: "#"
+    },
+    {
+      name: "Aisha Kumar",
+      role: "Tech Fellow",
+      school: "Stanford Computer Science",
+      focus: "Machine learning and natural language processing",
+      image: undefined, // No image available
+      linkedin: "#"
+    },
+    {
+      name: "Ryan Zhang",
+      role: "Tech Fellow",
+      school: "MIT EECS",
+      focus: "Healthcare data infrastructure and security",
+      image: undefined, // No image available
+      linkedin: "#"
+    }
+  ]
 
   const values = [
     {
@@ -176,18 +187,18 @@ const AboutPage = () => {
         
         <div className="relative z-10">
           {/* Profile Image */}
-          <div className="w-24 h-24 mx-auto mb-4 relative">
+          <div className="w-24 h-24 mx-auto mb-4 relative mt-28">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border border-white/20">
-              {/* Placeholder for actual image */}
-              <Users className="w-12 h-12 text-slate-400" />
-              {/* Uncomment when you have actual images:
-              <img 
-                src={member.image} 
-                alt={member.name}
-                className="w-full h-full object-cover rounded-full"
-              />
-              */}
+              {member.image ? (
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-full h-full object-cover rounded-full"
+                />
+              ) : (
+                <Users className="w-12 h-12 text-slate-400" />
+              )}
             </div>
           </div>
 
@@ -415,74 +426,17 @@ const AboutPage = () => {
             </p>
           </motion.div>
 
-          {/* Strategy Fellows */}
-          <div className="mb-16">
-            <motion.h3
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold text-blue-400 mb-8 text-center"
-            >
-              Strategy Fellows
-            </motion.h3>
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              {summerFellows.strategy.map((fellow, index) => (
-                <TeamMemberCard key={index} member={fellow} />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Business Development Fellows */}
-          <div className="mb-16">
-            <motion.h3
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold text-purple-400 mb-8 text-center"
-            >
-              Business Development Fellows
-            </motion.h3>
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              {summerFellows.business.map((fellow, index) => (
-                <TeamMemberCard key={index} member={fellow} />
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Tech Fellows */}
-          <div>
-            <motion.h3
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold text-green-400 mb-8 text-center"
-            >
-              Tech Fellows
-            </motion.h3>
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid md:grid-cols-2 gap-8"
-            >
-              {summerFellows.tech.map((fellow, index) => (
-                <TeamMemberCard key={index} member={fellow} />
-              ))}
-            </motion.div>
-          </div>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-8"
+          >
+            {fellows.map((fellow, index) => (
+              <TeamMemberCard key={index} member={fellow} />
+            ))}
+          </motion.div>
         </div>
       </section>
 
