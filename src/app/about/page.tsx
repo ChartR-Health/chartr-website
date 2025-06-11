@@ -11,6 +11,7 @@ import alexandraParkImage from '@/assets/team/alexandra-park.jpg'
 // import marcusJohnsonImage from '@/assets/team/marcus-johnson.jpg'
 // import aishaKumarImage from '@/assets/team/aisha-kumar.jpg'
 // import ryanZhangImage from '@/assets/team/ryan-zhang.jpg'
+import shailenSampathImage from '@/assets/team/shailen-sampath.jpeg'
 
 const AboutPage = () => {
   // Animation variants
@@ -42,17 +43,16 @@ const AboutPage = () => {
       role: "CTO & Co-Founder", 
       bio: "AI/ML expert with extensive experience in healthcare technology and regulatory compliance systems.",
       image: "/team/michael-chen.jpg", // Replace with actual image path
-      linkedin: "#",
-      email: "michael@chartrhealth.com"
+      linkedin: "https://www.linkedin.com/in/sebastian-ouslis-3446b9148/",
+      email: "sebastian@chartrhealth.com"
     },
     {
       name: "Ben Baranker",
       role: "CISO & Co-Founder",
       bio: "Board-certified physician specializing in clinical informatics and healthcare quality improvement.",
       image: "/team/emily-rodriguez.jpg", // Replace with actual image path
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/ben-baranker-6740a2143/",
       email: "ben@chartrhealth.com"
-
     }
   ]
 
@@ -90,7 +90,8 @@ const AboutPage = () => {
       school: "Biology and Economics Undergraduate Student at Barnard",
       focus: "[Lead fellow focus area]",
       image: undefined, // Add image if available
-      linkedin: "#"
+      linkedin: "#",
+      email: "leila@chartrhealth.com"
     },
     {
       name: "Isabella Zangari",
@@ -98,15 +99,17 @@ const AboutPage = () => {
       school: "MPH Candidate at Columbia",
       focus: "Market expansion and strategic partnerships",
       image: "/team/isabella-zangari.jpg",
-      linkedin: "https://www.linkedin.com/in/isabelladzangari"
+      linkedin: "https://www.linkedin.com/in/isabelladzangari",
+      email: "isabella@chartrhealth.com"
     },
     {
       name: "Shailen Sampath",
       role: "Strategy Fellow", 
       school: "MD/MBA Candidate at Columbia",
       focus: "Healthcare economics and value-based care models",
-      image: undefined, // No image available
-      linkedin: "#"
+      image: "/team/shailen-sampath.jpeg",
+      linkedin: "#",
+      email: "shailen@chartrhealth.com"
     },
     {
       name: "Marc Spence",
@@ -114,31 +117,44 @@ const AboutPage = () => {
       school: "MHA Graduate from Columbia",
       focus: "Partnership development and customer success",
       image: undefined, // No image available
-      linkedin: "#"
+      linkedin: "#",
+      email: "marc@chartrhealth.com"
     },
     {
       name: "Alexander Fontecchio",
       role: "Business Development Fellow",
-      school: "MIT Sloan",
+      school: "Biochemistry Student at Brown",
       focus: "Enterprise sales and market penetration",
       image: undefined, // No image available
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/alexander-fontecchio-47173035a/",
+      email: "alexander@chartrhealth.com"
     },
     {
       name: "Zoran Ouslis",
       role: "Tech Fellow",
-      school: "Stanford Computer Science",
+      school: "Electrical Engineering Student at University of Waterloo",
       focus: "Machine learning and natural language processing",
       image: undefined, // No image available
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/zoran-ouslis/?originalSubdomain=ca",
+      email: "zoran@chartrhealth.com"
     },
     {
-      name: "Ryan Zhang",
+      name: "Bill Li",
       role: "Tech Fellow",
       school: "MIT EECS",
       focus: "Healthcare data infrastructure and security",
       image: undefined, // No image available
-      linkedin: "#"
+      linkedin: "#",
+      email: "bill@chartrhealth.com"
+    },
+    {
+      name: "Nearhos Hatzinikolaou",
+      role: "Tech Fellow",
+      school: "Electrical Engineering Student at Toronto Metropolitan University",
+      focus: "[Add focus area here]",
+      image: undefined, // No image available
+      linkedin: "#",
+      email: "nearkos@chartrhealth.com"
     }
   ]
 
@@ -184,7 +200,7 @@ const AboutPage = () => {
                 <img 
                   src={member.image} 
                   alt={member.name}
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover object-[center_20%] rounded-full"
                 />
               ) : (
                 <Users className="w-12 h-12 text-slate-400" />
@@ -299,7 +315,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-slate-800/30">
+      <section className="pb-8 pt-20 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -347,7 +363,7 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Our Core Team</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -370,7 +386,7 @@ const AboutPage = () => {
       </section>
 
       {/* Board Advisors */}
-      <section className="py-20 bg-slate-800/30">
+      <section className="pt-8 pb-20 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -390,7 +406,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4"
           >
             {boardAdvisors.map((advisor, index) => (
               <TeamMemberCard key={index} member={advisor} />
@@ -421,10 +437,10 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1"
           >
             {fellows.map((fellow, index) => (
-              <TeamMemberCard key={index} member={fellow} />
+              <TeamMemberCard key={index} member={fellow} showEmail={true} />
             ))}
           </motion.div>
         </div>
