@@ -30,38 +30,29 @@ const AboutPage = () => {
   // Team data - replace with actual information from pitch decks
   const coreTeam = [
     {
-      name: "Dr. Sarah Johnson",
-      role: "CEO & Co-Founder",
+      name: "Akash Kapoor",
+      role: "CEO & Founder",
       bio: "Former Chief Medical Officer with 15+ years in healthcare AI and clinical data management.",
       image: "/team/sarah-johnson.jpg", // Replace with actual image path
       linkedin: "#",
-      twitter: "#",
-      email: "sarah@chartrhealth.com"
+      email: "akash@chartrhealth.com"
     },
     {
-      name: "Michael Chen",
+      name: "Sebastian Ouslis",
       role: "CTO & Co-Founder", 
       bio: "AI/ML expert with extensive experience in healthcare technology and regulatory compliance systems.",
       image: "/team/michael-chen.jpg", // Replace with actual image path
       linkedin: "#",
-      twitter: "#",
       email: "michael@chartrhealth.com"
     },
     {
-      name: "Dr. Emily Rodriguez",
-      role: "Chief Medical Officer",
+      name: "Ben Baranker",
+      role: "CISO & Co-Founder",
       bio: "Board-certified physician specializing in clinical informatics and healthcare quality improvement.",
       image: "/team/emily-rodriguez.jpg", // Replace with actual image path
       linkedin: "#",
-      email: "emily@chartrhealth.com"
-    },
-    {
-      name: "David Kim",
-      role: "VP of Engineering",
-      bio: "Full-stack engineer with deep expertise in healthcare data systems and HIPAA-compliant architectures.",
-      image: "/team/david-kim.jpg", // Replace with actual image path
-      linkedin: "#",
-      email: "david@chartrhealth.com"
+      email: "ben@chartrhealth.com"
+
     }
   ]
 
@@ -93,22 +84,21 @@ const AboutPage = () => {
   ]
 
   const fellows = [
-    // Lead Fellow (if you want to keep, otherwise remove)
-    // {
-    //   name: "[Lead Fellow Name]",
-    //   role: "Lead Fellow",
-    //   school: "[School or Program]",
-    //   focus: "[Lead fellow focus area]",
-    //   image: undefined, // Add image if available
-    //   linkedin: "#"
-    // },
+    {
+      name: "Leila Mirza",
+      role: "Lead Fellow",
+      school: "Biology and Economics Undergraduate Student at Barnard",
+      focus: "[Lead fellow focus area]",
+      image: undefined, // Add image if available
+      linkedin: "#"
+    },
     {
       name: "Isabella Zangari",
       role: "Strategy Fellow",
       school: "MPH Candidate at Columbia",
       focus: "Market expansion and strategic partnerships",
       image: "/team/isabella-zangari.jpg",
-      linkedin: "#"
+      linkedin: "https://www.linkedin.com/in/isabelladzangari"
     },
     {
       name: "Shailen Sampath",
@@ -119,15 +109,15 @@ const AboutPage = () => {
       linkedin: "#"
     },
     {
-      name: "Priya Patel",
+      name: "Marc Spence",
       role: "Business Development Fellow",
-      school: "Columbia Business School",
+      school: "MHA Graduate from Columbia",
       focus: "Partnership development and customer success",
       image: undefined, // No image available
       linkedin: "#"
     },
     {
-      name: "Marcus Johnson",
+      name: "Alexander Fontecchio",
       role: "Business Development Fellow",
       school: "MIT Sloan",
       focus: "Enterprise sales and market penetration",
@@ -135,7 +125,7 @@ const AboutPage = () => {
       linkedin: "#"
     },
     {
-      name: "Aisha Kumar",
+      name: "Zoran Ouslis",
       role: "Tech Fellow",
       school: "Stanford Computer Science",
       focus: "Machine learning and natural language processing",
@@ -179,7 +169,7 @@ const AboutPage = () => {
     <motion.div
       variants={fadeInUp}
       transition={{ duration: 0.6 }}
-      className="group relative"
+      className="group relative w-80 h-[32rem] flex flex-col"
     >
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-white/10 p-6 hover:border-white/20 transition-all duration-300">
         {/* Background gradient effect */}
@@ -187,7 +177,7 @@ const AboutPage = () => {
         
         <div className="relative z-10">
           {/* Profile Image */}
-          <div className="w-24 h-24 mx-auto mb-4 relative mt-28">
+          <div className="w-24 h-24 mx-auto mb-4 relative mt-6">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border border-white/20">
               {member.image ? (
@@ -370,7 +360,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex justify-center flex-wrap gap-8"
           >
             {coreTeam.map((member, index) => (
               <TeamMemberCard key={index} member={member} showEmail={true} />
