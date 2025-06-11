@@ -37,12 +37,11 @@ const Homepage = () => {
 
   const CombinedDataVisualization = () => {
     return (
-      <div className="relative w-full h-80 overflow-hidden">
+      <div className="relative w-full h-80 overflow-visible">
         {/* Main Visual Container */}
-        <div className="absolute inset-4 bg-gradient-to-br from-slate-900/20 to-purple-900/15 rounded-xl backdrop-blur-sm border border-white/5">
-          
+        <div className="absolute inset-0 -mx-6 bg-gradient-to-br from-slate-900/20 to-purple-900/15 rounded-xl backdrop-blur-sm border border-white/5">
           {/* Left Side: EMR Systems */}
-          <div className="absolute top-1/2 left-8 transform -translate-y-1/2 w-20 h-20 bg-blue-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-blue-400/20">
+          <div className="absolute top-1/2 left-2 transform -translate-y-1/2 w-20 h-20 bg-blue-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-blue-400/20">
             <Database className="w-8 h-8 text-blue-400 mb-1" />
             <div className="text-xs text-blue-300 font-medium text-center leading-tight">EMR<br/>Systems</div>
           </div>
@@ -75,7 +74,7 @@ const Homepage = () => {
           </div>
 
           {/* Right Side: Clinical Intelligence Output */}
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2 w-20 h-20 bg-green-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-green-400/20">
+          <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-20 h-20 bg-green-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-green-400/20">
             <BarChart3 className="w-8 h-8 text-green-400 mb-1" />
             <div className="text-xs text-green-300 font-medium text-center leading-tight">Clinical<br/>Intelligence</div>
           </div>
@@ -208,70 +207,7 @@ const Homepage = () => {
                 delay: 2.5
               }}
             />
-
-            {/* Data Processing Indicators */}
-            <motion.circle
-              cx="100"
-              cy="192"
-              r="3"
-              fill="rgba(59, 130, 246, 0.9)"
-              filter="url(#combinedGlow)"
-              animate={{ 
-                r: [2, 5, 2],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                delay: 0.3
-              }}
-            />
-            
-            <motion.circle
-              cx="300"
-              cy="192"
-              r="3"
-              fill="rgba(34, 197, 94, 0.9)"
-              filter="url(#combinedGlow)"
-              animate={{ 
-                r: [2, 5, 2],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                delay: 1.8
-              }}
-            />
           </svg>
-
-          {/* Process Flow Label */}
-
-          {/* Enhanced Flowing Particles */}
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-green-400 rounded-full opacity-80"
-              style={{
-                left: "32px",
-                top: `${186 + (i * 3)}px`,
-              }}
-              animate={{
-                x: [0, 120, 268, 336],
-                y: [0, -8, 8, 0],
-                opacity: [0, 1, 1, 0],
-                scale: [0.5, 1, 1, 0.5]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                delay: i * 0.8,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-
-
         </div>
       </div>
     );
@@ -760,7 +696,7 @@ const Homepage = () => {
 
               {/* Hero Headline - Left Aligned */}
               <motion.h1 
-                className="text-4xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text tracking-tight leading-[1.1] pb-2"
+                className="text-4xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text tracking-tight leading-[1.4] pb-2"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -770,16 +706,17 @@ const Homepage = () => {
                   backgroundClip: 'text'
                 }}
               >
-                <span className="whitespace-nowrap">The AI Platform</span>
-                <br />
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent whitespace-nowrap">
-                  Curating Clinical Data
+                <span className="whitespace-nowrap block mb-4">The AI Platform</span>
+                <span className="whitespace-nowrap block mb-4">
+                  <span className="text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text" style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    Curating Clinical Data
+                  </span>
                 </span>
-                <br />
-                Into
-                <br />
-                <span className="whitespace-nowrap bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                  Actionable Intelligence
+                <span className="whitespace-nowrap block">
+                  <span className="text-white">Into </span>
+                  <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                    Actionable Intelligence
+                  </span>
                 </span>
               </motion.h1>
               
@@ -801,7 +738,7 @@ const Homepage = () => {
             {/* Right Column - Data Flow Animation */}
             <div className="flex justify-center lg:justify-end">
               <motion.div 
-                className="w-full max-w-md"
+                className="w-full max-w-2xl"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -871,7 +808,7 @@ const Homepage = () => {
                     className="w-12 h-12"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">ChartR Layer</h3>
+                <h3 className="text-xl font-bold mb-4 text-white">ChartR Integration</h3>
                 <p className="mb-4 text-slate-200">
                   AI-curated, human-validated clinical databases - your <strong className="text-white">system of action</strong>
                 </p>
