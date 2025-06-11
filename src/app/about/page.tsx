@@ -12,6 +12,7 @@ import alexandraParkImage from '@/assets/team/alexandra-park.jpg'
 // import aishaKumarImage from '@/assets/team/aisha-kumar.jpg'
 // import ryanZhangImage from '@/assets/team/ryan-zhang.jpg'
 import shailenSampathImage from '@/assets/team/shailen-sampath.jpeg'
+import benBarankerImage from '@/assets/team/ben-baranker.jpeg'
 
 const AboutPage = () => {
   // Animation variants
@@ -50,7 +51,7 @@ const AboutPage = () => {
       name: "Ben Baranker",
       role: "CISO & Co-Founder",
       bio: "Board-certified physician specializing in clinical informatics and healthcare quality improvement.",
-      image: "/team/emily-rodriguez.jpg", // Replace with actual image path
+      image: "/team/ben-baranker.jpeg",
       linkedin: "https://www.linkedin.com/in/ben-baranker-6740a2143/",
       email: "ben@chartrhealth.com"
     }
@@ -106,7 +107,7 @@ const AboutPage = () => {
       name: "Shailen Sampath",
       role: "Strategy Fellow", 
       school: "MD/MBA Candidate at Columbia",
-      focus: "Healthcare economics and value-based care models",
+      focus: "Clinical solutions architecture and business development",
       image: "/team/shailen-sampath.jpeg",
       linkedin: "#",
       email: "shailen@chartrhealth.com"
