@@ -767,7 +767,7 @@ const Homepage = () => {
               <br />
               To <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">System of Action</span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               ChartR creates an intelligent bridge between your EMR data and actionable clinical intelligence
             </p>
           </motion.div>
