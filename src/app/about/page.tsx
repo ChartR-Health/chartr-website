@@ -66,7 +66,6 @@ const AboutPage = () => {
     {
       name: "John Bollard",
       role: "COO and CFO of the Arthur Ashe Student Health and Wellness Center at UCLA",
-      title: "COO and CFO of the Arthur Ashe Student Health and Wellness Center at UCLA",
       bio: "",
       image: "/team/John_Bollard.png",
       linkedin: "#"
@@ -85,7 +84,7 @@ const AboutPage = () => {
     {
       name: "Leila Mirza",
       role: "Lead Fellow",
-      school: "Biology & Economics Student at Barnard",
+      school: "Biology & Economics Student | Barnard College",
       image: "/team/leila.jpg",
       linkedin: "#",
       email: "leila@chartrhealth.com"
@@ -93,7 +92,7 @@ const AboutPage = () => {
     {
       name: "Isabella Zangari",
       role: "Strategy Fellow",
-      school: "MPH Candidate at Columbia",
+      school: "MPH Candidate | Columbia University",
       image: "/team/isabella-zangari.jpg",
       linkedin: "https://www.linkedin.com/in/isabelladzangari",
       email: "isabella@chartrhealth.com"
@@ -101,7 +100,7 @@ const AboutPage = () => {
     {
       name: "Shailen Sampath",
       role: "Strategy Fellow", 
-      school: "MD/MBA Candidate at Columbia",
+      school: "MD/MBA Candidate | Columbia University",
       image: "/team/shailen-sampath.jpeg",
       linkedin: "#",
       email: "shailen@chartrhealth.com"
@@ -109,7 +108,7 @@ const AboutPage = () => {
     {
       name: "Marc Spence",
       role: "Business Development Fellow",
-      school: "MHA Graduate from Columbia",
+      school: "MHA Graduate | Columbia University",
       image: "/team/marc_spence_headshot_720.jpg",
       linkedin: "#",
       email: "marc@chartrhealth.com"
@@ -117,7 +116,7 @@ const AboutPage = () => {
     {
       name: "Alexander Fontecchio",
       role: "Business Development Fellow",
-      school: "Biochemistry Student at Brown",
+      school: "Biochemistry Student | Brown University",
       image: undefined, // No image available
       linkedin: "https://www.linkedin.com/in/alexander-fontecchio-47173035a/",
       email: "alexander@chartrhealth.com"
@@ -125,7 +124,7 @@ const AboutPage = () => {
     {
       name: "Zoran Ouslis",
       role: "Tech Fellow",
-      school: "Electrical Engineering Student at University of Waterloo",
+      school: "Electrical Engineering Student | University of Waterloo",
       image: undefined, // No image available
       linkedin: "https://www.linkedin.com/in/zoran-ouslis/?originalSubdomain=ca",
       email: "zoran@chartrhealth.com"
@@ -133,7 +132,7 @@ const AboutPage = () => {
     {
       name: "Bill Li",
       role: "Tech Fellow",
-      school: "MIT EECS",
+      school: "Computer Science Student | University of Waterloo",
       image: undefined, // No image available
       linkedin: "#",
       email: "bill@chartrhealth.com"
@@ -141,7 +140,7 @@ const AboutPage = () => {
     {
       name: "Nearhos Hatzinikolaou",
       role: "Tech Fellow",
-      school: "Electrical Engineering Student at Toronto Metropolitan University",
+      school: "Electrical Engineering Student | Toronto Metropolitan University",
       image: undefined, // No image available
       linkedin: "#",
       email: "nearkos@chartrhealth.com"
@@ -175,7 +174,7 @@ const AboutPage = () => {
     <motion.div
       variants={fadeInUp}
       transition={{ duration: 0.6 }}
-      className="group relative w-80 h-[32rem] flex flex-col"
+      className="group relative w-80 h-88 flex flex-col"
     >
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-white/10 p-6 hover:border-white/20 transition-all duration-300">
         {/* Background gradient effect */}
@@ -199,19 +198,20 @@ const AboutPage = () => {
           </div>
 
           {/* Member Info */}
-          <div className="text-center">
-            <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-            <p className="text-blue-400 font-medium mb-2">{member.role}</p>
-            {member.title && (
-              <p className="text-sm text-slate-400 mb-3">{member.title}</p>
-            )}
-            {member.school && (
-              <p className="text-sm text-slate-400 mb-2">{member.school}</p>
-            )}
-            <p className="text-sm text-slate-300 leading-relaxed mb-4">{member.bio}</p>
-
+          <div className="text-center flex flex-col h-full">
+            <div className="flex-1 flex flex-col justify-start overflow-hidden" style={{ minHeight: '8rem', maxHeight: '12rem' }}>
+              <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
+              <p className="text-blue-400 font-medium mb-2">{member.role}</p>
+              {member.title && (
+                <p className="text-sm text-slate-400 mb-3">{member.title}</p>
+              )}
+              {member.school && (
+                <p className="text-sm text-slate-400 mb-2">{member.school}</p>
+              )}
+              <p className="text-sm text-slate-300 leading-relaxed mb-4">{member.bio}</p>
+            </div>
             {/* Social Links */}
-            <div className="flex justify-center space-x-3">
+            <div className="flex justify-center space-x-3 mt-auto">
               {member.linkedin && (
                 <a href={member.linkedin} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
                   <Linkedin className="w-5 h-5" />
@@ -266,31 +266,31 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 gap-12"
           >
-            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-center">
+            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-left">
               <div className="mb-4 text-center">
                 <Target className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                 <h2 className="text-3xl font-bold text-white">Our Mission</h2>
               </div>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed mb-4 h-24 overflow-hidden">
                 To empower healthcare professionals and researchers with transparent, reliable AI tools that streamline data extraction, enhance decision-making, and reduce the time from data to insight—without compromising accuracy, security, or compliance.
               </p>
-              <p className="text-slate-400">
+              <p className="text-slate-400 mt-6">
                 We believe that healthcare's greatest untapped resource is the wealth of clinical data locked 
                 away in unstructured formats. Our mission is to unlock this potential through intelligent 
                 AI-human collaboration.
               </p>
             </motion.div>
 
-            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-center">
+            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-left">
               <div className="mb-4 text-center">
                 <Globe className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                 <h2 className="text-3xl font-bold text-white">Our Vision</h2>
               </div>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-300 leading-relaxed mb-4 h-24 overflow-hidden">
                 A world where every healthcare decision is informed by comprehensive, accurate, and 
                 actionable clinical intelligence, leading to better patient outcomes and more efficient care delivery.
               </p>
-              <p className="text-slate-400">
+              <p className="text-slate-400 mt-6">
                 We envision healthcare systems that learn and improve continuously, where clinical data 
                 flows seamlessly to support research, compliance, and patient care simultaneously.
               </p>
@@ -361,7 +361,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="flex justify-center flex-wrap gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 justify-center"
           >
             {coreTeam.map((member, index) => (
               <TeamMemberCard key={index} member={member} />
@@ -391,7 +391,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="flex justify-center gap-8 flex-wrap"
+            className="flex justify-center gap-2"
           >
             {boardAdvisors.map((advisor, index) => (
               <TeamMemberCard key={index} member={advisor} />
@@ -422,7 +422,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-0"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-2"
           >
             {fellows.map((fellow, index) => (
               <TeamMemberCard key={index} member={fellow} />
