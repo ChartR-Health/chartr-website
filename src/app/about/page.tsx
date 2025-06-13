@@ -17,6 +17,7 @@ import leilaMirzaImage from '@/assets/team/leila.jpg'
 import sebastianOuslisImage from '@/assets/team/sebastian.png'
 import akashKapoorImage from '@/assets/team/akash_kapoor.jpeg'
 import marcSpenceImage from '@/assets/team/marc_spence_headshot_720.jpg'
+import JohnBollardImage from '@/assets/team/John_Bollard.png'
 
 const AboutPage = () => {
   // Animation variants
@@ -63,19 +64,19 @@ const AboutPage = () => {
 
   const boardAdvisors = [
     {
-      name: "Dr. Robert Thompson",
-      role: "Board Advisor",
-      title: "Former Chief Innovation Officer, Mayo Clinic",
-      bio: "Healthcare innovation leader with 20+ years transforming clinical operations through technology.",
-      image: "/team/robert-thompson.jpg", // Replace with actual image path
+      name: "John Bollard",
+      role: "COO and CFO of the Arthur Ashe Student Health and Wellness Center at UCLA",
+      title: "COO and CFO of the Arthur Ashe Student Health and Wellness Center at UCLA",
+      bio: "",
+      image: "/team/John_Bollard.png",
       linkedin: "#"
     },
     {
-      name: "Lisa Martinez",
-      role: "Board Advisor", 
-      title: "Former VP of Regulatory Affairs, Medtronic",
-      bio: "Regulatory compliance expert with deep knowledge of FDA requirements and medical device regulations.",
-      image: "/team/lisa-martinez.jpg", // Replace with actual image path
+      name: "Dr. Erin Ferenchick",
+      role: "Assistant Clinical Professor of Medicine",
+      title: "",
+      bio: "",
+      image: "/team/erin_f.png",
       linkedin: "#"
     }
   ]
@@ -182,7 +183,7 @@ const AboutPage = () => {
         
         <div className="relative z-10">
           {/* Profile Image */}
-          <div className="w-32 h-32 mx-auto mb-4 relative mt-6">
+          <div className="w-32 h-32 mx-auto relative mt-6">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center border border-white/20">
               {member.image ? (
@@ -236,7 +237,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-8 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -249,15 +250,14 @@ const AboutPage = () => {
               About ChartR
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              We're building the future of healthcare through AI-powered clinical data intelligence, 
-              transforming how healthcare organizations manage, analyze, and act on their most valuable asset: data.
+              ChartR unlocks the power of unstructured clinical data—using transparent, human-centered AI to deliver the clarity, speed, and control healthcare teams need to move from complexity to insight, instantly.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20">
+      <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -266,14 +266,13 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 gap-12"
           >
-            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <Target className="w-8 h-8 text-blue-400" />
+            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-center">
+              <div className="mb-4 text-center">
+                <Target className="w-8 h-8 text-blue-400 mx-auto mb-2" />
                 <h2 className="text-3xl font-bold text-white">Our Mission</h2>
               </div>
               <p className="text-lg text-slate-300 leading-relaxed">
-                To transform healthcare through AI-powered clinical data intelligence, creating the structured 
-                data layer that turns EMR systems from passive records into active systems of clinical action.
+                To empower healthcare professionals and researchers with transparent, reliable AI tools that streamline data extraction, enhance decision-making, and reduce the time from data to insight—without compromising accuracy, security, or compliance.
               </p>
               <p className="text-slate-400">
                 We believe that healthcare's greatest untapped resource is the wealth of clinical data locked 
@@ -282,9 +281,9 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6">
-              <div className="flex items-center space-x-3 mb-4">
-                <Globe className="w-8 h-8 text-purple-400" />
+            <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-center">
+              <div className="mb-4 text-center">
+                <Globe className="w-8 h-8 text-purple-400 mx-auto mb-2" />
                 <h2 className="text-3xl font-bold text-white">Our Vision</h2>
               </div>
               <p className="text-lg text-slate-300 leading-relaxed">
@@ -301,7 +300,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values */}
-      <section className="pb-8 pt-20 bg-slate-800/30">
+      <section className="pb-8 pt-8 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -342,18 +341,18 @@ const AboutPage = () => {
       </section>
 
       {/* Core Team */}
-      <section className="py-20">
+      <section className="pt-8 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8"
+            className="text-center mb-2"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Our Core Team</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Team</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Meet the leaders driving ChartR's mission to transform healthcare through AI
+              We are driven by a shared commitment to advancing healthcare through innovation and collaboration. With a unique blend of expertise and fresh perspectives, we work together to create solutions that drive meaningful change and improve patient outcomes
             </p>
           </motion.div>
 
@@ -365,21 +364,21 @@ const AboutPage = () => {
             className="flex justify-center flex-wrap gap-8"
           >
             {coreTeam.map((member, index) => (
-              <TeamMemberCard key={index} member={member} showEmail={true} />
+              <TeamMemberCard key={index} member={member} />
             ))}
           </motion.div>
         </div>
       </section>
 
       {/* Board Advisors */}
-      <section className="pt-8 pb-20 bg-slate-800/30">
+      <section className="pt-2 pb-2 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Board Advisors</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -392,7 +391,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4"
+            className="flex justify-center gap-8 flex-wrap"
           >
             {boardAdvisors.map((advisor, index) => (
               <TeamMemberCard key={index} member={advisor} />
@@ -402,16 +401,16 @@ const AboutPage = () => {
       </section>
 
       {/* Summer Fellows */}
-      <section className="py-20">
+      <section className="pt-2 pb-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-4"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Summer Fellows Program</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Summer Fellows</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Talented students and recent graduates contributing to ChartR's growth across strategy, 
               business development, and technology
@@ -423,17 +422,17 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-0"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-0"
           >
             {fellows.map((fellow, index) => (
-              <TeamMemberCard key={index} member={fellow} showEmail={true} />
+              <TeamMemberCard key={index} member={fellow} />
             ))}
           </motion.div>
         </div>
       </section>
 
       {/* Join Us CTA */}
-      <section className="py-20 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+      <section className="py-8 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
