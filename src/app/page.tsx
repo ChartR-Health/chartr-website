@@ -35,6 +35,9 @@ const Homepage = () => {
     }
   ]
 
+  const [validationNote, setValidationNote] = useState("Lab value confirmed with attending physician - approved for registry submission");
+  const [circleColor, setCircleColor] = useState("emerald");
+
   const CombinedDataVisualization = () => {
     return (
       <div className="relative w-full h-80 overflow-visible">
@@ -889,6 +892,10 @@ const Homepage = () => {
                             className="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-emerald-500/30 transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setValidationNote("Lab value confirmed with attending physician - approved for registry submission");
+                              setCircleColor("emerald");
+                            }}
                           >
                             <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                             <span>Approve</span>
@@ -897,6 +904,10 @@ const Homepage = () => {
                             className="px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-yellow-500/30 transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setValidationNote("Case flagged for further review by clinical team");
+                              setCircleColor("yellow");
+                            }}
                           >
                             <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
                             <span>Review</span>
@@ -905,6 +916,10 @@ const Homepage = () => {
                             className="px-4 py-2 bg-red-500/20 border border-red-500/30 text-red-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-red-500/30 transition-all duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              setValidationNote("Entry rejected - insufficient evidence for registry inclusion");
+                              setCircleColor("red");
+                            }}
                           >
                             <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                             <span>Reject</span>
@@ -912,14 +927,12 @@ const Homepage = () => {
                         </div>
                         
                         {/* Sample Note with Better Styling */}
-                        <div className="flex items-start space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                          <div className="w-6 h-6 bg-amber-500/30 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <div className="w-3 h-3 bg-amber-400 rounded-sm flex items-center justify-center">
-                              <div className="w-1 h-1 bg-white rounded-full"></div>
-                            </div>
+                        <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                          <div className={`w-6 h-6 bg-${circleColor}-500/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
+                            <div className={`w-3 h-3 bg-${circleColor}-400 rounded-full`}></div>
                           </div>
                           <div className="text-sm text-slate-300 italic">
-                            "Lab value confirmed with attending physician - approved for registry submission"
+                            {validationNote}
                           </div>
                         </div>
                       </div>
