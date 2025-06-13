@@ -35,7 +35,7 @@ const Homepage = () => {
     }
   ]
 
-  const [validationNote, setValidationNote] = useState("Lab value confirmed with attending physician - approved for registry submission");
+  const [validationNote, setValidationNote] = useState("Lab value confirmed - approved for registry submission");
   const [circleColor, setCircleColor] = useState("emerald");
 
   const CombinedDataVisualization = () => {
@@ -917,7 +917,7 @@ const Homepage = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => {
-                              setValidationNote("Entry rejected - insufficient evidence for registry inclusion");
+                              setValidationNote("Entry rejected - insufficient evidence for inclusion");
                               setCircleColor("red");
                             }}
                           >
@@ -983,31 +983,36 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h3 className="text-3xl font-black mb-8 text-transparent bg-gradient-to-r from-white to-slate-300 bg-clip-text">
-                Smart Learning Pipeline
-              </h3>
-              <div className="space-y-8">
-                {[
-                  "Pattern recognition improvements",
-                  "Error reduction algorithms", 
-                  "Context-aware processing",
-                  "Institutional knowledge capture"
-                ].map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    className="flex items-center space-x-4"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  >
-                    <motion.div 
-                      className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                    />
-                    <span className="text-slate-300 text-lg">{item}</span>
-                  </motion.div>
-                ))}
+              <div className="relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 overflow-hidden">
+                  <h3 className="text-3xl font-black mb-8 text-transparent bg-gradient-to-r from-white to-slate-300 bg-clip-text">
+                    Smart Learning Pipeline
+                  </h3>
+                  <div className="space-y-8">
+                    {[
+                      "Pattern recognition improvements",
+                      "Error reduction algorithms", 
+                      "Context-aware processing",
+                      "Institutional knowledge capture"
+                    ].map((item, index) => (
+                      <motion.div 
+                        key={index}
+                        className="flex items-center space-x-4"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                      >
+                        <motion.div 
+                          className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
+                          animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
+                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                        />
+                        <span className="text-slate-300 text-lg">{item}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
             
@@ -1165,11 +1170,11 @@ const Homepage = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              The $7.5 Million Problem
+              The <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                Multi-Million Dollar
+              </span> Problem
               <br />
-              <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                Every Hospital Faces
-              </span>
+              Every Hospital Faces
             </h2>
             <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
               Healthcare organizations spend millions annually on regulatory compliance and quality reporting, 
