@@ -25,15 +25,15 @@ const UniversitiesSolutionsPage = () => {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "Accelerate Research Discovery",
-      description: "AI-powered grant discovery increases funding success rates by up to 40%",
-      metric: "40% faster funding discovery"
+      title: "Accelerate Grant Discovery",
+      description: "Find relevant funding opportunities faster with AI-powered search.",
+      metric: "→ 40% faster grant discovery"
     },
     {
       icon: Clock,
-      title: "Reduce Administrative Burden",
-      description: "Automate systematic literature reviews, saving researchers 20+ hours per project",
-      metric: "20+ hours saved per review"
+      title: "Automate Literature Reviews",
+      description: "Use AI to streamline systematic search and analysis.",
+      metric: "→ 20+ hours saved per project"
     },
     {
       icon: Users,
@@ -43,17 +43,17 @@ const UniversitiesSolutionsPage = () => {
     },
     {
       icon: BarChart3,
-      title: "Evidence-Based Insights",
-      description: "Transform unstructured research data into actionable intelligence with 94% accuracy",
-      metric: "94% data accuracy"
+      title: "Extract Actionable Insights",
+      description: "Transform unstructured research data into evidence-based intelligence",
+      metric: "→ 94% data accuracy"
     }
   ]
 
   const marketStats = [
-    { stat: "$208.2B", description: "Global AI healthcare market by 2030" },
-    { stat: "21%", description: "Of healthcare VC funding goes to AI health tech" },
-    { stat: "$6.1B", description: "Investment in healthcare AI research in 2022" },
-    { stat: "44%", description: "CAGR for AI in healthcare market" }
+    { stat: "$208.2B", description: "Projected AI healthcare market by 2030" },
+    { stat: "21%", description: "VC funding in healthcare AI" },
+    { stat: "$6.1B", description: "2022 healthcare AI research investment" },
+    { stat: "44%", description: "Annual growth of the healthcare AI market" }
   ]
 
   const features = [
@@ -105,11 +105,10 @@ const UniversitiesSolutionsPage = () => {
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Accelerate Research with
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> AI Intelligence</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> AI</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Transform your research institution with AI-powered grant discovery, research mentor search, and systematic literature reviews. 
-              Join leading universities leveraging ChartR Accelerate and Literature to secure more funding and accelerate evidence synthesis.
+              Empower your institution with AI-driven grant discovery, mentor matching, and literature reviews. Top universities use ChartR to secure funding faster and synthesize evidence with greater accuracy.
             </p>
           </motion.div>
 
@@ -122,7 +121,7 @@ const UniversitiesSolutionsPage = () => {
           >
             {marketStats.map((item, index) => (
               <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-blue-400 mb-2">{item.stat}</div>
+                <div className="text-3xl font-bold text-blue-400 mb-4">{item.stat}</div>
                 <div className="text-sm text-slate-300">{item.description}</div>
               </div>
             ))}
@@ -140,10 +139,10 @@ const UniversitiesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Why Leading Universities Choose ChartR
+              Why Top Institutions Trust ChartR
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Research institutions worldwide are accelerating discovery and securing more funding with our AI-powered research intelligence platform.
+              Our AI platform boosts research efficiency and grant success for universities worldwide.
             </p>
           </motion.div>
 
