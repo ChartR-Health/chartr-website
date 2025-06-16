@@ -1,10 +1,10 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import ClinicalDemo from '@/components/demos/ClinicalDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -395,257 +395,158 @@ const Homepage = () => {
   };
 
   const PowerfulHeroVisual = () => {
-    return (
-      <div className="relative w-full h-96 overflow-hidden">
-        {/* Main Visual Container */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-purple-900/20 rounded-2xl backdrop-blur-sm border border-white/10">
-          
-          {/* Left Side: EMR Systems */}
-          <div className="absolute top-1/2 left-16 transform -translate-y-1/2 w-24 h-24 bg-blue-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-blue-400/20">
-            <Database className="w-10 h-10 text-blue-400 mb-1" />
-            <div className="text-xs text-blue-300 font-medium text-center leading-tight">EMR<br/>Systems</div>
-          </div>
+    const [isStructured, setIsStructured] = useState(false);
+    
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setIsStructured(prev => !prev);
+      }, 4000);
+      return () => clearInterval(interval);
+    }, []);
 
-          {/* Center: ChartR Layer - Clean, No Overlapping Text */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+    // Unstructured clinical interactions (left side)
+    const unstructuredData = [
+      { icon: FileText, color: 'text-blue-400', bg: 'bg-blue-500/20' }, // Clinical notes
+      { icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20' }, // Physical exams
+      { icon: Users, color: 'text-green-400', bg: 'bg-green-500/20' }, // Patient interactions
+      { icon: Activity, color: 'text-cyan-400', bg: 'bg-cyan-500/20' }, // Raw vitals/measurements
+    ];
+
+    // Structured extracted data (right side)  
+    const structuredData = [
+      { icon: TestTube, color: 'text-red-400', bg: 'bg-red-500/20' }, // Lab results
+      { icon: Pill, color: 'text-orange-400', bg: 'bg-orange-500/20' }, // Medications
+      { icon: Heart, color: 'text-pink-400', bg: 'bg-pink-500/20' }, // Cardiovascular data
+      { icon: Brain, color: 'text-purple-400', bg: 'bg-purple-500/20' }, // Neurological data
+    ];
+
+    return (
+      <div className="relative w-full h-80 sm:h-96">
+        {/* Clinical Notes to Structured Data */}
+        <div className="absolute inset-0 p-8 sm:p-12">
+            {/* Medical Data Icons */}
+            {[...Array(42)].map((_, i) => {
+              const chaoticX = Math.random() * 35 + 5; // Left half only: 5%-40% range
+              const chaoticY = Math.random() * 70 + 15; // Vertical: 15%-85% range  
+              const structuredX = (i % 6) * 10 + 60; // Right half only: start at 60% (more space around logo)
+              const structuredY = Math.floor(i / 6) * 9 + 20; // Better spacing to prevent bottom overflow
+              
+              // Use different icon sets for chaotic vs structured states
+              const chaoticNoteType = unstructuredData[i % unstructuredData.length];
+              const structuredNoteType = structuredData[i % structuredData.length];
+              const noteType = isStructured ? structuredNoteType : chaoticNoteType;
+              
+              return (
+                <motion.div
+                  key={i}
+                  className={`absolute w-6 h-6 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center ${noteType.bg} border border-white/10`}
+                  animate={{
+                    left: isStructured ? `${structuredX}%` : `${chaoticX}%`,
+                    top: isStructured ? `${Math.min(structuredY, 85)}%` : `${chaoticY}%`,
+                    scale: isStructured ? 1 : [0.8, 1.2, 0.8],
+                    rotate: isStructured ? 0 : [0, 360, 0]
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    ease: "easeInOut",
+                    delay: i * 0.03
+                  }}
+                >
+                  <noteType.icon className={`w-3 h-3 sm:w-4 sm:h-4 ${noteType.color}`} />
+                </motion.div>
+              );
+            })}
+
+            {/* Enhanced Connecting Lines for Structured State */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+              <defs>
+                <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgba(59, 130, 246, 0.8)" />
+                  <stop offset="50%" stopColor="rgba(147, 51, 234, 0.8)" />
+                  <stop offset="100%" stopColor="rgba(20, 184, 166, 0.8)" />
+                </linearGradient>
+              </defs>
+              
+              {isStructured && [...Array(6)].map((_, i) => (
+                <motion.path
+                  key={i}
+                  d={`M 10% ${15 + i * 8}% L 90% ${15 + i * 8}%`}
+                  stroke="url(#connectionGradient)"
+                  strokeWidth="2"
+                  fill="none"
+                  opacity="0"
+                  animate={{ opacity: [0, 1, 1] }}
+                  transition={{ duration: 1.5, delay: 2 + i * 0.15 }}
+                />
+              ))}
+            </svg>
+
+            {/* Enhanced Central Logo with Professional Animations */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+              <motion.div
+                className="relative"
+                animate={{ 
+                  scale: isStructured ? [1, 1.15, 1.05] : [1, 1.08, 1]
+                }}
+                transition={{ duration: 2.5, ease: "easeInOut" }}
+              >
+                {/* Animated background glow */}
+                <motion.div 
+                  className="absolute -inset-6 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-teal-500/40 rounded-full blur-2xl"
+                  animate={{ 
+                    opacity: isStructured ? [0.6, 1, 0.8] : [0.4, 0.7, 0.4],
+                    scale: isStructured ? [1, 1.2, 1.1] : [1, 1.05, 1]
+                  }}
+                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                />
+                
+                <motion.img 
+                  src="/logo.svg" 
+                  alt="ChartR Logo" 
+                  className="w-16 h-16 sm:w-20 sm:h-20"
+                  animate={{
+                    scale: isStructured ? [1, 1.1, 1.05] : 1,
+                    filter: isStructured ? 
+                      ['brightness(1)', 'brightness(1.4)', 'brightness(1.2)', 'brightness(1)'] : 
+                      'brightness(1)',
+                    opacity: isStructured ? [1, 0.8, 1, 0.9, 1] : 1
+                  }}
+                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                />
+              </motion.div>
+            </div>
+
+            {/* Enhanced State Labels */}
             <motion.div
-              className="relative w-32 h-32 bg-white/5 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-2xl"
+              className="absolute bottom-4 left-4 text-sm sm:text-base text-white bg-gradient-to-r from-slate-600/80 to-slate-700/80 px-4 py-3 rounded-xl backdrop-blur-sm border border-slate-400/30 shadow-lg"
               animate={{ 
-                scale: [1, 1.02, 1],
-                boxShadow: [
-                  "0 0 0 0 rgba(255, 255, 255, 0.1)",
-                  "0 0 0 8px rgba(255, 255, 255, 0)",
-                  "0 0 0 0 rgba(255, 255, 255, 0)"
-                ]
+                opacity: isStructured ? 0 : 1,
+                scale: isStructured ? 0.9 : 1,
+                x: isStructured ? -20 : 0
               }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 0.6 }}
             >
-              <img 
-                src="/logo.svg" 
-                alt="ChartR Logo" 
-                className="w-20 h-20"
-              />
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
+                <span className="font-medium">Unstructured EMR Data</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-4 right-4 text-sm sm:text-base text-white bg-gradient-to-r from-blue-600/80 via-purple-600/80 to-teal-600/80 px-4 py-3 rounded-xl backdrop-blur-sm border border-white/30 shadow-lg"
+              animate={{ 
+                opacity: isStructured ? 1 : 0,
+                scale: isStructured ? 1 : 0.9,
+                x: isStructured ? 0 : 20
+              }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span className="font-medium">Curated Clinical Data</span>
+              </div>
             </motion.div>
           </div>
-
-          {/* AI + Human Layer Label - Positioned below to avoid overlap */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-20 text-xs text-white/90 font-medium bg-white/10 px-3 py-1 rounded-md backdrop-blur-sm border border-white/20">
-            AI + Human Layer
-          </div>
-
-          {/* Right Side: Clinical Intelligence Output */}
-          <div className="absolute top-1/2 right-16 transform -translate-y-1/2 w-24 h-24 bg-green-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-green-400/20">
-            <BarChart3 className="w-10 h-10 text-green-400 mb-1" />
-            <div className="text-xs text-green-300 font-medium text-center leading-tight">Clinical<br/>Intelligence</div>
-          </div>
-
-          {/* Properly Connected Data Flow Lines */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 480 384">
-            <defs>
-              <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.8)" />
-                <stop offset="100%" stopColor="rgba(147, 51, 234, 0.8)" />
-              </linearGradient>
-              <linearGradient id="flowGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(147, 51, 234, 0.8)" />
-                <stop offset="100%" stopColor="rgba(34, 197, 94, 0.8)" />
-              </linearGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                <feMerge> 
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-            
-            {/* Main Flow: EMR → ChartR (connecting right edge of left box to left edge of center box) */}
-            <motion.path
-              d="M 88 192 Q 140 180 176 192"
-              stroke="url(#flowGradient1)"
-              strokeWidth="4"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            
-            {/* Secondary Flow: EMR → ChartR (upper path) */}
-            <motion.path
-              d="M 88 186 Q 140 170 176 186"
-              stroke="url(#flowGradient1)"
-              strokeWidth="3"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{ 
-                duration: 3.5, 
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.5
-              }}
-            />
-
-            {/* Tertiary Flow: EMR → ChartR (lower path) */}
-            <motion.path
-              d="M 88 198 Q 140 204 176 198"
-              stroke="url(#flowGradient1)"
-              strokeWidth="3"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1
-              }}
-            />
-
-            {/* Main Flow: ChartR → Clinical Intelligence (connecting right edge of center box to left edge of right box) */}
-            <motion.path
-              d="M 304 192 Q 340 180 376 192"
-              stroke="url(#flowGradient2)"
-              strokeWidth="4"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1.5
-              }}
-            />
-            
-            {/* Secondary Flow: ChartR → Clinical Intelligence (upper path) */}
-            <motion.path
-              d="M 304 186 Q 340 170 376 186"
-              stroke="url(#flowGradient2)"
-              strokeWidth="3"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{ 
-                duration: 3.5, 
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2
-              }}
-            />
-
-            {/* Tertiary Flow: ChartR → Clinical Intelligence (lower path) */}
-            <motion.path
-              d="M 304 198 Q 340 204 376 198"
-              stroke="url(#flowGradient2)"
-              strokeWidth="3"
-              fill="none"
-              filter="url(#glow)"
-              animate={{ 
-                strokeDasharray: ["0 200", "100 100", "200 0"],
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2.5
-              }}
-            />
-
-            {/* Data Processing Indicators */}
-            <motion.circle
-              cx="130"
-              cy="192"
-              r="3"
-              fill="rgba(59, 130, 246, 0.9)"
-              filter="url(#glow)"
-              animate={{ 
-                r: [2, 5, 2],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                delay: 0.3
-              }}
-            />
-            
-            <motion.circle
-              cx="350"
-              cy="192"
-              r="3"
-              fill="rgba(34, 197, 94, 0.9)"
-              filter="url(#glow)"
-              animate={{ 
-                r: [2, 5, 2],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                delay: 1.8
-              }}
-            />
-          </svg>
-
-          {/* Process Flow Label */}
-          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-sm text-white/80 font-medium bg-white/10 rounded-full px-4 py-2 backdrop-blur-sm border border-white/20">
-            Raw EMR Data → AI Curation → Validated Intelligence
-          </div>
-
-          {/* Key Metrics */}
-          <div className="absolute bottom-8 left-8 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm border border-white/20">
-            <div className="text-xs text-white/90 font-semibold">98.7% Accuracy</div>
-          </div>
-
-          <div className="absolute bottom-8 right-8 bg-white/10 rounded-lg px-3 py-2 backdrop-blur-sm border border-white/20">
-            <div className="text-xs text-white/90 font-semibold">$7.5M+ Saved</div>
-          </div>
-
-          {/* Moving Data Particles Following the Flow Path */}
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-green-400 rounded-full opacity-80"
-              style={{
-                left: "64px",
-                top: `${186 + (i * 4)}px`,
-              }}
-              animate={{
-                x: [0, 112, 240, 336],
-                y: [0, -8, 8, 0],
-                opacity: [0, 1, 1, 0],
-                scale: [0.5, 1, 1, 0.5]
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                delay: i * 0.8,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
       </div>
     );
   };
@@ -747,7 +648,7 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <div className="relative h-80">
-                  <CombinedDataVisualization />
+                  <PowerfulHeroVisual />
                 </div>
               </motion.div>
             </div>
@@ -783,10 +684,10 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-slate-600/20 to-slate-700/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-slate-600/30 to-slate-700/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Database className="w-8 h-8 text-slate-400" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-slate-600/20 to-slate-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="relative bg-slate-800/60 backdrop-blur-xl border border-slate-400/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-slate-600/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Database className="w-8 h-8 text-slate-300" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">EMR Systems</h3>
                 <p className="mb-4 text-slate-300">
@@ -803,7 +704,7 @@ const Homepage = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center transform scale-105 hover:scale-110 transition-all duration-300">
+              <div className="relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <img 
                     src="/logo.svg" 
@@ -812,10 +713,10 @@ const Homepage = () => {
                   />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">ChartR Integration</h3>
-                <p className="mb-4 text-slate-200">
+                <p className="mb-4 text-slate-100">
                   AI-curated, human-validated clinical databases - your <strong className="text-white">system of action</strong>
                 </p>
-                <div className="text-sm text-slate-300">Structured, actionable clinical intelligence</div>
+                <div className="text-sm text-slate-200">Structured, actionable clinical intelligence</div>
               </div>
             </motion.div>
 
@@ -826,9 +727,9 @@ const Homepage = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <TrendingUp className="w-8 h-8 text-emerald-400" />
+              <div className="relative bg-slate-800/60 backdrop-blur-xl border border-emerald-400/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-emerald-500/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <TrendingUp className="w-8 h-8 text-emerald-300" />
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-white">Better Outcomes</h3>
                 <p className="mb-4 text-slate-300">
@@ -958,10 +859,10 @@ const Homepage = () => {
       </section>
 
       {/* Model Improvement Section with Enhanced Animations */}
-      <section className="py-20 relative">
+      <section className="py-16 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -977,7 +878,7 @@ const Homepage = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -1018,57 +919,11 @@ const Homepage = () => {
             
             {/* Enhanced Metrics with Glassmorphism */}
             <motion.div 
-              className="space-y-8"
+              className="space-y-6"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              {/* Accuracy Rate Card */}
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 overflow-hidden">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold text-white">Accuracy Rate</span>
-                    <motion.span 
-                      className="text-emerald-400 font-bold flex items-center space-x-1"
-                      animate={{ opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <TrendingUp className="w-4 h-4" />
-                      <span>+5.2%</span>
-                    </motion.span>
-                  </div>
-                  
-                  {/* Enhanced Progress Bar */}
-                  <div className="w-full bg-slate-700/50 rounded-full h-4 relative overflow-hidden">
-                    <motion.div 
-                      className="bg-gradient-to-r from-emerald-400 to-teal-400 h-4 rounded-full relative"
-                      initial={{ width: "0%" }}
-                      animate={{ width: "94%" }}
-                      transition={{ duration: 2, delay: 1, ease: "easeOut" }}
-                    >
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                        animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear", delay: 3 }}
-                      />
-                    </motion.div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="text-sm text-slate-400">94% (from 89% last quarter)</div>
-                    <motion.div 
-                      className="text-sm bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.3, delay: 3 }}
-                    >
-                      Excellent
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-
               {/* Processing Speed Card */}
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
@@ -1104,7 +959,7 @@ const Homepage = () => {
                   </div>
                   
                   <div className="flex items-center justify-between mt-3">
-                    <div className="text-sm text-slate-400">2.3 seconds per chart</div>
+                    <div className="text-sm text-slate-400">45+ minutes saved per chart</div>
                     <motion.div 
                       className="flex items-center space-x-1"
                       initial={{ opacity: 0 }}
@@ -1124,7 +979,7 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* AI Learning Status */}
+              {/* Model Performance Card */}
               <motion.div 
                 className="relative group"
                 initial={{ opacity: 0, y: 20 }}
@@ -1133,20 +988,22 @@ const Homepage = () => {
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
                 <div className="relative bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                  <div className="flex items-center space-x-4">
-                    <motion.div
-                      className="w-12 h-12 bg-purple-500/30 rounded-xl flex items-center justify-center"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    >
-                      <Cpu className="w-6 h-6 text-purple-400" />
-                    </motion.div>
-                    <div className="flex-1">
-                      <div className="text-lg font-semibold text-white">AI Learning in Progress</div>
-                      <div className="text-sm text-slate-400">Next model update in 2 days</div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <motion.div
+                        className="w-12 h-12 bg-purple-500/30 rounded-xl flex items-center justify-center"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                      >
+                        <Cpu className="w-6 h-6 text-purple-400" />
+                      </motion.div>
+                      <div>
+                        <div className="text-white font-bold mb-2">Model Performance</div>
+                        <div className="text-sm text-slate-300">Continuous improvement through learning</div>
+                      </div>
                     </div>
                     <motion.div
-                      className="text-purple-400"
+                      className="text-purple-400 ml-4"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -1352,7 +1209,7 @@ const Homepage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+                          className="space-y-6"
           >
             <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight leading-tight">
               Ready to Transform

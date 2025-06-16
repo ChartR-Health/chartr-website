@@ -14,6 +14,7 @@ export interface MockPatient {
     echo: string;
     labs: string;
     discharge: string;
+    preop?: string;
   };
   extractedVariables: {
     [key: string]: {
@@ -368,7 +369,7 @@ PAST MEDICAL HISTORY:
 - Coronary artery disease
 - Severe mitral regurgitation
 - Hypertension
-- No diabetes
+- Hyperlipidemia
 - No known renal disease
 
 SOCIAL HISTORY:
@@ -381,7 +382,7 @@ PAST MEDICAL HISTORY:
 - Three-vessel coronary artery disease
 - Severe degenerative mitral regurgitation
 - Hypertension, controlled on medication
-- No diabetes mellitus
+- Hyperlipidemia on statin therapy
 - Previous cardiac catheterization showing 90% LAD stenosis
 
 SOCIAL HISTORY:
@@ -413,12 +414,17 @@ Severe mitral regurgitation with preserved LV function (estimated).`,
 CHEMISTRY:
 Creatinine: 0.9 mg/dL [0.6-1.2]
 BUN: 15 mg/dL [7-20]
+Glucose: 89 mg/dL [70-99]
 
 HEMATOLOGY:
 Hemoglobin: 12.8 g/dL [12.0-15.5]
 Hematocrit: 38.2% [36.0-46.0]
+Platelet Count: 295 K/uL [150-450]
 
-No diabetes screening ordered - no history of diabetes.`,
+LIPIDS:
+Total Cholesterol: 165 mg/dL [<200]
+LDL: 95 mg/dL [<100]
+HDL: 58 mg/dL [>50]`,
 
       discharge: `DISCHARGE SUMMARY - 03/26/2024
 
@@ -432,14 +438,34 @@ LENGTH OF STAY: 6 days
 
 DISCHARGE DISPOSITION: Home
 
-30-DAY STATUS: Alive and recovering`
+30-DAY STATUS: Alive and recovering`,
+
+      preop: `PRE-OPERATIVE ASSESSMENT - 03/19/2024
+
+CHIEF COMPLAINT: Pre-op clearance for cardiac surgery
+
+PAST MEDICAL HISTORY:
+- Coronary artery disease, three vessel
+- Severe mitral regurgitation
+- Hypertension
+- Hyperlipidemia
+- Osteoarthritis of knees
+
+MEDICATIONS:
+- Lisinopril 10mg daily
+- Metoprolol 50mg BID
+- Atorvastatin 40mg daily
+- Aspirin 81mg daily
+
+ASSESSMENT:
+Patient cleared for cardiac surgery. No contraindications identified.`
     },
     extractedVariables: {
       sex: { value: 'Female', source: 'admission', confidence: 100, dataType: 'structured' },
       height: { value: 160, source: 'admission', confidence: 100, dataType: 'structured' },
       weight: { value: 65, source: 'admission', confidence: 100, dataType: 'structured' },
       age: { value: 59, source: 'calculated', confidence: 100, dataType: 'structured' },
-      diabetes: { value: 'No', source: ['admission', 'hAndP', 'labs'], confidence: 85, dataType: 'extracted' },
+      diabetes: { value: 'No', source: ['admission', 'hAndP', 'preop'], confidence: 72, dataType: 'extracted' },
       creatinine: { value: 0.9, source: 'labs', confidence: 100, dataType: 'structured' },
       ejectionFraction: { value: 'Moderately reduced', source: 'echo', confidence: 65, dataType: 'extracted' },
       tobaccoUse: { value: 'Never', source: ['admission', 'hAndP'], confidence: 90, dataType: 'extracted' },
