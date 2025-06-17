@@ -313,7 +313,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="pt-12 pb-20 relative overflow-hidden">
         {/* Background gradient effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-slate-900/50" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50" />
@@ -326,7 +326,7 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Our Values</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">ChartR's Values</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               Building the future of healthcare through intelligent, ethical AI
             </p>
