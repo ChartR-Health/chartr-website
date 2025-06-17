@@ -46,8 +46,8 @@ const DeviceCompaniesSolutionsPage = () => {
       description: "Average premarket approval timeline"
     },
     {
-      stat: "95%",
-      description: "Want integrated clinical tools"
+      stat: "$500K",
+      description: "Monthly opportunity cost of regulatory delays"
     }
   ]
 
@@ -310,7 +310,7 @@ const DeviceCompaniesSolutionsPage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -319,10 +319,10 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Trusted by Leading Device Companies
+              Trusted by Industry Leaders
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              See how ChartR is helping device companies navigate regulatory challenges and accelerate approvals.
+              See how leading device companies are transforming their regulatory processes with ChartR.
             </p>
           </motion.div>
 
@@ -332,56 +332,14 @@ const DeviceCompaniesSolutionsPage = () => {
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-lg rounded-2xl border border-orange-400/20"
-              >
-                <blockquote className="text-slate-300 text-lg mb-6 italic">
-                  "{testimonial.quote}"
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-white">{testimonial.author}</div>
-                    <div className="text-sm text-slate-400">{testimonial.role}</div>
-                    <div className="text-sm text-orange-400">{testimonial.company}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ROI Calculator */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Proven ROI for Device Companies
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Device companies using ChartR report significant cost savings and faster regulatory approvals.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {roi_calculator.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-2xl border border-orange-400/20"
+                className="p-8 bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-2xl border border-white/10"
               >
-                <div className="text-4xl font-bold text-orange-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
+                <p className="text-lg text-slate-300 mb-6 italic">"{testimonial.quote}"</p>
+                <div>
+                  <div className="font-semibold text-white">{testimonial.author}</div>
+                  <div className="text-sm text-slate-400">{testimonial.role}, {testimonial.company}</div>
+                </div>
               </motion.div>
             ))}
           </div>
