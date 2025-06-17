@@ -66,9 +66,8 @@ const AboutPage = () => {
     {
       name: "John Bollard",
       role: "Board Advisor",
-      bio: "COO/CFO | UCLA's Ashe Student Health Center",
-      image: "/team/John_Bollard.png",
-      linkedin: "#"
+      bio: "Associate Vice Chancellor of Student Health & Chief Well-Being Officer | UCLA",
+      image: "/team/bollard.jpg"
     },
     {
       name: "Dr. Erin Ferenchick",
@@ -369,7 +368,7 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Our Team</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Our Leaders</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
               We are driven by a shared commitment to advancing healthcare through innovation and collaboration. With a unique blend of expertise and fresh perspectives, we work together to create solutions that drive meaningful change and improve patient outcomes
             </p>
@@ -464,20 +463,15 @@ const AboutPage = () => {
               Reimagining healthcare with AI takes all kinds of minds. If you're a builder, thinker, or innovator—clinical or technical—ChartR is where your work can shape the future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/careers"
+              <motion.a
+                href="mailto:leila@chartrhealth.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                View Open Positions
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-              <a
-                href="mailto:careers@chartrhealth.com"
-                className="inline-flex items-center px-8 py-4 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-              >
-                Get In Touch
-                <Mail className="ml-2 w-5 h-5" />
-              </a>
+                <Mail className="w-5 h-5 mr-2" />
+                Get in Touch
+              </motion.a>
             </div>
           </motion.div>
         </div>
