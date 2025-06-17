@@ -4,6 +4,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ChevronRight, TrendingUp, Clock, DollarSign, Users, Award, Target, Zap, BarChart3, CheckCircle } from 'lucide-react'
 
+interface Feature {
+  title: string
+  description: string
+  features: string[]
+}
+
 const UniversitiesSolutionsPage = () => {
   const staggerChildren = {
     animate: {
@@ -27,64 +33,64 @@ const UniversitiesSolutionsPage = () => {
       icon: TrendingUp,
       title: "Accelerate Grant Discovery",
       description: "Find relevant funding opportunities faster with AI-powered search.",
-      metric: "→ 40% faster grant discovery"
+      metric: "→ 150% increase in grant application volume"
     },
     {
       icon: Clock,
       title: "Automate Literature Reviews",
       description: "Use AI to streamline systematic search and analysis.",
-      metric: "→ 20+ hours saved per project"
+      metric: "→ 67% reduction in time spent on reviews"
     },
     {
       icon: Users,
       title: "Connect with Research Mentors",
-      description: "AI-powered mentor matching connects researchers with experienced PIs and collaborators",
-      metric: "Smart mentor matching"
+      description: "AI-powered smart matching connects researchers with experienced PIs and collaborators",
+      metric: "Higher match rates with relevant mentors"
     },
     {
       icon: BarChart3,
       title: "Extract Actionable Insights",
       description: "Transform unstructured research data into evidence-based intelligence",
-      metric: "→ 94% data accuracy"
+      metric: "→ 89% improvement in data accuracy"
     }
   ]
 
   const marketStats = [
+    { stat: "44%", description: "Annual growth of the healthcare AI market" },
     { stat: "$208.2B", description: "Projected AI healthcare market by 2030" },
     { stat: "21%", description: "VC funding in healthcare AI" },
-    { stat: "$6.1B", description: "2022 healthcare AI research investment" },
-    { stat: "44%", description: "Annual growth of the healthcare AI market" }
+    { stat: "$7.3B", description: "2023 healthcare AI research investment" }
   ]
 
   const features = [
     {
       title: "ChartR Accelerate",
-      description: "AI-powered grant discovery and research mentor search platform",
-      capabilities: [
-        "Automated grant discovery across 500+ funding sources",
-        "Smart matching based on research focus and history",
-        "Research mentor and collaboration network identification",
-        "Real-time funding alerts and application deadlines",
-        "PI track record analysis and success prediction"
+      description: "AI-powered grant discovery and research collaboration platform",
+      features: [
+        "Discover grants from 500+ sources",
+        "Match with mentors by research history",
+        "Identify collaboration networks",
+        "Get real-time alerts and deadlines",
+        "Analyze PI track records and funding potential"
       ]
     },
     {
       title: "ChartR Literature",
       description: "Systematic literature reviews (SLR) and evidence synthesis acceleration",
-      capabilities: [
-        "Automated research paper analysis and categorization",
-        "AI-powered evidence extraction and synthesis",
-        "PRISMA-compliant systematic review workflows",
-        "Citation network analysis and research gap identification",
-        "Meta-analysis support and statistical synthesis"
+      features: [
+        "Analyze and categorize research papers",
+        "Extract and synthesize evidence with AI",
+        "Use PRISMA-compliant workflows",
+        "Map citation networks and identify gaps",
+        "Support meta-analysis and synthesis"
       ]
     }
   ]
 
   const successMetrics = [
     { metric: "150%", description: "Increase in grant application volume" },
-    { metric: "67%", description: "Reduction in literature review time" },
-    { metric: "89%", description: "Research accuracy improvement" },
+    { metric: "67%", description: "Less time spent on literature reviews" },
+    { metric: "89%", description: "Improved data accuracy" },
     { metric: "40%", description: "Faster research cycles" }
   ]
 
@@ -130,13 +136,13 @@ const UniversitiesSolutionsPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
               Why Top Institutions Trust ChartR
@@ -182,10 +188,10 @@ const UniversitiesSolutionsPage = () => {
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">
-              Comprehensive Research Solutions
+              End-to-End Research Intelligence
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Our integrated platform covers the entire research lifecycle, from funding discovery to evidence synthesis.
+              From grant discovery to evidence synthesis, ChartR supports every stage of the research lifecycle.
             </p>
           </motion.div>
 
@@ -200,9 +206,9 @@ const UniversitiesSolutionsPage = () => {
                 <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
                 <p className="text-slate-300 mb-6">{feature.description}</p>
                 <ul className="space-y-3">
-                  {feature.capabilities.map((capability, capIndex) => (
+                  {feature.features.map((capability, capIndex) => (
                     <li key={capIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                       <span className="text-slate-300">{capability}</span>
                     </li>
                   ))}
@@ -210,39 +216,6 @@ const UniversitiesSolutionsPage = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Success Metrics */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Proven Research Impact
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Universities using ChartR report significant improvements in research efficiency and funding success rates.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {successMetrics.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-lg rounded-2xl border border-blue-400/20"
-              >
-                <div className="text-4xl font-bold text-blue-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
