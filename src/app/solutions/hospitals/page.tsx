@@ -35,28 +35,25 @@ const HospitalsSolutionsPage = () => {
   const marketStats = [
     { stat: "94%", description: "Of healthcare companies use AI/ML" },
     { stat: "90%", description: "Reduction in manual reporting time" },
-    { stat: "100%", description: "Compliance achievement rate" },
-    { stat: "18%", description: "Faster data processing speed" }
+    { stat: "18%", description: "Faster data processing speed" },
+    { stat: "100%", description: "Compliance achievement rate" }
   ]
 
   const painPoints = [
     {
       icon: AlertTriangle,
       title: "Regulatory Burden",
-      description: "Healthcare systems spend millions annually on manual regulatory reporting and compliance",
-      impact: "$7.5M+ per facility annually"
+      description: "Manual reporting drains staff time and budgets, increasing the risk of delays and penalties"
     },
     {
       icon: FileCheck,
       title: "Data Quality Issues",
-      description: "Unstructured EMR data creates compliance risks and inefficient workflows",
-      impact: "60% of physician time on documentation"
+      description: "Unstructured EMRs introduce compliance risks and inefficiencies—60% of physician time is spent on documentation"
     },
     {
       icon: TrendingUp,
       title: "Resource Constraints",
-      description: "Limited clinical staff and increasing patient volumes strain operations",
-      impact: "15M global healthcare worker shortage"
+      description: "A 15M global healthcare worker shortage is intensifying patient loads and stretching clinical capacity"
     }
   ]
 
@@ -116,7 +113,7 @@ const HospitalsSolutionsPage = () => {
               Save <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-cyan-500 bg-clip-text text-transparent animate-gradient">$7.5M+</span> Per Hospital with ChartR
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Automate regulatory reporting, cut labor costs, and eliminate compliance bottlenecks — all through one AI-powered platform
+              Unlock measurable returns on investment—streamline compliance, reduce costs, and accelerate reporting with one AI-powered platform.
             </p>
           </motion.div>
 
@@ -128,8 +125,24 @@ const HospitalsSolutionsPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           >
             {marketStats.map((item, index) => (
-              <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-green-400 mb-2">{item.stat}</div>
+              <div key={index} className={`text-center p-6 backdrop-blur-lg rounded-xl border ${
+                index === 0 
+                  ? "bg-gradient-to-br from-green-500/20 to-green-400/20 border-green-400/20" 
+                  : index === 1 
+                  ? "bg-gradient-to-br from-green-400/20 to-emerald-500/20 border-emerald-400/20"
+                  : index === 2
+                  ? "bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border-cyan-400/20"
+                  : "bg-gradient-to-br from-cyan-500/20 to-cyan-400/20 border-cyan-400/20"
+              }`}>
+                <div className={`text-3xl font-bold mb-2 ${
+                  index === 0 
+                    ? "text-green-400" 
+                    : index === 1 
+                    ? "text-emerald-400"
+                    : index === 2
+                    ? "text-cyan-400"
+                    : "text-cyan-400"
+                }`}>{item.stat}</div>
                 <div className="text-sm text-slate-300">{item.description}</div>
               </div>
             ))}
@@ -169,8 +182,7 @@ const HospitalsSolutionsPage = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-white">{point.title}</h3>
                 </div>
-                <p className="text-slate-300 mb-4">{point.description}</p>
-                <div className="text-sm font-semibold text-red-400">{point.impact}</div>
+                <p className="text-slate-300">{point.description}</p>
               </motion.div>
             ))}
           </div>
@@ -193,6 +205,9 @@ const HospitalsSolutionsPage = () => {
             <h2 className="text-4xl font-bold text-white mb-6">
               One Registry Platform. Every Requirement. Zero Disruption.
             </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto mb-16">
+              Streamline data workflows and compliance across all registries with one adaptive system.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -249,7 +264,7 @@ const HospitalsSolutionsPage = () => {
               Smarter Screening. Better Decisions.
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Empower clinicians with AI-driven patient screening and real-time access to evidence-based guidelines for optimal care decisions.
+              AI-powered tools for real-time risk detection and personalized clinical guidance.
             </p>
           </motion.div>
 
@@ -344,7 +359,7 @@ const HospitalsSolutionsPage = () => {
               Accelerate Outcomes Research & Trial Infrastructure
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              From real-world evidence to patient recruitment, ChartR equips research teams with automated tools to build datasets, screen patients, and streamline trials.
+              Automate data prep, patient screening, and recruitment to streamline clinical studies.
             </p>
           </motion.div>
 
@@ -444,82 +459,6 @@ const HospitalsSolutionsPage = () => {
                 </li>
               </ul>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ROI Metrics */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Impact and Return on Investment
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Leading hospitals and health systems achieve immediate ROI with ChartR's AI-powered clinical data platform.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {roi_metrics.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-green-500/10 to-blue-500/10 backdrop-blur-lg rounded-2xl border border-green-400/20"
-              >
-                <div className="text-4xl font-bold text-green-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Key Benefits
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Discover how ChartR transforms healthcare operations and improves patient outcomes.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-green-400/50 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-green-500/20 rounded-lg">
-                    <benefit.icon className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
-                    <p className="text-slate-300 mb-4">{benefit.description}</p>
-                    <div className="text-sm font-semibold text-green-400">{benefit.metric}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
