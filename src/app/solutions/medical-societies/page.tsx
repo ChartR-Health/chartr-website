@@ -2,33 +2,29 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ChevronRight, Users, BookOpen, TrendingUp, Award, Clock, Shield, Target, CheckCircle, BarChart3, Database, FileText, Settings, Download, Stethoscope } from 'lucide-react'
+import { ChevronRight, Users, BookOpen, TrendingUp, Award, Clock, Shield, Target, CheckCircle, BarChart3, Database, FileText, Settings, Download, Stethoscope, AlertTriangle } from 'lucide-react'
 
 const MedicalSocietiesSolutionsPage = () => {
   const benefits = [
     {
-      icon: FileText,
+      icon: Clock,
       title: "Streamlined Data Collection",
-      description: "Reduce data entry time by 65% with intuitive interfaces and automated validation",
-      metric: "65% faster data entry"
+      description: "Reduce data entry time by 65% with intuitive interfaces, automated validation, and real-time error prompts."
     },
     {
-      icon: Settings,
+      icon: TrendingUp,
       title: "Dynamic Variable Management",
-      description: "Instantly propagate guideline updates across the entire registry infrastructure",
-      metric: "Real-time updates"
+      description: "Apply evolving guideline updates across all registry sites instantly, eliminating months of delay with real-time propagation."
     },
     {
-      icon: BarChart3,
-      title: "Advanced Risk Modeling",
-      description: "Build and validate clinical prediction models with 95% accuracy for quality improvement",
-      metric: "95% model accuracy"
+      icon: Target,
+      title: "95% model accuracy",
+      description: "Build and validate clinical prediction models with 95% accuracy, supporting quality improvement and benchmarking efforts."
     },
     {
       icon: Stethoscope,
-      title: "Point of Care Integration",
-      description: "Deliver clinical insights directly to physician workflows for better patient outcomes",
-      metric: "Seamless integration"
+      title: "Seamless integration",
+      description: "Deliver clinical insights directly into physician workflows with seamless decision support for treatment selection and outcome tracking."
     }
   ]
 
@@ -39,76 +35,63 @@ const MedicalSocietiesSolutionsPage = () => {
     { stat: "90%", description: "Want integrated clinical tools" }
   ]
 
-  const challenges = [
+  const painPoints = [
     {
-      icon: Settings,
+      icon: AlertTriangle,
       title: "Complex Variable Management",
-      description: "Evolving clinical guidelines require constant database updates and variable modifications",
-      impact: "6-month delays for guideline updates"
+      description: "Evolving guidelines require constant database edits, delaying improvements across sites by months"
     },
     {
-      icon: Database,
-      title: "Data Entry Burden",
-      description: "Manual data collection creates administrative burden for participating sites and partners",
-      impact: "40+ minutes per case entry"
+      icon: Clock,
+      title: "Manual Data Collection",
+      description: "Manual entry adds 40+ minutes per case, slowing down registry updates"
     },
     {
       icon: Shield,
-      title: "Research Data Access",
-      description: "Complex PHI requirements and data export processes limit research collaboration",
-      impact: "3-month delays for data requests"
+      title: "Complex PHI Requirements",
+      description: "3-month delays for data requests to PHI export delays frequently limit research collaboration and timeliness"
     }
   ]
 
   const solutions = [
     {
-      title: "Streamlined Electronic Data Entry",
-      description: "Simplified, intuitive data collection platform for registry partners and participating sites",
+      title: "Smart Data Collection",
+      description: "Accelerate and error-proof data entry with intelligent automation.",
       features: [
-        "User-friendly web-based data entry interfaces",
-        "Automated data validation and quality checks",
-        "Real-time error detection and correction prompts",
-        "Mobile-responsive design for clinical workflow integration"
+        "65% faster entry with real-time error prompts",
+        "Automated data validation and quality assurance"
       ]
     },
     {
-      title: "Variable Management & Real-Time Updates",
-      description: "Dynamic database architecture that adapts to evolving clinical guidelines and definitions",
+      title: "Real-Time Variable Management",
+      description: "Apply evolving guidelines instantly across all registry sites.",
       features: [
-        "Flexible variable definition and modification system",
-        "Automated propagation of guideline updates",
-        "Version control for data element changes",
-        "Backward compatibility for historical data analysis"
+        "Instant propagation of updates across all sites",
+        "Eliminate months of delay from manual edits"
       ]
     },
     {
-      title: "Risk Models & Algorithm Development",
-      description: "Build and validate sophisticated clinical risk prediction models and quality algorithms",
+      title: "Accurate Risk Modeling",
+      description: "Power predictive analytics and benchmarking with clinical-grade models.",
       features: [
-        "Machine learning model development and validation",
-        "Risk stratification and outcome prediction tools",
-        "Automated algorithm testing and performance monitoring",
-        "Statistical analysis and model refinement capabilities"
+        "95% accuracy in risk prediction models",
+        "Outcome tracking + quality improvement"
       ]
     },
     {
-      title: "PHI-Anonymized Data Exports",
-      description: "Secure, analysis-ready data exports for research and quality improvement initiatives",
+      title: "Research-Ready Data Exports",
+      description: "Enable secure, compliant research with flexible export options.",
       features: [
-        "Automated de-identification and anonymization",
-        "Customizable data export formats and specifications",
-        "Researcher-friendly data dictionaries and documentation",
-        "Secure data sharing protocols and compliance tools"
+        "PHI-anonymized, analysis-ready exports",
+        "Custom formats with data dictionaries"
       ]
     },
     {
-      title: "Point of Care Clinical Modules",
-      description: "Real-time clinical decision support tools integrated into partner practice workflows",
+      title: "Point-of-Care Clinical Modules",
+      description: "Bring clinical insights directly into physician workflows.",
       features: [
-        "Risk calculator integration at point of care",
-        "Clinical guideline alerts and recommendations",
-        "Patient-specific outcome predictions and insights",
-        "Performance benchmarking and quality metrics display"
+        "Risk calculators + treatment decision support",
+        "Patient-specific outcome prediction tools"
       ]
     }
   ]
@@ -151,12 +134,10 @@ const MedicalSocietiesSolutionsPage = () => {
               <ChevronRight className="w-4 h-4" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              Next-Generation Registry Platform with
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Clinical Intelligence</span>
+              Modern Registry Infrastructure, Built for <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Clinical Impact</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Transform your medical society registry operations with streamlined data entry, dynamic variable management, 
-              and integrated point-of-care clinical decision support. Built for the modern healthcare ecosystem.
+              Streamline data entry, manage variables in real-time, and deliver point-of-care decision support—all in one integrated platform designed for today's medical societies.
             </p>
           </motion.div>
 
@@ -165,13 +146,37 @@ const MedicalSocietiesSolutionsPage = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {marketStats.map((item, index) => (
-              <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-purple-400 mb-2">{item.stat}</div>
-                <div className="text-sm text-slate-300">{item.description}</div>
-              </div>
+            {marketStats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`p-6 rounded-2xl border ${
+                  index === 0 
+                    ? "bg-gradient-to-r from-purple-600/30 to-purple-500/30 border-purple-500/30" 
+                    : index === 1 
+                    ? "bg-gradient-to-r from-purple-500/30 to-purple-400/30 border-purple-500/30"
+                    : index === 2
+                    ? "bg-gradient-to-r from-purple-400/30 to-purple-300/30 border-purple-400/30"
+                    : "bg-gradient-to-r from-purple-300/30 to-fuchsia-400/30 border-fuchsia-400/30"
+                }`}
+              >
+                <div className={`text-3xl font-bold mb-2 ${
+                  index === 0 
+                    ? "text-purple-500" 
+                    : index === 1 
+                    ? "text-purple-500"
+                    : index === 2
+                    ? "text-purple-400"
+                    : "text-fuchsia-400"
+                }`}>
+                  {stat.stat}
+                </div>
+                <div className="text-slate-300">{stat.description}</div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -195,30 +200,30 @@ const MedicalSocietiesSolutionsPage = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {challenges.map((challenge, index) => (
+            {painPoints.map((painPoint, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-lg rounded-2xl border border-orange-400/20"
+                className="p-8 bg-gradient-to-br from-red-900/20 to-red-800/20 backdrop-blur-lg rounded-2xl border border-red-400/20"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-orange-500/20 rounded-lg">
-                    <challenge.icon className="w-6 h-6 text-orange-400" />
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <painPoint.icon className="w-6 h-6 text-red-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{challenge.title}</h3>
+                  <h3 className="text-xl font-semibold text-white">{painPoint.title}</h3>
                 </div>
-                <p className="text-slate-300 mb-4">{challenge.description}</p>
-                <div className="text-sm font-semibold text-orange-400">{challenge.impact}</div>
+                <p className="text-slate-300 mb-4">{painPoint.description}</p>
+                {painPoint.impact && <div className="text-sm font-semibold text-red-400">{painPoint.impact}</div>}
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-6">
+      {/* Solutions Section */}
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -227,70 +232,71 @@ const MedicalSocietiesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Why Leading Medical Societies Choose ChartR
+              Comprehensive Solutions
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Transform your evidence synthesis and registry management with AI-powered automation and intelligence.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-purple-400/50 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <benefit.icon className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
-                    <p className="text-slate-300 mb-4">{benefit.description}</p>
-                    <div className="text-sm font-semibold text-purple-400">{benefit.metric}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Overview */}
-      <section className="py-20 px-6 bg-slate-800/30">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Comprehensive Evidence Platform
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Our integrated platform supports every aspect of evidence synthesis and registry management for medical societies.
+              Delivering real-time updates, better data quality, and point of care decision support in one integrated platform.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
+            {solutions.slice(0, 3).map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
+                className={`bg-gradient-to-r backdrop-blur-lg rounded-3xl p-8 border h-[350px] ${
+                  index === 0 
+                    ? "from-purple-500/20 to-purple-400/20 border-purple-400/20" 
+                    : index === 1 
+                    ? "from-purple-400/20 to-purple-300/20 border-purple-400/20"
+                    : "from-purple-300/20 to-pink-300/20 border-pink-300/20"
+                }`}
               >
                 <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
                 <p className="text-slate-300 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        index === 0 
+                          ? "text-purple-400" 
+                          : index === 1 
+                          ? "text-purple-400"
+                          : "text-pink-400"
+                      }`} />
+                      <span className="text-slate-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+            {solutions.slice(3).map((solution, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+                className={`bg-gradient-to-r backdrop-blur-lg rounded-3xl p-8 border h-[350px] ${
+                  index === 0 
+                    ? "from-purple-500/20 to-purple-400/20 border-purple-400/20" 
+                    : "from-purple-400/20 to-pink-300/20 border-pink-300/20"
+                }`}
+              >
+                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
+                <p className="text-slate-300 mb-6">{solution.description}</p>
+                <ul className="space-y-3">
+                  {solution.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
+                        index === 0 
+                          ? "text-purple-400" 
+                          : "text-pink-400"
+                      }`} />
                       <span className="text-slate-300">{feature}</span>
                     </li>
                   ))}
@@ -340,40 +346,6 @@ const MedicalSocietiesSolutionsPage = () => {
                     <div className="text-sm text-purple-400">{testimonial.society}</div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Success Metrics */}
-      <section className="py-20 px-6 bg-slate-800/30">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Proven Results for Medical Societies
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Medical societies using ChartR report significant improvements in efficiency and evidence quality.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {successMetrics.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-lg rounded-2xl border border-purple-400/20"
-              >
-                <div className="text-4xl font-bold text-purple-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
               </motion.div>
             ))}
           </div>
