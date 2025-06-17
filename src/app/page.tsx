@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import ClinicalDemo from '@/components/demos/ClinicalDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -404,20 +404,24 @@ const Homepage = () => {
       return () => clearInterval(interval);
     }, []);
 
-    // Unstructured clinical interactions (left side)
+    // Unstructured clinical interactions (left side) - Red/Purple/Orange shades (cluttered)
     const unstructuredData = [
-      { icon: FileText, color: 'text-blue-400', bg: 'bg-blue-500/20' }, // Clinical notes
-      { icon: Stethoscope, color: 'text-teal-400', bg: 'bg-teal-500/20' }, // Physical exams
-      { icon: Users, color: 'text-green-400', bg: 'bg-green-500/20' }, // Patient interactions
-      { icon: Activity, color: 'text-cyan-400', bg: 'bg-cyan-500/20' }, // Raw vitals/measurements
+      { icon: Building2, color: 'text-red-400', bg: 'bg-red-500/20' }, // Hospital
+      { icon: Clipboard, color: 'text-orange-400', bg: 'bg-orange-500/20' }, // Clipboard
+      { icon: Stethoscope, color: 'text-purple-400', bg: 'bg-purple-500/20' }, // Stethoscope
+      { icon: Users, color: 'text-red-500', bg: 'bg-red-600/20' }, // People (multiple)
+      { icon: Activity, color: 'text-orange-500', bg: 'bg-orange-600/20' }, // Activity
+      { icon: Database, color: 'text-purple-500', bg: 'bg-purple-600/20' }, // Database
     ];
 
-    // Structured extracted data (right side)  
+    // Structured extracted data (right side) - Green/Blue shades (clean)
     const structuredData = [
-      { icon: TestTube, color: 'text-red-400', bg: 'bg-red-500/20' }, // Lab results
-      { icon: Pill, color: 'text-orange-400', bg: 'bg-orange-500/20' }, // Medications
-      { icon: Heart, color: 'text-pink-400', bg: 'bg-pink-500/20' }, // Cardiovascular data
-      { icon: Brain, color: 'text-purple-400', bg: 'bg-purple-500/20' }, // Neurological data
+      { icon: User, color: 'text-emerald-400', bg: 'bg-emerald-500/20' }, // People (single)
+      { icon: FileCheck, color: 'text-green-400', bg: 'bg-green-500/20' }, // Verified notes with check mark
+      { icon: TestTube, color: 'text-teal-400', bg: 'bg-teal-500/20' }, // Beakers/labs
+      { icon: Pill, color: 'text-blue-400', bg: 'bg-blue-500/20' }, // Pills (medication)
+      { icon: HeartPulse, color: 'text-cyan-400', bg: 'bg-cyan-500/20' }, // Heart-pulse
+      { icon: Dna, color: 'text-sky-400', bg: 'bg-sky-500/20' }, // DNA
     ];
 
     return (
@@ -428,12 +432,28 @@ const Homepage = () => {
             {[...Array(42)].map((_, i) => {
               const chaoticX = Math.random() * 35 + 5; // Left half only: 5%-40% range
               const chaoticY = Math.random() * 70 + 15; // Vertical: 15%-85% range  
-              const structuredX = (i % 6) * 10 + 60; // Right half only: start at 60% (more space around logo)
-              const structuredY = Math.floor(i / 6) * 9 + 20; // Better spacing to prevent bottom overflow
+              
+              // Structured positioning: 6-column grid on right side
+              // Each row: Person -> FileCheck -> Other icons (TestTube, Pill, HeartPulse, Dna)
+              const col = i % 6;
+              const row = Math.floor(i / 6);
+              const structuredX = col * 8 + 62; // Right half: start at 62%, 8% spacing between columns
+              const structuredY = row * 10 + 18; // Vertical: 18% start, 10% spacing between rows
               
               // Use different icon sets for chaotic vs structured states
               const chaoticNoteType = unstructuredData[i % unstructuredData.length];
-              const structuredNoteType = structuredData[i % structuredData.length];
+              
+              // For structured state, organize by column position
+              let structuredNoteType;
+              if (col === 0) {
+                structuredNoteType = structuredData[0]; // User (person)
+              } else if (col === 1) {
+                structuredNoteType = structuredData[1]; // FileCheck (verified)
+              } else {
+                // Cycle through the remaining icons (TestTube, Pill, HeartPulse, Dna)
+                structuredNoteType = structuredData[2 + ((col - 2) % 4)];
+              }
+              
               const noteType = isStructured ? structuredNoteType : chaoticNoteType;
               
               return (
