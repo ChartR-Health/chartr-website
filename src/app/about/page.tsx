@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Users, Target, Award, Lightbulb, Heart, Globe, ArrowRight, Linkedin, Twitter, Mail, Shield } from 'lucide-react'
+import { Users, Target, Award, Lightbulb, Heart, Globe, ArrowRight, Linkedin, Twitter, Mail, Shield, Search, Zap, Layers, Brain, Eye, Lock, Boxes, Sparkles, CircuitBoard, ShieldCheck, Puzzle } from 'lucide-react'
 // Import team images
 import alexandraParkImage from '@/assets/team/alexandra-park.jpg'
 // import isabellaZangariImage from '@/assets/team/isabella-zangari.jpg'
@@ -39,7 +39,7 @@ const AboutPage = () => {
     {
       name: "Akash Kapoor",
       role: "CEO & Founder",
-      bio: "Former Chief Medical Officer with 15+ years in healthcare AI and clinical data management.",
+      bio: "3rd year M.D. Candidate | Columbia University",
       image: "/team/akash_kapoor.jpeg",
       linkedin: "#",
       email: "akash@chartrhealth.com"
@@ -47,7 +47,7 @@ const AboutPage = () => {
     {
       name: "Sebastian Ouslis",
       role: "CTO & Co-Founder", 
-      bio: "AI/ML expert with extensive experience in healthcare technology and regulatory compliance systems.",
+      bio: "Software Engineer | Bloomberg",
       image: "/team/sebastian.png",
       linkedin: "https://www.linkedin.com/in/sebastian-ouslis-3446b9148/",
       email: "sebastian@chartrhealth.com"
@@ -55,7 +55,7 @@ const AboutPage = () => {
     {
       name: "Ben Baranker",
       role: "CISO & Co-Founder",
-      bio: "Board-certified physician specializing in clinical informatics and healthcare quality improvement.",
+      bio: "2nd year M.D. Candidate | Columbia University",
       image: "/team/ben-baranker.jpeg",
       linkedin: "https://www.linkedin.com/in/ben-baranker-6740a2143/",
       email: "ben@chartrhealth.com"
@@ -65,16 +65,15 @@ const AboutPage = () => {
   const boardAdvisors = [
     {
       name: "John Bollard",
-      role: "COO and CFO of the Arthur Ashe Student Health and Wellness Center at UCLA",
-      bio: "",
+      role: "Board Advisor",
+      bio: "COO/CFO | UCLA's Ashe Student Health Center",
       image: "/team/John_Bollard.png",
       linkedin: "#"
     },
     {
       name: "Dr. Erin Ferenchick",
-      role: "Assistant Clinical Professor of Medicine",
-      title: "",
-      bio: "",
+      role: "Board Advisor",
+      bio: "Assistant Clinical Professor of Medicine | Columbia University",
       image: "/team/erin_f.png",
       linkedin: "#"
     }
@@ -149,24 +148,24 @@ const AboutPage = () => {
 
   const values = [
     {
-      icon: <Target className="w-8 h-8" />,
-      title: "Patient-Centered Innovation",
-      description: "Every solution we build is designed to ultimately improve patient outcomes and healthcare quality."
+      icon: <Sparkles className="w-8 h-8" />,
+      title: "Human-AI Synergy",
+      description: "We design systems where AI augments clinical judgment—not overrides it."
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: "Human-AI Collaboration",
-      description: "We believe the future of healthcare lies in intelligent systems that enhance, not replace, human expertise."
+      icon: <CircuitBoard className="w-8 h-8" />,
+      title: "Verifiable, Not Black-Box",
+      description: "Every output links to its source—so clinicians can review, trust, and act."
     },
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Trust & Transparency",
-      description: "We maintain the highest standards of data security, privacy, and regulatory compliance."
+      icon: <ShieldCheck className="w-8 h-8" />,
+      title: "Security as Architecture",
+      description: "HIPAA-compliant, fully encrypted, and built for healthcare-grade privacy."
     },
     {
-      icon: <Lightbulb className="w-8 h-8" />,
-      title: "Continuous Learning",
-      description: "Our platform and team are designed to continuously improve through feedback and innovation."
+      icon: <Puzzle className="w-8 h-8" />,
+      title: "Modular by Design",
+      description: "Built to evolve with shifting clinical standards, data types, and workflows."
     }
   ]
 
@@ -267,41 +266,59 @@ const AboutPage = () => {
             className="grid md:grid-cols-2 gap-12"
           >
             <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-left">
-              <div className="mb-4 text-center">
-                <Target className="w-8 h-8 text-blue-400 mx-auto mb-2" />
-                <h2 className="text-3xl font-bold text-white">Our Mission</h2>
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-white/10 p-8 hover:border-white/20 transition-all duration-300 h-[380px] group">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-50" />
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="mb-8 text-center">
+                    <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">Our Mission</h2>
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <p className="text-lg text-slate-300 leading-relaxed">
+                      To empower healthcare professionals and researchers with transparent, reliable AI tools that streamline data extraction, enhance decision-making, and reduce the time from data to insight—without compromising accuracy, security, or compliance.
+                    </p>
+                    <p className="text-slate-400 mt-6">
+                      We believe that healthcare's greatest untapped resource is the wealth of clinical data locked 
+                      away in unstructured formats. Our mission is to unlock this potential through intelligent 
+                      AI-human collaboration.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p className="text-lg text-slate-300 leading-relaxed mb-4 h-24 overflow-hidden">
-                To empower healthcare professionals and researchers with transparent, reliable AI tools that streamline data extraction, enhance decision-making, and reduce the time from data to insight—without compromising accuracy, security, or compliance.
-              </p>
-              <p className="text-slate-400 mt-6">
-                We believe that healthcare's greatest untapped resource is the wealth of clinical data locked 
-                away in unstructured formats. Our mission is to unlock this potential through intelligent 
-                AI-human collaboration.
-              </p>
             </motion.div>
 
             <motion.div variants={fadeInUp} transition={{ duration: 0.6 }} className="space-y-6 text-left">
-              <div className="mb-4 text-center">
-                <Globe className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                <h2 className="text-3xl font-bold text-white">Our Vision</h2>
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-white/10 p-8 hover:border-white/20 transition-all duration-300 h-[380px] group">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-50" />
+                <div className="relative z-10 h-full flex flex-col">
+                  <div className="mb-8 text-center">
+                    <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text">Our Vision</h2>
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between">
+                    <p className="text-lg text-slate-300 leading-relaxed">
+                      A world where every healthcare decision is informed by comprehensive, accurate, and 
+                      actionable clinical intelligence, leading to better patient outcomes and more efficient care delivery.
+                    </p>
+                    <p className="text-slate-400 mt-6">
+                      We envision healthcare systems that learn and improve continuously, where clinical data 
+                      flows seamlessly to support research, compliance, and patient care simultaneously.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p className="text-lg text-slate-300 leading-relaxed mb-4 h-24 overflow-hidden">
-                A world where every healthcare decision is informed by comprehensive, accurate, and 
-                actionable clinical intelligence, leading to better patient outcomes and more efficient care delivery.
-              </p>
-              <p className="text-slate-400 mt-6">
-                We envision healthcare systems that learn and improve continuously, where clinical data 
-                flows seamlessly to support research, compliance, and patient care simultaneously.
-              </p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="pb-8 pt-8 bg-slate-800/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Values Section */}
+      <section className="py-20 relative overflow-hidden">
+        {/* Background gradient effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-slate-900/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -311,7 +328,7 @@ const AboutPage = () => {
           >
             <h2 className="text-4xl font-bold text-white mb-4">Our Values</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              The principles that guide everything we do
+              Building the future of healthcare through intelligent, ethical AI
             </p>
           </motion.div>
 
@@ -320,20 +337,22 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {values.map((value, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                transition={{ duration: 0.6 }}
-                className="text-center p-6 rounded-2xl bg-slate-800/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+                className="group relative h-[280px]"
               >
-                <div className="text-blue-400 mb-4 flex justify-center">
-                  {value.icon}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
+                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{value.title}</h3>
+                  <p className="text-slate-300 leading-relaxed flex-1">{value.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -348,7 +367,7 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-2"
+            className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Our Team</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -378,7 +397,7 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-4"
+            className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Board Advisors</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -408,7 +427,7 @@ const AboutPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-4"
+            className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold text-white mb-4">Our Summer Fellows</h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
@@ -422,7 +441,7 @@ const AboutPage = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-2"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-2"
           >
             {fellows.map((fellow, index) => (
               <TeamMemberCard key={index} member={fellow} />
@@ -442,8 +461,7 @@ const AboutPage = () => {
           >
             <h2 className="text-4xl font-bold text-white mb-6">Join Our Mission</h2>
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              We're always looking for passionate individuals who want to transform healthcare through technology. 
-              Whether you're a clinician, engineer, researcher, or business professional, there's a place for you at ChartR.
+              Reimagining healthcare with AI takes all kinds of minds. If you're a builder, thinker, or innovator—clinical or technical—ChartR is where your work can shape the future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
