@@ -70,14 +70,14 @@ const AboutPage = () => {
       role: "Board Advisor",
       bio: "Associate Vice Chancellor of Student Health & Chief Well-Being Officer | UC Santa Cruz",
       image: "/team/John_Bollard.png",
-      linkedin: "#"
+      website: "https://news.ucsc.edu/2023/01/avc-shw-announcement/"
     },
     {
       name: "Dr. Erin Ferenchick",
       role: "Board Advisor",
       bio: "Assistant Clinical Professor of Medicine | Columbia University",
       image: "/team/erin_f.png",
-      linkedin: "#"
+      website: "https://www.vagelos.columbia.edu/profile/erin-ferenchick-md"
     }
   ]
 
@@ -103,7 +103,7 @@ const AboutPage = () => {
       role: "Strategy Fellow", 
       school: "MD/MBA Candidate | Columbia University",
       image: "/team/shailen-sampath.jpeg",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/shailen-sampath-73906712b/",
       email: "shailen@chartrhealth.com"
     },
     {
@@ -111,7 +111,7 @@ const AboutPage = () => {
       role: "Business Development Fellow",
       school: "MHA Graduate | Columbia University",
       image: "/team/marc_spence_headshot_720.jpg",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/marc-spence-0224a51b9/",
       email: "marc@chartrhealth.com"
     },
     {
@@ -143,7 +143,7 @@ const AboutPage = () => {
       role: "Tech Fellow",
       school: "Electrical Engineering Student | Toronto Metropolitan University",
       image: undefined, // No image available
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/nearhos-hatzinikolaou-591538240/?originalSubdomain=ca",
       email: "nearkos@chartrhealth.com"
     }
   ]
@@ -220,6 +220,11 @@ const AboutPage = () => {
               {member.linkedin && (
                 <a href={member.linkedin} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
                   <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {member.website && (
+                <a href={member.website} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                  <Globe className="w-5 h-5" />
                 </a>
               )}
               {member.twitter && (
