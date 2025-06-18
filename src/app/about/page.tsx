@@ -156,7 +156,7 @@ const AboutPage = () => {
     },
     {
       icon: <CircuitBoard className="w-8 h-8" />,
-      title: "Verified, Transparent",
+      title: "Verified & Transparent",
       description: "Every output links to its source—so clinicians can review, trust, and act."
     },
     {
@@ -301,13 +301,13 @@ const AboutPage = () => {
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Main Message */}
+          <div className="flex justify-center">
+            {/* Main Message */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-left"
+              className="text-center max-w-4xl"
             >
                              <motion.h1
                  initial={{ opacity: 0, y: 20 }}
@@ -315,14 +315,14 @@ const AboutPage = () => {
                  transition={{ duration: 0.8, delay: 0.2 }}
                  className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white"
                >
-                 Clinician-Led.<br />AI-Enhanced.
+                 Clinician-Led. AI-Enhanced.
                </motion.h1>
               
                              <motion.p
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.8, delay: 0.4 }}
-                 className="text-xl text-slate-300 leading-relaxed mb-8 max-w-2xl"
+                 className="text-xl text-slate-300 leading-relaxed mb-8"
                >
                  We believe healthcare data should work for clinicians, not against them. ChartR bridges the gap between complex medical information and actionable insights—making every decision faster, smarter, and more confident.
                </motion.p>
@@ -331,133 +331,22 @@ const AboutPage = () => {
                  initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.8, delay: 0.6 }}
-                 className="flex flex-wrap gap-4"
+                 className="flex flex-wrap gap-4 justify-center"
                >
                  <div className="flex items-center space-x-2 text-blue-400">
                    <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                    <span className="text-sm font-medium">Transparent AI</span>
                  </div>
-                 <div className="flex items-center space-x-2 text-purple-400">
-                   <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                   <span className="text-sm font-medium">HIPAA Compliant</span>
-                 </div>
                  <div className="flex items-center space-x-2 text-indigo-400">
                    <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                   <span className="text-sm font-medium">HIPAA Compliant</span>
+                 </div>
+                 <div className="flex items-center space-x-2 text-purple-400">
+                   <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
                    <span className="text-sm font-medium">Instant Insights</span>
                  </div>
                </motion.div>
             </motion.div>
-
-            {/* Right: Dynamic Data Visualization */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <div className="relative w-80 h-80">
-                {/* Data Flow Visualization */}
-                <motion.div className="relative w-full h-full">
-                  {/* Central ChartR hub */}
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.05, 1],
-                      boxShadow: [
-                        "0 0 20px rgba(59, 130, 246, 0.3)",
-                        "0 0 40px rgba(139, 92, 246, 0.5)",
-                        "0 0 20px rgba(59, 130, 246, 0.3)"
-                      ]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-md rounded-2xl border border-white/20 flex items-center justify-center shadow-2xl"
-                  >
-                    <div className="flex flex-col items-center">
-                      <img 
-                        src="/logo.png" 
-                        alt="ChartR Logo" 
-                        className="w-12 h-12 object-contain filter drop-shadow-lg mb-1"
-                      />
-                      <div className="text-white font-semibold text-xs tracking-wide">ChartR</div>
-                    </div>
-                  </motion.div>
-
-                  {/* Data nodes around the center */}
-                  {[
-                    { label: "EHR", angle: 0, color: "blue" },
-                    { label: "Lab", angle: 60, color: "purple" },
-                    { label: "Notes", angle: 120, color: "blue" },
-                    { label: "Images", angle: 180, color: "purple" },
-                    { label: "Docs", angle: 240, color: "blue" },
-                    { label: "Reports", angle: 300, color: "purple" }
-                  ].map((node, i) => (
-                    <motion.div
-                      key={node.label}
-                      className={`absolute w-16 h-16 bg-gradient-to-br from-${node.color}-500/30 to-${node.color}-600/30 backdrop-blur-sm rounded-xl border border-${node.color}-400/30 flex items-center justify-center text-${node.color}-300 text-xs font-medium`}
-                      style={{
-                        left: `${50 + 35 * Math.cos(node.angle * Math.PI / 180)}%`,
-                        top: `${50 + 35 * Math.sin(node.angle * Math.PI / 180)}%`,
-                        transform: 'translate(-50%, -50%)'
-                      }}
-                      animate={{
-                        y: [0, -10, 0],
-                        opacity: [0.6, 1, 0.6]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: i * 0.5,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      {node.label}
-                    </motion.div>
-                  ))}
-
-                  {/* Connecting lines with data flow animation */}
-                                     <svg className="absolute inset-0 w-full h-full" style={{ zIndex: -1 }}>
-                     <defs>
-                       <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                         <stop offset="0%" stopColor="transparent" />
-                         <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.8" />
-                         <stop offset="100%" stopColor="transparent" />
-                       </linearGradient>
-                     </defs>
-                    {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-                      <motion.line
-                        key={i}
-                        x1="50%"
-                        y1="50%"
-                        x2={`${50 + 35 * Math.cos(angle * Math.PI / 180)}%`}
-                        y2={`${50 + 35 * Math.sin(angle * Math.PI / 180)}%`}
-                        stroke="url(#flowGradient)"
-                        strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: [0, 1, 0] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: i * 0.3,
-                          ease: "easeInOut"
-                        }}
-                      />
-                    ))}
-                  </svg>
-
-                  {/* Pulsing outer ring */}
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [0.1, 0.3, 0.1]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-8 rounded-full border-2 border-blue-400/20"
-                    style={{
-                      transformOrigin: 'center center'
-                    }}
-                  />
-                </motion.div>
-              </div>
-          </motion.div>
           </div>
         </div>
       </section>
@@ -564,7 +453,7 @@ const AboutPage = () => {
                 Our Vision
               </h3>
               <p className="text-lg text-slate-300 leading-relaxed">
-                A healthcare system where clinical data flows seamlessly to fuel continuous learning—empowering every decision with comprehensive, actionable intelligence to improve outcomes, advance research, and deliver more efficient care.
+                A healthcare system where clinical data flows seamlessly to fuel continuous learning—driving every decision with comprehensive, actionable intelligence to improve outcomes, advance research, and deliver more efficient care.
               </p>
             </motion.div>
           </div>
