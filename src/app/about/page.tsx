@@ -68,7 +68,7 @@ const AboutPage = () => {
     {
       name: "John Bollard",
       role: "Board Advisor",
-      bio: "Associate Vice Chancellor of Student Health & Chief Well-Being Officer | UCLA",
+      bio: "Associate Vice Chancellor of Student Health & Chief Well-Being Officer | UC Santa Cruz",
       image: "/team/John_Bollard.png",
       linkedin: "#"
     },
