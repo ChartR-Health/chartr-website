@@ -126,10 +126,16 @@ const UniversitiesSolutionsPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           >
             {marketStats.map((item, index) => (
-              <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-blue-400 mb-4">{item.stat}</div>
-                <div className="text-sm text-slate-300">{item.description}</div>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                className={`text-center p-6 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
+              >
+                <div className="text-4xl font-bold mb-2 text-blue-400">{item.stat}</div>
+                <div className="text-slate-300">{item.description}</div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -165,14 +171,14 @@ const UniversitiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-blue-400/50 transition-all duration-300"
+                className={`p-8 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
                     <benefit.icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                    <h3 className="text-xl font-semibold mb-4 text-blue-400">{benefit.title}</h3>
                     <p className="text-slate-300 mb-4">{benefit.description}</p>
                     <div className="text-sm font-semibold text-blue-400">{benefit.metric}</div>
                   </div>
@@ -201,14 +207,14 @@ const UniversitiesSolutionsPage = () => {
                 key={index}
                 {...fadeInUp}
                 transition={{ delay: index * 0.2 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
+                className={`bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-3xl p-8 border border-blue-400/10`}
               >
-                <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-blue-400">{feature.title}</h3>
                 <p className="text-slate-300 mb-6">{feature.description}</p>
                 <ul className="space-y-3">
                   {feature.features.map((capability, capIndex) => (
                     <li key={capIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 mt-0.5 text-blue-400" />
                       <span className="text-slate-300">{capability}</span>
                     </li>
                   ))}
