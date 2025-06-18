@@ -56,8 +56,8 @@ const UniversitiesSolutionsPage = () => {
   ]
 
   const marketStats = [
-    { stat: "44%", description: "Annual growth of the healthcare AI market" },
-    { stat: "$208.2B", description: "Projected AI healthcare market by 2030" },
+    { stat: "38.6%", description: "Annual growth of the healthcare AI market" },
+    { stat: "$188B", description: "Projected AI healthcare market by 2030" },
     { stat: "21%", description: "VC funding in healthcare AI" },
     { stat: "$7.3B", description: "2023 healthcare AI research investment" }
   ]
