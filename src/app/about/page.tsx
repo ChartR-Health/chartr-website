@@ -902,8 +902,8 @@ const AboutPage = () => {
               Our Summer Fellows
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Talented students contributing fresh perspectives and innovative ideas
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed whitespace-nowrap">
+              Driven students and recent graduates offering fresh perspectives and innovative ideas.
             </p>
           </motion.div>
 
