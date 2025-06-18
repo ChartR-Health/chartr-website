@@ -450,7 +450,10 @@ const AboutPage = () => {
                       opacity: [0.1, 0.3, 0.1]
                     }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 rounded-full border-2 border-gradient-to-r from-blue-400/20 via-purple-400/20 to-cyan-400/20"
+                    className="absolute inset-8 rounded-full border-2 border-blue-400/20"
+                    style={{
+                      transformOrigin: 'center center'
+                    }}
                   />
                 </motion.div>
               </div>
