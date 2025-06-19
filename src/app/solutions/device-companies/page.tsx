@@ -33,36 +33,36 @@ const DeviceCompaniesSolutionsPage = () => {
   ]
 
   const marketStats = [
-    { stat: "882", description: "AI/ML medical devices approved by FDA" },
-    { stat: "$540K", description: "Average PMA submission cost in 2025" },
-    { stat: "77%", description: "Of AI devices are in radiology" },
-    { stat: "11.8%", description: "User fee increase from 2024 to 2025" }
+    {
+      stat: "900+",
+      description: "FDA Authorized AI/ML medical devices"
+    },
+    {
+      stat: "21.3%",
+      description: "2024 -> 2025 increase in registration fees"
+    },
+    {
+      stat: "6 months",
+      description: "Average premarket approval timeline"
+    },
+    {
+      stat: "$500K",
+      description: "Monthly opportunity cost of regulatory delays"
+    }
   ]
 
-  const regulatoryCosts = [
+  const submissionFees = [
     {
       submission: "PMA Submission",
-      standardFee: "$540,783",
-      smallBusinessFee: "$135,196",
-      description: "Pre-market Approval for high-risk devices"
+      standardFee: "$540,000",
+      smallBusinessFee: "$135,000",
+      description: "Full premarket approval pathway"
     },
     {
       submission: "De Novo Classification",
-      standardFee: "$162,235",
-      smallBusinessFee: "$40,559",
-      description: "New device classification pathway"
-    },
-    {
-      submission: "510(k) Submission",
-      standardFee: "$24,335",
-      smallBusinessFee: "$6,084",
-      description: "Substantial equivalence pathway"
-    },
-    {
-      submission: "Establishment Registration",
-      standardFee: "$9,280",
-      smallBusinessFee: "$9,280",
-      description: "Annual facility registration fee"
+      standardFee: "$135,000",
+      smallBusinessFee: "$33,750",
+      description: "Novel device classification pathway"
     }
   ]
 
@@ -89,53 +89,27 @@ const DeviceCompaniesSolutionsPage = () => {
 
   const solutions = [
     {
-      title: "Automated Clinical Data Collection",
-      description: "Streamline real-world evidence gathering and clinical trial data management",
+      title: "Clinical Evidence & Quality Management",
+      description: "Align clinical and quality workflows with an integrated platform",
       features: [
-        "Real-time EMR data extraction and standardization",
-        "Automated adverse event tracking and reporting",
-        "Clinical endpoint monitoring and analysis",
-        "Post-market surveillance automation"
-      ]
-    },
-    {
-      title: "Patient Screening & Identification",
-      description: "AI-powered patient screening for clinical trials and device eligibility assessment",
-      features: [
-        "Automated patient eligibility screening for clinical trials",
-        "Device indication and contraindication assessment",
-        "Patient population stratification and analysis",
-        "Recruitment optimization and timeline acceleration"
-      ]
-    },
-    {
-      title: "Outcomes Database Building",
-      description: "Build comprehensive real-world outcomes databases for device performance tracking",
-      features: [
-        "Automated collection of device performance metrics",
-        "Patient-reported outcomes (PRO) integration",
-        "Long-term follow-up data management",
-        "Comparative effectiveness research support"
+        "Automated evidence synthesis and audit-ready reporting",
+        "Real-time compliance monitoring and quality analytics"
       ]
     },
     {
       title: "Regulatory Submission Optimization",
-      description: "Accelerate FDA submission preparation with AI-powered data curation",
+      description: "Accelerate submission prep time by 60% to reduce delays and market entry risk",
       features: [
-        "Automated clinical summary generation",
-        "Regulatory document template automation",
-        "Quality and completeness validation",
-        "Submission timeline optimization"
+        "Intelligent clinical summary generation and validation",
+        "Streamlined documentation for faster filing readiness"
       ]
     },
     {
-      title: "Compliance Intelligence Platform",
-      description: "Proactive compliance monitoring and risk assessment for medical devices",
+      title: "Compliance & Postmarket Approval Success",
+      description: "Achieve regulatory confidence with complete, accurate data",
       features: [
-        "Real-time regulatory change monitoring",
-        "Compliance gap analysis and alerts",
-        "Risk stratification and mitigation planning",
-        "Audit trail and documentation management"
+        "Real-time monitoring and alerting for compliance",
+        "High-quality submissions that improve approval outcome"
       ]
     }
   ]
@@ -214,17 +188,17 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              FDA User Fees 2025: The Rising Cost of Compliance
+              2025 Costs: The Rising Burden of Compliance
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              FDA user fees continue to increase, making efficient regulatory processes more critical than ever.
+              FDA fee increases, skyrocketing regulatory costs, complex data requirements, and extended review times make efficiency more critical than ever
             </p>
           </motion.div>
 
           <div className="overflow-x-auto">
-            <table className="w-full bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-2xl border border-white/10">
+            <table className="w-full bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-lg rounded-2xl border border-red-400/20">
               <thead>
-                <tr className="border-b border-white/10">
+                <tr className="border-b border-red-400/20">
                   <th className="text-left p-6 text-white font-semibold">Submission Type</th>
                   <th className="text-center p-6 text-white font-semibold">Standard Fee</th>
                   <th className="text-center p-6 text-white font-semibold">Small Business Fee</th>
@@ -232,17 +206,17 @@ const DeviceCompaniesSolutionsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {regulatoryCosts.map((cost, index) => (
+                {submissionFees.map((cost, index) => (
                   <motion.tr 
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                    className="border-b border-white/5 hover:bg-white/5 transition-all duration-300"
+                    className="border-b border-red-400/10 hover:bg-red-900/20 transition-all duration-300"
                   >
                     <td className="p-6 text-white font-medium">{cost.submission}</td>
-                    <td className="p-6 text-center text-orange-400 font-bold">{cost.standardFee}</td>
-                    <td className="p-6 text-center text-green-400 font-bold">{cost.smallBusinessFee}</td>
+                    <td className="p-6 text-center text-red-300 font-bold">{cost.standardFee}</td>
+                    <td className="p-6 text-center text-red-300 font-bold">{cost.smallBusinessFee}</td>
                     <td className="p-6 text-slate-300">{cost.description}</td>
                   </motion.tr>
                 ))}
@@ -252,9 +226,9 @@ const DeviceCompaniesSolutionsPage = () => {
         </div>
       </section>
 
-      {/* Challenges Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* Solutions Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -262,30 +236,31 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              The Medical Device Regulatory Challenge
+              Comprehensive Solutions
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Rising costs, increasing complexity, and longer review times are creating unprecedented challenges for device companies.
-            </p>
+            ChartR helps device companies streamline compliance, reduce costs, and accelerate approval.            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {challenges.map((challenge, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {solutions.map((solution, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-red-900/20 to-orange-900/20 backdrop-blur-lg rounded-2xl border border-red-400/20"
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
+                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 bg-red-500/20 rounded-lg">
-                    <challenge.icon className="w-6 h-6 text-red-400" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">{challenge.title}</h3>
-                </div>
-                <p className="text-slate-300 mb-4">{challenge.description}</p>
-                <div className="text-sm font-semibold text-red-400">{challenge.impact}</div>
+                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
+                <p className="text-slate-300 mb-6">{solution.description}</p>
+                <ul className="space-y-3">
+                  {solution.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-slate-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -334,50 +309,8 @@ const DeviceCompaniesSolutionsPage = () => {
         </div>
       </section>
 
-      {/* Solutions Overview */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Complete Regulatory Intelligence Platform
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Our comprehensive platform supports every aspect of medical device regulatory compliance and submission preparation.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
-              >
-                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
-                <p className="text-slate-300 mb-6">{solution.description}</p>
-                <ul className="space-y-3">
-                  {solution.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -386,10 +319,10 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Trusted by Leading Device Companies
+              Trusted by Industry Leaders
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              See how ChartR is helping device companies navigate regulatory challenges and accelerate approvals.
+              See how leading device companies are transforming their regulatory processes with ChartR.
             </p>
           </motion.div>
 
@@ -399,56 +332,14 @@ const DeviceCompaniesSolutionsPage = () => {
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-lg rounded-2xl border border-orange-400/20"
-              >
-                <blockquote className="text-slate-300 text-lg mb-6 italic">
-                  "{testimonial.quote}"
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-white">{testimonial.author}</div>
-                    <div className="text-sm text-slate-400">{testimonial.role}</div>
-                    <div className="text-sm text-orange-400">{testimonial.company}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ROI Calculator */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Proven ROI for Device Companies
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Device companies using ChartR report significant cost savings and faster regulatory approvals.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {roi_calculator.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-lg rounded-2xl border border-orange-400/20"
+                className="p-8 bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-2xl border border-white/10"
               >
-                <div className="text-4xl font-bold text-orange-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
+                <p className="text-lg text-slate-300 mb-6 italic">"{testimonial.quote}"</p>
+                <div>
+                  <div className="font-semibold text-white">{testimonial.author}</div>
+                  <div className="text-sm text-slate-400">{testimonial.role}, {testimonial.company}</div>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -4,6 +4,12 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ChevronRight, TrendingUp, Clock, DollarSign, Users, Award, Target, Zap, BarChart3, CheckCircle } from 'lucide-react'
 
+interface Feature {
+  title: string
+  description: string
+  features: string[]
+}
+
 const UniversitiesSolutionsPage = () => {
   const staggerChildren = {
     animate: {
@@ -25,66 +31,66 @@ const UniversitiesSolutionsPage = () => {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "Accelerate Research Discovery",
-      description: "AI-powered grant discovery increases funding success rates by up to 40%",
-      metric: "40% faster funding discovery"
+      title: "Accelerate Grant Discovery",
+      description: "Find relevant funding opportunities faster with AI-powered search.",
+      metric: "→ 150% increase in grant application volume"
     },
     {
       icon: Clock,
-      title: "Reduce Administrative Burden",
-      description: "Automate systematic literature reviews, saving researchers 20+ hours per project",
-      metric: "20+ hours saved per review"
+      title: "Automate Literature Reviews",
+      description: "Use AI to streamline systematic search and analysis.",
+      metric: "→ 67% reduction in time spent on reviews"
     },
     {
       icon: Users,
       title: "Connect with Research Mentors",
-      description: "AI-powered mentor matching connects researchers with experienced PIs and collaborators",
-      metric: "Smart mentor matching"
+      description: "AI-powered smart matching connects researchers with experienced PIs and collaborators",
+      metric: "Higher match rates with relevant mentors"
     },
     {
       icon: BarChart3,
-      title: "Evidence-Based Insights",
-      description: "Transform unstructured research data into actionable intelligence with 94% accuracy",
-      metric: "94% data accuracy"
+      title: "Extract Actionable Insights",
+      description: "Transform unstructured research data into evidence-based intelligence",
+      metric: "→ 89% improvement in data accuracy"
     }
   ]
 
   const marketStats = [
-    { stat: "$208.2B", description: "Global AI healthcare market by 2030" },
-    { stat: "21%", description: "Of healthcare VC funding goes to AI health tech" },
-    { stat: "$6.1B", description: "Investment in healthcare AI research in 2022" },
-    { stat: "44%", description: "CAGR for AI in healthcare market" }
+    { stat: "38.6%", description: "Annual growth of the healthcare AI market" },
+    { stat: "$188B", description: "Projected AI healthcare market by 2030" },
+    { stat: "21%", description: "VC funding in healthcare AI" },
+    { stat: "$7.3B", description: "2023 healthcare AI research investment" }
   ]
 
   const features = [
     {
       title: "ChartR Accelerate",
-      description: "AI-powered grant discovery and research mentor search platform",
-      capabilities: [
-        "Automated grant discovery across 500+ funding sources",
-        "Smart matching based on research focus and history",
-        "Research mentor and collaboration network identification",
-        "Real-time funding alerts and application deadlines",
-        "PI track record analysis and success prediction"
+      description: "AI-powered grant discovery and research collaboration platform",
+      features: [
+        "Discover grants from 500+ sources",
+        "Match with mentors by research history",
+        "Identify collaboration networks",
+        "Get real-time alerts and deadlines",
+        "Analyze PI track records and funding potential"
       ]
     },
     {
       title: "ChartR Literature",
       description: "Systematic literature reviews (SLR) and evidence synthesis acceleration",
-      capabilities: [
-        "Automated research paper analysis and categorization",
-        "AI-powered evidence extraction and synthesis",
-        "PRISMA-compliant systematic review workflows",
-        "Citation network analysis and research gap identification",
-        "Meta-analysis support and statistical synthesis"
+      features: [
+        "Analyze and categorize research papers",
+        "Extract and synthesize evidence with AI",
+        "Use PRISMA-compliant workflows",
+        "Map citation networks and identify gaps",
+        "Support meta-analysis and synthesis"
       ]
     }
   ]
 
   const successMetrics = [
     { metric: "150%", description: "Increase in grant application volume" },
-    { metric: "67%", description: "Reduction in literature review time" },
-    { metric: "89%", description: "Research accuracy improvement" },
+    { metric: "67%", description: "Less time spent on literature reviews" },
+    { metric: "89%", description: "Improved data accuracy" },
     { metric: "40%", description: "Faster research cycles" }
   ]
 
@@ -105,11 +111,10 @@ const UniversitiesSolutionsPage = () => {
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
               Accelerate Research with
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> AI Intelligence</span>
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> AI</span>
             </h1>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Transform your research institution with AI-powered grant discovery, research mentor search, and systematic literature reviews. 
-              Join leading universities leveraging ChartR Accelerate and Literature to secure more funding and accelerate evidence synthesis.
+              Empower your institution with AI-driven grant discovery, mentor matching, and literature reviews. Top universities use ChartR to secure funding faster and synthesize evidence with greater accuracy.
             </p>
           </motion.div>
 
@@ -121,29 +126,35 @@ const UniversitiesSolutionsPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           >
             {marketStats.map((item, index) => (
-              <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-blue-400 mb-2">{item.stat}</div>
-                <div className="text-sm text-slate-300">{item.description}</div>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                className={`text-center p-6 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
+              >
+                <div className="text-4xl font-bold mb-2 text-blue-400">{item.stat}</div>
+                <div className="text-slate-300">{item.description}</div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-6">
+      <section className="py-8 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Why Leading Universities Choose ChartR
+              Why Top Institutions Trust ChartR
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Research institutions worldwide are accelerating discovery and securing more funding with our AI-powered research intelligence platform.
+              Our AI platform boosts research efficiency and grant success for universities worldwide.
             </p>
           </motion.div>
 
@@ -160,14 +171,14 @@ const UniversitiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-blue-400/50 transition-all duration-300"
+                className={`p-8 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
                     <benefit.icon className="w-6 h-6 text-blue-400" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                    <h3 className="text-xl font-semibold mb-4 text-blue-400">{benefit.title}</h3>
                     <p className="text-slate-300 mb-4">{benefit.description}</p>
                     <div className="text-sm font-semibold text-blue-400">{benefit.metric}</div>
                   </div>
@@ -183,10 +194,10 @@ const UniversitiesSolutionsPage = () => {
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-6">
-              Comprehensive Research Solutions
+              End-to-End Research Intelligence
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Our integrated platform covers the entire research lifecycle, from funding discovery to evidence synthesis.
+              From grant discovery to evidence synthesis, ChartR supports every stage of the research lifecycle.
             </p>
           </motion.div>
 
@@ -196,14 +207,14 @@ const UniversitiesSolutionsPage = () => {
                 key={index}
                 {...fadeInUp}
                 transition={{ delay: index * 0.2 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
+                className={`bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-3xl p-8 border border-blue-400/10`}
               >
-                <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-blue-400">{feature.title}</h3>
                 <p className="text-slate-300 mb-6">{feature.description}</p>
                 <ul className="space-y-3">
-                  {feature.capabilities.map((capability, capIndex) => (
+                  {feature.features.map((capability, capIndex) => (
                     <li key={capIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 mt-0.5 text-blue-400" />
                       <span className="text-slate-300">{capability}</span>
                     </li>
                   ))}
@@ -211,39 +222,6 @@ const UniversitiesSolutionsPage = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Success Metrics */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Proven Research Impact
-            </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Universities using ChartR report significant improvements in research efficiency and funding success rates.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {successMetrics.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-lg rounded-2xl border border-blue-400/20"
-              >
-                <div className="text-4xl font-bold text-blue-400 mb-2">{item.metric}</div>
-                <div className="text-slate-300">{item.description}</div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
