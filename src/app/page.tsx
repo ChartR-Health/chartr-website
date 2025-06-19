@@ -404,6 +404,19 @@ const Homepage = () => {
       return () => clearInterval(interval);
     }, []);
 
+    // Detect if the hero section is inline with header (≈lg breakpoint ≥ 1024px)
+    const [isInline, setIsInline] = useState(false);
+
+    useEffect(() => {
+      const mediaQuery = window.matchMedia('(min-width: 1024px)');
+      const handler = (e?: MediaQueryListEvent) => {
+        setIsInline(e ? e.matches : mediaQuery.matches);
+      };
+      handler(); // set initial value
+      mediaQuery.addEventListener('change', handler);
+      return () => mediaQuery.removeEventListener('change', handler);
+    }, []);
+
     // Unstructured clinical interactions (left side) - Red/Purple/Orange shades (cluttered)
     const unstructuredData = [
       { icon: Building2, color: 'text-red-400', bg: 'bg-red-500/20' }, // Hospital
@@ -425,20 +438,20 @@ const Homepage = () => {
     ];
 
     return (
-      <div className="relative w-full h-80 sm:h-96">
+      <div className={`relative w-full ${isInline ? 'h-96 sm:h-[28rem] lg:h-96' : 'h-80 sm:h-96'}`}>
         {/* Clinical Notes to Structured Data */}
-        <div className="absolute inset-0 p-8 sm:p-12">
+        <div className={`absolute inset-0 ${isInline ? 'p-8 sm:p-12' : 'p-6 sm:p-8'}`}>
             {/* Medical Data Icons */}
-            {[...Array(42)].map((_, i) => {
-              const chaoticX = Math.random() * 35 + 5; // Left half only: 5%-40% range
-              const chaoticY = Math.random() * 70 + 15; // Vertical: 15%-85% range  
+            {[...Array(25)].map((_, i) => {
+              const chaoticX = isInline ? Math.random() * 20 + 8 : Math.random() * 25 + 8; // Narrower when inline
+              const chaoticY = isInline ? Math.random() * 45 + 15 : Math.random() * 55 + 10; // Wider vertical spread when stacked
               
-              // Structured positioning: 6-column grid on right side
-              // Each row: Person -> FileCheck -> Other icons (TestTube, Pill, HeartPulse, Dna)
-              const col = i % 6;
-              const row = Math.floor(i / 6);
-              const structuredX = col * 8 + 62; // Right half: start at 62%, 8% spacing between columns
-              const structuredY = row * 10 + 18; // Vertical: 18% start, 10% spacing between rows
+              // Structured positioning: 5-column grid on right side with better spacing
+              // Each row: Person -> FileCheck -> Other icons (TestTube, Pill, HeartPulse)
+              const col = i % 5;
+              const row = Math.floor(i / 5);
+              const structuredX = isInline ? col * 10 + 88 : col * 9 + 62; // +10% column gap inline, +9% stacked, moved right 1 inch when inline
+              const structuredY = isInline ? row * 11 + 22 : row * 9 + 18; // +11% row gap inline, +9% stacked
               
               // Use different icon sets for chaotic vs structured states
               const chaoticNoteType = unstructuredData[i % unstructuredData.length];
@@ -450,8 +463,8 @@ const Homepage = () => {
               } else if (col === 1) {
                 structuredNoteType = structuredData[1]; // FileCheck (verified)
               } else {
-                // Cycle through the remaining icons (TestTube, Pill, HeartPulse, Dna)
-                structuredNoteType = structuredData[2 + ((col - 2) % 4)];
+                // Cycle through the remaining icons (TestTube, Pill, HeartPulse) - removed Dna
+                structuredNoteType = structuredData[2 + ((col - 2) % 3)];
               }
               
               const noteType = isStructured ? structuredNoteType : chaoticNoteType;
@@ -502,20 +515,20 @@ const Homepage = () => {
             </svg>
 
             {/* Enhanced Central Logo with Professional Animations */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+            <div className={`absolute top-1/2 z-10 ${isInline ? 'left-[70%] transform -translate-x-1/2 -translate-y-1/2' : 'left-1/2 transform -translate-x-1/2 -translate-y-1/2'}`}>
               <motion.div
-                className="relative"
+                className="relative flex flex-col items-center"
                 animate={{ 
-                  scale: isStructured ? [1, 1.15, 1.05] : [1, 1.08, 1]
+                  scale: isStructured ? [1, 1.15, 1.05] : 1
                 }}
                 transition={{ duration: 2.5, ease: "easeInOut" }}
               >
                 {/* Animated background glow */}
                 <motion.div 
-                  className="absolute -inset-6 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-teal-500/40 rounded-full blur-2xl"
+                  className="absolute -inset-8 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-teal-500/40 rounded-full blur-2xl"
                   animate={{ 
-                    opacity: isStructured ? [0.6, 1, 0.8] : [0.4, 0.7, 0.4],
-                    scale: isStructured ? [1, 1.2, 1.1] : [1, 1.05, 1]
+                    opacity: isStructured ? [0.6, 1, 0.8] : 0.3,
+                    scale: isStructured ? [1, 1.2, 1.1] : 1
                   }}
                   transition={{ duration: 2.5, ease: "easeInOut" }}
                 />
@@ -523,7 +536,7 @@ const Homepage = () => {
                 <motion.img 
                   src="/logo.svg" 
                   alt="ChartR Logo" 
-                  className="w-16 h-16 sm:w-20 sm:h-20"
+                  className="w-16 h-16 sm:w-20 sm:h-20 mb-2"
                   animate={{
                     scale: isStructured ? [1, 1.1, 1.05] : 1,
                     filter: isStructured ? 
@@ -533,37 +546,43 @@ const Homepage = () => {
                   }}
                   transition={{ duration: 2.5, ease: "easeInOut" }}
                 />
+                
+                {/* Removed ChartR AI Layer Text */}
               </motion.div>
             </div>
 
-            {/* Enhanced State Labels */}
+            {/* Enhanced State Labels - Always Visible with Glow States */}
             <motion.div
-              className="absolute bottom-4 left-4 text-sm sm:text-base text-white bg-gradient-to-r from-slate-600/80 to-slate-700/80 px-4 py-3 rounded-xl backdrop-blur-sm border border-slate-400/30 shadow-lg"
+              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-slate-600/80 to-slate-700/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-slate-400/30 shadow-lg max-w-[38%] sm:max-w-[40%] lg:max-w-none ${isInline ? 'left-[20%] transform -translate-x-1/2 -translate-x-24' : 'left-2 sm:left-6 lg:left-8'}`}
               animate={{ 
-                opacity: isStructured ? 0 : 1,
-                scale: isStructured ? 0.9 : 1,
-                x: isStructured ? -20 : 0
+                opacity: !isStructured ? 1 : (isInline ? 0 : 0.4),
+                scale: !isStructured ? 1 : (isInline ? 0.9 : 0.95),
+                boxShadow: !isStructured ? 
+                  "0 0 20px rgba(248, 113, 113, 0.3), 0 0 40px rgba(248, 113, 113, 0.1)" : 
+                  "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
               }}
-              transition={{ duration: 0.6 }}
+              style={{ display: isInline && isStructured ? 'none' : 'block' }}
             >
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-                <span className="font-medium">Unstructured EMR Data</span>
+                <div className={`w-2 h-2 rounded-full ${!isStructured ? 'bg-red-400 animate-pulse' : 'bg-red-400/50'}`}></div>
+                <span className="font-medium text-xs sm:text-sm lg:text-base">Unstructured EMR Data</span>
               </div>
             </motion.div>
 
             <motion.div
-              className="absolute bottom-4 right-4 text-sm sm:text-base text-white bg-gradient-to-r from-blue-600/80 via-purple-600/80 to-teal-600/80 px-4 py-3 rounded-xl backdrop-blur-sm border border-white/30 shadow-lg"
+              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-blue-600/80 via-purple-600/80 to-teal-600/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-white/30 shadow-lg max-w-[38%] sm:max-w-[40%] lg:max-w-none ${isInline ? 'right-[15%] transform translate-x-1/2 translate-x-48' : 'right-2 sm:right-6 lg:right-8'}`}
               animate={{ 
-                opacity: isStructured ? 1 : 0,
-                scale: isStructured ? 1 : 0.9,
-                x: isStructured ? 0 : 20
+                opacity: isStructured ? 1 : (isInline ? 0 : 0.4),
+                scale: isStructured ? 1 : (isInline ? 0.9 : 0.95),
+                boxShadow: isStructured ? 
+                  "0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1)" : 
+                  "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
               }}
-              transition={{ duration: 0.6 }}
+              style={{ display: isInline && !isStructured ? 'none' : 'block' }}
             >
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span className="font-medium">Curated Clinical Data</span>
+                <div className={`w-2 h-2 rounded-full ${isStructured ? 'bg-emerald-400 animate-pulse' : 'bg-emerald-400/50'}`}></div>
+                <span className="font-medium text-xs sm:text-sm lg:text-base">Curated Clinical Data</span>
               </div>
             </motion.div>
           </div>
