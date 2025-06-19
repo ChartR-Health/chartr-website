@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, TrendingUp, Shield, Users, FileText, Brain, Target, BarChart3, Building2, Heart, FlaskConical, UserCheck } from 'lucide-react';
+import { ArrowRight, TrendingUp, Shield, Users, FileText, Brain, Target, BarChart3, Building2, Heart, FlaskConical, UserCheck, Stethoscope } from 'lucide-react';
 
 type DemoStep = 'selection' | 'extraction' | 'applications';
 
@@ -18,9 +18,9 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
   const applications = [
     {
       id: 'registry-reporting',
-      title: 'Registry Reporting',
+      title: 'Regulatory & Quality Reporting',
       icon: FileText,
-      description: 'Automated compliance and regulatory reporting',
+      description: 'Automated regulatory compliance and quality reporting',
       color: 'from-orange-600 to-red-700',
       borderColor: 'border-orange-500',
       bgColor: 'bg-orange-50',
@@ -33,36 +33,36 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
         impact: '80x Faster Processing'
       },
       features: [
-        'STS registry automation',
-        'NCDR compliance',
-        'State reporting',
-        'Quality measure calculation'
+        'State medical databases',
+        'Federal reporting compliance',
+        'National registry automation',
+        'Custom reporting formats'
       ],
-      useCase: 'Automate regulatory reporting to STS, NCDR, and state registries with validated data extraction and seamless compliance workflows.'
+      useCase: 'Automate regulatory reporting to diverse regulatory reporting bodies with validated AI+human data extraction. Curate data in the necessary format for each regulatory or quality reporting requirement across state, federal, and national medical databases.'
     },
     {
-      id: 'quality-improvement',
-      title: 'Quality Improvement',
+      id: 'quality-analytics',
+      title: 'Quality Analytics & Predictive Models',
       icon: TrendingUp,
-      description: 'Track metrics and improve care quality',
+      description: 'Quality monitoring with predictive analytics',
       color: 'from-green-600 to-teal-700',
       borderColor: 'border-green-500',
       bgColor: 'bg-green-50',
       textColor: 'text-green-700',
       metrics: {
-        primary: '18%',
-        primaryLabel: 'Quality Score Improvement',
-        secondary: '94%',
-        secondaryLabel: 'Metric Completeness',
-        impact: '$1.8M Quality Bonuses'
+        primary: '23%',
+        primaryLabel: 'Readmission Reduction',
+        secondary: '89%',
+        secondaryLabel: 'Model Accuracy',
+        impact: '$3.9M Total Impact'
       },
       features: [
         'Quality metric dashboards',
-        'Outcome tracking',
-        'Comparative analytics',
-        'Performance benchmarking'
+        'Predictive risk scoring',
+        'Outcome prediction models',
+        'Clinical decision support'
       ],
-      useCase: 'Monitor quality metrics, track patient outcomes, and identify improvement opportunities with comprehensive quality dashboards and comparative analytics.'
+      useCase: 'Combine quality monitoring with predictive analytics to track patient outcomes, predict readmissions, and provide real-time clinical decision support with ML-powered risk assessment.'
     },
     {
       id: 'patient-screening',
@@ -89,28 +89,28 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       useCase: 'Rapidly identify eligible patients for clinical trials, quality improvement programs, and specialized care pathways with AI-powered screening.'
     },
     {
-      id: 'risk-assessment',
-      title: 'Risk Assessment & ML Models',
-      icon: Brain,
-      description: 'Build predictive models for clinical outcomes',
+      id: 'clinical-workflows',
+      title: 'Custom Point-of-Care Workflows',
+      icon: Stethoscope,
+      description: 'Specialty-specific clinical decision support tools',
       color: 'from-blue-600 to-indigo-700',
       borderColor: 'border-blue-500',
       bgColor: 'bg-blue-50',
       textColor: 'text-blue-700',
       metrics: {
-        primary: '23%',
-        primaryLabel: 'Readmission Reduction',
-        secondary: '85%',
-        secondaryLabel: 'Model Accuracy',
-        impact: '$2.1M Annual Savings'
+        primary: '65%',
+        primaryLabel: 'Workflow Efficiency',
+        secondary: '92%',
+        secondaryLabel: 'Clinical Accuracy',
+        impact: '$1.2M Time Savings'
       },
       features: [
-        'Automated risk scoring',
-        'Predictive analytics',
-        'Clinical decision support',
-        'Outcome prediction models'
+        'Specialty workflow modules',
+        'Referral triage systems',
+        'Treatment recommendation engines',
+        'Custom clinical interfaces'
       ],
-      useCase: 'Use curated data to build ML models that predict patient outcomes, reduce readmissions, and support clinical decision-making with real-time risk assessment.'
+      useCase: 'Build custom clinical workflows tailored to specific specialties. Imagine custom modules for referral triage, candidacy assessment, and specialty-specific clinical-decision workflows. Powered by our AI-curated, human-validated clinical data system.'
     }
   ];
 
@@ -141,7 +141,7 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
               className={`p-4 rounded-lg border text-left transition-all hover:shadow-md ${
                 isSelected 
                   ? app.id === 'registry-reporting' ? 'border-orange-400/50 bg-orange-500/10 shadow-md backdrop-blur-sm' :
-                    app.id === 'quality-improvement' ? 'border-green-400/50 bg-green-500/10 shadow-md backdrop-blur-sm' :
+                    app.id === 'quality-analytics' ? 'border-green-400/50 bg-green-500/10 shadow-md backdrop-blur-sm' :
                     app.id === 'patient-screening' ? 'border-purple-400/50 bg-purple-500/10 shadow-md backdrop-blur-sm' :
                     'border-blue-400/50 bg-blue-500/10 shadow-md backdrop-blur-sm'
                   : 'border-slate-600/50 bg-slate-800/40 hover:border-slate-500/50 backdrop-blur-xl'
@@ -202,11 +202,10 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
               </div>
 
               <div className="pt-4 border-t border-slate-700/50">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-slate-400">Ready to implement</span>
-                  <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-400/30">
-                    Data Curated
-                  </Badge>
+                <div className="text-center">
+                  <span className="text-sm text-slate-300">
+                    Powered by ChartR's AI-curated, human-validated clinical data
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -222,7 +221,7 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
             <CardContent className="space-y-4">
               <div className={`p-4 rounded-lg border backdrop-blur-sm ${
                 currentApp.id === 'registry-reporting' ? 'bg-orange-500/20 border-orange-400/30' :
-                currentApp.id === 'quality-improvement' ? 'bg-green-500/20 border-green-400/30' :
+                currentApp.id === 'quality-analytics' ? 'bg-green-500/20 border-green-400/30' :
                 currentApp.id === 'patient-screening' ? 'bg-purple-500/20 border-purple-400/30' :
                 'bg-blue-500/20 border-blue-400/30'
               }`}>
@@ -282,11 +281,11 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
               {applications.map((app) => {
                 const AppIcon = app.icon;
                 const iconColor = app.id === 'registry-reporting' ? 'text-orange-400' :
-                                app.id === 'quality-improvement' ? 'text-green-400' :
+                                app.id === 'quality-analytics' ? 'text-green-400' :
                                 app.id === 'patient-screening' ? 'text-purple-400' :
                                 'text-blue-400';
                 const bgColor = app.id === 'registry-reporting' ? 'bg-orange-500/10 border-orange-400/30' :
-                               app.id === 'quality-improvement' ? 'bg-green-500/10 border-green-400/30' :
+                               app.id === 'quality-analytics' ? 'bg-green-500/10 border-green-400/30' :
                                app.id === 'patient-screening' ? 'bg-purple-500/10 border-purple-400/30' :
                                'bg-blue-500/10 border-blue-400/30';
                 return (

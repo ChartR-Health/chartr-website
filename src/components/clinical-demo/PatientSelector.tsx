@@ -68,7 +68,6 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
                     </div>
                     <div>
                       <CardTitle className="text-lg text-white">{patient.demographics.name}</CardTitle>
-                      <p className="text-sm text-slate-400">MRN: {patient.demographics.mrn}</p>
                     </div>
                   </div>
                 </div>
@@ -77,12 +76,12 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
               <CardContent className="space-y-4">
                 {/* Demographics */}
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-400">Age</span>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <span className="text-slate-400">Age:</span>
                     <span className="font-medium text-slate-200">{patient.demographics.age} years</span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-400">Sex</span>
+                  <div className="flex items-center space-x-2 text-sm">
+                    <span className="text-slate-400">Sex:</span>
                     <span className="font-medium text-slate-200">{patient.demographics.sex}</span>
                   </div>
                 </div>
@@ -102,22 +101,7 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
                   </div>
                 </div>
 
-                {/* Complexity Indicators */}
-                <div className="pt-2 border-t border-slate-700/50">
-                  <div className="flex items-center justify-between text-xs text-slate-400">
-                    <span>Variables Available</span>
-                    <span className="font-medium text-slate-300">
-                      {Object.keys(patient.extractedVariables).length}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs text-slate-400">
-                    <span>Registry Differences</span>
-                    <span className="font-medium text-slate-300">
-                      {patient.id === 'patient_a' ? 'High' : 
-                       patient.id === 'patient_b' ? 'Medium' : 'Complex'}
-                    </span>
-                  </div>
-                </div>
+
 
                 {/* View Notes Button */}
                 <div className="pt-3 border-t border-slate-700/50">
@@ -160,38 +144,32 @@ export function PatientSelector({ onNavigate }: PatientSelectorProps = {}) {
       {/* Clinical Notes Modal */}
       {notesModal.isOpen && notesModal.patient && (
         <div 
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-start justify-center p-4 py-8 overflow-y-auto"
           onClick={closeNotesModal}
         >
           <div 
-            className="bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-lg max-w-4xl max-h-[80vh] overflow-hidden shadow-2xl"
+            className="bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-lg w-full max-w-4xl max-h-[80vh] flex flex-col shadow-2xl my-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 border-b border-slate-700/50">
+            <div className="p-6 border-b border-slate-700/50 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold text-white">
                   Clinical Notes - {notesModal.patient.demographics.name}
                 </h3>
-                <div className="flex items-center space-x-2">
-                  <Button 
-                    variant="outline" 
-                    onClick={closeNotesModal}
-                    className="bg-slate-700/50 border-slate-600/50 text-slate-200 hover:bg-slate-600/50"
-                  >
-                    Close
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={closeNotesModal}
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-700/50"
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    closeNotesModal();
+                  }}
+                  className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-600/70 rounded-md border border-transparent hover:border-slate-500/50 transition-all duration-200"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
               </div>
             </div>
-            <div className="p-6 overflow-y-auto max-h-[60vh]">
+            <div className="p-6 overflow-y-auto flex-1">
               <div className="space-y-6">
                 <div>
                   <h4 className="font-medium text-white mb-2">Admission Note</h4>
