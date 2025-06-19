@@ -39,17 +39,20 @@ const MedicalSocietiesSolutionsPage = () => {
     {
       icon: AlertTriangle,
       title: "Complex Variable Management",
-      description: "Evolving guidelines require constant database edits, delaying improvements across sites by months"
+      description: "Evolving guidelines require constant database edits, delaying improvements across sites by months",
+      impact: "6-month delays in implementing critical updates"
     },
     {
       icon: Clock,
       title: "Manual Data Collection",
-      description: "Manual entry adds 40+ minutes per case, slowing down registry updates"
+      description: "Manual entry adds 40+ minutes per case, slowing down registry updates",
+      impact: "65% increase in data collection costs"
     },
     {
       icon: Shield,
       title: "Complex PHI Requirements",
-      description: "3-month delays for data requests to PHI export delays frequently limit research collaboration and timeliness"
+      description: "3-month delays for data requests to PHI export delays frequently limit research collaboration and timeliness",
+      impact: "Missed research opportunities and delayed publications"
     }
   ]
 
