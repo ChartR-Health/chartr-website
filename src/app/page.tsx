@@ -589,7 +589,63 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section with Strategic Layout */}
-      <section className="relative pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Dynamic Background from About Page */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/30" />
+        
+        {/* Animated Neural Network Background */}
+        <div className="absolute inset-0 overflow-hidden opacity-20">
+          <svg className="w-full h-full" viewBox="0 0 1200 800">
+            <defs>
+              <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#6366f1" stopOpacity="0.6" />
+              </linearGradient>
+            </defs>
+            
+            {/* Animated connection lines */}
+            <g stroke="url(#networkGradient)" strokeWidth="1" fill="none">
+              {[...Array(6)].map((_, i) => (
+                <motion.path
+                  key={i}
+                  d={`M${100 + i * 180},150 Q${200 + i * 180},${250 + i * 30} ${300 + i * 180},200 T${500 + i * 180},180`}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: [0, 1, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: i * 0.8,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </g>
+            
+            {/* Network nodes */}
+            {[...Array(12)].map((_, i) => (
+              <motion.circle
+                key={i}
+                cx={100 + (i % 4) * 300}
+                cy={150 + Math.floor(i / 4) * 200}
+                r="4"
+                fill="url(#networkGradient)"
+                initial={{ opacity: 0.3, scale: 0.8 }}
+                animate={{ 
+                  opacity: [0.3, 1, 0.3],
+                  scale: [0.8, 1.2, 0.8]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 0.3,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+          </svg>
+        </div>
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-12 items-center">
             {/* Left Column - Main Content */}
