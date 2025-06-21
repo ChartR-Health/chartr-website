@@ -553,7 +553,7 @@ const Homepage = () => {
 
             {/* Enhanced State Labels - Always Visible with Glow States */}
             <motion.div
-              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-slate-600/80 to-slate-700/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-slate-400/30 shadow-lg max-w-[38%] sm:max-w-[40%] lg:max-w-none ${isInline ? 'left-[20%] transform -translate-x-1/2 -translate-x-24' : 'left-2 sm:left-6 lg:left-8'}`}
+              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-slate-600/80 to-slate-700/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-slate-400/30 shadow-lg max-w-[38%] sm:max-w-[40%] lg:max-w-none ${isInline ? 'left-4' : 'left-2 sm:left-6 lg:left-8'}`}
               animate={{ 
                 opacity: !isStructured ? 1 : (isInline ? 0 : 0.4),
                 scale: !isStructured ? 1 : (isInline ? 0.9 : 0.95),
@@ -570,7 +570,7 @@ const Homepage = () => {
             </motion.div>
 
             <motion.div
-              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-blue-600/80 via-purple-600/80 to-teal-600/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-white/30 shadow-lg max-w-[38%] sm:max-w-[40%] lg:max-w-none ${isInline ? 'right-[15%] transform translate-x-1/2 translate-x-48' : 'right-2 sm:right-6 lg:right-8'}`}
+              className={`absolute bottom-6 text-sm sm:text-base text-white bg-gradient-to-r from-blue-600/80 via-purple-600/80 to-teal-600/80 px-3 sm:px-4 py-2 sm:py-3 rounded-xl backdrop-blur-sm border border-white/30 shadow-lg ${isInline ? 'max-w-none left-[83%] whitespace-nowrap' : 'max-w-[38%] sm:max-w-[40%] lg:max-w-none right-2 sm:right-6 lg:right-8'}`}
               animate={{ 
                 opacity: isStructured ? 1 : (isInline ? 0 : 0.4),
                 scale: isStructured ? 1 : (isInline ? 0.9 : 0.95),
