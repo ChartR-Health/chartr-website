@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import ClinicalDemo from '@/components/demos/ClinicalDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -591,26 +591,25 @@ const Homepage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black text-white relative overflow-hidden">
-      {/* Animated Background Elements */}
+    <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+      {/* Subtle Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-teal-500/15 to-cyan-500/15 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse delay-500" />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-slate-700/10 rounded-full blur-3xl" />
         
-        {/* Geometric Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
+        {/* Minimal Grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.01]">
           <div className="h-full w-full" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)`,
+            backgroundSize: '60px 60px'
           }} />
         </div>
       </div>
       
-      {/* Hero Section with Strategic Layout */}
-      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Dynamic Background from About Page */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/30" />
+      {/* Hero Section */}
+      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
+        {/* Subtle Hero Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-slate-900" />
         
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -695,25 +694,20 @@ const Homepage = () => {
 
               {/* Hero Headline - Left Aligned */}
               <motion.h1 
-                className="text-4xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text tracking-tight leading-[1.4] pb-2"
+                className="text-4xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text tracking-tight leading-[1.4] pb-2"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                style={{ 
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
               >
                 <span className="whitespace-nowrap block mb-4">The AI Platform</span>
                 <span className="whitespace-nowrap block mb-4">
-                  <span className="text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text" style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  <span className="text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">
                     Curating Clinical Data
                   </span>
                 </span>
                 <span className="whitespace-nowrap block">
                   <span className="text-white">Into </span>
-                  <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                  <span className="text-transparent bg-gradient-to-r from-blue-300 to-purple-400 bg-clip-text">
                     Actionable Intelligence
                   </span>
                 </span>
@@ -727,7 +721,7 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 ChartR creates the <span className="text-white font-medium">structured data layer on top of your EMR</span> - transforming your system of record into a system of action with{' '}
-                <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">
+                <span className="text-blue-200 font-medium">
                   AI-assisted, human-validated
                 </span>{' '}
                 clinical databases.
@@ -751,8 +745,11 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+      
       {/* Data Transformation Flow */}
-      <section className="py-16 relative">
+      <section className="py-20 relative bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -761,200 +758,558 @@ const Homepage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              From <span className="bg-gradient-to-r from-slate-400 to-slate-500 bg-clip-text text-transparent">System of Record</span>
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-6 tracking-tight">
+              From <span className="text-slate-400">System of Record</span>
               <br />
-              To <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">System of Action</span>
+              To <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">System of Action</span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              ChartR creates an intelligent bridge between your EMR data and actionable clinical intelligence
-            </p>
-          </motion.div>
-
-          {/* Visual Layer Architecture Cards */}
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
             <motion.div 
-              className="relative group"
-              initial={{ opacity: 0, y: 30 }}
+              className="max-w-5xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-slate-600/20 to-slate-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-slate-800/60 backdrop-blur-xl border border-slate-400/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-slate-600/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Database className="w-8 h-8 text-slate-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">EMR Systems</h3>
-                <p className="mb-4 text-slate-300">
-                  Raw, unstructured clinical data - your <strong className="text-white">system of record</strong>
-                </p>
-                <div className="text-sm text-slate-400">Epic, Cerner, AllScripts, etc.</div>
-              </div>
+              <p className="text-xl text-slate-300 text-center leading-relaxed">
+                <span className="text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text font-semibold">ChartR</span> converts fragmented EMR data into structured, clinician-ready intelligence—eliminating costly inefficiencies that drain <span className="font-bold text-red-300">$7.5M+</span> per hospital annually, consume <span className="font-bold text-orange-300">80%</span> of review time, and drive error rates as high as <span className="font-bold text-red-300">25%</span>.
+              </p>
             </motion.div>
+          </motion.div>
 
-            <motion.div 
-              className="relative group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <img 
-                    src="/logo.svg" 
-                    alt="ChartR Logo" 
-                    className="w-12 h-12"
+          {/* Visual Data Flow Graphic */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Flow Container */}
+            <div className="relative">
+              {/* Animated Flow Lines */}
+              <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 800 400">
+                <defs>
+                  <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="transparent" />
+                    <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                  <linearGradient id="flowGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="transparent" />
+                    <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="transparent" />
+                  </linearGradient>
+                </defs>
+                
+                {/* First flow line */}
+                <motion.path
+                  d="M150,200 Q300,150 450,200"
+                  stroke="url(#flowGradient1)"
+                  strokeWidth="3"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: [0, 1, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Second flow line */}
+                <motion.path
+                  d="M450,200 Q600,150 750,200"
+                  stroke="url(#flowGradient2)"
+                  strokeWidth="3"
+                  fill="none"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: [0, 1, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: 1.5,
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Data particles */}
+                {[...Array(8)].map((_, i) => (
+                  <motion.circle
+                    key={i}
+                    cx="0"
+                    cy="200"
+                    r="4"
+                    fill={i % 2 === 0 ? "#3b82f6" : "#8b5cf6"}
+                    opacity="0.7"
+                    animate={{
+                      cx: [150, 450, 750],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      delay: i * 0.5,
+                      ease: "easeInOut"
+                    }}
                   />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">ChartR Integration</h3>
-                <p className="mb-4 text-slate-100">
-                  AI-curated, human-validated clinical databases - your <strong className="text-white">system of action</strong>
-                </p>
-                <div className="text-sm text-slate-200">Structured, actionable clinical intelligence</div>
-              </div>
-            </motion.div>
+                ))}
+              </svg>
 
-            <motion.div 
-              className="relative group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-slate-800/60 backdrop-blur-xl border border-emerald-400/20 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-emerald-500/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <TrendingUp className="w-8 h-8 text-emerald-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Better Outcomes</h3>
-                <p className="mb-4 text-slate-300">
-                  Improved patient care, reduced costs, regulatory compliance
-                </p>
-                <div className="text-sm text-slate-400">Evidence-based decision making</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* Live Demo Section */}
-      <ClinicalDemo />
-
-      {/* ChartR Smart Review Process */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-          {/* Smart Review Process Steps */}
-          <div className="relative group">
-            <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-teal-500/20 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition-all duration-300" />
-            <div className="relative bg-slate-800/30 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden p-2">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-teal-500/5 rounded-3xl" />
-              <div className="relative bg-slate-900/40 backdrop-blur-xl rounded-2xl p-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
+              {/* Flow Stages */}
+              <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
+                {/* Stage 1: EMR Systems */}
+                <motion.div 
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h3 className="text-3xl font-black mb-6 text-transparent bg-gradient-to-r from-white to-slate-300 bg-clip-text">
-                    ChartR Smart Review
-                  </h3>
-                  <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                    Our <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">AI-assisted, human-validated</span> workflow transforms unstructured EMR data into precise, actionable clinical intelligence through a sophisticated curation pipeline.
-                  </p>
-                  <div className="space-y-8">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Cpu className="w-6 h-6 text-blue-400" />
-                      </div>
-                      <div>
-                        <div className="text-white font-bold mb-2">AI Extraction: <span className="text-blue-400">Automated data identification and extraction</span></div>
-                        <div className="text-sm text-slate-400">Advanced AI models collect clinical data with 50x faster processing than manual review</div>
-                      </div>
-                    </div>
+                  <div className="absolute -inset-2 bg-gradient-to-r from-slate-600/30 to-slate-500/30 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="relative bg-slate-800/70 backdrop-blur-xl border border-slate-400/30 rounded-3xl p-8 text-center group-hover:scale-105 transition-all duration-500">
+                    {/* Animated Icon Container */}
+                    <motion.div 
+                      className="w-20 h-20 bg-slate-600/50 rounded-3xl flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
+                      animate={{ 
+                        boxShadow: [
+                          "0 0 20px rgba(148, 163, 184, 0.3)",
+                          "0 0 40px rgba(148, 163, 184, 0.5)",
+                          "0 0 20px rgba(148, 163, 184, 0.3)"
+                        ]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                                             <Layers className="w-10 h-10 text-slate-200" />
+                      {/* Data flow animation inside icon */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                        animate={{ x: [-100, 100] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                    </motion.div>
                     
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <FileText className="w-6 h-6 text-purple-400" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="text-white font-bold mb-2">Human Validation: <span className="text-purple-400">Clinical expert review and verification</span></div>
-                        <div className="text-sm text-slate-400 mb-4">Human experts validate AI findings with intelligent prioritization and evidence-based recommendations</div>
-                        
-                        {/* Enhanced Validation Buttons */}
-                        <div className="flex items-center space-x-3 mb-4">
-                          <motion.button 
-                            className="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-emerald-500/30 transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                              setValidationNote("Lab value confirmed with attending physician - approved for registry submission");
-                              setCircleColor("emerald");
-                            }}
-                          >
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                            <span>Approve</span>
-                          </motion.button>
-                          <motion.button 
-                            className="px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 text-yellow-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-yellow-500/30 transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                              setValidationNote("Case flagged for further review by clinical team");
-                              setCircleColor("yellow");
-                            }}
-                          >
-                            <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                            <span>Review</span>
-                          </motion.button>
-                          <motion.button 
-                            className="px-4 py-2 bg-red-500/20 border border-red-500/30 text-red-400 rounded-xl text-sm font-medium flex items-center space-x-2 hover:bg-red-500/30 transition-all duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => {
-                              setValidationNote("Entry rejected - insufficient evidence for inclusion");
-                              setCircleColor("red");
-                            }}
-                          >
-                            <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                            <span>Reject</span>
-                          </motion.button>
-                        </div>
-                        
-                        {/* Sample Note with Better Styling */}
-                        <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                          <div className={`w-6 h-6 bg-${circleColor}-500/30 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                            <div className={`w-3 h-3 bg-${circleColor}-400 rounded-full`}></div>
-                          </div>
-                          <div className="text-sm text-slate-300 italic">
-                            {validationNote}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <h3 className="text-2xl font-bold mb-4 text-white">EMR Systems</h3>
+                    <p className="mb-4 text-slate-300 leading-relaxed">
+                      Raw, unstructured clinical data - your <strong className="text-white bg-slate-700/50 px-2 py-1 rounded">system of record</strong>
+                    </p>
+                    <div className="text-sm text-slate-400 font-medium">Epic • Cerner • AllScripts</div>
                     
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-teal-500/30 to-cyan-500/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Database className="w-6 h-6 text-teal-400" />
-                      </div>
-                      <div>
-                        <div className="text-white font-bold mb-2">Review Tools: <span className="text-teal-400">AI-assisted review tools streamline the verification process</span></div>
-                        <div className="text-sm text-slate-400">Source highlighting and confidence intervals create a more efficient review process</div>
-                      </div>
+                    {/* Status indicator */}
+                    <div className="flex items-center justify-center space-x-2 mt-4">
+                      <div className="w-2 h-2 bg-slate-400 rounded-full animate-pulse"></div>
+                      <span className="text-xs text-slate-400">Unstructured Data</span>
                     </div>
+                  </div>
+                </motion.div>
 
+                {/* Stage 2: ChartR Integration */}
+                <motion.div 
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="relative bg-gradient-to-br from-blue-600/40 to-purple-600/40 backdrop-blur-xl border border-white/30 rounded-3xl p-8 text-center group-hover:scale-105 transition-all duration-500 shadow-2xl">
+                                         {/* Enhanced Logo Container */}
+                     <motion.div 
+                       className="w-24 h-24 bg-white/90 rounded-3xl flex items-center justify-center mx-auto mb-6 relative overflow-hidden shadow-2xl"
+                       animate={{ 
+                         scale: [1, 1.05, 1],
+                         boxShadow: [
+                           "0 0 30px rgba(59, 130, 246, 0.4)",
+                           "0 0 50px rgba(139, 92, 246, 0.6)",
+                           "0 0 30px rgba(59, 130, 246, 0.4)"
+                         ]
+                       }}
+                       transition={{ 
+                         scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                         boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                       }}
+                     >
+                       <img 
+                         src="/logo.svg" 
+                         alt="ChartR Logo" 
+                         className="w-16 h-16 relative z-10 filter drop-shadow-sm"
+                       />
+                       {/* Subtle processing ring */}
+                       <motion.div
+                         className="absolute inset-1 border border-blue-400/30 rounded-3xl"
+                         animate={{ 
+                           rotate: [0, 360],
+                           opacity: [0.3, 0.6, 0.3]
+                         }}
+                         transition={{ 
+                           rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                           opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                         }}
+                       />
+                     </motion.div>
+                    
+                                         <h3 className="text-2xl font-bold mb-4 text-white">ChartR Intelligence</h3>
+                     <p className="mb-4 text-slate-100 leading-relaxed">
+                       AI-curated, human-validated clinical databases - your <strong className="text-white bg-white/20 px-2 py-1 rounded">system of action</strong>
+                     </p>
+                     <div className="text-sm text-slate-200 font-medium">Structured • Actionable • Intelligent</div>
+                     
+                     {/* Processing indicator */}
+                     <div className="flex items-center justify-center space-x-2 mt-4">
+                       <motion.div 
+                         className="w-2 h-2 bg-blue-400 rounded-full"
+                         animate={{ scale: [1, 1.3, 1] }}
+                         transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                       />
+                       <span className="text-xs text-slate-200">AI Processing</span>
+                     </div>
+                  </div>
+                </motion.div>
 
+                {/* Stage 3: Better Outcomes */}
+                <motion.div 
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                >
+                  <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/30 to-teal-500/30 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="relative bg-slate-800/70 backdrop-blur-xl border border-emerald-400/30 rounded-3xl p-8 text-center group-hover:scale-105 transition-all duration-500">
+                    {/* Success Icon with Animation */}
+                    <motion.div 
+                      className="w-20 h-20 bg-emerald-500/50 rounded-3xl flex items-center justify-center mx-auto mb-6 relative overflow-hidden"
+                      animate={{ 
+                        boxShadow: [
+                          "0 0 20px rgba(16, 185, 129, 0.3)",
+                          "0 0 40px rgba(16, 185, 129, 0.5)",
+                          "0 0 20px rgba(16, 185, 129, 0.3)"
+                        ]
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                                             <Target className="w-10 h-10 text-emerald-200" />
+                      {/* Success ripple effect */}
+                      <motion.div
+                        className="absolute inset-0 border-2 border-emerald-400/40 rounded-3xl"
+                        animate={{ 
+                          scale: [1, 1.3, 1.6],
+                          opacity: [0.6, 0.3, 0]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+                      />
+                    </motion.div>
+                    
+                    <h3 className="text-2xl font-bold mb-4 text-white">Better Outcomes</h3>
+                    <p className="mb-4 text-slate-300 leading-relaxed">
+                      Improved patient care, reduced costs, regulatory compliance
+                    </p>
+                    <div className="text-sm text-slate-400 font-medium">Evidence-Based • Efficient • Compliant</div>
+                    
+                    {/* Success indicator */}
+                    <div className="flex items-center justify-center space-x-2 mt-4">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-xs text-slate-400">Actionable Results</span>
+                    </div>
                   </div>
                 </motion.div>
               </div>
             </div>
+            
+            {/* Connected Workflow Section */}
+            <motion.div 
+              className="relative mt-6 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              {/* Connection Line from ChartR */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-6 w-px h-6 bg-gradient-to-b from-blue-400/30 to-transparent"></div>
+              
+              {/* Workflow Container */}
+              <div className="relative">
+                <div className="bg-slate-800/30 backdrop-blur-lg border border-white/10 rounded-xl p-6">
+                  
+                  {/* Simple Flow */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-2">
+                      <Brain className="w-5 h-5 text-blue-300" />
+                      <span className="text-sm text-slate-300">AI Extraction</span>
+                    </div>
+                    <div className="w-8 h-px bg-slate-600"></div>
+                    <div className="flex items-center space-x-2">
+                      <Users className="w-5 h-5 text-purple-300" />
+                      <span className="text-sm text-slate-300">Human Review</span>
+                    </div>
+                    <div className="w-8 h-px bg-slate-600"></div>
+                    <div className="flex items-center space-x-2">
+                      <Shield className="w-5 h-5 text-teal-300" />
+                      <span className="text-sm text-slate-300">Validation</span>
+                    </div>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex items-center justify-center space-x-3 mb-4">
+                    <button className="px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 rounded-lg text-sm font-medium flex items-center space-x-2 hover:bg-emerald-500/30 transition-colors">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                      <span>Approve</span>
+                    </button>
+                    <button className="px-4 py-2 bg-yellow-500/20 border border-yellow-500/30 text-yellow-300 rounded-lg text-sm font-medium flex items-center space-x-2 hover:bg-yellow-500/30 transition-colors">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                      <span>Review</span>
+                    </button>
+                    <button className="px-4 py-2 bg-red-500/20 border border-red-500/30 text-red-300 rounded-lg text-sm font-medium flex items-center space-x-2 hover:bg-red-500/30 transition-colors">
+                      <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                      <span>Reject</span>
+                    </button>
+                  </div>
+
+                  {/* Simple Result */}
+                  <div className="flex items-center justify-center space-x-2 bg-slate-700/30 rounded-lg p-3">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
+                    <span className="text-sm text-slate-300">Lab value confirmed - approved</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Model Improvement Section with Enhanced Animations */}
-      <section className="py-16 relative">
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+
+      {/* Three AI Platforms Section */}
+      <section className="py-24 relative bg-slate-800/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-6 tracking-tight">
+              Three AI Platforms
+              <br />
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+                One Solution
+              </span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
+              Comprehensive solutions for clinical data, literature review, and research acceleration—built to transform your workflow.
+            </p>
+            
+            {/* Enhanced Product Suite Cards */}
+            <motion.div 
+              className="relative max-w-7xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              {/* Three Product Cards in One Line */}
+              <div className="grid lg:grid-cols-3 gap-8">
+                {/* ChartR Clinical */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <Link href="/products/clinical" className="block">
+                    <div className="relative h-96">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                      <div className="relative bg-gradient-to-br from-slate-900/80 to-slate-800/60 rounded-3xl border border-blue-500/20 group-hover:border-blue-400/40 transition-all duration-500 backdrop-blur-xl overflow-hidden h-full">
+                        {/* AI Neural Network Pattern */}
+                        <div className="absolute inset-0 opacity-5">
+                          <svg className="w-full h-full" viewBox="0 0 200 200">
+                            <defs>
+                              <radialGradient id="neuralGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stopColor="rgb(59, 130, 246)" stopOpacity="0.3"/>
+                                <stop offset="100%" stopColor="rgb(59, 130, 246)" stopOpacity="0"/>
+                              </radialGradient>
+                            </defs>
+                            {/* Neural nodes */}
+                            <circle cx="50" cy="50" r="1" fill="rgb(59, 130, 246)" opacity="0.4"/>
+                            <circle cx="150" cy="80" r="1" fill="rgb(59, 130, 246)" opacity="0.3"/>
+                            <circle cx="120" cy="150" r="1" fill="rgb(59, 130, 246)" opacity="0.4"/>
+                            <circle cx="180" cy="30" r="1" fill="rgb(59, 130, 246)" opacity="0.3"/>
+                            {/* Neural connections */}
+                            <line x1="50" y1="50" x2="150" y2="80" stroke="rgb(59, 130, 246)" strokeWidth="0.3" opacity="0.2"/>
+                            <line x1="150" y1="80" x2="120" y2="150" stroke="rgb(59, 130, 246)" strokeWidth="0.3" opacity="0.2"/>
+                          </svg>
+                        </div>
+
+                        {/* Product Icon Header */}
+                        <div className="relative p-8 text-center flex flex-col justify-center h-full">
+                          <motion.div 
+                            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500/30 to-cyan-500/20 rounded-2xl border border-blue-400/40 mb-6 mx-auto group-hover:from-blue-400/40 group-hover:to-cyan-400/30 transition-all duration-500"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Building className="w-10 h-10 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+                          </motion.div>
+                          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-100 transition-colors duration-300">
+                            ChartR Clinical
+                          </h3>
+                          <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300 mb-8">
+                            Clinical data extraction & analysis
+                          </p>
+
+                          {/* Interactive Elements */}
+                          <div className="flex items-center justify-center text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                            <span className="font-medium mr-2">Explore</span>
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Subtle Floating Elements */}
+                        <motion.div 
+                          className="absolute top-6 right-6 w-2 h-2 bg-blue-400/20 rounded-full"
+                          animate={{ 
+                            opacity: [0.2, 0.4, 0.2]
+                          }}
+                          transition={{ duration: 4, repeat: Infinity }}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                {/* ChartR Literature */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <Link href="/products/literature" className="block">
+                    <div className="relative h-96">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                      <div className="relative bg-gradient-to-br from-slate-900/80 to-slate-800/60 rounded-3xl border border-purple-500/20 group-hover:border-purple-400/40 transition-all duration-500 backdrop-blur-xl overflow-hidden h-full">
+                        {/* AI Data Flow Pattern */}
+                        <div className="absolute inset-0 opacity-4">
+                          <svg className="w-full h-full" viewBox="0 0 200 200">
+                            <defs>
+                              <linearGradient id="dataFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="rgb(168, 85, 247)" stopOpacity="0.1"/>
+                                <stop offset="100%" stopColor="rgb(168, 85, 247)" stopOpacity="0"/>
+                              </linearGradient>
+                            </defs>
+                            {/* Data flow streams */}
+                            <path d="M20,180 Q60,140 100,120 T180,80" fill="none" stroke="rgb(168, 85, 247)" strokeWidth="0.5" opacity="0.3"/>
+                            <path d="M30,160 Q80,100 140,90 T190,60" fill="none" stroke="rgb(168, 85, 247)" strokeWidth="0.3" opacity="0.2"/>
+                            <path d="M10,200 Q50,160 90,140 T170,100" fill="none" stroke="rgb(168, 85, 247)" strokeWidth="0.4" opacity="0.25"/>
+                            {/* Data points */}
+                            <circle cx="60" cy="140" r="0.8" fill="rgb(168, 85, 247)" opacity="0.3"/>
+                            <circle cx="140" cy="90" r="0.8" fill="rgb(168, 85, 247)" opacity="0.3"/>
+                          </svg>
+                        </div>
+
+                        {/* Product Icon Header */}
+                        <div className="relative p-8 text-center flex flex-col justify-center h-full">
+                          <motion.div 
+                            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500/30 to-pink-500/20 rounded-2xl border border-purple-400/40 mb-6 mx-auto group-hover:from-purple-400/40 group-hover:to-pink-400/30 transition-all duration-500"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <FileText className="w-10 h-10 text-purple-400 group-hover:text-purple-300 transition-colors duration-300" />
+                          </motion.div>
+                          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-100 transition-colors duration-300">
+                            ChartR Literature
+                          </h3>
+                          <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300 mb-8">
+                            Literature review & research synthesis
+                          </p>
+
+                          {/* Interactive Elements */}
+                          <div className="flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors duration-300">
+                            <span className="font-medium mr-2">Explore</span>
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Subtle Floating Elements */}
+                        <motion.div 
+                          className="absolute bottom-6 left-6 w-1 h-1 bg-purple-400/20 rounded-full"
+                          animate={{ 
+                            opacity: [0.2, 0.4, 0.2]
+                          }}
+                          transition={{ duration: 5, repeat: Infinity }}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                {/* ChartR Accelerate */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  whileHover={{ y: -8 }}
+                  className="group"
+                >
+                  <Link href="/products/accelerate" className="block">
+                    <div className="relative h-96">
+                      <div className="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-orange-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                      <div className="relative bg-gradient-to-br from-slate-900/80 to-slate-800/60 rounded-3xl border border-amber-500/20 group-hover:border-amber-400/40 transition-all duration-500 backdrop-blur-xl overflow-hidden h-full">
+                        {/* AI Circuit Pattern */}
+                        <div className="absolute inset-0 opacity-4">
+                          <svg className="w-full h-full" viewBox="0 0 200 200">
+                            <defs>
+                              <linearGradient id="circuitGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="rgb(245, 158, 11)" stopOpacity="0.2"/>
+                                <stop offset="50%" stopColor="rgb(245, 158, 11)" stopOpacity="0.4"/>
+                                <stop offset="100%" stopColor="rgb(245, 158, 11)" stopOpacity="0.1"/>
+                              </linearGradient>
+                            </defs>
+                            {/* Circuit paths */}
+                            <path d="M30,50 L80,50 L80,100 L130,100" fill="none" stroke="rgb(245, 158, 11)" strokeWidth="0.4" opacity="0.3"/>
+                            <path d="M50,150 L100,150 L100,80 L150,80" fill="none" stroke="rgb(245, 158, 11)" strokeWidth="0.3" opacity="0.25"/>
+                            {/* Circuit nodes */}
+                            <rect x="78" y="48" width="4" height="4" fill="rgb(245, 158, 11)" opacity="0.4" rx="0.5"/>
+                            <rect x="128" y="98" width="4" height="4" fill="rgb(245, 158, 11)" opacity="0.4" rx="0.5"/>
+                            <rect x="98" y="78" width="4" height="4" fill="rgb(245, 158, 11)" opacity="0.4" rx="0.5"/>
+                          </svg>
+                        </div>
+
+                        {/* Product Icon Header */}
+                        <div className="relative p-8 text-center flex flex-col justify-center h-full">
+                          <motion.div 
+                            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-500/30 to-orange-500/20 rounded-2xl border border-amber-400/40 mb-6 mx-auto group-hover:from-amber-400/40 group-hover:to-orange-400/30 transition-all duration-500"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <Zap className="w-10 h-10 text-amber-400 group-hover:text-amber-300 transition-colors duration-300" />
+                          </motion.div>
+                          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-amber-100 transition-colors duration-300">
+                            ChartR Accelerate
+                          </h3>
+                          <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300 mb-8">
+                            Research acceleration & grant funding
+                          </p>
+
+                          {/* Interactive Elements */}
+                          <div className="flex items-center justify-center text-amber-400 group-hover:text-amber-300 transition-colors duration-300">
+                            <span className="font-medium mr-2">Explore</span>
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Subtle Floating Elements */}
+                        <motion.div 
+                          className="absolute top-8 right-8 w-1 h-1 bg-amber-400/20 rounded-full"
+                          animate={{ 
+                            opacity: [0.2, 0.4, 0.2]
+                          }}
+                          transition={{ duration: 6, repeat: Infinity }}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+
+      {/* Model Improvement Section */}
+      <section className="py-20 relative bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
             className="text-center mb-16"
@@ -962,373 +1317,307 @@ const Homepage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-6 tracking-tight">
               Continuously <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
                 Self-Improving
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Our AI models learn from every interaction, becoming more accurate and efficient with each review
-            </p>
+
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-8"
             >
+              {/* Adaptive Intelligence Card */}
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 overflow-hidden">
-                  <h3 className="text-3xl font-black mb-8 text-transparent bg-gradient-to-r from-white to-slate-300 bg-clip-text">
-                    Smart Learning Pipeline
-                  </h3>
-                  <div className="space-y-8">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-85 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-slate-800/60 backdrop-blur-xl rounded-2xl p-10 border border-white/20 overflow-hidden">
+                  {/* Well-Sized Header */}
+                  <div className="text-center mb-10">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-400/20 mb-6">
+                      <Brain className="w-8 h-8 text-blue-400" />
+                    </div>
+                    <h3 className="text-4xl font-black mb-4 text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
+                      Adaptive Intelligence
+                    </h3>
+                    <p className="text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                      AI that continuously learns from clinical patterns to improve accuracy and reduce errors
+                    </p>
+                  </div>
+
+                  {/* Streamlined Feature Grid */}
+                  <div className="grid md:grid-cols-2 gap-6">
                     {[
-                      "Pattern recognition improvements",
-                      "Error reduction algorithms", 
-                      "Context-aware processing",
-                      "Institutional knowledge capture"
+                      { 
+                        icon: TrendingUp, 
+                        label: "Pattern Learning",
+                        description: "Automatically identifies clinical trends and patterns from historical data"
+                      },
+                      { 
+                        icon: CheckCircle, 
+                        label: "Error Reduction",
+                        description: "Continuously improves accuracy through validation feedback"
+                      },
+                      { 
+                        icon: Cpu, 
+                        label: "Context Aware",
+                        description: "Understands clinical context and specialty requirements"
+                      },
+                      { 
+                        icon: BookOpen, 
+                        label: "Knowledge Base",
+                        description: "Leverages comprehensive medical knowledge and best practices"
+                      }
                     ].map((item, index) => (
                       <motion.div 
                         key={index}
-                        className="flex items-center space-x-4"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                        className="relative group/item cursor-pointer"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                       >
-                        <motion.div 
-                          className="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
-                          animate={{ scale: [1, 1.3, 1], opacity: [0.7, 1, 0.7] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                        />
-                        <span className="text-slate-300 text-lg">{item}</span>
+                        <div className="relative">
+                          {/* Blue glow effect on hover/click */}
+                          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-xl opacity-0 group-hover/item:opacity-100 transition-all duration-300 blur-sm" />
+                          
+                          <div className="relative bg-slate-800/40 rounded-xl p-6 border border-slate-700/50 group-hover/item:border-blue-400/30 transition-all duration-300 backdrop-blur-sm">
+                            <div className="flex items-start space-x-4">
+                              {/* Icon with blue illumination */}
+                              <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-slate-700/50 border border-slate-600/50 flex items-center justify-center group-hover/item:bg-blue-500/20 group-hover/item:border-blue-400/40 transition-all duration-300">
+                                <item.icon className="w-6 h-6 text-slate-400 group-hover/item:text-blue-300 transition-colors duration-300" />
+                              </div>
+                              
+                              <div className="flex-1">
+                                <h4 className="text-lg font-semibold text-white mb-2 group-hover/item:text-blue-100 transition-colors duration-300">
+                                  {item.label}
+                                </h4>
+                                <p className="text-slate-400 text-sm leading-relaxed group-hover/item:text-slate-300 transition-colors duration-300">
+                                  {item.description}
+                                </p>
+                              </div>
+                              
+                              {/* Subtle arrow indicator */}
+                              <div className="opacity-0 group-hover/item:opacity-100 transition-opacity duration-300">
+                                <ArrowRight className="w-4 h-4 text-blue-400" />
+                              </div>
+                            </div>
+                            
+                            {/* Subtle bottom border accent */}
+                            <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-blue-400/0 to-transparent group-hover/item:via-blue-400/40 transition-all duration-300" />
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Enhanced Metrics with Glassmorphism */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              {/* Processing Speed Card */}
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-6 border border-white/10 overflow-hidden">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold text-white">Processing Speed</span>
-                    <motion.span 
-                      className="text-blue-400 font-bold flex items-center space-x-1"
-                      animate={{ opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    >
-                      <Zap className="w-4 h-4" />
-                      <span>+18%</span>
-                    </motion.span>
-                  </div>
-                  
-                  <div className="w-full bg-slate-700/50 rounded-full h-4 relative overflow-hidden">
-                    <motion.div 
-                      className="bg-gradient-to-r from-blue-400 to-cyan-400 h-4 rounded-full relative"
-                      initial={{ width: "0%" }}
-                      animate={{ width: "87%" }}
-                      transition={{ duration: 2, delay: 1.5, ease: "easeOut" }}
-                    >
-                      <motion.div
-                        className="absolute right-0 top-0 w-4 h-4 bg-cyan-300 rounded-full"
-                        animate={{ 
-                          scale: [1, 1.5, 1],
-                          opacity: [1, 0.3, 1]
-                        }}
-                        transition={{ duration: 1, repeat: Infinity, delay: 3.5 }}
-                      />
-                    </motion.div>
-                  </div>
-                  
-                  <div className="flex items-center justify-between mt-3">
-                    <div className="text-sm text-slate-400">45+ minutes saved per chart</div>
-                    <motion.div 
-                      className="flex items-center space-x-1"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 4 }}
-                    >
-                      {[0, 0.1, 0.2].map((delay, i) => (
-                        <motion.div
-                          key={i}
-                          className="w-1 h-4 bg-blue-400 rounded-full"
-                          animate={{ scaleY: [1, 0.3, 1] }}
-                          transition={{ duration: 0.5, repeat: Infinity, delay }}
-                        />
+
+                  {/* Well-Proportioned Stats */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="mt-10 pt-8 border-t border-white/10"
+                  >
+                    <div className="grid grid-cols-3 gap-8 text-center">
+                      {[
+                        { value: "99.2%", label: "Accuracy Rate", color: "text-blue-400" },
+                        { value: "85%", label: "Error Reduction", color: "text-cyan-400" },
+                        { value: "24/7", label: "Continuous Learning", color: "text-purple-400" }
+                      ].map((stat, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="group"
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                        >
+                          <div className={`text-3xl font-black ${stat.color} mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                            {stat.value}
+                          </div>
+                          <div className="text-sm text-slate-400 font-medium">{stat.label}</div>
+                        </motion.div>
                       ))}
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Model Performance Card */}
-              <motion.div 
-                className="relative group"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 4.5 }}
-              >
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-xl rounded-2xl p-6 border border-white/20">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <motion.div
-                        className="w-12 h-12 bg-purple-500/30 rounded-xl flex items-center justify-center"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                      >
-                        <Cpu className="w-6 h-6 text-purple-400" />
-                      </motion.div>
-                      <div>
-                        <div className="text-white font-bold mb-2">Model Performance</div>
-                        <div className="text-sm text-slate-300">Continuous improvement through learning</div>
-                      </div>
                     </div>
-                    <motion.div
-                      className="text-purple-400 ml-4"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <Activity className="w-6 h-6" />
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Problem Statement with Dark Theme */}
-      <section className="py-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              The <span className="bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                Multi-Million Dollar
-              </span> Problem
-              <br />
-              Every Hospital Faces
-            </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Healthcare organizations spend millions annually on regulatory compliance and quality reporting, 
-              while struggling with manual processes that are <span className="text-red-400 font-medium">error-prone</span> and <span className="text-orange-400 font-medium">resource-intensive</span>.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: DollarSign,
-                title: "Massive Costs",
-                value: "$7.5M+",
-                description: "Annual regulatory spend per hospital",
-                color: "from-red-400 to-red-600",
-                bg: "from-red-500/20 to-red-600/20"
-              },
-              {
-                icon: Clock,
-                title: "Time Intensive",
-                value: "80%",
-                description: "Of time spent on manual review",
-                color: "from-orange-400 to-orange-600", 
-                bg: "from-orange-500/20 to-orange-600/20"
-              },
-              {
-                icon: Target,
-                title: "Error Prone",
-                value: "15-25%",
-                description: "Error rate in manual processes",
-                color: "from-yellow-400 to-yellow-600",
-                bg: "from-yellow-500/20 to-yellow-600/20"
-              }
-            ].map((problem, index) => (
-              <motion.div 
-                key={index}
-                className="relative group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 * index }}
-              >
-                <div className={`absolute -inset-1 bg-gradient-to-r ${problem.bg} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${problem.bg} rounded-2xl flex items-center justify-center mx-auto mb-6`}>
-                    <problem.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{problem.title}</h3>
-                  <div className={`text-4xl font-black mb-4 text-transparent bg-gradient-to-r ${problem.color} bg-clip-text`}>
-                    {problem.value}
-                  </div>
-                  <p className="text-slate-300">{problem.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Overview Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              Three AI Platforms
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
-                One Solution
-              </span>
-            </h2>
-            <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
-              Comprehensive AI-powered tools for clinical data, literature review, and research acceleration
-            </p>
-            
-            {/* Call-to-Action to Explore Products */}
-            <motion.div 
-              className="relative group max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-white/10 rounded-2xl p-8 backdrop-blur-xl border border-white/20">
-                <div className="text-2xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-3">
-                  Explore Our Product Suite
-                </div>
-                <div className="text-lg text-slate-300 mb-6">
-                  Discover how each platform can transform your workflow
-                </div>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <Link href="/products/clinical" className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 flex items-center space-x-2">
-                    <Building className="w-5 h-5" />
-                    <span>ChartR Clinical</span>
-                  </Link>
-                  <Link href="/products/literature" className="bg-gradient-to-r from-purple-600 to-pink-700 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-700 hover:to-pink-800 transition-all duration-300 flex items-center space-x-2">
-                    <FileText className="w-5 h-5" />
-                    <span>ChartR Literature</span>
-                  </Link>
-                  <Link href="/products/accelerate" className="bg-gradient-to-r from-green-600 to-teal-700 text-white px-6 py-3 rounded-lg font-medium hover:from-green-700 hover:to-teal-800 transition-all duration-300 flex items-center space-x-2">
-                    <GraduationCap className="w-5 h-5" />
-                    <span>ChartR Accelerate</span>
-                  </Link>
+                  </motion.div>
                 </div>
               </div>
+
+
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 relative">
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+
+      {/* Live Demo Section */}
+      <div className="bg-slate-800/50">
+        <ClinicalDemo />
+      </div>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+
+      {/* AI-Focused Testimonials */}
+      <section className="py-24 relative bg-slate-900/50 overflow-hidden">
+        {/* Background AI Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 rounded-full blur-2xl" />
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
-              Trusted by
+            <motion.div
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 mb-6"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-blue-300">VALIDATED BY HEALTHCARE LEADERS</span>
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text mb-4 tracking-tight">
+              Transforming Healthcare
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Healthcare Leaders
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+                Intelligence Today
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              See what leading healthcare organizations are saying about ChartR
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+              Leading healthcare organizations trust ChartR to revolutionize their clinical data workflows
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <motion.div 
                 key={index} 
-                className="relative group"
+                className="relative group h-full"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 * index }}
+                transition={{ duration: 0.8, delay: 0.15 * index }}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-slate-600/20 to-slate-700/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                {/* Glow Effect */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm" />
+                
+                <div className="relative bg-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50 group-hover:border-blue-400/30 transition-all duration-500 h-full flex flex-col">
+                  {/* AI Quote Icon */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center group-hover:bg-blue-500/30 transition-all duration-300">
+                      <svg className="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                      </svg>
+                    </div>
+                    
+                    {/* AI Badge */}
+                    <div className="px-2 py-1 rounded-md bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-400/30">
+                      <span className="text-xs font-medium text-blue-300">AI-ENHANCED</span>
+                    </div>
+                  </div>
+
+                  {/* Quote Content */}
                   <div className="flex-1 mb-6">
-                    <div className="text-3xl text-emerald-400/30 mb-4">"</div>
-                    <p className="text-slate-300 italic leading-relaxed text-lg">{testimonial.quote}</p>
-                    <div className="text-3xl text-emerald-400/30 text-right mt-2">"</div>
+                    <p className="text-slate-300 leading-relaxed text-base group-hover:text-slate-200 transition-colors duration-300">
+                      "{testimonial.quote}"
+                    </p>
                   </div>
-                  <div className="border-t border-white/10 pt-6">
-                    <div className="font-bold text-white text-lg">{testimonial.author}</div>
-                    <div className="text-sm text-transparent bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text font-medium mt-1">{testimonial.role}</div>
+
+                  {/* Author Info with AI Styling */}
+                  <div className="border-t border-slate-700/50 pt-4">
+                    <div className="flex items-center space-x-3">
+                      {/* Avatar Placeholder */}
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-500/20 border border-blue-400/30 flex items-center justify-center">
+                        <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                      
+                      <div className="flex-1">
+                        <div className="font-semibold text-white group-hover:text-blue-100 transition-colors duration-300">
+                          {testimonial.author}
+                        </div>
+                        <div className="text-sm text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">
+                          {testimonial.role}
+                        </div>
+                      </div>
+                      
+                      {/* Verification Badge */}
+                      <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L13.5 2.5L16.17 5.17L10.59 10.75C10.21 11.13 10.21 11.75 10.59 12.13L11.88 13.42C12.25 13.79 12.87 13.79 13.25 13.42L18.83 7.83L21 10V12H19V20C19 21.1 18.1 22 17 22H15C13.9 22 13 21.1 13 20V12H11V20C11 21.1 10.1 22 9 22H7C5.9 22 5 21.1 5 20V12H3V10L5.17 7.83L10.75 2.25C11.13 1.87 11.75 1.87 12.13 2.25L17.75 7.83L19 9H21Z"/>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
+                  
+                  {/* Subtle bottom accent */}
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/0 to-transparent group-hover:via-blue-400/50 transition-all duration-500 rounded-b-2xl" />
                 </div>
               </motion.div>
             ))}
           </div>
+
+
         </div>
       </section>
 
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        {/* Enhanced Background with Multiple Layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-teal-600/20" />
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-10 left-10 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-teal-500/25 to-cyan-500/25 rounded-full blur-3xl animate-pulse delay-1000" />
-          <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-500" />
+      <section className="py-16 relative overflow-hidden bg-slate-800/60">
+        {/* Subtle Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-slate-600/30 rounded-full blur-3xl" />
         </div>
         
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-                          className="space-y-6"
+                          className="space-y-4"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4 tracking-tight leading-tight">
               Ready to Transform
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent">
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
                 Your Healthcare Data?
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
               Join leading healthcare organizations saving millions with ChartR's AI platform. 
-              See how our <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium">human-AI integration</span> can revolutionize your clinical data management.
+              See how our <span className="text-blue-200 font-medium">human-AI integration</span> can revolutionize your clinical data management.
             </p>
             
             {/* Enhanced Feature Highlight */}
             <motion.div 
-              className="relative group max-w-2xl mx-auto"
+              className="relative group max-w-xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-white/10 rounded-2xl p-8 backdrop-blur-xl border border-white/20">
-                <div className="text-2xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-3">Leading the Future of Healthcare Intelligence</div>
-                <div className="text-lg text-slate-300">AI-assisted, human-validated clinical data curation at scale</div>
+              <div className="relative bg-white/10 rounded-2xl p-6 backdrop-blur-xl border border-white/20">
+                <div className="text-lg font-black text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-sm text-slate-300">AI-assisted, human-validated clinical data curation at scale</div>
               </div>
             </motion.div>
             
@@ -1336,10 +1625,10 @@ const Homepage = () => {
           </motion.div>
         </div>
         
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-20 w-4 h-4 bg-blue-400/30 rounded-full animate-pulse" />
-        <div className="absolute bottom-32 right-32 w-6 h-6 bg-purple-400/30 rounded-full animate-pulse delay-700" />
-        <div className="absolute top-1/2 left-16 w-3 h-3 bg-teal-400/30 rounded-full animate-pulse delay-1000" />
+        {/* Subtle Floating Elements */}
+        <div className="absolute top-20 left-20 w-3 h-3 bg-slate-400/20 rounded-full" />
+        <div className="absolute bottom-32 right-32 w-4 h-4 bg-slate-500/20 rounded-full" />
+        <div className="absolute top-1/2 left-16 w-2 h-2 bg-slate-400/20 rounded-full" />
       </section>
     </div>
   )
