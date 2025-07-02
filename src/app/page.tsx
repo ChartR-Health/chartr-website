@@ -738,6 +738,433 @@ const Homepage = () => {
       {/* Section Separator */}
       <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
       
+      {/* ChartrOS Platform Introduction */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-800/80 to-slate-900/90">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-500/8 to-teal-500/8 rounded-full blur-3xl" />
+          
+          {/* Floating Data Particles - WorkOS Style */}
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute w-1 h-1 bg-gradient-to-r from-blue-400/60 to-purple-400/60 rounded-full"
+              initial={{ 
+                x: Math.random() * 1200,
+                y: Math.random() * 600,
+                scale: 0 
+              }}
+              animate={{ 
+                x: [Math.random() * 1200, Math.random() * 1200, Math.random() * 1200],
+                y: [Math.random() * 600, Math.random() * 600, Math.random() * 600],
+                scale: [0, 1, 0],
+                opacity: [0, 0.8, 0]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "easeInOut"
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* ChartrOS Badge */}
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/15 to-blue-500/15 border border-emerald-400/30 rounded-full px-8 py-4 backdrop-blur-sm mb-8">
+              <motion.div 
+                className="w-8 h-8 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full flex items-center justify-center"
+                animate={{ 
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Cpu className="w-5 h-5 text-white" />
+              </motion.div>
+              <span className="text-emerald-300 font-semibold text-lg">Introducing ChartrOS</span>
+              <div className="bg-emerald-400/20 text-emerald-200 px-3 py-1 rounded-full text-sm font-medium">
+                Enterprise AI Platform
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Main Header */}
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-200 bg-clip-text mb-8 tracking-tight leading-[1.1]">
+              Enterprise-Grade
+              <br />
+              <span className="text-transparent bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text">
+                AI-Native Platform
+              </span>
+              <br />
+              For Clinical Workflows
+            </h2>
+            
+            <motion.p 
+              className="text-2xl text-slate-300 font-light leading-relaxed max-w-4xl mx-auto mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              ChartrOS transforms how healthcare organizations integrate AI into clinical workflows—
+              <span className="text-transparent bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text font-medium">
+                EMR-agnostic, modular, and built for enterprise scale
+              </span>
+            </motion.p>
+          </motion.div>
+
+          {/* Platform Architecture Visualization */}
+          <motion.div 
+            className="relative max-w-6xl mx-auto mb-20"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            <div className="bg-slate-800/40 backdrop-blur-xl rounded-3xl border border-white/10 p-8 overflow-hidden">
+              {/* Platform Flow Visualization */}
+              <div className="grid lg:grid-cols-5 gap-6 items-center">
+                {/* EMR Systems */}
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.8 }}
+                >
+                  <div className="w-20 h-20 bg-slate-700/50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-600/50">
+                    <Database className="w-10 h-10 text-slate-400" />
+                  </div>
+                  <h4 className="text-sm font-semibold text-slate-300 mb-2">Any EMR System</h4>
+                  <p className="text-xs text-slate-500">Epic, Cerner, Custom</p>
+                </motion.div>
+
+                {/* Arrow */}
+                <div className="flex justify-center lg:block hidden">
+                  <motion.div
+                    animate={{ x: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ArrowRight className="w-8 h-8 text-slate-600" />
+                  </motion.div>
+                </div>
+
+                {/* ChartrOS Core */}
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                >
+                  <div className="relative">
+                    <motion.div 
+                      className="w-24 h-24 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-emerald-400/30"
+                      animate={{ 
+                        boxShadow: [
+                          "0 0 0 0 rgba(16, 185, 129, 0.3)",
+                          "0 0 0 15px rgba(16, 185, 129, 0)",
+                          "0 0 0 0 rgba(16, 185, 129, 0)"
+                        ]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      <Layers className="w-12 h-12 text-emerald-400" />
+                    </motion.div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Zap className="w-3 h-3 text-white" />
+                    </div>
+                  </div>
+                  <h4 className="text-lg font-bold text-emerald-300 mb-2">ChartrOS</h4>
+                  <p className="text-xs text-slate-400">AI-Native Platform</p>
+                </motion.div>
+
+                {/* Arrow */}
+                <div className="flex justify-center lg:block hidden">
+                  <motion.div
+                    animate={{ x: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  >
+                    <ArrowRight className="w-8 h-8 text-slate-600" />
+                  </motion.div>
+                </div>
+
+                {/* Clinical Workflows */}
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                >
+                  <div className="w-20 h-20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-purple-400/30">
+                    <TrendingUp className="w-10 h-10 text-purple-400" />
+                  </div>
+                  <h4 className="text-sm font-semibold text-slate-300 mb-2">Clinical Intelligence</h4>
+                  <p className="text-xs text-slate-500">Actionable Insights</p>
+                </motion.div>
+              </div>
+
+              {/* Connecting Flow Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                <defs>
+                  <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="rgba(59, 130, 246, 0.6)" />
+                    <stop offset="50%" stopColor="rgba(16, 185, 129, 0.8)" />
+                    <stop offset="100%" stopColor="rgba(168, 85, 247, 0.6)" />
+                  </linearGradient>
+                </defs>
+                
+                <motion.path
+                  d="M 120 120 Q 200 100 280 120 Q 360 140 440 120"
+                  stroke="url(#flowGradient)"
+                  strokeWidth="3"
+                  fill="none"
+                  opacity="0.7"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 2, delay: 1.4, ease: "easeInOut" }}
+                />
+              </svg>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="py-20 relative bg-slate-800/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Features Grid */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Feature List */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div>
+                <h3 className="text-3xl md:text-4xl font-black text-white mb-6 tracking-tight">
+                  Built for
+                  <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Enterprise Healthcare</span>
+                </h3>
+                <p className="text-lg text-slate-300 leading-relaxed">
+                  ChartrOS delivers enterprise-grade AI integration with the flexibility and security healthcare organizations demand.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <motion.div 
+                  className="flex items-start space-x-4 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/30 transition-colors">
+                    <Shield className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">HIPAA-Compliant AI Learning</h4>
+                    <p className="text-slate-400 leading-relaxed">
+                      Continuous AI model fine-tuning on individual user data with enterprise-grade security and compliance built-in.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-start space-x-4 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                >
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
+                    <Network className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">EMR & Model Agnostic</h4>
+                    <p className="text-slate-400 leading-relaxed">
+                      Seamlessly integrates with any EMR system and existing AI data abstraction solutions—no vendor lock-in.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-start space-x-4 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/30 transition-colors">
+                    <Target className="w-6 h-6 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">No-Code Integration</h4>
+                    <p className="text-slate-400 leading-relaxed">
+                      Empowers clinicians, researchers, and hospital administrators to deploy AI workflows without technical expertise.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-start space-x-4 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                >
+                  <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-teal-500/30 transition-colors">
+                    <Brain className="w-6 h-6 text-teal-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-semibold text-white mb-2">Clinical Retrieval Layer</h4>
+                    <p className="text-slate-400 leading-relaxed">
+                      Best-in-class intelligent identification of relevant clinical information and literature for actionable insights.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right: Interactive Demo */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden">
+                {/* Demo Header */}
+                <div className="bg-slate-700/50 px-6 py-4 border-b border-white/10">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="bg-slate-600/50 rounded-lg px-4 py-2 text-sm text-slate-300 flex-1">
+                      ChartrOS Enterprise Dashboard
+                    </div>
+                  </div>
+                </div>
+
+                {/* Demo Content */}
+                <div className="p-6 h-96">
+                  <div className="grid grid-cols-2 gap-4 h-full">
+                    {/* Left: Modular Templates */}
+                    <div>
+                      <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
+                        <Layers className="w-4 h-4 mr-2 text-emerald-400" />
+                        Pre-Built Templates
+                      </h5>
+                      <div className="space-y-3">
+                        {[
+                          { name: 'Risk Assessment', icon: Heart, color: 'emerald', status: 'Active' },
+                          { name: 'Clinical Trials', icon: TestTube, color: 'blue', status: 'Ready' },
+                          { name: 'Compliance Reporting', icon: FileCheck, color: 'purple', status: 'Ready' },
+                          { name: 'Patient Screening', icon: Users, color: 'teal', status: 'Ready' }
+                        ].map((template, i) => (
+                          <motion.div
+                            key={template.name}
+                            className={`bg-${template.color}-500/10 border border-${template.color}-400/30 rounded-lg p-3 cursor-pointer hover:bg-${template.color}-500/20 transition-all`}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
+                          >
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-2">
+                                <template.icon className={`w-4 h-4 text-${template.color}-400`} />
+                                <span className="text-sm font-medium text-slate-200">{template.name}</span>
+                              </div>
+                              <div className={`px-2 py-1 bg-${template.color}-400/20 text-${template.color}-300 rounded text-xs`}>
+                                {template.status}
+                              </div>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right: Real-time Processing */}
+                    <div>
+                      <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
+                        <Activity className="w-4 h-4 mr-2 text-blue-400" />
+                        Real-time Processing
+                      </h5>
+                      <div className="space-y-4">
+                        <div className="bg-slate-700/50 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm text-slate-300">Data Validation</span>
+                            <span className="text-xs text-emerald-400">✓ Complete</span>
+                          </div>
+                          <div className="w-full bg-slate-600 rounded-full h-2">
+                            <motion.div 
+                              className="bg-emerald-400 h-2 rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: '100%' }}
+                              transition={{ duration: 2, delay: 1 }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-700/50 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm text-slate-300">AI Analysis</span>
+                            <span className="text-xs text-blue-400">In Progress</span>
+                          </div>
+                          <div className="w-full bg-slate-600 rounded-full h-2">
+                            <motion.div 
+                              className="bg-blue-400 h-2 rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: '75%' }}
+                              transition={{ duration: 3, delay: 1.5 }}
+                            />
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-700/50 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-sm text-slate-300">Clinical Insights</span>
+                            <Clock className="w-4 h-4 text-slate-400" />
+                          </div>
+                          <div className="grid grid-cols-2 gap-2 text-xs">
+                            <div className="bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded text-center">
+                              12 Risk Factors
+                            </div>
+                            <div className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-center">
+                              4 Recommendations
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500/20 rounded-full blur-sm" />
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-500/20 rounded-full blur-sm" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
+      
       {/* ChartR Modular Ecosystem */}
       <section className="py-20 relative bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
