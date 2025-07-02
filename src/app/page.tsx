@@ -1017,10 +1017,26 @@ const Homepage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 mb-6">
-              <Cpu className="w-4 h-4 text-emerald-400" />
-              <span className="text-sm font-medium text-emerald-300">Introducing ChartrOS</span>
-            </div>
+            {/* Enhanced Introducing Badge - More Prominent */}
+            <motion.div 
+              className="mb-8"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+            >
+              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 border-2 border-emerald-400/40 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/20">
+                <div className="relative">
+                  <Cpu className="w-6 h-6 text-emerald-400" />
+                  <div className="absolute inset-0 animate-ping">
+                    <Cpu className="w-6 h-6 text-emerald-400 opacity-75" />
+                  </div>
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-transparent">
+                  🚀 Introducing ChartrOS
+                </span>
+                <span className="text-sm font-semibold text-blue-300 bg-blue-400/20 px-3 py-1 rounded-full">NEW</span>
+              </div>
+            </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
               Enterprise-Grade AI-Native Platform
@@ -1094,64 +1110,133 @@ const Homepage = () => {
 
                 {/* ChartrOS Core - Center */}
                 <div className="relative">
-                  {/* Connection Lines */}
+                  {/* Enhanced Connection Lines with Bezier Curves */}
                   <div className="hidden md:block absolute inset-0 -left-8 -right-8">
-                    <svg className="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="none">
+                    <svg className="w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
                       <defs>
-                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
+                        <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(59, 130, 246, 0)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(16, 185, 129, 0.3)" />
+                        </linearGradient>
+                        <linearGradient id="lineGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(168, 85, 247, 0)" />
+                          <stop offset="50%" stopColor="rgba(168, 85, 247, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(16, 185, 129, 0.3)" />
+                        </linearGradient>
+                        <linearGradient id="lineGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(20, 184, 166, 0)" />
+                          <stop offset="50%" stopColor="rgba(20, 184, 166, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(16, 185, 129, 0.3)" />
+                        </linearGradient>
+                        <linearGradient id="lineGradientOut1" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.3)" />
                           <stop offset="50%" stopColor="rgba(16, 185, 129, 0.5)" />
-                          <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
+                          <stop offset="100%" stopColor="rgba(16, 185, 129, 0)" />
+                        </linearGradient>
+                        <linearGradient id="lineGradientOut2" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.3)" />
+                          <stop offset="50%" stopColor="rgba(59, 130, 246, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(59, 130, 246, 0)" />
+                        </linearGradient>
+                        <linearGradient id="lineGradientOut3" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="rgba(16, 185, 129, 0.3)" />
+                          <stop offset="50%" stopColor="rgba(168, 85, 247, 0.5)" />
+                          <stop offset="100%" stopColor="rgba(168, 85, 247, 0)" />
                         </linearGradient>
                       </defs>
-                      <motion.line 
-                        x1="0" y1="50" x2="100" y2="50" 
-                        stroke="url(#lineGradient)" 
+                      
+                      {/* Animated paths from Data Sources to ChartrOS */}
+                      <motion.path 
+                        d="M 50 50 Q 150 60 200 150" 
+                        stroke="url(#lineGradient1)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
                       />
-                      <motion.line 
-                        x1="0" y1="100" x2="100" y2="100" 
-                        stroke="url(#lineGradient)" 
+                      <motion.path 
+                        d="M 50 150 Q 120 150 200 150" 
+                        stroke="url(#lineGradient2)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 0.6 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.7, ease: "easeInOut" }}
                       />
-                      <motion.line 
-                        x1="0" y1="150" x2="100" y2="150" 
-                        stroke="url(#lineGradient)" 
+                      <motion.path 
+                        d="M 50 250 Q 150 240 200 150" 
+                        stroke="url(#lineGradient3)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 0.7 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.9, ease: "easeInOut" }}
                       />
-                      <motion.line 
-                        x1="100" y1="50" x2="200" y2="50" 
-                        stroke="url(#lineGradient)" 
+                      
+                      {/* Animated paths from ChartrOS to Modular AI Workflows */}
+                      <motion.path 
+                        d="M 200 150 Q 280 60 350 50" 
+                        stroke="url(#lineGradientOut1)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 0.8 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 1.1, ease: "easeInOut" }}
                       />
-                      <motion.line 
-                        x1="100" y1="100" x2="200" y2="100" 
-                        stroke="url(#lineGradient)" 
+                      <motion.path 
+                        d="M 200 150 Q 280 150 350 150" 
+                        stroke="url(#lineGradientOut2)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 0.9 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 1.3, ease: "easeInOut" }}
                       />
-                      <motion.line 
-                        x1="100" y1="150" x2="200" y2="150" 
-                        stroke="url(#lineGradient)" 
+                      <motion.path 
+                        d="M 200 150 Q 280 240 350 250" 
+                        stroke="url(#lineGradientOut3)" 
                         strokeWidth="2"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1, delay: 1 }}
+                        fill="none"
+                        initial={{ pathLength: 0, opacity: 0 }}
+                        animate={{ pathLength: 1, opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 1.5, ease: "easeInOut" }}
                       />
+                      
+                      {/* Animated dots traveling along paths */}
+                      <circle r="4" fill="rgba(59, 130, 246, 0.8)">
+                        <animateMotion
+                          dur="3s"
+                          repeatCount="indefinite"
+                          begin="1.5s"
+                        >
+                          <mpath href="#path1" />
+                        </animateMotion>
+                      </circle>
+                      <circle r="4" fill="rgba(168, 85, 247, 0.8)">
+                        <animateMotion
+                          dur="3s"
+                          repeatCount="indefinite"
+                          begin="2s"
+                        >
+                          <mpath href="#path2" />
+                        </animateMotion>
+                      </circle>
+                      <circle r="4" fill="rgba(20, 184, 166, 0.8)">
+                        <animateMotion
+                          dur="3s"
+                          repeatCount="indefinite"
+                          begin="2.5s"
+                        >
+                          <mpath href="#path3" />
+                        </animateMotion>
+                      </circle>
+                      
+                      {/* Define paths for dots to follow */}
+                      <path id="path1" d="M 50 50 Q 150 60 200 150" fill="none" />
+                      <path id="path2" d="M 50 150 Q 120 150 200 150" fill="none" />
+                      <path id="path3" d="M 50 250 Q 150 240 200 150" fill="none" />
                     </svg>
                   </div>
                   
@@ -1165,7 +1250,7 @@ const Homepage = () => {
                       <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-xl flex items-center justify-center mx-auto mb-4">
                         <img src="/logo.svg" alt="ChartR" className="w-10 h-10 brightness-0 invert" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">ChartrOS Platform</h3>
+                      <h3 className="text-xl font-bold text-white mb-2">ChartrOS</h3>
                       <p className="text-sm text-slate-300">Clinical Retrieval Layer</p>
                       <div className="mt-4 flex flex-wrap gap-2 justify-center">
                         <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30">
