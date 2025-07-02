@@ -1096,22 +1096,13 @@ const Homepage = () => {
 
               {/* CTA Buttons */}
               <div className="mt-12 flex flex-wrap gap-4">
-                <Link href="/demo">
+                <Link href="/contact">
                   <motion.button 
                     className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     Request Demo
-                  </motion.button>
-                </Link>
-                <Link href="/docs">
-                  <motion.button 
-                    className="px-6 py-3 border border-slate-600 text-slate-300 font-semibold rounded-lg hover:bg-slate-800/50 hover:border-slate-500 transition-all"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    View Documentation
                   </motion.button>
                 </Link>
               </div>
@@ -1331,35 +1322,6 @@ const Homepage = () => {
                   </motion.div>
                 </div>
               </div>
-
-              {/* Floating badges - Updated */}
-              <motion.div 
-                className="absolute -top-4 -right-4 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-medium border border-emerald-400/30 backdrop-blur-sm"
-                initial={{ scale: 0, rotate: -12 }}
-                animate={{ scale: 1, rotate: -12 }}
-                transition={{ delay: 1, type: "spring" }}
-              >
-                No-Code Platform
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -bottom-4 -left-4 px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium border border-blue-400/30 backdrop-blur-sm"
-                initial={{ scale: 0, rotate: 12 }}
-                animate={{ scale: 1, rotate: 12 }}
-                transition={{ delay: 1.2, type: "spring" }}
-              >
-                HIPAA Compliant
-              </motion.div>
-
-              {/* Performance indicator */}
-              <motion.div 
-                className="absolute top-4 -right-4 px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium border border-purple-400/30 backdrop-blur-sm"
-                initial={{ scale: 0, x: 20 }}
-                animate={{ scale: 1, x: 0 }}
-                transition={{ delay: 1.4, type: "spring" }}
-              >
-                ROI in 30 days
-              </motion.div>
             </motion.div>
           </div>
         </div>
