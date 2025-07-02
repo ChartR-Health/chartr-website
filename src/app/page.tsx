@@ -1040,165 +1040,247 @@ const Homepage = () => {
 
             {/* Right: Interactive Demo */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden">
-                {/* Demo Header */}
-                <div className="bg-slate-700/50 px-6 py-4 border-b border-white/10">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+              {/* Workflow Builder Interface */}
+              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
+                {/* Header */}
+                <div className="bg-slate-800/80 px-6 py-4 border-b border-slate-700/50">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex space-x-2">
+                        <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
+                      </div>
+                      <span className="text-sm text-slate-300 font-medium">ChartrOS Control Center</span>
                     </div>
-                    <div className="bg-slate-600/50 rounded-lg px-4 py-2 text-sm text-slate-300 flex-1">
-                      ChartrOS Workflow Builder
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                        <span className="text-xs text-emerald-400 font-medium">Live</span>
+                      </div>
+                      <span className="text-xs text-slate-500">v2.4.1</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Demo Content */}
-                <div className="p-6 h-96">
-                  <div className="grid grid-cols-2 gap-6 h-full">
-                    {/* Left: Pre-Built Workflows */}
-                    <div>
-                      <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
-                        <Layers className="w-4 h-4 mr-2 text-emerald-400" />
-                        Pre-Built Templates
-                      </h5>
-                      <div className="space-y-3">
-                        {[
-                          { name: 'Risk Assessment', icon: Heart, color: 'emerald', status: 'Active' },
-                          { name: 'Clinical Decision Support', icon: Brain, color: 'blue', status: 'Ready' },
-                          { name: 'Regulatory Reporting', icon: FileCheck, color: 'purple', status: 'Ready' },
-                          { name: 'Patient Screening', icon: Users, color: 'teal', status: 'Ready' }
-                        ].map((template, i) => (
-                          <motion.div
-                            key={template.name}
-                            className={`bg-${template.color}-500/10 border border-${template.color}-400/30 rounded-lg p-4 cursor-pointer hover:bg-${template.color}-500/20 transition-all group ${i === 0 ? 'ring-2 ring-emerald-400/40' : ''}`}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center space-x-3">
-                                <template.icon className={`w-5 h-5 text-${template.color}-400`} />
-                                <span className="text-sm font-medium text-slate-200">{template.name}</span>
-                              </div>
-                              <div className={`px-2 py-1 bg-${template.color}-400/20 text-${template.color}-300 rounded text-xs font-medium`}>
-                                {template.status}
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                      
-                      {/* Create Custom Workflow */}
-                      <motion.div 
-                        className="mt-4 border-2 border-dashed border-slate-600/50 rounded-lg p-4 cursor-pointer hover:border-blue-400/50 hover:bg-blue-500/5 transition-all group"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: 1 }}
-                      >
-                        <div className="flex items-center justify-center space-x-2">
-                          <div className="w-8 h-8 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
-                            <span className="text-2xl text-slate-400 group-hover:text-blue-400 transition-colors">+</span>
-                          </div>
-                          <span className="text-sm font-medium text-slate-400 group-hover:text-blue-300 transition-colors">Create Custom Workflow</span>
-                        </div>
-                      </motion.div>
+                {/* Content */}
+                <div className="p-6">
+                  {/* Quick Stats Bar */}
+                  <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-slate-700/50">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-white">47</div>
+                      <div className="text-xs text-slate-400">Active Workflows</div>
                     </div>
-
-                    {/* Right: Workflow Configuration */}
-                    <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/50">
-                      <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
-                        <Heart className="w-4 h-4 mr-2 text-emerald-400" />
-                        Risk Assessment Configuration
-                      </h5>
-                      
-                      <div className="space-y-4">
-                        {/* Clinical Variables */}
-                        <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-400">Clinical Variables</span>
-                            <span className="text-xs text-emerald-400">8 selected</span>
-                          </div>
-                          <div className="flex flex-wrap gap-2">
-                            {['Age', 'Diabetes', 'Hypertension', 'Smoking'].map((variable, i) => (
-                              <motion.div
-                                key={variable}
-                                className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30"
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
-                                transition={{ delay: 1.2 + i * 0.1 }}
-                              >
-                                {variable}
-                              </motion.div>
-                            ))}
-                            <div className="px-3 py-1 bg-slate-600/50 text-slate-400 rounded-full text-xs border border-slate-500/50">
-                              +4 more
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Literature Sources */}
-                        <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-400">Literature Sources</span>
-                            <span className="text-xs text-blue-400">3 active</span>
-                          </div>
-                          <div className="space-y-2">
-                            <div className="flex items-center space-x-2 text-xs">
-                              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                              <span className="text-slate-300">AHA/ACC Guidelines</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-xs">
-                              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                              <span className="text-slate-300">Recent Clinical Studies</span>
-                            </div>
-                            <div className="flex items-center space-x-2 text-xs">
-                              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                              <span className="text-slate-300">Hospital Protocols</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Output Configuration */}
-                        <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-medium text-slate-400">Output Format</span>
-                            <span className="text-xs text-purple-400">Customized</span>
-                          </div>
-                          <div className="bg-slate-800/50 rounded-lg p-3">
-                            <div className="text-xs text-slate-300">
-                              Risk Score + Recommendations + Literature References
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Deploy Button */}
-                        <motion.button 
-                          className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-medium text-sm py-2 px-4 rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ delay: 1.5 }}
-                        >
-                          Deploy Workflow
-                        </motion.button>
-                      </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-emerald-400">98.3%</div>
+                      <div className="text-xs text-slate-400">Avg Accuracy</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-400">2.4M</div>
+                      <div className="text-xs text-slate-400">Records Processed</div>
                     </div>
                   </div>
+
+                  <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
+                    <Layers className="w-4 h-4 mr-2 text-emerald-400" />
+                    Deployed Workflows
+                  </h4>
+                  
+                  {/* Workflow Cards */}
+                  <div className="space-y-3">
+                    {/* Cardiovascular Risk Assessment */}
+                    <motion.div 
+                      className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 border border-emerald-500/30 rounded-lg p-4 hover:from-emerald-500/15 hover:to-emerald-600/15 transition-all cursor-pointer"
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Heart className="w-5 h-5 text-emerald-400" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-white flex items-center space-x-2">
+                              <span>ASCVD Risk Calculator</span>
+                              <span className="text-xs text-emerald-400 bg-emerald-400/20 px-2 py-0.5 rounded-full">AI Enhanced</span>
+                            </h5>
+                            <p className="text-xs text-slate-400 mt-1">ACC/AHA 2023 Guidelines + Literature Review</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                          <span className="text-xs text-emerald-300 font-medium">Active</span>
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-4 gap-3 text-xs">
+                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
+                          <div className="text-white font-semibold">18,742</div>
+                          <div className="text-slate-500 text-[10px]">Patients</div>
+                        </div>
+                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
+                          <div className="text-emerald-400 font-semibold">99.1%</div>
+                          <div className="text-slate-500 text-[10px]">Accuracy</div>
+                        </div>
+                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
+                          <div className="text-blue-400 font-semibold">3.2s</div>
+                          <div className="text-slate-500 text-[10px]">Avg Time</div>
+                        </div>
+                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
+                          <div className="text-purple-400 font-semibold">$847K</div>
+                          <div className="text-slate-500 text-[10px]">Saved YTD</div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Medicare Advantage Coding */}
+                    <motion.div 
+                      className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 border border-blue-500/30 rounded-lg p-4 hover:from-blue-500/15 hover:to-blue-600/15 transition-all cursor-pointer"
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <FileCheck className="w-5 h-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-white flex items-center space-x-2">
+                              <span>HCC Risk Adjustment</span>
+                              <span className="text-xs text-blue-400 bg-blue-400/20 px-2 py-0.5 rounded-full">Auto-Validated</span>
+                            </h5>
+                            <p className="text-xs text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <motion.div
+                            className="w-2 h-2 bg-blue-400 rounded-full"
+                            animate={{ opacity: [1, 0.3, 1] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                          />
+                          <span className="text-xs text-blue-300 font-medium">Processing</span>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-slate-700/30 rounded-lg p-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs text-slate-400">Q1 2024 Batch Processing</span>
+                          <span className="text-xs text-blue-400 font-medium">67%</span>
+                        </div>
+                        <div className="w-full bg-slate-700 rounded-full h-2">
+                          <motion.div 
+                            className="h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
+                            initial={{ width: "0%" }}
+                            animate={{ width: "67%" }}
+                            transition={{ duration: 1, delay: 0.8 }}
+                          />
+                        </div>
+                        <div className="flex justify-between mt-2 text-[10px] text-slate-500">
+                          <span>42,381 records complete</span>
+                          <span>ETA: 14 min</span>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Sepsis Screening */}
+                    <motion.div 
+                      className="bg-gradient-to-r from-purple-500/10 to-purple-600/10 border border-purple-500/30 rounded-lg p-4 hover:from-purple-500/15 hover:to-purple-600/15 transition-all cursor-pointer group"
+                      initial={{ x: 20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Activity className="w-5 h-5 text-purple-400" />
+                          </div>
+                          <div>
+                            <h5 className="font-semibold text-white flex items-center space-x-2">
+                              <span>Early Sepsis Detection</span>
+                              <span className="text-xs text-purple-400 bg-purple-400/20 px-2 py-0.5 rounded-full">ML Model v3</span>
+                            </h5>
+                            <p className="text-xs text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
+                          </div>
+                        </div>
+                        <span className="text-xs text-purple-300 font-medium">Ready</span>
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-slate-400">
+                          <span className="text-white font-medium">98.7%</span> sensitivity • 
+                          <span className="text-white font-medium"> 94.2%</span> specificity
+                        </div>
+                        <button className="px-3 py-1.5 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-purple-500/30">
+                          Deploy →
+                        </button>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Add New Workflow - Improved Design */}
+                  <motion.div 
+                    className="mt-4 bg-gradient-to-r from-slate-700/20 to-slate-600/20 border-2 border-dashed border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/5 hover:to-blue-500/5 transition-all cursor-pointer group"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
+                          <span className="text-2xl text-slate-400 group-hover:text-emerald-400 transition-colors">+</span>
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                            Deploy New AI Workflow
+                          </h5>
+                          <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+                            Choose from 50+ pre-built templates or create custom
+                          </p>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                    </div>
+                  </motion.div>
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500/20 rounded-full blur-sm" />
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-500/20 rounded-full blur-sm" />
+              {/* Floating badges - Updated */}
+              <motion.div 
+                className="absolute -top-4 -right-4 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-medium border border-emerald-400/30 backdrop-blur-sm"
+                initial={{ scale: 0, rotate: -12 }}
+                animate={{ scale: 1, rotate: -12 }}
+                transition={{ delay: 1, type: "spring" }}
+              >
+                No-Code Platform
+              </motion.div>
+              
+              <motion.div 
+                className="absolute -bottom-4 -left-4 px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium border border-blue-400/30 backdrop-blur-sm"
+                initial={{ scale: 0, rotate: 12 }}
+                animate={{ scale: 1, rotate: 12 }}
+                transition={{ delay: 1.2, type: "spring" }}
+              >
+                HIPAA Compliant
+              </motion.div>
+
+              {/* Performance indicator */}
+              <motion.div 
+                className="absolute top-4 -right-4 px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium border border-purple-400/30 backdrop-blur-sm"
+                initial={{ scale: 0, x: 20 }}
+                animate={{ scale: 1, x: 0 }}
+                transition={{ delay: 1.4, type: "spring" }}
+              >
+                ROI in 30 days
+              </motion.div>
             </motion.div>
           </div>
         </div>
