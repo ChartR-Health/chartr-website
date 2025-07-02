@@ -1057,61 +1057,116 @@ const Homepage = () => {
                     <div className="bg-slate-600/50 rounded-lg px-4 py-2 text-sm text-slate-300 flex-1">
                       ChartrOS Enterprise Dashboard
                     </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                      <span className="text-xs text-emerald-400 font-medium">Live</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Demo Content */}
-                <div className="p-6 h-96">
-                  <div className="grid grid-cols-2 gap-4 h-full">
-                    {/* Left: Modular Templates */}
-                    <div>
+                <div className="p-6 h-[500px]">
+                  <div className="grid grid-cols-3 gap-4 h-full">
+                    {/* Left: Workflow Templates */}
+                    <div className="space-y-4">
                       <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
-                        <Layers className="w-4 h-4 mr-2 text-emerald-400" />
-                        Pre-Built Templates
+                        <Network className="w-4 h-4 mr-2 text-emerald-400" />
+                        Modular Workflows
                       </h5>
-                      <div className="space-y-3">
+                      <div className="space-y-2 max-h-96 overflow-y-auto">
                         {[
-                          { name: 'Risk Assessment', icon: Heart, color: 'emerald', status: 'Active' },
-                          { name: 'Clinical Trials', icon: TestTube, color: 'blue', status: 'Ready' },
-                          { name: 'Compliance Reporting', icon: FileCheck, color: 'purple', status: 'Ready' },
-                          { name: 'Patient Screening', icon: Users, color: 'teal', status: 'Ready' }
+                          { name: 'Risk Assessment', icon: Heart, color: 'emerald', status: 'Active', patients: '1,247' },
+                          { name: 'Referral Triage', icon: Target, color: 'blue', status: 'Ready', patients: '892' },
+                          { name: 'Evidence-Based Decision Support', icon: BookOpen, color: 'purple', status: 'Ready', patients: '2,156' },
+                          { name: 'Regulatory Reporting', icon: FileCheck, color: 'amber', status: 'Ready', patients: '3,401' },
+                          { name: 'Patient Screening', icon: Users, color: 'teal', status: 'Ready', patients: '567' },
+                          { name: 'ML Pipeline Development', icon: Cpu, color: 'pink', status: 'Ready', patients: '4,872' }
                         ].map((template, i) => (
                           <motion.div
                             key={template.name}
-                            className={`bg-${template.color}-500/10 border border-${template.color}-400/30 rounded-lg p-3 cursor-pointer hover:bg-${template.color}-500/20 transition-all`}
+                            className={`bg-${template.color}-500/10 border border-${template.color}-400/30 rounded-lg p-3 cursor-pointer hover:bg-${template.color}-500/20 transition-all group`}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
                           >
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center space-x-2">
                                 <template.icon className={`w-4 h-4 text-${template.color}-400`} />
-                                <span className="text-sm font-medium text-slate-200">{template.name}</span>
+                                <span className="text-xs font-medium text-slate-200">{template.name}</span>
                               </div>
                               <div className={`px-2 py-1 bg-${template.color}-400/20 text-${template.color}-300 rounded text-xs`}>
                                 {template.status}
                               </div>
+                            </div>
+                            <div className="text-xs text-slate-400">
+                              {template.patients} patients processed
                             </div>
                           </motion.div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Right: Real-time Processing */}
+                    {/* Center: Active Workflow Details */}
+                    <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/50">
+                      <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
+                        <Heart className="w-4 h-4 mr-2 text-emerald-400" />
+                        Risk Assessment - Active
+                      </h5>
+                      
+                      {/* Clinical Retrieval Layer */}
+                      <div className="space-y-3">
+                        <div className="bg-slate-800/50 rounded-lg p-3">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-400">Clinical Retrieval Layer</span>
+                            <div className="flex items-center space-x-1">
+                              <div className="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"></div>
+                              <span className="text-xs text-emerald-400">Active</span>
+                            </div>
+                          </div>
+                          <div className="text-xs text-slate-300 space-y-1">
+                            <div>• Extracting comorbidities</div>
+                            <div>• Retrieving lab values</div>
+                            <div>• Analyzing medication history</div>
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-800/50 rounded-lg p-3">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-400">Literature Integration</span>
+                            <span className="text-xs text-blue-400">12 sources</span>
+                          </div>
+                          <div className="text-xs text-slate-300">
+                            AHA/ACC Guidelines, Recent Studies
+                          </div>
+                        </div>
+
+                        <div className="bg-slate-800/50 rounded-lg p-3">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-400">Custom Configuration</span>
+                            <span className="text-xs text-purple-400">Modified</span>
+                          </div>
+                          <div className="text-xs text-slate-300">
+                            Hospital-specific risk thresholds applied
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Real-time Processing & Insights */}
                     <div>
                       <h5 className="text-sm font-semibold text-slate-300 mb-4 flex items-center">
                         <Activity className="w-4 h-4 mr-2 text-blue-400" />
                         Real-time Processing
                       </h5>
-                      <div className="space-y-4">
-                        <div className="bg-slate-700/50 rounded-lg p-4">
+                      <div className="space-y-3">
+                        <div className="bg-slate-700/50 rounded-lg p-3">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm text-slate-300">Data Validation</span>
+                            <span className="text-xs text-slate-300">Data Validation</span>
                             <span className="text-xs text-emerald-400">✓ Complete</span>
                           </div>
-                          <div className="w-full bg-slate-600 rounded-full h-2">
+                          <div className="w-full bg-slate-600 rounded-full h-1.5">
                             <motion.div 
-                              className="bg-emerald-400 h-2 rounded-full"
+                              className="bg-emerald-400 h-1.5 rounded-full"
                               initial={{ width: 0 }}
                               animate={{ width: '100%' }}
                               transition={{ duration: 2, delay: 1 }}
@@ -1119,33 +1174,72 @@ const Homepage = () => {
                           </div>
                         </div>
 
-                        <div className="bg-slate-700/50 rounded-lg p-4">
+                        <div className="bg-slate-700/50 rounded-lg p-3">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm text-slate-300">AI Analysis</span>
-                            <span className="text-xs text-blue-400">In Progress</span>
+                            <span className="text-xs text-slate-300">AI Analysis</span>
+                            <span className="text-xs text-blue-400">Processing</span>
                           </div>
-                          <div className="w-full bg-slate-600 rounded-full h-2">
+                          <div className="w-full bg-slate-600 rounded-full h-1.5">
                             <motion.div 
-                              className="bg-blue-400 h-2 rounded-full"
+                              className="bg-blue-400 h-1.5 rounded-full"
                               initial={{ width: 0 }}
-                              animate={{ width: '75%' }}
+                              animate={{ width: '85%' }}
                               transition={{ duration: 3, delay: 1.5 }}
                             />
                           </div>
                         </div>
 
-                        <div className="bg-slate-700/50 rounded-lg p-4">
-                          <div className="flex items-center justify-between mb-3">
-                            <span className="text-sm text-slate-300">Clinical Insights</span>
-                            <Clock className="w-4 h-4 text-slate-400" />
+                        <div className="bg-slate-700/50 rounded-lg p-3">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-300">Human Validation</span>
+                            <span className="text-xs text-amber-400">Pending</span>
+                          </div>
+                          <div className="w-full bg-slate-600 rounded-full h-1.5">
+                            <motion.div 
+                              className="bg-amber-400 h-1.5 rounded-full"
+                              initial={{ width: 0 }}
+                              animate={{ width: '45%' }}
+                              transition={{ duration: 4, delay: 2 }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Clinical Insights */}
+                        <div className="bg-gradient-to-r from-slate-700/50 to-slate-600/50 rounded-lg p-3 border border-emerald-400/20">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-300">Clinical Insights</span>
+                            <TrendingUp className="w-3 h-3 text-emerald-400" />
                           </div>
                           <div className="grid grid-cols-2 gap-2 text-xs">
                             <div className="bg-emerald-500/20 text-emerald-300 px-2 py-1 rounded text-center">
-                              12 Risk Factors
+                              15 Risk Factors
                             </div>
                             <div className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-center">
-                              4 Recommendations
+                              6 Recommendations
                             </div>
+                            <div className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-center">
+                              3 Literature Refs
+                            </div>
+                            <div className="bg-amber-500/20 text-amber-300 px-2 py-1 rounded text-center">
+                              97% Confidence
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Workflow Builder */}
+                        <div className="bg-slate-800/50 rounded-lg p-3 border border-slate-600/30">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs text-slate-400">Workflow Builder</span>
+                            <motion.button 
+                              className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded hover:bg-blue-500/30 transition-colors"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              Customize
+                            </motion.button>
+                          </div>
+                          <div className="text-xs text-slate-300">
+                            Configure clinical variables, thresholds, and validation rules
                           </div>
                         </div>
                       </div>
@@ -1154,9 +1248,10 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500/20 rounded-full blur-sm" />
+              {/* Enhanced Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500/20 rounded-full blur-sm animate-pulse" />
               <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-500/20 rounded-full blur-sm" />
+              <div className="absolute top-1/2 -left-2 w-4 h-4 bg-purple-500/20 rounded-full blur-sm" />
             </motion.div>
           </div>
         </div>
