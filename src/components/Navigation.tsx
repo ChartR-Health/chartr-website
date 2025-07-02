@@ -43,15 +43,13 @@ const Navigation = () => {
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
-                  <img 
-                    src="/logo.svg" 
-                    alt="ChartR Logo" 
-                    className="w-6 h-6"
-                  />
-                </div>
+                <img 
+                  src="/logo.svg" 
+                  alt="ChartR Logo" 
+                  className="w-8 h-8 relative"
+                />
               </div>
-              <span className="text-2xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text">ChartR</span>
+              <span className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">ChartR</span>
             </Link>
           </div>
 
