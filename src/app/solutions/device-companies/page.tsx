@@ -169,10 +169,31 @@ const DeviceCompaniesSolutionsPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           >
             {marketStats.map((item, index) => (
-              <div key={index} className="text-center p-6 bg-white/5 backdrop-blur-lg rounded-xl border border-white/10">
-                <div className="text-3xl font-bold text-orange-400 mb-2">{item.stat}</div>
-                <div className="text-sm text-slate-300">{item.description}</div>
-              </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                className={`text-center p-6 bg-gradient-to-br ${
+                  index === 0 ? "from-orange-400/10 to-orange-500/10" :
+                  index === 1 ? "from-orange-500/10 to-orange-600/10" :
+                  index === 2 ? "from-orange-600/10 to-orange-700/10" :
+                  "from-orange-700/10 to-orange-700/10"
+                } backdrop-blur-lg rounded-2xl border ${
+                  index === 0 ? "border-orange-400/10" :
+                  index === 1 ? "border-orange-500/10" :
+                  index === 2 ? "border-orange-600/10" :
+                  "border-orange-700/10"
+                }`}
+              >
+                <div className={`text-4xl font-bold mb-2 ${
+                  index === 0 ? "text-orange-400" :
+                  index === 1 ? "text-orange-500" :
+                  index === 2 ? "text-orange-600" :
+                  "text-orange-700"
+                }`}>{item.stat}</div>
+                <div className="text-slate-300">{item.description}</div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -249,14 +270,30 @@ const DeviceCompaniesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-3xl p-8 border border-white/10"
+                className={`p-8 bg-gradient-to-br ${
+                  index === 0 ? "from-orange-400/10 to-orange-500/10" :
+                  index === 1 ? "from-orange-500/10 to-orange-600/10" :
+                  "from-orange-600/10 to-orange-700/10"
+                } backdrop-blur-lg rounded-2xl border ${
+                  index === 0 ? "border-orange-400/10" :
+                  index === 1 ? "border-orange-500/10" :
+                  "border-orange-600/10"
+                }`}
               >
-                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
+                <h3 className={`text-xl font-semibold mb-4 ${
+                  index === 0 ? "text-orange-400" :
+                  index === 1 ? "text-orange-500" :
+                  "text-orange-600"
+                }`}>{solution.title}</h3>
                 <p className="text-slate-300 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle className={`w-5 h-5 mt-0.5 ${
+                        index === 0 ? "text-orange-400" :
+                        index === 1 ? "text-orange-500" :
+                        "text-orange-600"
+                      }`} />
                       <span className="text-slate-300">{feature}</span>
                     </li>
                   ))}

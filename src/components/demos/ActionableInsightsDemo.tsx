@@ -294,47 +294,6 @@ export default function ActionableInsightsDemo() {
             </AnimatePresence>
           </div>
         </div>
-
-        {/* Overall Impact Summary */}
-        <motion.div 
-          className="mt-12 bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-xl rounded-2xl border border-slate-600/50 p-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Combined Healthcare Impact
-            </h3>
-            <p className="text-slate-300 max-w-3xl mx-auto">
-              ChartR's integrated platform delivers measurable results across all healthcare applications
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { icon: DollarSign, value: '$100M+', label: 'Total Healthcare Savings', color: 'text-emerald-400' },
-              { icon: Clock, value: '85%', label: 'Time Reduction', color: 'text-blue-400' },
-              { icon: Shield, value: '99.2%', label: 'Accuracy Rate', color: 'text-purple-400' },
-              { icon: Building2, value: '50+', label: 'Healthcare Organizations', color: 'text-amber-400' }
-            ].map((stat, index) => (
-              <motion.div 
-                key={index}
-                className="text-center p-4 bg-slate-800/30 rounded-xl border border-slate-700/50"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-slate-700/50 rounded-xl mb-4">
-                  <stat.icon className={`w-6 h-6 ${stat.color}`} />
-                </div>
-                <div className={`text-2xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
-                <p className="text-sm text-slate-400 font-medium">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )
