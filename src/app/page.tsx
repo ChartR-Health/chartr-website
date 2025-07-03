@@ -883,9 +883,9 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                Transform Healthcare Data.<br />
+                Next-Generation<br />
                 <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
-                  Save Millions.
+                  AI Infrastructure<br />For Healthcare
                 </span>
               </motion.h1>
               
@@ -896,7 +896,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                ChartR's AI platform automates clinical data extraction and registry reporting—turning months of manual work into minutes of intelligent automation.
+                ChartR's AI platform automates clinical data extraction and registry reporting, turning months of manual work into minutes of intelligent automation.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -1314,8 +1314,7 @@ const Homepage = () => {
               </h2>
               
               <p className="text-xl text-slate-300 mb-12 chartr-body">
-                ChartrOS delivers flexible, modular workflows that integrate seamlessly 
-                with your existing systems—deploy AI intelligence without disrupting operations.
+                Deploy AI intelligence without disrupting operations.
               </p>
 
               {/* Feature List */}
@@ -1620,7 +1619,7 @@ const Homepage = () => {
                             Deploy New AI Workflow
                           </h5>
                           <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
-                            Choose from 50+ pre-built templates or create custom
+                            Choose from 50+ pre-built templates or create custom ones
                           </p>
                         </div>
                       </div>
@@ -1633,11 +1632,6 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-
-      {/* Live Demo Sections */}
-      <DataExtractionDemo />
-      
-      <ActionableInsightsDemo />
 
       {/* Enterprise-Grade AI Section - Diagonal Layout */}
       <section className="py-24 relative overflow-hidden chartr-bg-diagonal">
@@ -1699,100 +1693,15 @@ const Homepage = () => {
 
           {/* Key Enterprise Features - Asymmetric Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              className="chartr-bg-floating p-8 shadow-2xl md:col-span-2 lg:col-span-1"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-6">
-                <Shield className="w-6 h-6 text-indigo-400" />
-              </div>
-              <h3 className="text-xl chartr-subheading text-white mb-4">Zero-Trust Architecture</h3>
-              <p className="text-slate-300 chartr-body mb-4">
-                Advanced encryption, role-based access controls, and continuous monitoring ensure 
-                your clinical data remains secure at every layer.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">AES-256 encryption at rest</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">TLS 1.3 in transit</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Multi-factor authentication</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="chartr-bg-floating p-8 shadow-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center mb-6">
-                <Database className="w-6 h-6 text-emerald-400" />
-              </div>
-              <h3 className="text-xl chartr-subheading text-white mb-4">Federated Learning</h3>
-              <p className="text-slate-300 chartr-body mb-4">
-                Train AI models collaboratively without centralized data sharing. 
-                Insights are shared, never raw patient data.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Data sovereignty maintained</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Edge-based processing</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Differential privacy</span>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="chartr-bg-floating p-8 shadow-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-6">
-                <Network className="w-6 h-6 text-purple-400" />
-              </div>
-              <h3 className="text-xl chartr-subheading text-white mb-4">Infinite Scalability</h3>
-              <p className="text-slate-300 chartr-body mb-4">
-                Multi-tenant architecture scales from single departments to 
-                entire health systems without performance degradation.
-              </p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Auto-scaling infrastructure</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">99.9% uptime SLA</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400 chartr-body">Global deployment ready</span>
-                </div>
-              </div>
-            </motion.div>
+            {/* Removed Zero-Trust Architecture, Federated Learning, and Infinite Scalability cards as requested */}
           </div>
-
-
         </div>
       </section>
+
+      {/* Live Demo Sections */}
+      <DataExtractionDemo />
+      
+      <ActionableInsightsDemo />
 
       {/* CTA Section */}
       <section className="py-16 relative overflow-hidden">
