@@ -295,28 +295,7 @@ export default function DataExtractionDemo() {
           </motion.div>
         </div>
 
-        {/* Workflow Benefits */}
-        <motion.div 
-          className="mt-12 grid md:grid-cols-4 gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          {[
-            { icon: Zap, title: "Lightning Fast", description: "AI processes in seconds", color: "text-purple-400" },
-            { icon: Eye, title: "Human Oversight", description: "Expert validation", color: "text-amber-400" },
-            { icon: Shield, title: "99.2% Accuracy", description: "Hybrid precision", color: "text-emerald-400" },
-            { icon: Target, title: "Registry Ready", description: "Structured output", color: "text-cyan-400" }
-          ].map((benefit, index) => (
-            <div key={index} className="text-center p-6 bg-slate-800/30 rounded-xl border border-slate-700/50">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-slate-700/50 rounded-xl mb-4">
-                <benefit.icon className={`w-6 h-6 ${benefit.color}`} />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-              <p className="text-slate-400 text-sm">{benefit.description}</p>
-            </div>
-          ))}
-        </motion.div>
+
       </div>
     </section>
   )

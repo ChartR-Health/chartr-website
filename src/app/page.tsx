@@ -1010,7 +1010,7 @@ const Homepage = () => {
                         <Database className="w-5 h-5 text-blue-400" />
                         <div>
                           <div className="font-medium text-slate-200">EMR Systems</div>
-                          <div className="text-xs text-slate-400">Epic, Cerner, Custom</div>
+                          <div className="text-xs text-slate-400">Epic, Cerner, Legacy Data</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1022,8 +1022,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Layers className="w-5 h-5 text-purple-400" />
                         <div>
-                          <div className="font-medium text-slate-200">AI Abstraction Tools</div>
-                          <div className="text-xs text-slate-400">Existing Solutions</div>
+                          <div className="font-medium text-slate-200">Existing AI Abstraction Tools</div>
+                          <div className="text-xs text-slate-400">Seamless integration, no vendor lock-in</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1036,7 +1036,7 @@ const Homepage = () => {
                         <BookOpen className="w-5 h-5 text-amber-400" />
                         <div>
                           <div className="font-medium text-slate-200">Scientific Literature</div>
-                          <div className="text-xs text-slate-400">Clinical Guidelines</div>
+                          <div className="text-xs text-slate-400">Evidence-based Practice</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1048,8 +1048,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <FileText className="w-5 h-5 text-teal-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Clinical Documents</div>
-                          <div className="text-xs text-slate-400">Unstructured Text</div>
+                          <div className="font-medium text-slate-200">Clinical Guidelines</div>
+                          <div className="text-xs text-slate-400">Real-Time Updates</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1170,13 +1170,12 @@ const Homepage = () => {
                         <img src="/logo.svg" alt="ChartR" className="w-10 h-10 brightness-0 invert" />
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">ChartrOS</h3>
-                      <p className="text-sm text-slate-300">Clinical Retrieval Layer</p>
                       <div className="mt-4 flex flex-wrap gap-6 justify-center">
                         <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30">
                           HIPAA Compliant
                         </span>
                         <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-400/30">
-                          AI-Native
+                          Clinical Retrieval Layer
                         </span>
                       </div>
                     </div>
@@ -1221,7 +1220,7 @@ const Homepage = () => {
                         <Users className="w-5 h-5 text-purple-400" />
                         <div>
                           <div className="font-medium text-slate-200">Patient Screening</div>
-                          <div className="text-xs text-slate-400">Eligibility Workflows</div>
+                          <div className="text-xs text-slate-400">Clinical Trials, Organ Donation</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1233,21 +1232,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Target className="w-5 h-5 text-amber-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Triage Workflows</div>
+                          <div className="font-medium text-slate-200">Referral Triage</div>
                           <div className="text-xs text-slate-400">Priority Classification</div>
-                        </div>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="bg-gradient-to-r from-teal-500/10 to-teal-600/10 border border-teal-500/30 rounded-lg p-4 hover:border-teal-400/50 transition-all"
-                      whileHover={{ x: -4 }}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <Brain className="w-5 h-5 text-teal-400" />
-                        <div>
-                          <div className="font-medium text-slate-200">Decision Support</div>
-                          <div className="text-xs text-slate-400">Clinical Intelligence</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1284,7 +1270,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Built for Enterprise Healthcare - Redesigned */}
+      {/* Modular AI Infrastructure */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -1295,13 +1281,13 @@ const Homepage = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                Enterprise-Grade AI.
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Built for Healthcare</span>
+                Modular AI Infrastructure.
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Seamless Integration</span>
               </h2>
               
               <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-                ChartrOS delivers the flexibility, security, and scale that healthcare 
-                organizations demand—with the simplicity your teams deserve.
+                ChartrOS delivers flexible, modular workflows that integrate seamlessly 
+                with your existing systems—deploy AI intelligence without disrupting operations.
               </p>
 
               {/* Feature List */}
@@ -1624,6 +1610,160 @@ const Homepage = () => {
       <DataExtractionDemo />
       
       <ActionableInsightsDemo />
+
+      {/* Enterprise-Grade AI Section */}
+      <section className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+                Enterprise-Grade AI.
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Built for Healthcare</span>
+              </h2>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Military-grade security, federated learning, and compliance-first architecture 
+                ensure your data never leaves your control while delivering enterprise-scale AI.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Compliance & Security Badges */}
+          <motion.div
+            className="flex flex-wrap justify-center gap-6 mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+              <Shield className="w-6 h-6 text-blue-400" />
+              <div>
+                <div className="text-sm font-semibold text-white">HIPAA Compliant</div>
+                <div className="text-xs text-slate-400">End-to-end encryption</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+              <CheckCircle className="w-6 h-6 text-emerald-400" />
+              <div>
+                <div className="text-sm font-semibold text-white">SOC 2 Type II</div>
+                <div className="text-xs text-slate-400">Audited security controls</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+              <Database className="w-6 h-6 text-purple-400" />
+              <div>
+                <div className="text-sm font-semibold text-white">Federated Learning</div>
+                <div className="text-xs text-slate-400">Data never leaves your environment</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+              <Network className="w-6 h-6 text-teal-400" />
+              <div>
+                <div className="text-sm font-semibold text-white">Multi-Tenant</div>
+                <div className="text-xs text-slate-400">Secure isolation & scalability</div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Key Enterprise Features */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Zero-Trust Architecture</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Advanced encryption, role-based access controls, and continuous monitoring ensure 
+                your clinical data remains secure at every layer.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">AES-256 encryption at rest</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">TLS 1.3 in transit</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Multi-factor authentication</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Database className="w-6 h-6 text-emerald-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Federated Learning</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Train AI models collaboratively without centralized data sharing. 
+                Insights are shared, never raw patient data.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Data sovereignty maintained</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Edge-based processing</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Differential privacy</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Network className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-4">Infinite Scalability</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Multi-tenant architecture scales from single departments to 
+                entire health systems without performance degradation.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Auto-scaling infrastructure</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">99.9% uptime SLA</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-400">Global deployment ready</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 relative overflow-hidden">
