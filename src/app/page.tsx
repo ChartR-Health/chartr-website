@@ -791,7 +791,7 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 overflow-hidden chartr-bg-primary">
+      <section className="relative pb-16 overflow-hidden chartr-bg-primary">
         {/* Subtle Hero Background */}
         <div className="absolute inset-0 chartr-bg-hero" />
         
@@ -851,7 +851,7 @@ const Homepage = () => {
         <div className="relative z-10">
           <div className="lg:flex lg:items-center">
             {/* Left Column - Text Content - Constrained */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-24">
               {/* ChartR Badge */}
               <motion.div 
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
@@ -873,7 +873,7 @@ const Homepage = () => {
                 >
                   <Layers className="w-4 h-4 text-white" />
                 </motion.div>
-                <span className="text-indigo-300 chartr-body-medium text-sm">AI-Enhanced Clinical Intelligence</span>
+                <span className="text-indigo-300 inter text-sm">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline */}
@@ -919,7 +919,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-12 px-4 sm:px-6 lg:px-0"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-12 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24"
             >
               <ASCVDHeroDemo />
             </motion.div>
@@ -928,7 +928,7 @@ const Homepage = () => {
       </section>
 
       {/* Introducing ChartrOS - Full-Width Accent Section */}
-      <section className="py-24 relative chartr-bg-accent border-t border-indigo-400/10 border-b border-indigo-400/10">
+      <section className="pt-12 pb-24 relative chartr-bg-accent border-t border-indigo-400/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -1042,7 +1042,7 @@ const Homepage = () => {
                 {/* ChartrOS Core - Center */}
                 <div className="relative">
                   {/* Enhanced Connection Lines with Bezier Curves */}
-                  <div className="hidden md:block absolute inset-0 -left-8 -right-8">
+                  <div className="absolute inset-0 -left-8 -right-8">
                     <svg className="w-full h-full" viewBox="0 0 400 300" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="lineGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1175,7 +1175,7 @@ const Homepage = () => {
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.8 }}
                     >
-                      Smart Review
+                      Auto RLHF
                     </motion.div>
 
                     {/* Bottom Right Badge */}
@@ -1185,7 +1185,7 @@ const Homepage = () => {
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 }}
                     >
-                      Sample #4
+                    Smart Review
                     </motion.div>
 
                     {/* Centered Logo and Title */}
@@ -1290,7 +1290,7 @@ const Homepage = () => {
                     <Shield className="w-6 h-6 text-pink-400" />
                   </div>
                   <h4 className="font-semibold text-white mb-2">Continuous Learning</h4>
-                  <p className="text-sm text-slate-400">HIPAA-compliant AI that improves with your data</p>
+                  <p className="text-sm text-slate-400">HIPAA-compliant AI that improves instantly</p>
                 </div>
               </div>
             </div>

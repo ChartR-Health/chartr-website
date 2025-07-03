@@ -77,8 +77,8 @@
 
   /* New Typography Classes */
   .chartr-brand {
-    font-family: var(--font-outfit);
-    font-weight: 900;
+    font-family: var(--font-inter);
+    font-weight: 700;
     letter-spacing: -0.02em;
   }
   

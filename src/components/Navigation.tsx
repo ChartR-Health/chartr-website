@@ -1,11 +1,18 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navigationItems = [
     {
@@ -31,17 +38,21 @@ const Navigation = () => {
     { name: 'Contact', href: '/contact' },
   ]
 
+  // Calculate opacity based on scroll position
+  const opacity = Math.max(0, 1 - scrollY / 300)
+
   return (
-    <nav className="chartr-bg-primary backdrop-blur-sm sticky top-0 z-50 relative border-b border-white/5">
-      {/* Additional subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5" />
+    <nav 
+      className="backdrop-blur-sm sticky top-0 z-50 relative transition-opacity duration-300"
+      style={{ opacity }}
+    >
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-6 lg:px-0 relative z-10">
         <div className="flex justify-between items-center h-16">
-          {/* Logo - Left aligned */}
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
+          {/* Logo - Left aligned with manual padding */}
+          <div className="flex items-center lg:pl-12">
+            <Link href="/" className="flex items-center space-x-2 group">
+              <div className="relative flex items-center">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
                 <img 
                   src="/logo.svg" 
@@ -49,13 +60,13 @@ const Navigation = () => {
                   className="w-8 h-8 relative"
                 />
               </div>
-              <span className="text-2xl chartr-brand text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text">ChartR</span>
+              <span className="text-2xl chartr-brand text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text leading-none">ChartR</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation - Right aligned */}
-          <div className="hidden md:flex items-center">
-            <div className="flex items-center space-x-8">
+          {/* Desktop Navigation - Positioned manually */}
+          <div className="hidden md:flex">
+            <div className="flex items-center space-x-4 lg:mr-24">
               {navigationItems.map((item) => (
                 <div key={item.name} className="relative group">
                   {item.submenu ? (
