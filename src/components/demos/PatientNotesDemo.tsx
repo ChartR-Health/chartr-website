@@ -51,33 +51,30 @@ LDL: 95 mg/dL`
   ]
 
   return (
-    <section className="py-16 bg-slate-900 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl" />
+    <section className="py-24 relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-400/20 rounded-full px-4 py-2 mb-4">
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border border-blue-400/20 rounded-full px-6 py-3 mb-6">
             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
             <span className="text-sm font-medium text-blue-300">LIVE DEMO</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            From <span className="text-slate-400">Clinical Notes</span> to{' '}
-            <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
-              Structured Data
-            </span>
+          <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+            From Clinical Notes to Structured Data
           </h2>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
             Watch ChartR automatically extract and structure clinical variables from unstructured EMR notes
           </p>
         </motion.div>
@@ -91,11 +88,11 @@ LDL: 95 mg/dL`
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden">
+            <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
-                <div className="p-2 bg-slate-700/50 rounded-lg">
-                  <FileText className="w-5 h-5 text-slate-300" />
+              <div className="flex items-center space-x-3 p-6 border-b border-white/10 bg-gradient-to-r from-red-500/5 to-orange-500/5">
+                <div className="p-2 bg-red-500/20 rounded-lg">
+                  <FileText className="w-5 h-5 text-red-300" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">Raw Clinical Notes</h3>
@@ -105,7 +102,7 @@ LDL: 95 mg/dL`
               
               {/* Content */}
               <div className="p-6">
-                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/30">
+                <div className="bg-slate-900/30 rounded-lg p-4 border border-white/5">
                   <pre className="text-sm text-slate-300 whitespace-pre-wrap font-mono leading-relaxed overflow-hidden">
                     {rawNote}
                   </pre>
@@ -128,7 +125,7 @@ LDL: 95 mg/dL`
           {/* Transformation Arrow */}
           <div className="hidden lg:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
             <motion.div
-              className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-full p-4 shadow-2xl"
+              className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full p-4 shadow-2xl shadow-blue-500/25"
               animate={{ 
                 scale: [1, 1.1, 1],
                 rotate: [0, 360]
@@ -149,9 +146,9 @@ LDL: 95 mg/dL`
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-emerald-700/50 overflow-hidden">
+            <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
+              <div className="flex items-center space-x-3 p-6 border-b border-white/10 bg-gradient-to-r from-emerald-500/5 to-green-500/5">
                 <div className="p-2 bg-emerald-500/20 rounded-lg">
                   <Database className="w-5 h-5 text-emerald-400" />
                 </div>
@@ -171,7 +168,7 @@ LDL: 95 mg/dL`
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg border border-slate-700/30"
+                        className="flex items-center justify-between p-3 bg-slate-900/30 rounded-lg border border-white/5"
                       >
                         <div className="flex items-center space-x-3">
                           <CheckCircle className="w-4 h-4 text-emerald-400" />
@@ -211,7 +208,7 @@ LDL: 95 mg/dL`
 
         {/* Key Benefits */}
         <motion.div 
-          className="mt-12 grid md:grid-cols-3 gap-6"
+          className="mt-16 grid md:grid-cols-3 gap-6"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -221,13 +218,22 @@ LDL: 95 mg/dL`
             { icon: CheckCircle, title: "96% Accuracy", description: "AI precision with human validation" },
             { icon: Database, title: "Structured Output", description: "Registry-ready clinical variables" }
           ].map((benefit, index) => (
-            <div key={index} className="text-center p-6 bg-slate-800/30 rounded-xl border border-slate-700/50">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-xl mb-4">
-                <benefit.icon className="w-6 h-6 text-blue-400" />
+            <motion.div 
+              key={index} 
+              className="relative group"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="relative text-center p-6 bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/10 h-full">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-xl mb-4">
+                  <benefit.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
+                <p className="text-slate-300 text-sm">{benefit.description}</p>
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{benefit.title}</h3>
-              <p className="text-slate-400 text-sm">{benefit.description}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import PatientNotesDemo from '@/components/demos/PatientNotesDemo'
 
 import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Database, BarChart3, CheckCircle, Users, Clock, Shield, Activity, TrendingUp, Building, Brain, FileUp, Settings } from 'lucide-react'
@@ -223,6 +224,9 @@ const ClinicalPage = () => {
         </div>
       </section>
 
+      {/* Clinical Notes to Structured Data Demo */}
+      <PatientNotesDemo />
+
       {/* Features Section */}
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -277,8 +281,6 @@ const ClinicalPage = () => {
           </div>
         </div>
       </section>
-
-
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">

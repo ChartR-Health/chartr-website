@@ -95,11 +95,14 @@ export default function DataExtractionDemo() {
   }, [])
 
   return (
-    <section className="py-16 bg-slate-800/50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl" />
+    <section className="py-16 relative overflow-hidden">
+      {/* Subtle gradient transition */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-transparent"></div>
+      
+      {/* Background Elements - More subtle */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

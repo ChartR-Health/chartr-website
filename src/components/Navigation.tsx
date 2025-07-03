@@ -32,13 +32,13 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="bg-slate-900/80 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50 relative">
-      {/* Gradient Background Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-800/90 to-slate-900/90 backdrop-blur-xl" />
+    <nav className="bg-gradient-to-br from-slate-900 to-slate-800 backdrop-blur-sm sticky top-0 z-50 relative">
+      {/* Additional subtle gradient overlay to match hero exactly */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-slate-900" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+        <div className="flex justify-between items-center h-16">
+          {/* Logo - Left aligned */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
@@ -53,8 +53,8 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex items-center justify-center flex-1">
+          {/* Desktop Navigation - Right aligned */}
+          <div className="hidden md:flex items-center">
             <div className="flex items-center space-x-8">
               {navigationItems.map((item) => (
                 <div key={item.name} className="relative group">
@@ -64,7 +64,7 @@ const Navigation = () => {
                         <span>{item.name}</span>
                         <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
                       </button>
-                      <div className="absolute top-full left-0 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2 z-50">
+                      <div className="absolute top-full right-0 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2 z-50">
                         <div className="relative">
                           <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-lg" />
                           <div className="relative bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
@@ -106,9 +106,6 @@ const Navigation = () => {
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
-
-          {/* Desktop spacer to balance logo */}
-          <div className="hidden md:block w-10"></div>
         </div>
 
         {/* Mobile Navigation */}

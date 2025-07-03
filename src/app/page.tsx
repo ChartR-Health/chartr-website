@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import PatientNotesDemo from '@/components/demos/PatientNotesDemo'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import ActionableInsightsDemo from '@/components/demos/ActionableInsightsDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
@@ -791,16 +790,19 @@ const Homepage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+      {/* Very subtle background gradient that flows throughout */}
+      <div className="fixed inset-0 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 pointer-events-none" />
+      
       {/* Subtle Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-slate-700/10 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/3 rounded-full blur-3xl" />
         
-        {/* Minimal Grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.01]">
+        {/* Very subtle grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.02]">
           <div className="h-full w-full" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.2) 1px, transparent 0)`,
-            backgroundSize: '60px 60px'
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+            backgroundSize: '50px 50px'
           }} />
         </div>
       </div>
@@ -898,11 +900,10 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                Next-Generation<br />
-                <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
-                  AI Infrastructure
-                </span><br />
-                For Healthcare
+                Transform Healthcare Data.<br />
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
+                  Save Millions.
+                </span>
               </motion.h1>
               
               {/* Enhanced Subtitle */}
@@ -912,7 +913,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                ChartR powers enterprise healthcare with advanced AI orchestration, human validation, and intelligent workflows—delivering predictive insights, regulatory compliance, and clinical excellence at scale.
+                ChartR's AI platform automates clinical data extraction and registry reporting—turning months of manual work into minutes of intelligent automation.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -923,8 +924,8 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link href="/contact?tab=demo">
-                  <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    See ChartR in Action
+                  <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Book a Demo
                   </button>
                 </Link>
               </motion.div>
@@ -943,17 +944,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
-      
       {/* Introducing ChartrOS - Redesigned as Content Section */}
-      <section className="py-24 relative bg-gradient-to-b from-slate-900 to-slate-800">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-        </div>
-
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -982,19 +974,17 @@ const Homepage = () => {
               </div>
             </motion.div>
             
-                          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                AI-Native Platform
-                <br />
-                for{'  '}
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
-                  Modular Clinical AI Integration
-                </span>
-              </h2>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+              The Industry's First
+              <br />
+              <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
+                AI-Native Healthcare OS
+              </span>
+            </h2>
             
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              ChartrOS enables healthcare organizations to deploy AI workflows with unprecedented flexibility. 
-              Our platform intelligently identifies relevant clinical information and seamlessly integrates with 
-              any EMR system or existing AI abstraction solution.
+              ChartrOS revolutionizes healthcare data interactions with intelligent retrieval, real-time validation, 
+              and seamless AI integration - go from clinical data to actionable intelligence at unprecedented pace and accuracy.
             </p>
           </motion.div>
 
@@ -1034,6 +1024,19 @@ const Homepage = () => {
                         <div>
                           <div className="font-medium text-slate-200">AI Abstraction Tools</div>
                           <div className="text-xs text-slate-400">Existing Solutions</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4 hover:border-amber-500/50 transition-all"
+                      whileHover={{ x: 4 }}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <BookOpen className="w-5 h-5 text-amber-400" />
+                        <div>
+                          <div className="font-medium text-slate-200">Scientific Literature</div>
+                          <div className="text-xs text-slate-400">Clinical Guidelines</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1192,7 +1195,7 @@ const Homepage = () => {
                         <Heart className="w-5 h-5 text-emerald-400" />
                         <div>
                           <div className="font-medium text-slate-200">Risk Assessment</div>
-                          <div className="text-xs text-slate-400">Clinical Frameworks</div>
+                          <div className="text-xs text-slate-400">ASCVD, Sepsis, Readmission</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1209,16 +1212,42 @@ const Homepage = () => {
                         </div>
                       </div>
                     </motion.div>
-                    
+
                     <motion.div 
                       className="bg-gradient-to-r from-purple-500/10 to-purple-600/10 border border-purple-500/30 rounded-lg p-4 hover:border-purple-400/50 transition-all"
                       whileHover={{ x: -4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Brain className="w-5 h-5 text-purple-400" />
+                        <Users className="w-5 h-5 text-purple-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Clinical Intelligence</div>
-                          <div className="text-xs text-slate-400">Actionable Insights</div>
+                          <div className="font-medium text-slate-200">Patient Screening</div>
+                          <div className="text-xs text-slate-400">Eligibility Workflows</div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    <motion.div 
+                      className="bg-gradient-to-r from-amber-500/10 to-amber-600/10 border border-amber-500/30 rounded-lg p-4 hover:border-amber-400/50 transition-all"
+                      whileHover={{ x: -4 }}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <Target className="w-5 h-5 text-amber-400" />
+                        <div>
+                          <div className="font-medium text-slate-200">Triage Workflows</div>
+                          <div className="text-xs text-slate-400">Priority Classification</div>
+                        </div>
+                      </div>
+                    </motion.div>
+                    
+                    <motion.div 
+                      className="bg-gradient-to-r from-teal-500/10 to-teal-600/10 border border-teal-500/30 rounded-lg p-4 hover:border-teal-400/50 transition-all"
+                      whileHover={{ x: -4 }}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <Brain className="w-5 h-5 text-teal-400" />
+                        <div>
+                          <div className="font-medium text-slate-200">Decision Support</div>
+                          <div className="text-xs text-slate-400">Clinical Intelligence</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1256,7 +1285,7 @@ const Homepage = () => {
       </section>
 
       {/* Built for Enterprise Healthcare - Redesigned */}
-      <section className="py-24 relative bg-slate-900">
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left: Content */}
@@ -1591,295 +1620,15 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
-      
-      {/* ChartR Modular Ecosystem */}
-      <section className="py-20 relative bg-slate-800/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-6 tracking-tight">
-              <span className="text-transparent bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text">ChartR Layer</span>
-              <br />
-              + Modular Ecosystem
-            </h2>
-            <motion.div 
-              className="max-w-4xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <p className="text-xl text-slate-300 text-center leading-relaxed mb-8">
-                ChartR Layer identifies the most relevant clinical information from unstructured or structured text, while our modular ecosystem provides ready-to-use clinical workflows. 
-                <span className="block mt-2 text-lg text-slate-400">
-                  <span className="font-semibold text-blue-300">EMR & Model Agnostic</span> — integrates on top of any AI abstraction tools
-                </span>
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Platform Interface Mockup */}
-          <motion.div 
-            className="relative max-w-6xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-              {/* Mock Browser Header */}
-              <div className="bg-slate-700/50 px-6 py-4 border-b border-white/10">
-                <div className="flex items-center space-x-3">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                  <div className="bg-slate-600/50 rounded-lg px-4 py-2 text-sm text-slate-300 flex-1 max-w-md">
-                    ChartR Clinical Intelligence Platform
-                  </div>
-                </div>
-              </div>
-
-              {/* Main Interface */}
-              <div className="grid lg:grid-cols-[300px,1fr] h-[600px]">
-                {/* Left Sidebar - Modular Components */}
-                <div className="bg-slate-700/30 border-r border-white/10 p-6">
-                  <h3 className="text-lg font-semibold text-white mb-6 flex items-center">
-                    <Network className="w-5 h-5 mr-2 text-blue-400" />
-                    Modular Workflows
-                  </h3>
-                  
-                  <div className="space-y-4">
-                    {/* Clinical Guidelines */}
-                    <div className="bg-slate-600/50 rounded-lg p-4 border border-blue-500/30 ring-2 ring-blue-400/20">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Heart className="w-5 h-5 text-blue-400" />
-                        <span className="font-medium text-blue-200">Risk Assessment</span>
-                      </div>
-                      <p className="text-xs text-slate-400">ASCVD Risk Calculator</p>
-                    </div>
-
-                    {/* Patient Screening */}
-                    <div className="bg-slate-600/30 rounded-lg p-4 border border-slate-500/30 hover:border-purple-500/30 hover:bg-slate-600/40 transition-all cursor-pointer">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Users className="w-5 h-5 text-slate-400 hover:text-purple-400 transition-colors" />
-                        <span className="font-medium text-slate-300">Patient Screening</span>
-                      </div>
-                      <p className="text-xs text-slate-400">Eligibility Workflows</p>
-                    </div>
-
-                    {/* Triage Workflows */}
-                    <div className="bg-slate-600/30 rounded-lg p-4 border border-slate-500/30 hover:border-green-500/30 hover:bg-slate-600/40 transition-all cursor-pointer">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Target className="w-5 h-5 text-slate-400 hover:text-green-400 transition-colors" />
-                        <span className="font-medium text-slate-300">Triage Workflows</span>
-                      </div>
-                      <p className="text-xs text-slate-400">Priority Classification</p>
-                    </div>
-
-                    {/* Clinical Guidelines */}
-                    <div className="bg-slate-600/30 rounded-lg p-4 border border-slate-500/30 hover:border-amber-500/30 hover:bg-slate-600/40 transition-all cursor-pointer">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <BookOpen className="w-5 h-5 text-slate-400 hover:text-amber-400 transition-colors" />
-                        <span className="font-medium text-slate-300">Clinical Guidelines</span>
-                      </div>
-                      <p className="text-xs text-slate-400">Evidence-Based Protocols</p>
-                    </div>
-
-                    {/* Decision Support */}
-                    <div className="bg-slate-600/30 rounded-lg p-4 border border-slate-500/30 hover:border-teal-500/30 hover:bg-slate-600/40 transition-all cursor-pointer">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Brain className="w-5 h-5 text-slate-400 hover:text-teal-400 transition-colors" />
-                        <span className="font-medium text-slate-300">Decision Support</span>
-                      </div>
-                      <p className="text-xs text-slate-400">Clinical Decision Making</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Main Content - Selected Workflow */}
-                <div className="p-6">
-                  <div className="mb-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-xl font-semibold text-white flex items-center">
-                        <Heart className="w-6 h-6 mr-2 text-blue-400" />
-                        ASCVD Risk Assessment
-                      </h4>
-                      <div className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">
-                        Active Workflow
-                      </div>
-                    </div>
-                    <p className="text-slate-400 mb-6">
-                      Automated cardiovascular risk calculation using ChartR-extracted clinical data
-                    </p>
-                  </div>
-
-                  {/* Clinical Note with Highlights */}
-                  <div className="grid grid-cols-2 gap-6 h-96">
-                    {/* Original Clinical Note */}
-                    <div>
-                      <h5 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
-                        <FileText className="w-4 h-4 mr-2" />
-                        Clinical Note
-                      </h5>
-                      <div className="bg-slate-700/50 rounded-lg p-4 text-sm text-slate-300 leading-relaxed h-full overflow-y-auto">
-                        <p className="mb-3">
-                          <span className="text-slate-400">Patient:</span> 58-year-old male presents for routine follow-up.
-                        </p>
-                        <p className="mb-3">
-                          <span className="text-slate-400">History:</span> <span className="bg-red-500/20 text-red-300 px-1 rounded">Diabetes mellitus type 2</span> for 8 years, well-controlled on metformin. <span className="bg-orange-500/20 text-orange-300 px-1 rounded">Hypertension</span> managed with lisinopril 10mg daily. Former <span className="bg-yellow-500/20 text-yellow-300 px-1 rounded">smoker</span> (quit 5 years ago, 20 pack-year history).
-                        </p>
-                        <p className="mb-3">
-                          <span className="text-slate-400">Vitals:</span> BP <span className="bg-blue-500/20 text-blue-300 px-1 rounded">142/88</span>, HR 76, BMI 29.2
-                        </p>
-                        <p className="mb-3">
-                          <span className="text-slate-400">Labs:</span> <span className="bg-green-500/20 text-green-300 px-1 rounded">Total cholesterol 245</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">LDL 165</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">HDL 38</span>, HbA1c 7.2%
-                        </p>
-                        <p>
-                          <span className="text-slate-400">Assessment:</span> Continuing current management plan. Consider statin therapy given risk factors.
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Extracted Risk Data */}
-                    <div>
-                      <h5 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
-                        <BarChart3 className="w-4 h-4 mr-2" />
-                        ChartR Extracted Data
-                      </h5>
-                      <div className="bg-slate-700/50 rounded-lg p-4 h-full">
-                        <div className="space-y-4">
-                          {/* Risk Factors */}
-                          <div>
-                            <h6 className="text-xs font-semibold text-slate-400 mb-2">RISK FACTORS</h6>
-                            <div className="space-y-2">
-                              <div className="flex justify-between items-center bg-red-500/10 rounded px-2 py-1">
-                                <span className="text-red-300 text-sm">Diabetes</span>
-                                <CheckCircle className="w-4 h-4 text-red-400" />
-                              </div>
-                              <div className="flex justify-between items-center bg-orange-500/10 rounded px-2 py-1">
-                                <span className="text-orange-300 text-sm">Hypertension</span>
-                                <CheckCircle className="w-4 h-4 text-orange-400" />
-                              </div>
-                              <div className="flex justify-between items-center bg-yellow-500/10 rounded px-2 py-1">
-                                <span className="text-yellow-300 text-sm">Former Smoker</span>
-                                <CheckCircle className="w-4 h-4 text-yellow-400" />
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Lab Values */}
-                          <div>
-                            <h6 className="text-xs font-semibold text-slate-400 mb-2">LAB VALUES</h6>
-                            <div className="space-y-2">
-                              <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                                <span className="text-slate-300 text-sm">Total Cholesterol</span>
-                                <span className="text-green-300 text-sm">245 mg/dL</span>
-                              </div>
-                              <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                                <span className="text-slate-300 text-sm">LDL</span>
-                                <span className="text-green-300 text-sm">165 mg/dL</span>
-                              </div>
-                              <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                                <span className="text-slate-300 text-sm">HDL</span>
-                                <span className="text-green-300 text-sm">38 mg/dL</span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Risk Score */}
-                          <div className="bg-blue-500/20 rounded-lg p-3 border border-blue-400/30">
-                            <h6 className="text-xs font-semibold text-blue-300 mb-2">ASCVD RISK SCORE</h6>
-                            <div className="text-center">
-                              <div className="text-3xl font-bold text-blue-300">22.4%</div>
-                              <div className="text-sm text-blue-400">10-Year Risk</div>
-                              <div className="mt-2 bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs">
-                                High Risk - Statin Recommended
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Key Benefits */}
-          <motion.div 
-            className="mt-16 grid md:grid-cols-3 gap-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Layers className="w-8 h-8 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">ChartR Layer</h3>
-              <p className="text-slate-400 text-sm">
-                Identifies and extracts the most relevant clinical information from any text format
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Network className="w-8 h-8 text-purple-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">Modular Ecosystem</h3>
-              <p className="text-slate-400 text-sm">
-                Pre-built clinical workflows for risk assessment, screening, triage, and decision support
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Cpu className="w-8 h-8 text-green-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2">EMR & Model Agnostic</h3>
-              <p className="text-slate-400 text-sm">
-                Integrates seamlessly with any EMR system or AI abstraction tools
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
-
       {/* Live Demo Sections */}
-      <PatientNotesDemo />
-      
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
-      
       <DataExtractionDemo />
-      
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
       
       <ActionableInsightsDemo />
 
-      {/* Section Separator */}
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-700/50 to-transparent"></div>
-
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden bg-slate-800/60">
-        {/* Subtle Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800" />
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-slate-600/30 rounded-full blur-3xl" />
-        </div>
+      <section className="py-16 relative overflow-hidden">
+        {/* Subtle gradient transition */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-850/80" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div

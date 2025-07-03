@@ -107,11 +107,14 @@ export default function ActionableInsightsDemo() {
   const Icon = currentApp.icon
 
   return (
-    <section className="py-16 bg-slate-900/50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl" />
+    <section className="py-16 relative overflow-hidden">
+      {/* Subtle gradient transition */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-slate-900/40"></div>
+      
+      {/* Background Elements - More subtle */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
