@@ -414,7 +414,7 @@ const Homepage = () => {
     }, []);
 
     return (
-      <div className="relative w-full h-full">
+      <div className="relative w-full">
         {/* Main Container with Glass Effect */}
         <motion.div 
           className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl"
@@ -437,177 +437,138 @@ const Homepage = () => {
 
           {/* Main Content */}
           <div className="p-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Left: Patient Data Input */}
-              <div className="space-y-4">
-                <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                  ChartR Auto-Extracted Data
+                        <div className="grid md:grid-cols-2 gap-6 min-h-96">
+              {/* Left: Clinical Notes with Highlights */}
+              <div className="flex flex-col">
+                <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
+                  <FileText className="w-4 h-4 mr-2" />
+                  Clinical Notes
                 </h4>
-                
-                {/* Risk Factors */}
                 <motion.div 
-                  className="space-y-2"
+                  className="bg-slate-700/50 rounded-lg p-4 text-sm text-slate-300 leading-relaxed flex-1"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="flex items-center justify-between bg-red-500/10 rounded-lg px-3 py-2 border border-red-500/20">
-                    <span className="text-sm text-red-300">Diabetes Type 2</span>
-                    <CheckCircle className="w-4 h-4 text-red-400" />
+                  <div className="mb-6 pb-4 border-b border-slate-600/50">
+                    <p className="text-xs text-slate-500 mb-3">Note 1 - Cardiology Consultation</p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">CC:</span> 58-year-old male referred for cardiovascular risk assessment.
+                    </p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">PMH:</span> <span className="bg-red-500/20 text-red-300 px-1 rounded">DM Type 2</span> x 8 years, <span className="bg-orange-500/20 text-orange-300 px-1 rounded">HTN</span> on ACE inhibitor.
+                    </p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">Recent Labs:</span> <span className="bg-green-500/20 text-green-300 px-1 rounded">TC 245</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">LDL-C 165</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">HDL-C 38</span> mg/dL, HbA1c 7.2%.
+                    </p>
                   </div>
-                  <div className="flex items-center justify-between bg-orange-500/10 rounded-lg px-3 py-2 border border-orange-500/20">
-                    <span className="text-sm text-orange-300">Hypertension</span>
-                    <CheckCircle className="w-4 h-4 text-orange-400" />
-                  </div>
-                  <div className="flex items-center justify-between bg-yellow-500/10 rounded-lg px-3 py-2 border border-yellow-500/20">
-                    <span className="text-sm text-yellow-300">Former Smoker</span>
-                    <CheckCircle className="w-4 h-4 text-yellow-400" />
+                  
+                  <div>
+                    <p className="text-xs text-slate-500 mb-3">Note 2 - Primary Care Follow-up</p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">HPI:</span> Patient returns for routine DM management. Denies chest pain, SOB, or palpitations.
+                    </p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">SH:</span> Former <span className="bg-yellow-500/20 text-yellow-300 px-1 rounded">tobacco user</span> (20 pk-yr, quit 2019). Denies ETOH.
+                    </p>
+                    <p className="mb-2">
+                      <span className="text-slate-400">Vitals:</span> BP <span className="bg-blue-500/20 text-blue-300 px-1 rounded">142/88</span> mmHg, HR 76 bpm, BMI 29.2 kg/m².
+                    </p>
+
                   </div>
                 </motion.div>
+              </div>
 
-                {/* Lab Values */}
+              {/* Right: ChartR Extracted Data */}
+              <div className="flex flex-col">
+                <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
+                  <BarChart3 className="w-4 h-4 mr-2" />
+                  ChartR Extracted Data
+                </h4>
                 <motion.div 
-                  className="space-y-2"
-                  initial={{ opacity: 0, x: -20 }}
+                  className="bg-slate-700/50 rounded-lg p-4 flex-1"
+                  initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mt-4">
-                    Lab Values
-                  </h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-slate-700/50 rounded-lg px-3 py-2">
-                      <div className="text-xs text-slate-400">Total Chol</div>
-                      <div className="text-sm font-medium text-green-300">245 mg/dL</div>
-                    </div>
-                    <div className="bg-slate-700/50 rounded-lg px-3 py-2">
-                      <div className="text-xs text-slate-400">LDL</div>
-                      <div className="text-sm font-medium text-green-300">165 mg/dL</div>
-                    </div>
-                    <div className="bg-slate-700/50 rounded-lg px-3 py-2">
-                      <div className="text-xs text-slate-400">HDL</div>
-                      <div className="text-sm font-medium text-green-300">38 mg/dL</div>
-                    </div>
-                    <div className="bg-slate-700/50 rounded-lg px-3 py-2">
-                      <div className="text-xs text-slate-400">BP</div>
-                      <div className="text-sm font-medium text-blue-300">142/88</div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Right: Risk Score Display */}
-              <div className="flex items-center justify-center">
-                <motion.div 
-                  className="relative"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  {/* Risk Score Circle */}
-                  <div className="relative w-48 h-48">
-                    <svg className="w-full h-full transform -rotate-90">
-                      <circle
-                        cx="96"
-                        cy="96"
-                        r="80"
-                        stroke="rgba(71, 85, 105, 0.3)"
-                        strokeWidth="12"
-                        fill="none"
-                      />
-                      <motion.circle
-                        cx="96"
-                        cy="96"
-                        r="80"
-                        stroke="url(#riskGradient)"
-                        strokeWidth="12"
-                        fill="none"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: isCalculating ? 0 : riskScore / 100 }}
-                        transition={{ duration: 2, ease: "easeInOut" }}
-                        style={{
-                          strokeDasharray: `${2 * Math.PI * 80}`,
-                          strokeDashoffset: 0,
-                        }}
-                      />
-                      <defs>
-                        <linearGradient id="riskGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#f87171" />
-                          <stop offset="50%" stopColor="#fb923c" />
-                          <stop offset="100%" stopColor="#fbbf24" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    
-                    {/* Center Content */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      {isCalculating ? (
-                        <div className="text-center">
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          >
-                            <Brain className="w-8 h-8 text-blue-400 mb-2" />
-                          </motion.div>
-                          <span className="text-sm text-slate-400">Calculating...</span>
+                  <div className="space-y-3">
+                    {/* Risk Factors */}
+                    <div>
+                      <h5 className="text-xs font-semibold text-slate-400 mb-2">RISK FACTORS</h5>
+                      <div className="space-y-2">
+                        <div className="flex justify-between items-center bg-red-500/10 rounded px-2 py-1">
+                          <span className="text-red-300 text-sm">Diabetes</span>
+                          <CheckCircle className="w-4 h-4 text-red-400" />
                         </div>
-                      ) : (
-                        <div className="text-center">
-                          <div className="text-5xl font-bold text-transparent bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text">
-                            {riskScore}%
-                          </div>
-                          <div className="text-sm text-slate-300 mt-1">10-Year Risk</div>
-                          <div className="mt-3 bg-red-500/20 text-red-300 px-3 py-1 rounded-full text-xs font-medium">
-                            High Risk
-                          </div>
+                        <div className="flex justify-between items-center bg-orange-500/10 rounded px-2 py-1">
+                          <span className="text-orange-300 text-sm">Hypertension</span>
+                          <CheckCircle className="w-4 h-4 text-orange-400" />
                         </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Recommendation */}
-                  {!isCalculating && riskScore > 0 && (
-                    <motion.div 
-                      className="mt-6 text-center"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 2.5 }}
-                    >
-                      <div className="bg-blue-500/20 border border-blue-400/30 rounded-lg px-4 py-3">
-                        <div className="flex items-center justify-center space-x-2">
-                          <Pill className="w-4 h-4 text-blue-400" />
-                          <span className="text-sm text-blue-300 font-medium">
-                            Statin Therapy Recommended
-                          </span>
+                        <div className="flex justify-between items-center bg-yellow-500/10 rounded px-2 py-1">
+                          <span className="text-yellow-300 text-sm">Former Smoker</span>
+                          <CheckCircle className="w-4 h-4 text-yellow-400" />
                         </div>
                       </div>
+                    </div>
+
+                    {/* Lab Values */}
+                    <div>
+                      <h5 className="text-xs font-semibold text-slate-400 mb-2">LAB VALUES</h5>
+                      <div className="space-y-2">
+                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
+                          <span className="text-slate-300 text-sm">Total Cholesterol</span>
+                          <span className="text-green-300 text-sm">245 mg/dL</span>
+                        </div>
+                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
+                          <span className="text-slate-300 text-sm">LDL</span>
+                          <span className="text-green-300 text-sm">165 mg/dL</span>
+                        </div>
+                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
+                          <span className="text-slate-300 text-sm">HDL</span>
+                          <span className="text-green-300 text-sm">38 mg/dL</span>
+                        </div>
+                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
+                          <span className="text-slate-300 text-sm">Blood Pressure</span>
+                          <span className="text-blue-300 text-sm">142/88</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Risk Score */}
+                    <motion.div 
+                      className="bg-blue-500/20 rounded-lg p-2 border border-blue-400/30"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <h5 className="text-xs font-semibold text-blue-300 mb-1">ASCVD RISK SCORE</h5>
+                      <div className="text-center">
+                        {isCalculating ? (
+                          <div className="py-3">
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              className="inline-block"
+                            >
+                              <Brain className="w-6 h-6 text-blue-400 mb-2" />
+                            </motion.div>
+                            <div className="text-sm text-slate-400">Calculating...</div>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="text-3xl font-bold text-blue-300">{riskScore}%</div>
+                            <div className="text-sm text-blue-400 mb-1">10-Year Risk</div>
+                            <div className="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs">
+                              High Risk - Statin Recommended
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </motion.div>
-                  )}
+                  </div>
                 </motion.div>
               </div>
             </div>
-
-            {/* Bottom Stats */}
-            <motion.div 
-              className="mt-6 grid grid-cols-3 gap-4 pt-6 border-t border-white/10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-              <div className="text-center">
-                <div className="text-xs text-slate-400">Processing Time</div>
-                <div className="text-lg font-semibold text-emerald-400">3.2s</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xs text-slate-400">Accuracy</div>
-                <div className="text-lg font-semibold text-blue-400">99.1%</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xs text-slate-400">Data Points</div>
-                <div className="text-lg font-semibold text-purple-400">24</div>
-              </div>
-            </motion.div>
           </div>
         </motion.div>
 
@@ -627,21 +588,7 @@ const Homepage = () => {
           <Activity className="w-5 h-5 text-blue-400" />
         </motion.div>
 
-        <motion.div
-          className="absolute -bottom-4 -left-4 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-full p-3 backdrop-blur-sm border border-white/10"
-          animate={{ 
-            y: [0, 10, 0],
-            rotate: [0, -5, 0]
-          }}
-          transition={{ 
-            duration: 3.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5
-          }}
-        >
-          <Heart className="w-5 h-5 text-emerald-400" />
-        </motion.div>
+
       </div>
     );
   };
@@ -942,21 +889,21 @@ const Homepage = () => {
                 >
                   <Layers className="w-4 h-4 text-white" />
                 </motion.div>
-                <span className="text-blue-300 font-medium text-sm">EMR & Model Agnostic Platform</span>
+                <span className="text-blue-300 font-medium text-sm">AI + Human Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text tracking-tight leading-[1.1] mb-8"
+                className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text tracking-tight leading-[1.1] mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                The AI Platform<br />
+                Next-Generation<br />
                 <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
-                  Curating Clinical Data
+                  AI Infrastructure
                 </span><br />
-                Into Actionable Intelligence
+                For Healthcare
               </motion.h1>
               
               {/* Enhanced Subtitle */}
@@ -966,7 +913,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Transform unstructured clinical data into intelligent, actionable insights with our modular AI ecosystem—integrating seamlessly with any EMR system or AI model.
+                ChartR powers enterprise healthcare with advanced AI orchestration, human validation, and intelligent workflows—delivering predictive insights, regulatory compliance, and clinical excellence at scale.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -976,12 +923,11 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                  See ChartR in Action
-                </button>
-                <button className="px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 backdrop-blur-sm">
-                  Learn More
-                </button>
+                <Link href="/contact?tab=demo">
+                  <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    See ChartR in Action
+                  </button>
+                </Link>
               </motion.div>
             </div>
 
@@ -1032,9 +978,8 @@ const Homepage = () => {
                   </div>
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-transparent">
-                  🚀 Introducing ChartrOS
+                  Introducing ChartrOS
                 </span>
-                <span className="text-sm font-semibold text-blue-300 bg-blue-400/20 px-3 py-1 rounded-full">NEW</span>
               </div>
             </motion.div>
             
@@ -1146,97 +1091,68 @@ const Homepage = () => {
                         </linearGradient>
                       </defs>
                       
-                      {/* Animated paths from Data Sources to ChartrOS */}
+                      {/* Continuous animated paths from Data Sources through ChartrOS to Modular AI Workflows */}
                       <motion.path 
-                        d="M 50 50 Q 150 60 200 150" 
+                        d="M 50 50 Q 150 60 200 150 Q 280 240 350 250" 
                         stroke="url(#lineGradient1)" 
                         strokeWidth="2"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+                        transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
                       />
                       <motion.path 
-                        d="M 50 150 Q 120 150 200 150" 
+                        d="M 50 150 Q 120 150 200 150 Q 280 150 350 150" 
                         stroke="url(#lineGradient2)" 
                         strokeWidth="2"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 0.7, ease: "easeInOut" }}
+                        transition={{ duration: 2, delay: 0.7, ease: "easeInOut" }}
                       />
                       <motion.path 
-                        d="M 50 250 Q 150 240 200 150" 
+                        d="M 50 250 Q 150 240 200 150 Q 280 60 350 50" 
                         stroke="url(#lineGradient3)" 
                         strokeWidth="2"
                         fill="none"
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 0.9, ease: "easeInOut" }}
+                        transition={{ duration: 2, delay: 0.9, ease: "easeInOut" }}
                       />
                       
-                      {/* Animated paths from ChartrOS to Modular AI Workflows */}
-                      <motion.path 
-                        d="M 200 150 Q 280 60 350 50" 
-                        stroke="url(#lineGradientOut1)" 
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 1.1, ease: "easeInOut" }}
-                      />
-                      <motion.path 
-                        d="M 200 150 Q 280 150 350 150" 
-                        stroke="url(#lineGradientOut2)" 
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 1.3, ease: "easeInOut" }}
-                      />
-                      <motion.path 
-                        d="M 200 150 Q 280 240 350 250" 
-                        stroke="url(#lineGradientOut3)" 
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, delay: 1.5, ease: "easeInOut" }}
-                      />
-                      
-                      {/* Animated dots traveling along paths */}
-                      <circle r="4" fill="rgba(59, 130, 246, 0.8)">
+                      {/* Animated dots traveling along complete paths */}
+                      <circle r="4" fill="rgba(59, 130, 246, 0.6)">
                         <animateMotion
-                          dur="3s"
+                          dur="6s"
                           repeatCount="indefinite"
                           begin="1.5s"
                         >
-                          <mpath href="#path1" />
+                          <mpath href="#completePath1" />
                         </animateMotion>
                       </circle>
-                      <circle r="4" fill="rgba(168, 85, 247, 0.8)">
+                      <circle r="4" fill="rgba(168, 85, 247, 0.6)">
                         <animateMotion
-                          dur="3s"
+                          dur="6s"
                           repeatCount="indefinite"
                           begin="2s"
                         >
-                          <mpath href="#path2" />
+                          <mpath href="#completePath2" />
                         </animateMotion>
                       </circle>
-                      <circle r="4" fill="rgba(20, 184, 166, 0.8)">
+                      <circle r="4" fill="rgba(20, 184, 166, 0.6)">
                         <animateMotion
-                          dur="3s"
+                          dur="6s"
                           repeatCount="indefinite"
                           begin="2.5s"
                         >
-                          <mpath href="#path3" />
+                          <mpath href="#completePath3" />
                         </animateMotion>
                       </circle>
                       
-                      {/* Define paths for dots to follow */}
-                      <path id="path1" d="M 50 50 Q 150 60 200 150" fill="none" />
-                      <path id="path2" d="M 50 150 Q 120 150 200 150" fill="none" />
-                      <path id="path3" d="M 50 250 Q 150 240 200 150" fill="none" />
+                      {/* Define complete paths for dots to follow */}
+                      <path id="completePath1" d="M 50 50 Q 150 60 200 150 Q 280 240 350 250" fill="none" />
+                      <path id="completePath2" d="M 50 150 Q 120 150 200 150 Q 280 150 350 150" fill="none" />
+                      <path id="completePath3" d="M 50 250 Q 150 240 200 150 Q 280 60 350 50" fill="none" />
                     </svg>
                   </div>
                   
@@ -1252,7 +1168,7 @@ const Homepage = () => {
                       </div>
                       <h3 className="text-xl font-bold text-white mb-2">ChartrOS</h3>
                       <p className="text-sm text-slate-300">Clinical Retrieval Layer</p>
-                      <div className="mt-4 flex flex-wrap gap-2 justify-center">
+                      <div className="mt-4 flex flex-wrap gap-6 justify-center">
                         <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30">
                           HIPAA Compliant
                         </span>
@@ -1350,8 +1266,8 @@ const Homepage = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-                Built for
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Enterprise Healthcare</span>
+                Enterprise-Grade AI.
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Built for Healthcare</span>
               </h2>
               
               <p className="text-xl text-slate-300 mb-12 leading-relaxed">

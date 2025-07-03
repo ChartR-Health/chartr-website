@@ -1,10 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Clock, Users, MessageSquare } from 'lucide-react'
 
 const ContactPage = () => {
+  const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,6 +19,17 @@ const ContactPage = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  // Handle URL parameters to pre-select inquiry type
+  useEffect(() => {
+    const tab = searchParams.get('tab')
+    if (tab === 'demo') {
+      setFormData(prev => ({
+        ...prev,
+        inquiryType: 'demo'
+      }))
+    }
+  }, [searchParams])
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
