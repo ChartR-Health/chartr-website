@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import React from 'react'
 import Navigation from '@/components/Navigation'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
+const outfit = Outfit({ 
+  subsets: ['latin'], 
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-outfit'
+})
 
 export const metadata: Metadata = {
   title: 'ChartR - AI Platform Transforming Healthcare Data',
@@ -32,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${outfit.variable}`}>
         <Navigation />
         {children}
       </body>

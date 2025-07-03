@@ -74,6 +74,65 @@
   .demo-container {
     @apply bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700;
   }
+
+  /* New Typography Classes */
+  .chartr-brand {
+    font-family: var(--font-outfit);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  
+  .chartr-heading {
+    font-family: var(--font-outfit);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+  
+  .chartr-subheading {
+    font-family: var(--font-outfit);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  
+  .chartr-body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+  
+  .chartr-body-medium {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  /* New Background Patterns */
+  .chartr-bg-primary {
+    background: linear-gradient(135deg, #0A0E1A 0%, #1A1B23 100%);
+  }
+  
+  .chartr-bg-accent {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.03) 0%, rgba(147, 51, 234, 0.02) 100%);
+  }
+  
+  .chartr-bg-floating {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    border-radius: 24px;
+  }
+  
+  .chartr-bg-hero {
+    background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  }
+  
+  .chartr-bg-diagonal {
+    clip-path: polygon(0 0, 100% 2%, 100% 98%, 0 100%);
+  }
 }
 
 /* Custom scrollbar */
@@ -109,8 +168,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
 }
 
 .pulse-glow {

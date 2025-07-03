@@ -808,18 +808,18 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800">
+      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden chartr-bg-primary">
         {/* Subtle Hero Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-slate-900" />
+        <div className="absolute inset-0 chartr-bg-hero" />
         
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
           <svg className="w-full h-full" viewBox="0 0 1200 800">
             <defs>
               <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.6" />
+                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.6" />
                 <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#6366f1" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.6" />
               </linearGradient>
             </defs>
             
@@ -871,13 +871,13 @@ const Homepage = () => {
             <div className="text-left">
               {/* ChartR Badge */}
               <motion.div 
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <motion.div 
-                  className="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center"
+                  className="w-6 h-6 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center"
                   animate={{ 
                     rotateY: [0, 180, 360],
                     scale: [1, 1.1, 1]
@@ -890,25 +890,25 @@ const Homepage = () => {
                 >
                   <Layers className="w-4 h-4 text-white" />
                 </motion.div>
-                <span className="text-blue-300 font-medium text-sm">AI-Enhanced Clinical Intelligence</span>
+                <span className="text-indigo-300 chartr-body-medium text-sm">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text tracking-tight leading-[1.1] mb-8"
+                className="text-4xl md:text-5xl lg:text-6xl chartr-heading text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
                 Transform Healthcare Data.<br />
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
                   Save Millions.
                 </span>
               </motion.h1>
               
               {/* Enhanced Subtitle */}
               <motion.p 
-                className="text-xl text-slate-300 font-light leading-relaxed max-w-2xl mb-12"
+                className="text-xl text-slate-300 chartr-body leading-relaxed max-w-2xl mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -924,7 +924,7 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link href="/contact?tab=demo">
-                  <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white chartr-body-medium rounded-xl hover:from-emerald-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Book a Demo
                   </button>
                 </Link>
@@ -944,8 +944,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Introducing ChartrOS - Redesigned as Content Section */}
-      <section className="py-24 relative">
+      {/* Introducing ChartrOS - Full-Width Accent Section */}
+      <section className="py-24 relative chartr-bg-accent border-t border-indigo-400/10 border-b border-indigo-400/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -961,41 +961,41 @@ const Homepage = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             >
-              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 border-2 border-emerald-400/40 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/20">
+              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border-2 border-emerald-400/40 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/20">
                 <div className="relative">
                   <Cpu className="w-6 h-6 text-emerald-400" />
                   <div className="absolute inset-0 animate-ping">
                     <Cpu className="w-6 h-6 text-emerald-400 opacity-75" />
                   </div>
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-transparent">
+                <span className="text-xl chartr-subheading bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
                   Introducing ChartrOS
                 </span>
               </div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
               The Industry's First
               <br />
-              <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
                 AI-Native Healthcare OS
               </span>
             </h2>
             
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
               ChartrOS revolutionizes healthcare data interactions with intelligent retrieval, real-time validation, 
               and seamless AI integration - go from clinical data to actionable intelligence at unprecedented pace and accuracy.
             </p>
           </motion.div>
 
-          {/* Platform Architecture - Clean Modern Design */}
+          {/* Platform Architecture - Floating Design */}
           <motion.div 
             className="relative max-w-5xl mx-auto mb-20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-8 md:p-12">
+            <div className="chartr-bg-floating shadow-2xl p-8 md:p-12">
               {/* Architecture Flow */}
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 {/* Input Sources */}
@@ -1160,24 +1160,69 @@ const Homepage = () => {
                   </div>
                   
                   <motion.div 
-                    className="relative bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-2xl border border-emerald-400/30 p-8 backdrop-blur-sm"
+                    className="relative bg-gradient-to-br from-emerald-500/10 to-blue-500/10 rounded-2xl border border-emerald-400/30 p-8 backdrop-blur-sm h-64 flex items-center justify-center"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
+                    {/* Top Left Badge */}
+                    <motion.div
+                      className="absolute top-4 left-4 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30"
+                      initial={{ opacity: 0, x: -20, y: -20 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                    >
+                      AI Agents
+                    </motion.div>
+
+                    {/* Top Right Badge */}
+                    <motion.div
+                      className="absolute top-4 right-4 px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-400/30"
+                      initial={{ opacity: 0, x: 20, y: -20 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.7 }}
+                    >
+                      Retrieval Layer
+                    </motion.div>
+
+                    {/* Bottom Left Badge */}
+                    <motion.div
+                      className="absolute bottom-4 left-4 px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs border border-purple-400/30"
+                      initial={{ opacity: 0, x: -20, y: 20 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.8 }}
+                    >
+                      Smart Review
+                    </motion.div>
+
+                    {/* Bottom Right Badge */}
+                    <motion.div
+                      className="absolute bottom-4 right-4 px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-xs border border-cyan-400/30"
+                      initial={{ opacity: 0, x: 20, y: 20 }}
+                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.9 }}
+                    >
+                      Sample #4
+                    </motion.div>
+
+                    {/* Centered Logo and Title */}
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-xl flex items-center justify-center mx-auto mb-4">
+                      <motion.div 
+                        className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-xl flex items-center justify-center mx-auto mb-2"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5, type: "spring", stiffness: 100 }}
+                      >
                         <img src="/logo.svg" alt="ChartR" className="w-10 h-10 brightness-0 invert" />
-                      </div>
-                      <h3 className="text-xl font-bold text-white mb-2">ChartrOS</h3>
-                      <div className="mt-4 flex flex-wrap gap-6 justify-center">
-                        <span className="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30">
-                          HIPAA Compliant
-                        </span>
-                        <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-400/30">
-                          Clinical Retrieval Layer
-                        </span>
-                      </div>
+                      </motion.div>
+                      <motion.h3 
+                        className="text-xl chartr-subheading text-white"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.7 }}
+                      >
+                        ChartrOS
+                      </motion.h3>
                     </div>
                   </motion.div>
                 </div>
@@ -1270,8 +1315,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Modular AI Infrastructure */}
-      <section className="py-24 relative">
+      {/* Modular AI Infrastructure - Asymmetric Layout */}
+      <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Left: Content */}
@@ -1280,12 +1325,12 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
                 Modular AI Infrastructure.
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Seamless Integration</span>
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text"> Seamless Integration</span>
               </h2>
               
-              <p className="text-xl text-slate-300 mb-12 leading-relaxed">
+              <p className="text-xl text-slate-300 mb-12 chartr-body">
                 ChartrOS delivers flexible, modular workflows that integrate seamlessly 
                 with your existing systems—deploy AI intelligence without disrupting operations.
               </p>
@@ -1303,8 +1348,8 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-emerald-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">HIPAA-Compliant AI Learning</h3>
-                      <p className="text-slate-400 leading-relaxed">
+                      <h3 className="text-lg chartr-subheading text-white mb-2">HIPAA-Compliant AI Learning</h3>
+                      <p className="text-slate-400 chartr-body">
                         Continuous model fine-tuning on your data with enterprise-grade security 
                         and compliance built into every layer of the platform.
                       </p>
@@ -1319,12 +1364,12 @@ const Homepage = () => {
                   transition={{ delay: 0.3 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-blue-400" />
+                    <div className="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-indigo-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Universal Compatibility</h3>
-                      <p className="text-slate-400 leading-relaxed">
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Universal Compatibility</h3>
+                      <p className="text-slate-400 chartr-body">
                         EMR and model agnostic design integrates seamlessly with Epic, Cerner, 
                         and any existing AI data abstraction solutions.
                       </p>
@@ -1343,8 +1388,8 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-purple-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Clinical Retrieval Excellence</h3>
-                      <p className="text-slate-400 leading-relaxed">
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Clinical Retrieval Layer</h3>
+                      <p className="text-slate-400 chartr-body">
                         Best-in-class AI intelligently identifies relevant clinical information 
                         and literature for truly actionable insights.
                       </p>
@@ -1359,12 +1404,12 @@ const Homepage = () => {
                   transition={{ delay: 0.5 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-teal-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-teal-400" />
+                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Human-in-the-Loop Validation</h3>
-                      <p className="text-slate-400 leading-relaxed">
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Human-in-the-Loop Validation</h3>
+                      <p className="text-slate-400 chartr-body">
                         Streamlined validation workflows reduce false negatives while maintaining 
                         clinical accuracy and regulatory compliance.
                       </p>
@@ -1611,127 +1656,128 @@ const Homepage = () => {
       
       <ActionableInsightsDemo />
 
-      {/* Enterprise-Grade AI Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Enterprise-Grade AI Section - Diagonal Layout */}
+      <section className="py-24 relative overflow-hidden chartr-bg-diagonal">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
                 Enterprise-Grade AI.
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text"> Built for Healthcare</span>
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text"> Built for Healthcare</span>
               </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
                 Military-grade security, federated learning, and compliance-first architecture 
                 ensure your data never leaves your control while delivering enterprise-scale AI.
               </p>
             </motion.div>
           </div>
 
-          {/* Compliance & Security Badges */}
+          {/* Compliance & Security Badges - Floating Style */}
           <motion.div
             className="flex flex-wrap justify-center gap-6 mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
-              <Shield className="w-6 h-6 text-blue-400" />
+            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
+              <Shield className="w-6 h-6 text-indigo-400" />
               <div>
-                <div className="text-sm font-semibold text-white">HIPAA Compliant</div>
-                <div className="text-xs text-slate-400">End-to-end encryption</div>
+                <div className="text-sm chartr-body-medium text-white">HIPAA Compliant</div>
+                <div className="text-xs text-slate-400 chartr-body">End-to-end encryption</div>
               </div>
             </div>
-            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
               <CheckCircle className="w-6 h-6 text-emerald-400" />
               <div>
-                <div className="text-sm font-semibold text-white">SOC 2 Type II</div>
-                <div className="text-xs text-slate-400">Audited security controls</div>
+                <div className="text-sm chartr-body-medium text-white">SOC 2 Type II</div>
+                <div className="text-xs text-slate-400 chartr-body">Audited security controls</div>
               </div>
             </div>
-            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
+            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
               <Database className="w-6 h-6 text-purple-400" />
               <div>
-                <div className="text-sm font-semibold text-white">Federated Learning</div>
-                <div className="text-xs text-slate-400">Data never leaves your environment</div>
+                <div className="text-sm chartr-body-medium text-white">Federated Learning</div>
+                <div className="text-xs text-slate-400 chartr-body">Data never leaves your environment</div>
               </div>
             </div>
-            <div className="flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-700/50">
-              <Network className="w-6 h-6 text-teal-400" />
+            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
+              <Network className="w-6 h-6 text-cyan-400" />
               <div>
-                <div className="text-sm font-semibold text-white">Multi-Tenant</div>
-                <div className="text-xs text-slate-400">Secure isolation & scalability</div>
+                <div className="text-sm chartr-body-medium text-white">Multi-Tenant</div>
+                <div className="text-xs text-slate-400 chartr-body">Secure isolation & scalability</div>
               </div>
             </div>
           </motion.div>
 
-          {/* Key Enterprise Features */}
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Key Enterprise Features - Asymmetric Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <motion.div
-              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              className="chartr-bg-floating p-8 shadow-2xl md:col-span-2 lg:col-span-1"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-6">
-                <Shield className="w-6 h-6 text-blue-400" />
+              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-indigo-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Zero-Trust Architecture</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">
+              <h3 className="text-xl chartr-subheading text-white mb-4">Zero-Trust Architecture</h3>
+              <p className="text-slate-300 chartr-body mb-4">
                 Advanced encryption, role-based access controls, and continuous monitoring ensure 
                 your clinical data remains secure at every layer.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">AES-256 encryption at rest</span>
+                  <span className="text-sm text-slate-400 chartr-body">AES-256 encryption at rest</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">TLS 1.3 in transit</span>
+                  <span className="text-sm text-slate-400 chartr-body">TLS 1.3 in transit</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Multi-factor authentication</span>
+                  <span className="text-sm text-slate-400 chartr-body">Multi-factor authentication</span>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
-              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              className="chartr-bg-floating p-8 shadow-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-lg flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-lg flex items-center justify-center mb-6">
                 <Database className="w-6 h-6 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Federated Learning</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">
+              <h3 className="text-xl chartr-subheading text-white mb-4">Federated Learning</h3>
+              <p className="text-slate-300 chartr-body mb-4">
                 Train AI models collaboratively without centralized data sharing. 
                 Insights are shared, never raw patient data.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Data sovereignty maintained</span>
+                  <span className="text-sm text-slate-400 chartr-body">Data sovereignty maintained</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Edge-based processing</span>
+                  <span className="text-sm text-slate-400 chartr-body">Edge-based processing</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Differential privacy</span>
+                  <span className="text-sm text-slate-400 chartr-body">Differential privacy</span>
                 </div>
               </div>
             </motion.div>
 
             <motion.div
-              className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50"
+              className="chartr-bg-floating p-8 shadow-2xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -1739,23 +1785,23 @@ const Homepage = () => {
               <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center mb-6">
                 <Network className="w-6 h-6 text-purple-400" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Infinite Scalability</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">
+              <h3 className="text-xl chartr-subheading text-white mb-4">Infinite Scalability</h3>
+              <p className="text-slate-300 chartr-body mb-4">
                 Multi-tenant architecture scales from single departments to 
                 entire health systems without performance degradation.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Auto-scaling infrastructure</span>
+                  <span className="text-sm text-slate-400 chartr-body">Auto-scaling infrastructure</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">99.9% uptime SLA</span>
+                  <span className="text-sm text-slate-400 chartr-body">99.9% uptime SLA</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm text-slate-400">Global deployment ready</span>
+                  <span className="text-sm text-slate-400 chartr-body">Global deployment ready</span>
                 </div>
               </div>
             </motion.div>
@@ -1777,16 +1823,16 @@ const Homepage = () => {
             transition={{ duration: 0.8 }}
                           className="space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl font-black text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4 tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl chartr-heading text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
               Ready to Transform
               <br />
-              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text">
                 Your Healthcare Data?
               </span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto chartr-body">
               Join leading healthcare organizations saving millions with ChartR's AI platform. 
-              See how our <span className="text-blue-200 font-medium">human-AI integration</span> can revolutionize your clinical data management.
+              See how our <span className="text-indigo-200 chartr-body-medium">human-AI integration</span> can revolutionize your clinical data management.
             </p>
             
             {/* Enhanced Feature Highlight */}
@@ -1796,10 +1842,10 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-teal-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
               <div className="relative bg-white/10 rounded-2xl p-6 backdrop-blur-xl border border-white/20">
-                <div className="text-lg font-black text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
-                <div className="text-sm text-slate-300">AI-assisted, human-validated clinical data curation at scale</div>
+                <div className="text-lg chartr-subheading text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-sm text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
               </div>
             </motion.div>
             

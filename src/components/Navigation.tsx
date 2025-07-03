@@ -32,9 +32,9 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="bg-gradient-to-br from-slate-900 to-slate-800 backdrop-blur-sm sticky top-0 z-50 relative">
-      {/* Additional subtle gradient overlay to match hero exactly */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-slate-900" />
+    <nav className="chartr-bg-primary backdrop-blur-sm sticky top-0 z-50 relative border-b border-white/5">
+      {/* Additional subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-purple-500/5" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between items-center h-16">
@@ -42,14 +42,14 @@ const Navigation = () => {
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-300" />
                 <img 
                   src="/logo.svg" 
                   alt="ChartR Logo" 
                   className="w-8 h-8 relative"
                 />
               </div>
-              <span className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">ChartR</span>
+              <span className="text-2xl chartr-brand text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text">ChartR</span>
             </Link>
           </div>
 
@@ -60,26 +60,27 @@ const Navigation = () => {
                 <div key={item.name} className="relative group">
                   {item.submenu ? (
                     <>
-                      <button className="flex items-center space-x-1 text-slate-300 hover:text-white transition-all duration-300 font-medium group px-4 py-2 rounded-lg hover:bg-white/5">
+                      <button className="flex items-center space-x-1 text-slate-300 hover:text-white transition-all duration-300 chartr-body-medium group px-4 py-2 rounded-lg hover:bg-white/5">
                         <span>{item.name}</span>
                         <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" />
                       </button>
                       <div className="absolute top-full right-0 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-2 z-50">
-                        <div className="relative">
-                          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl blur-lg" />
-                          <div className="relative bg-slate-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden">
-                            <div className="p-2">
-                              {item.submenu.map((subItem, index) => (
-                                <Link
-                                  key={subItem.name}
-                                  href={subItem.href}
-                                  className="block p-4 rounded-xl hover:bg-white/10 transition-all duration-300 group/item border border-transparent hover:border-white/20"
-                                >
-                                  <div className="font-semibold text-white group-hover/item:text-transparent group-hover/item:bg-gradient-to-r group-hover/item:from-blue-400 group-hover/item:to-purple-400 group-hover/item:bg-clip-text transition-all duration-300">{subItem.name}</div>
-                                  <div className="text-sm text-slate-400 group-hover/item:text-slate-300 transition-colors duration-300">{subItem.description}</div>
-                                </Link>
-                              ))}
-                            </div>
+                        <div className="chartr-bg-floating shadow-2xl border border-white/10 rounded-2xl p-6 backdrop-blur-xl">
+                          <div className="space-y-3">
+                            {item.submenu.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                className="block p-3 rounded-lg hover:bg-white/5 transition-all duration-200 group/item"
+                              >
+                                <div className="chartr-body-medium text-white group-hover/item:text-indigo-300 transition-colors">
+                                  {subItem.name}
+                                </div>
+                                <div className="text-sm text-slate-400 chartr-body">
+                                  {subItem.description}
+                                </div>
+                              </Link>
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -87,9 +88,9 @@ const Navigation = () => {
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-slate-300 hover:text-white transition-all duration-300 font-medium relative group px-4 py-2 rounded-lg hover:bg-white/5"
+                      className="text-slate-300 hover:text-white transition-all duration-300 chartr-body-medium px-4 py-2 rounded-lg hover:bg-white/5"
                     >
-                      <span className="relative z-10">{item.name}</span>
+                      {item.name}
                     </Link>
                   )}
                 </div>
@@ -98,46 +99,51 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-300 hover:text-white transition-colors duration-300 p-2 rounded-xl hover:bg-white/10"
+              className="text-slate-300 hover:text-white transition-colors p-2"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-white/10">
-            <div className="space-y-2">
+          <div className="md:hidden absolute top-full left-0 right-0 chartr-bg-floating shadow-2xl border-t border-white/10 backdrop-blur-xl">
+            <div className="px-4 py-6 space-y-4">
               {navigationItems.map((item) => (
                 <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="pl-4 space-y-1">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-sm text-slate-400 hover:text-slate-200 hover:bg-white/5 rounded-lg transition-all duration-300"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
+                  {item.submenu ? (
+                    <>
+                      <div className="chartr-body-medium text-white py-2 border-b border-white/10">
+                        {item.name}
+                      </div>
+                      <div className="ml-4 space-y-2 mt-2">
+                        {item.submenu.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block py-2 text-slate-300 hover:text-white transition-colors chartr-body"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block py-2 text-slate-300 hover:text-white transition-colors chartr-body-medium"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
                   )}
                 </div>
               ))}
-
             </div>
           </div>
         )}
