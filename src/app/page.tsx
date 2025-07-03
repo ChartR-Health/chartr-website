@@ -427,7 +427,7 @@ const Homepage = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <h3 className="text-sm font-medium text-white/90">ASCVD Risk Assessment</h3>
+                <h3 className="text-sm font-medium text-white/90">ChartrOS Clinical Workflow</h3>
               </div>
               <span className="text-xs text-blue-300 bg-blue-400/20 px-3 py-1 rounded-full">
                 AI-Enhanced Calculator
@@ -437,7 +437,7 @@ const Homepage = () => {
 
           {/* Main Content */}
           <div className="p-6">
-                        <div className="grid md:grid-cols-2 gap-6 min-h-96">
+            <div className="grid md:grid-cols-2 gap-6">
               {/* Left: Clinical Notes with Highlights */}
               <div className="flex flex-col">
                 <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
@@ -445,36 +445,35 @@ const Homepage = () => {
                   Clinical Notes
                 </h4>
                 <motion.div 
-                  className="bg-slate-700/50 rounded-lg p-4 text-sm text-slate-300 leading-relaxed flex-1"
+                  className="bg-slate-700/50 rounded-lg p-4 text-sm text-slate-300 leading-relaxed"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="mb-6 pb-4 border-b border-slate-600/50">
-                    <p className="text-xs text-slate-500 mb-3">Note 1 - Cardiology Consultation</p>
+                  <div className="mb-4 pb-4 border-b border-slate-600/50">
+                    <p className="text-xs text-slate-500 mb-2">Note 1 - Cardiology Consultation</p>
                     <p className="mb-2">
                       <span className="text-slate-400">CC:</span> 58-year-old male referred for cardiovascular risk assessment.
                     </p>
                     <p className="mb-2">
                       <span className="text-slate-400">PMH:</span> <span className="bg-red-500/20 text-red-300 px-1 rounded">DM Type 2</span> x 8 years, <span className="bg-orange-500/20 text-orange-300 px-1 rounded">HTN</span> on ACE inhibitor.
                     </p>
-                    <p className="mb-2">
+                    <p className="mb-0">
                       <span className="text-slate-400">Recent Labs:</span> <span className="bg-green-500/20 text-green-300 px-1 rounded">TC 245</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">LDL-C 165</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">HDL-C 38</span> mg/dL, HbA1c 7.2%.
                     </p>
                   </div>
                   
                   <div>
-                    <p className="text-xs text-slate-500 mb-3">Note 2 - Primary Care Follow-up</p>
+                    <p className="text-xs text-slate-500 mb-2">Note 2 - Primary Care Follow-up</p>
                     <p className="mb-2">
                       <span className="text-slate-400">HPI:</span> Patient returns for routine DM management. Denies chest pain, SOB, or palpitations.
                     </p>
                     <p className="mb-2">
                       <span className="text-slate-400">SH:</span> Former <span className="bg-yellow-500/20 text-yellow-300 px-1 rounded">tobacco user</span> (20 pk-yr, quit 2019). Denies ETOH.
                     </p>
-                    <p className="mb-2">
+                    <p className="mb-0">
                       <span className="text-slate-400">Vitals:</span> BP <span className="bg-blue-500/20 text-blue-300 px-1 rounded">142/88</span> mmHg, HR 76 bpm, BMI 29.2 kg/m².
                     </p>
-
                   </div>
                 </motion.div>
               </div>
@@ -483,30 +482,62 @@ const Homepage = () => {
               <div className="flex flex-col">
                 <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
                   <BarChart3 className="w-4 h-4 mr-2" />
-                  ChartR Extracted Data
+                  ASCVD Risk Assessment
                 </h4>
                 <motion.div 
-                  className="bg-slate-700/50 rounded-lg p-4 flex-1"
+                  className="bg-slate-700/50 rounded-lg p-4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <div className="space-y-3">
+                  <div className="space-y-4">
+                    {/* Risk Score - Moved to top for prominence */}
+                    <motion.div 
+                      className="bg-blue-500/20 rounded-lg p-3 border border-blue-400/30"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <h5 className="text-xs font-semibold text-blue-300 mb-2">ASCVD RISK SCORE</h5>
+                      <div className="text-center">
+                        {isCalculating ? (
+                          <div className="py-2">
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              className="inline-block"
+                            >
+                              <Brain className="w-5 h-5 text-blue-400 mb-1" />
+                            </motion.div>
+                            <div className="text-xs text-slate-400">Calculating...</div>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="text-2xl font-bold text-blue-300 mb-1">{riskScore}%</div>
+                            <div className="text-xs text-blue-400 mb-2">10-Year Risk</div>
+                            <div className="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs font-medium">
+                              High Risk - Statin Recommended
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </motion.div>
+
                     {/* Risk Factors */}
                     <div>
                       <h5 className="text-xs font-semibold text-slate-400 mb-2">RISK FACTORS</h5>
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center bg-red-500/10 rounded px-2 py-1">
-                          <span className="text-red-300 text-sm">Diabetes</span>
-                          <CheckCircle className="w-4 h-4 text-red-400" />
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between items-center bg-red-500/10 rounded px-2 py-1.5">
+                          <span className="text-red-300 text-xs font-medium">Diabetes</span>
+                          <CheckCircle className="w-3 h-3 text-red-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-orange-500/10 rounded px-2 py-1">
-                          <span className="text-orange-300 text-sm">Hypertension</span>
-                          <CheckCircle className="w-4 h-4 text-orange-400" />
+                        <div className="flex justify-between items-center bg-orange-500/10 rounded px-2 py-1.5">
+                          <span className="text-orange-300 text-xs font-medium">Hypertension</span>
+                          <CheckCircle className="w-3 h-3 text-orange-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-yellow-500/10 rounded px-2 py-1">
-                          <span className="text-yellow-300 text-sm">Former Smoker</span>
-                          <CheckCircle className="w-4 h-4 text-yellow-400" />
+                        <div className="flex justify-between items-center bg-yellow-500/10 rounded px-2 py-1.5">
+                          <span className="text-yellow-300 text-xs font-medium">Former Smoker</span>
+                          <CheckCircle className="w-3 h-3 text-yellow-400" />
                         </div>
                       </div>
                     </div>
@@ -514,57 +545,25 @@ const Homepage = () => {
                     {/* Lab Values */}
                     <div>
                       <h5 className="text-xs font-semibold text-slate-400 mb-2">LAB VALUES</h5>
-                      <div className="space-y-2">
-                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                          <span className="text-slate-300 text-sm">Total Cholesterol</span>
-                          <span className="text-green-300 text-sm">245 mg/dL</span>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
+                          <div className="text-slate-400 text-xs font-medium">Total Chol</div>
+                          <div className="text-green-300 text-xs font-semibold">245 mg/dL</div>
                         </div>
-                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                          <span className="text-slate-300 text-sm">LDL</span>
-                          <span className="text-green-300 text-sm">165 mg/dL</span>
+                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
+                          <div className="text-slate-400 text-xs font-medium">LDL</div>
+                          <div className="text-green-300 text-xs font-semibold">165 mg/dL</div>
                         </div>
-                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                          <span className="text-slate-300 text-sm">HDL</span>
-                          <span className="text-green-300 text-sm">38 mg/dL</span>
+                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
+                          <div className="text-slate-400 text-xs font-medium">HDL</div>
+                          <div className="text-green-300 text-xs font-semibold">38 mg/dL</div>
                         </div>
-                        <div className="flex justify-between bg-slate-600/50 rounded px-2 py-1">
-                          <span className="text-slate-300 text-sm">Blood Pressure</span>
-                          <span className="text-blue-300 text-sm">142/88</span>
+                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
+                          <div className="text-slate-400 text-xs font-medium">Blood Pressure</div>
+                          <div className="text-blue-300 text-xs font-semibold">142/88</div>
                         </div>
                       </div>
                     </div>
-
-                    {/* Risk Score */}
-                    <motion.div 
-                      className="bg-blue-500/20 rounded-lg p-2 border border-blue-400/30"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      <h5 className="text-xs font-semibold text-blue-300 mb-1">ASCVD RISK SCORE</h5>
-                      <div className="text-center">
-                        {isCalculating ? (
-                          <div className="py-3">
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                              className="inline-block"
-                            >
-                              <Brain className="w-6 h-6 text-blue-400 mb-2" />
-                            </motion.div>
-                            <div className="text-sm text-slate-400">Calculating...</div>
-                          </div>
-                        ) : (
-                          <>
-                            <div className="text-3xl font-bold text-blue-300">{riskScore}%</div>
-                            <div className="text-sm text-blue-400 mb-1">10-Year Risk</div>
-                            <div className="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs">
-                              High Risk - Statin Recommended
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </motion.div>
                   </div>
                 </motion.div>
               </div>
@@ -889,7 +888,7 @@ const Homepage = () => {
                 >
                   <Layers className="w-4 h-4 text-white" />
                 </motion.div>
-                <span className="text-blue-300 font-medium text-sm">AI + Human Clinical Intelligence</span>
+                <span className="text-blue-300 font-medium text-sm">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline */}
@@ -983,13 +982,14 @@ const Homepage = () => {
               </div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
-              Enterprise-Grade AI-Native Platform
-              <br />
-              <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
-                for Modular Clinical AI Integration
-              </span>
-            </h2>
+                          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+                AI-Native Platform
+                <br />
+                for{'  '}
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text">
+                  Modular Clinical AI Integration
+                </span>
+              </h2>
             
             <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
               ChartrOS enables healthcare organizations to deploy AI workflows with unprecedented flexibility. 
@@ -1204,8 +1204,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <FileCheck className="w-5 h-5 text-blue-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Compliance Reports</div>
-                          <div className="text-xs text-slate-400">Regulatory Guidelines</div>
+                          <div className="font-medium text-slate-200">Regulatory Reporting</div>
+                          <div className="text-xs text-slate-400">Risk Management, QI, Registries</div>
                         </div>
                       </div>
                     </motion.div>
