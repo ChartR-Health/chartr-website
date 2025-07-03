@@ -416,7 +416,7 @@ const Homepage = () => {
       <div className="relative w-full">
         {/* Main Container with Glass Effect */}
         <motion.div 
-          className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden shadow-2xl"
+          className="relative bg-slate-800/40 backdrop-blur-xl rounded-3xl lg:rounded-r-none border border-white/10 lg:border-r-0 overflow-hidden shadow-2xl mx-4 lg:ml-0 lg:mr-0"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -435,8 +435,8 @@ const Homepage = () => {
           </div>
 
           {/* Main Content */}
-          <div className="p-6">
-            <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-8 lg:pr-12">
+            <div className="grid md:grid-cols-2 gap-8">
               {/* Left: Clinical Notes with Highlights */}
               <div className="flex flex-col">
                 <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
@@ -569,23 +569,6 @@ const Homepage = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Floating Elements */}
-        <motion.div
-          className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full p-3 backdrop-blur-sm border border-white/10"
-          animate={{ 
-            y: [0, -10, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{ 
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          <Activity className="w-5 h-5 text-blue-400" />
-        </motion.div>
-
 
       </div>
     );
@@ -808,7 +791,7 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-4 sm:px-6 lg:px-8 overflow-hidden chartr-bg-primary">
+      <section className="relative pt-24 pb-32 overflow-hidden chartr-bg-primary">
         {/* Subtle Hero Background */}
         <div className="absolute inset-0 chartr-bg-hero" />
         
@@ -865,10 +848,10 @@ const Homepage = () => {
           </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="text-left">
+        <div className="relative z-10">
+          <div className="lg:flex lg:items-center">
+            {/* Left Column - Text Content - Constrained */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2">
               {/* ChartR Badge */}
               <motion.div 
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
@@ -931,12 +914,12 @@ const Homepage = () => {
               </motion.div>
             </div>
 
-            {/* Right Column - Visual */}
+            {/* Right Column - Visual - Extends to full viewport width */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="relative lg:pl-8"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-12 px-4 sm:px-6 lg:px-0"
             >
               <ASCVDHeroDemo />
             </motion.div>
