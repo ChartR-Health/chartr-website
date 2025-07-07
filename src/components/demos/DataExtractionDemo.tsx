@@ -296,7 +296,7 @@ FINDINGS:
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             <span className="text-white">
-              ChartrOS in Action:
+             Smart Review in Action:
             </span>{' '}
             <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">End-to-End Clinical Data Processing</span>
           </h2>

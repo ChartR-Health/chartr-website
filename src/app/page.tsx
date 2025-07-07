@@ -395,179 +395,171 @@ const Homepage = () => {
   };
 
   const ASCVDHeroDemo = () => {
-    const [riskScore, setRiskScore] = useState(0);
-    const [isCalculating, setIsCalculating] = useState(false);
-    
-    useEffect(() => {
-      // Animate risk score calculation after a delay
-      const timer = setTimeout(() => {
-        setIsCalculating(true);
-        const animationTimer = setTimeout(() => {
-          setRiskScore(22.4);
-          setIsCalculating(false);
-        }, 2000);
-        return () => clearTimeout(animationTimer);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }, []);
+    const riskScore = 22.4;
+    const isCalculating = false;
+    const showExtraction = true;
+    const showRiskAssessment = true;
 
     return (
       <div className="relative w-full">
-        {/* Main Container with Glass Effect */}
-        <motion.div 
-          className="relative bg-slate-800/40 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl mx-4 lg:ml-0 lg:mr-0"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          {/* Header Bar */}
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-6 py-4 border-b border-white/10">
+        {/* Main Container - Professional Healthcare Design */}
+        <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
+          {/* Clean Header */}
+          <div className="bg-slate-700/30 px-6 py-3 border-b border-slate-200/10">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <h3 className="text-sm font-medium text-white/90">ChartrOS Clinical Workflow</h3>
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                <h3 className="text-sm font-medium text-slate-200">ASCVD Risk Assessment</h3>
               </div>
-              <span className="text-xs text-blue-300 bg-blue-400/20 px-3 py-1 rounded-full">
-                AI-Enhanced Calculator
+              <span className="text-xs text-blue-300 bg-blue-500/20 px-2 py-1 rounded-md border border-blue-400/30">
+                Enhanced by ChartrOS
               </span>
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="p-8 lg:pr-12">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Left: Clinical Notes with Highlights */}
-              <div className="flex flex-col">
-                <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Clinical Notes
+          {/* Content - Clean 3-Column Layout */}
+          <div className="p-6 lg:p-8">
+            <div className="grid md:grid-cols-3 gap-6 relative">
+              {/* Clinical Notes - Minimal Design */}
+              <div className="flex flex-col relative">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <FileText className="w-4 h-4 mr-2 text-blue-400" />
+                  Clinical Retrieval
                 </h4>
-                <motion.div 
-                  className="bg-slate-700/30 rounded-lg p-4 text-sm text-slate-300 leading-relaxed"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <div className="mb-4 pb-4 border-b border-slate-600/50">
-                    <p className="text-xs text-slate-400 mb-2">Note 1 - Cardiology Consultation</p>
-                    <p className="mb-2">
-                      <span className="text-slate-300">CC:</span> 58-year-old male referred for cardiovascular risk assessment.
+                
+                {/* Arrow to next step */}
+                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
+                    <ArrowRight className="w-3 h-3 text-emerald-400" />
+                  </div>
+                </div>
+                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-300 leading-relaxed border border-slate-600/20">
+                  <div className="mb-3 pb-3 border-b border-slate-600/30">
+                    <p className="text-xs text-slate-400 mb-2">Cardiology Consultation</p>
+                    {/* Heavily redacted with only key medical data visible */}
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span> x 8 years, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">HTN</span> on <span className="inline-block h-2 bg-slate-600/40 rounded w-16"></span>.
                     </p>
-                    <p className="mb-2">
-                      <span className="text-slate-300">PMH:</span> <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">DM Type 2</span> x 8 years, <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">HTN</span> on ACE inhibitor.
-                    </p>
-                    <p className="mb-0">
-                      <span className="text-slate-300">Recent Labs:</span> <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">TC 245</span>, <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">LDL-C 165</span>, <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">HDL-C 38</span> mg/dL, HbA1c 7.2%.
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Recent Labs:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">TC 245</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">LDL-C 165</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">HDL-C 38</span> mg/dL, <span className="inline-block h-2 bg-slate-600/40 rounded w-12"></span>.
                     </p>
                   </div>
                   
                   <div>
-                    <p className="text-xs text-slate-400 mb-2">Note 2 - Primary Care Follow-up</p>
-                    <p className="mb-2">
-                      <span className="text-slate-300">HPI:</span> Patient returns for routine DM management. Denies chest pain, SOB, or palpitations.
+                    <p className="text-xs text-slate-400 mb-2">Primary Care Follow-up</p>
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Social History:</span> Former <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">tobacco user</span> (20 pk-yr, quit 2019). <span className="inline-block h-2 bg-slate-600/40 rounded w-16"></span>.
                     </p>
-                    <p className="mb-2">
-                      <span className="text-slate-300">SH:</span> Former <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">tobacco user</span> (20 pk-yr, quit 2019). Denies ETOH.
-                    </p>
-                    <p className="mb-0">
-                      <span className="text-slate-300">Vitals:</span> BP <span className="bg-blue-500/20 text-slate-300 px-1 rounded">142/88</span> mmHg, HR 76 bpm, BMI 29.2 kg/m².
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Vitals:</span> BP <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">142/88</span> mmHg, HR 76 bpm, <span className="inline-block h-2 bg-slate-600/40 rounded w-20"></span>.
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Right: ChartR Extracted Data */}
-              <div className="flex flex-col">
-                <h4 className="text-sm font-semibold text-slate-300 mb-3 flex items-center">
-                  <BarChart3 className="w-4 h-4 mr-2" />
-                  ASCVD Risk Assessment
+              {/* Data Extraction - Subtle Animation */}
+              <div className="flex flex-col relative">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <Target className="w-4 h-4 mr-2 text-emerald-400" />
+                  Data Extraction
                 </h4>
-                <motion.div 
-                  className="bg-slate-700/30 rounded-lg p-4"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  <div className="space-y-4">
-                    {/* Risk Score - Moved to top for prominence */}
-                    <motion.div 
-                      className="bg-slate-600/40 rounded-lg p-3 border border-slate-500/20"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.7 }}
-                    >
-                      <h5 className="text-xs font-semibold text-slate-200 mb-2">ASCVD RISK SCORE</h5>
-                      <div className="text-center">
-                        {isCalculating ? (
-                          <div className="py-2">
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                              className="inline-block"
-                            >
-                              <Brain className="w-5 h-5 text-slate-300 mb-1" />
-                            </motion.div>
-                            <div className="text-xs text-slate-400">Calculating...</div>
-                          </div>
-                        ) : (
-                          <>
-                            <div className="text-2xl font-bold text-white mb-1">{riskScore}%</div>
-                            <div className="text-xs text-slate-300 mb-2">10-Year Risk</div>
-                            <div className="bg-red-500/20 text-slate-300 px-2 py-1 rounded text-xs font-medium">
-                              High Risk - Statin Recommended
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </motion.div>
-
+                
+                {/* Arrow to next step */}
+                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
+                    <ArrowRight className="w-3 h-3 text-violet-400" />
+                  </div>
+                </div>
+                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                  <div className="space-y-3">
                     {/* Risk Factors */}
                     <div>
-                      <h5 className="text-xs font-semibold text-slate-300 mb-2">RISK FACTORS</h5>
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <span className="text-slate-300 text-xs font-medium">Diabetes</span>
-                          <AlertTriangle className="w-3 h-3 text-slate-300" />
+                      <h5 className="text-xs font-medium text-amber-300 mb-2">Risk Factors</h5>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Type 2 Diabetes</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
                         </div>
-                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <span className="text-slate-300 text-xs font-medium">Hypertension</span>
-                          <AlertTriangle className="w-3 h-3 text-slate-300" />
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Hypertension</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
                         </div>
-                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <span className="text-slate-300 text-xs font-medium">Former Smoker</span>
-                          <AlertTriangle className="w-3 h-3 text-slate-300" />
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Former Smoker</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
                         </div>
                       </div>
                     </div>
 
                     {/* Lab Values */}
                     <div>
-                      <h5 className="text-xs font-semibold text-slate-300 mb-2">LAB VALUES</h5>
-                      <div className="grid grid-cols-2 gap-1.5">
-                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <div className="text-slate-300 text-xs font-medium">Total Chol</div>
-                          <div className="text-slate-300 text-xs font-semibold">245 mg/dL</div>
+                      <h5 className="text-xs font-medium text-blue-300 mb-2">Lab Values</h5>
+                      <div className="space-y-1">
+                        <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
+                          <div className="text-blue-200 text-xs font-medium">Total Cholesterol: 245 mg/dL</div>
                         </div>
-                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <div className="text-slate-300 text-xs font-medium">LDL</div>
-                          <div className="text-slate-300 text-xs font-semibold">165 mg/dL</div>
+                        <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
+                          <div className="text-blue-200 text-xs font-medium">LDL-C: 165 mg/dL</div>
                         </div>
-                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <div className="text-slate-300 text-xs font-medium">HDL</div>
-                          <div className="text-slate-300 text-xs font-semibold">38 mg/dL</div>
+                        <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
+                          <div className="text-blue-200 text-xs font-medium">HDL-C: 38 mg/dL</div>
                         </div>
-                        <div className="bg-blue-500/20 rounded px-2 py-1.5 border border-slate-500/20">
-                          <div className="text-slate-300 text-xs font-medium">Blood Pressure</div>
-                          <div className="text-slate-300 text-xs font-semibold">142/88 mmHg</div>
+                        <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
+                          <div className="text-blue-200 text-xs font-medium">Blood Pressure: 142/88 mmHg</div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
+              </div>
+
+              {/* Risk Assessment - Clean Clinical Design */}
+              <div className="flex flex-col">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
+                  Evidence-Based Practice
+                </h4>
+                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                  <div className="space-y-3">
+                    {/* Risk Score - Professional Display */}
+                    <div className="bg-violet-500/20 rounded-lg p-3 border border-violet-400/30">
+                      <h5 className="text-xs font-medium text-violet-300 mb-2">10-Year ASCVD Risk</h5>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold text-violet-200 mb-1">{riskScore}%</div>
+                        <div className="text-xs text-violet-300 bg-violet-500/20 px-2 py-1 rounded">High Risk</div>
+                      </div>
+                    </div>
+
+                    {/* Clinical Recommendations - Professional Format */}
+                    <div className="bg-emerald-500/20 rounded-lg p-3 border border-emerald-400/30">
+                      <h5 className="text-xs font-medium text-emerald-300 mb-2">Clinical Recommendations</h5>
+                      <div className="space-y-1.5">
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <div className="text-emerald-200 text-xs">
+                            <span className="font-medium">High-intensity statin therapy</span>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <div className="text-emerald-200 text-xs">
+                            <span className="font-medium">Blood pressure target &lt;130/80</span>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <div className="text-emerald-200 text-xs">
+                            <span className="font-medium">Lifestyle modifications</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     );
@@ -877,7 +869,7 @@ const Homepage = () => {
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl chartr-heading text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-8"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -895,7 +887,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Deploy clinical workflows, integrate structured clinical data, and build your own AI solutions—all on one platform.
+                Leverage unstructured clinical data, build AI-powered solutions, and deploy AI-integrated clinical workflows — all on one no-code platform.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -956,13 +948,13 @@ const Homepage = () => {
                     <Cpu className="w-6 h-6 text-emerald-400 opacity-75" />
                   </div>
                 </div>
-                <span className="text-xl chartr-subheading bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                <span className="text-xl font-semibold bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
                   Introducing ChartrOS
                 </span>
               </div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               The Industry's First
               <br />
               <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
@@ -971,7 +963,7 @@ const Homepage = () => {
             </h2>
             
             <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
-              A modular operating system that powers AI-enabled clinical workflows.
+              A modular operating system that powers AI-enhanced clinical workflows.
             </p>
           </motion.div>
 
@@ -1010,7 +1002,7 @@ const Homepage = () => {
                         <Layers className="w-5 h-5 text-cyan-400" />
                         <div>
                           <div className="font-medium text-slate-200">Existing AI Abstraction Tools</div>
-                          <div className="text-xs text-slate-400">Seamless integration, no vendor lock-in</div>
+                          <div className="text-xs text-slate-400">Seamless vendor integration</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1203,7 +1195,7 @@ const Homepage = () => {
                         <img src="/logo.svg" alt="ChartR" className="w-10 h-10 brightness-0 invert" />
                       </motion.div>
                       <motion.h3 
-                        className="text-xl chartr-subheading text-white"
+                        className="text-xl font-semibold text-white"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.7 }}
@@ -1289,7 +1281,7 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Inside</span> ChartrOS
               </h2>
               
@@ -1310,7 +1302,7 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Built for Healthcare Standards</h3>
+                      <h3 className="text-lg font-semibold text-white mb-2">Built for Healthcare Standards</h3>
                       <p className="text-slate-400 chartr-body">
                         Secure, HIPAA-ready, and continuously improving.
                       </p>
@@ -1329,7 +1321,7 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Seamlessly Compatible</h3>
+                      <h3 className="text-lg font-semibold text-white mb-2">Seamlessly Compatible</h3>
                       <p className="text-slate-400 chartr-body">
                         Integrates with your EMR and existing AI stack.
                       </p>
@@ -1348,7 +1340,7 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Intelligent Retrieval Layer</h3>
+                      <h3 className="text-lg font-semibold text-white mb-2">Intelligent Retrieval Layer</h3>
                       <p className="text-slate-400 chartr-body">
                         Structured clinical insights from notes, registries, and literature.
                       </p>
@@ -1367,7 +1359,7 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Human-Validated Workflows</h3>
+                      <h3 className="text-lg font-semibold text-white mb-2">Human-Validated Workflows</h3>
                       <p className="text-slate-400 chartr-body">
                         Clinician review built into every critical step.
                       </p>
@@ -1600,7 +1592,7 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Enterprise-Grade Infrastructure</span> for Healthcare AI
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
@@ -1667,7 +1659,7 @@ const Homepage = () => {
             transition={{ duration: 0.8 }}
                           className="space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl chartr-heading text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
               Ready to Transform
               <br />
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
@@ -1688,7 +1680,7 @@ const Homepage = () => {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-purple-600/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
               <div className="relative bg-white/10 rounded-2xl p-6 backdrop-blur-xl border border-white/20">
-                <div className="text-lg chartr-subheading text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-lg font-semibold text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
                 <div className="text-sm text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
               </div>
             </motion.div>
