@@ -2317,9 +2317,11 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-slate-900">
-        {/* Subtle gradient transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-blue-100/50 dark:via-slate-900/50 dark:to-slate-850/80" />
+      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-indigo-500/5 to-purple-500/5 dark:bg-slate-900">
+        {/* Subtle diagonal gradient transition */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-blue-200/60 dark:via-slate-900/50 dark:to-slate-850/80" />
+        {/* Subtle vertical ombre overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-indigo-100/10 to-purple-200/10 pointer-events-none" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -2328,31 +2330,24 @@ const Homepage = () => {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-transparent dark:bg-gradient-to-r dark:from-white dark:to-slate-200 dark:bg-clip-text mb-4">
-              Ready to Transform
-              <br />
-              <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 bg-clip-text">
-                Your Healthcare Data?
-              </span>
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
-              Join leading healthcare organizations saving millions with ChartR's AI platform. 
-              See how our <span className="text-indigo-700 dark:text-indigo-200 chartr-body-medium">human-AI integration</span> can revolutionize your clinical data management.
-            </p>
+
             
             {/* Enhanced Feature Highlight */}
-            <motion.div 
-              className="relative group max-w-xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-80 transition-all duration-300" />
-              <div className="relative bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 shadow-lg">
-                <div className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Leading the Future of Healthcare Intelligence</div>
-                <div className="text-sm text-slate-700 dark:text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
-              </div>
-            </motion.div>
+            <Link href="/contact">
+              <motion.div 
+                className="relative group max-w-md mx-auto cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-80 transition-all duration-300" />
+                <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="text-xl font-semibold text-white">Start Transforming Your Data</div>
+                </div>
+              </motion.div>
+            </Link>
             
             
           </motion.div>
