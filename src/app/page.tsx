@@ -1136,6 +1136,12 @@ const Homepage = () => {
           <div className="bg-slate-800/80 px-6 py-4 border-b border-slate-700/50">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
+                {/* ChartR Logo */}
+                <img 
+                  src="/logo.svg" 
+                  alt="ChartR Logo" 
+                  className="w-8 h-8"
+                />
                 <div className="flex space-x-2">
                   <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
                   <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
@@ -1144,6 +1150,17 @@ const Homepage = () => {
                 <span className="text-sm text-slate-300 font-medium">ChartrOS Control Center</span>
               </div>
               <div className="flex items-center space-x-4">
+                {/* Moved stats here - smaller and more compact */}
+                <div className="flex items-center space-x-4 text-xs text-slate-400">
+                  <div className="flex items-center space-x-1">
+                    <span className="text-white font-medium">47</span>
+                    <span>Active Workflows</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <span className="text-white font-medium">2.4M</span>
+                    <span>Records Processed</span>
+                  </div>
+                </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                   <span className="text-xs text-emerald-400 font-medium">Live</span>
@@ -1155,18 +1172,6 @@ const Homepage = () => {
 
           {/* Content */}
           <div className="p-6">
-            {/* Quick Stats Bar */}
-            <div className="flex justify-center gap-8 mb-6 pb-6 border-b border-slate-700/50">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">47</div>
-                <div className="text-xs text-slate-400">Active Workflows</div>
-              </div>
-
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">2.4M</div>
-                <div className="text-xs text-slate-400">Records Processed</div>
-              </div>
-            </div>
 
             <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
               <Layers className="w-4 h-4 mr-2 text-teal-400" />
@@ -1200,9 +1205,19 @@ const Homepage = () => {
                   </div>
                 </div>
                 
-                <div className="mt-3 text-center">
-                  <div className="text-lg font-bold text-teal-400">99.1%</div>
-                  <div className="text-xs text-slate-400">Accuracy</div>
+                <div className="mt-3 grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-sm font-bold text-teal-400">12</div>
+                    <div className="text-xs text-slate-400">Models Deployed</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-teal-400">8.4K</div>
+                    <div className="text-xs text-slate-400">Uses</div>
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-teal-400">347</div>
+                    <div className="text-xs text-slate-400">High Risk Events</div>
+                  </div>
                 </div>
 
               </motion.div>
