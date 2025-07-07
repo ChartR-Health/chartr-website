@@ -1604,36 +1604,42 @@ const Homepage = () => {
                 <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Enterprise-Grade Infrastructure</span> for Healthcare AI
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
-                Built to power multiple teams, tools, and environments—on a single, unified platform.
+                Built to power diverse tools, users, and environments—on a single, unified platform.
               </p>
             </motion.div>
           </div>
 
           {/* Compliance & Security Badges - Vertical Stack */}
           <motion.div
-            className="flex flex-col items-center space-y-6 mb-16 max-w-lg mx-auto"
+            className="flex flex-col items-center space-y-8 mb-16 max-w-lg mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
-              <CheckCircle className="w-8 h-8 text-teal-400" />
+            <div className="flex items-start space-x-4 w-full">
+              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
+              </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white">Federated Learning</div>
+                <div className="text-lg chartr-body-medium text-white font-bold">Federated Learning</div>
                 <div className="text-sm text-slate-400 chartr-body">Train models without moving sensitive data</div>
               </div>
             </div>
-            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
-              <CheckCircle className="w-8 h-8 text-teal-400" />
+            <div className="flex items-start space-x-4 w-full">
+              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
+              </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white">Modular + Multi-Tenant</div>
+                <div className="text-lg chartr-body-medium text-white font-bold">Modular + Multi-Tenant</div>
                 <div className="text-sm text-slate-400 chartr-body">Power multiple teams and deployments from a single platform</div>
               </div>
             </div>
-            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
-              <CheckCircle className="w-8 h-8 text-teal-400" />
+            <div className="flex items-start space-x-4 w-full">
+              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <CheckCircle className="w-5 h-5 text-cyan-400" />
+              </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white">SOC 2 Type II Audited</div>
+                <div className="text-lg chartr-body-medium text-white font-bold">SOC 2 Type II Audited</div>
                 <div className="text-sm text-slate-400 chartr-body">Verified operational and data security controls</div>
               </div>
             </div>
