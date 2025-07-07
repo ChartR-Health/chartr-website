@@ -185,7 +185,7 @@ FINDINGS:
   useEffect(() => {
     if (!isProcessing) {
       const confirmedCount = Object.values(variableStates).filter(state => state.confirmed).length
-      const newProgress = 97 + confirmedCount // Start at 97% since Ejection Fraction is pre-confirmed
+      const newProgress = 97 + confirmedCount // Start at 97% and increment by 1% for each confirmed
       setProgress(newProgress)
     }
   }, [variableStates, isProcessing])
@@ -275,6 +275,13 @@ FINDINGS:
     return highlightedNote
   }
 
+  const areAllVariablesConfirmed = () => {
+    return extractedVariables.every(variable => {
+      const state = getVariableState(variable.name)
+      return state.confirmed || variable.status === 'validated'
+    })
+  }
+
   return (
     <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-slate-900">
       {/* Subtle gradient transition */}
@@ -331,6 +338,7 @@ FINDINGS:
                     const Icon = step.icon
                     const isHumanValidation = index === processingSteps.length - 1
                     const isCompleted = !isHumanValidation
+                    const allConfirmed = areAllVariablesConfirmed()
                     
                     return (
                       <div
@@ -347,12 +355,16 @@ FINDINGS:
                           {isCompleted ? (
                             <CheckCircle className="w-4 h-4 text-cyan-400" />
                           ) : isHumanValidation ? (
-                            <motion.div
-                              animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                            >
-                              <Loader2 className="w-4 h-4 text-blue-400" />
-                            </motion.div>
+                            allConfirmed ? (
+                              <CheckCircle className="w-4 h-4 text-cyan-400" />
+                            ) : (
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              >
+                                <Loader2 className="w-4 h-4 text-blue-400" />
+                              </motion.div>
+                            )
                           ) : (
                             <Icon className="w-4 h-4 text-slate-400 group-hover:text-blue-300 transition-colors" />
                           )}
@@ -375,7 +387,11 @@ FINDINGS:
                   </div>
                   <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full"
+                      className={`h-full rounded-full transition-all duration-500 ${
+                        progress === 100 
+                          ? 'bg-gradient-to-r from-green-400 to-emerald-500' 
+                          : 'bg-gradient-to-r from-teal-400 to-cyan-400'
+                      }`}
                       initial={{ width: 0 }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.5 }}
@@ -524,6 +540,11 @@ FINDINGS:
                                 )}
                               </div>
                             </div>
+                            {(isConfirmed || variable.status === 'validated') && (
+                              <div className="mt-3 text-xs text-[#3ED598] bg-[#3ED598]/10 p-2 rounded">
+                                Confirmed by Reviewer
+                              </div>
+                            )}
                           </>
                         )}
                         

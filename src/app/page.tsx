@@ -427,7 +427,7 @@ const Homepage = () => {
                     <h4 className="text-sm font-medium text-slate-300 flex items-center">
                       <FileText className="w-4 h-4 mr-2 text-blue-400" />
                       Clinical Retrieval
-                    </h4>
+                </h4>
                     <span className="text-xs text-blue-300 bg-blue-500/20 px-2 py-1 rounded border border-blue-400/30">
                       AI Module
                     </span>
@@ -473,15 +473,15 @@ const Homepage = () => {
                     <h4 className="text-sm font-medium text-slate-300 flex items-center">
                       <Target className="w-4 h-4 mr-2 text-emerald-400" />
                       Data Extraction
-                    </h4>
+                </h4>
                     <span className="text-xs text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded border border-emerald-400/30">
                       AI Module
                     </span>
-                  </div>
+                          </div>
                   <p className="text-xs text-slate-400 mb-2">
                     Structured data extraction & validation pipeline
                   </p>
-                </div>
+                            </div>
                 
                 {/* Arrow to next step */}
                 <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
@@ -529,8 +529,8 @@ const Homepage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
+            </div>
 
               {/* ASCVD Risk Calculator Module */}
               <div className="flex flex-col relative">
@@ -543,7 +543,7 @@ const Homepage = () => {
                     <span className="text-xs text-purple-300 bg-purple-500/20 px-2 py-1 rounded border border-purple-400/30">
                       ML Component
                     </span>
-                  </div>
+          </div>
                   <p className="text-xs text-slate-400 mb-2">
                     ASCVD risk computation using validated models
                   </p>
@@ -869,52 +869,52 @@ const Homepage = () => {
         prev.includes(moduleId) 
           ? prev.filter(id => id !== moduleId)
           : [...prev, moduleId]
-      );
+    );
+  };
+
+  // Calculate dynamic risk scores based on selected modules
+  const calculateRiskScores = () => {
+    const riskData = {
+      cardiac: { score: 15.3, level: 'Elevated' },
+      pulmonary: { score: 8.2, level: 'Moderate' },
+      nsqip: { score: 12.4, level: 'High' },
+      frailty: { score: 7.8, level: 'Moderate' },
+      bleeding: { score: 22.0, level: 'High' },
+      renal: { score: 18.0, level: 'Moderate' }
     };
 
-    // Calculate dynamic risk scores based on selected modules
-    const calculateRiskScores = () => {
-      const riskData = {
-        cardiac: { score: 15.3, level: 'Elevated' },
-        pulmonary: { score: 8.2, level: 'Moderate' },
-        nsqip: { score: 12.4, level: 'High' },
-        frailty: { score: 7.8, level: 'Moderate' },
-        bleeding: { score: 22.0, level: 'High' },
-        renal: { score: 18.0, level: 'Moderate' }
-      };
+    const activeRisks = selectedModules.map(moduleId => ({
+      moduleId,
+      ...riskData[moduleId as keyof typeof riskData]
+    }));
 
-      const activeRisks = selectedModules.map(moduleId => ({
-        moduleId,
-        ...riskData[moduleId as keyof typeof riskData]
-      }));
+    const totalRisk = activeRisks.reduce((sum, risk) => sum + risk.score, 0);
+    const avgRisk = activeRisks.length > 0 ? totalRisk / activeRisks.length : 0;
+    
+    let overallLevel = 'Low';
+    if (avgRisk > 15) overallLevel = 'High';
+    else if (avgRisk > 10) overallLevel = 'Moderate-High';
+    else if (avgRisk > 5) overallLevel = 'Moderate';
 
-      const totalRisk = activeRisks.reduce((sum, risk) => sum + risk.score, 0);
-      const avgRisk = activeRisks.length > 0 ? totalRisk / activeRisks.length : 0;
-      
-      let overallLevel = 'Low';
-      if (avgRisk > 15) overallLevel = 'High';
-      else if (avgRisk > 10) overallLevel = 'Moderate-High';
-      else if (avgRisk > 5) overallLevel = 'Moderate';
+    return { activeRisks, avgRisk, overallLevel };
+  };
 
-      return { activeRisks, avgRisk, overallLevel };
+  // Click outside to close dropdowns
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (moduleSelectorRef.current && !moduleSelectorRef.current.contains(event.target as Node)) {
+        setShowModuleSelector(false);
+      }
+      if (workflowSettingsRef.current && !workflowSettingsRef.current.contains(event.target as Node)) {
+        setShowWorkflowSettings(false);
+      }
     };
 
-    // Click outside to close dropdowns
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (moduleSelectorRef.current && !moduleSelectorRef.current.contains(event.target as Node)) {
-          setShowModuleSelector(false);
-        }
-        if (workflowSettingsRef.current && !workflowSettingsRef.current.contains(event.target as Node)) {
-          setShowWorkflowSettings(false);
-        }
-      };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    return (
+  return (
       <div className="relative w-full">
         {/* Main Container - Professional Healthcare Design */}
         <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
@@ -2139,8 +2139,8 @@ const Homepage = () => {
             >
               <PreOperativeRiskDemo />
             </motion.div>
-          </div>
-        </div>
+                      </div>
+                    </div>
       </section>
 
       {/* How We Are Different Section */}
@@ -2151,7 +2151,7 @@ const Homepage = () => {
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
           }} />
-        </div>
+                  </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
@@ -2185,7 +2185,7 @@ const Homepage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
             {/* 1. No-Code, Seamless Integration */}
-            <motion.div 
+                    <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2195,8 +2195,8 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Layers className="w-7 h-7 text-cyan-400" />
-                </div>
-                
+                      </div>
+                      
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
                 
                 <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
@@ -2217,11 +2217,11 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">Seamless EMR integration</span>
                   </li>
                 </ul>
-              </div>
-            </motion.div>
+                      </div>
+                    </motion.div>
 
             {/* 2. Clinical Retrieval Layer */}
-            <motion.div 
+                    <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2231,7 +2231,7 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="w-7 h-7 text-emerald-400" />
-                </div>
+                          </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Best-in-Class Clinical Retrieval</h3>
                 
@@ -2253,11 +2253,11 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">Real-time validation modules</span>
                   </li>
                 </ul>
-              </div>
+                          </div>
             </motion.div>
 
             {/* 3. Flexible Deployment */}
-            <motion.div 
+                          <motion.div
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2267,8 +2267,8 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Network className="w-7 h-7 text-purple-400" />
-                </div>
-                
+                      </div>
+                      
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No Vendor Lock-In</h3>
                 
                 <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
@@ -2289,11 +2289,11 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">API-first design</span>
                   </li>
                 </ul>
-              </div>
+                        </div>
             </motion.div>
 
             {/* 4. Bring Your Own AI */}
-            <motion.div 
+                          <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2303,7 +2303,7 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-amber-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Cpu className="w-7 h-7 text-amber-400" />
-                </div>
+                        </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Your AI, Your Way</h3>
                 
@@ -2325,11 +2325,11 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">Model-agnostic platform</span>
                   </li>
                 </ul>
-              </div>
-            </motion.div>
+                      </div>
+                    </motion.div>
 
             {/* 5. Continuous Learning */}
-            <motion.div 
+                    <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2339,8 +2339,8 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <TrendingUp className="w-7 h-7 text-indigo-400" />
-                </div>
-                
+                      </div>
+                      
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Automated RLHF</h3>
                 
                 <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
@@ -2361,11 +2361,11 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">Human-in-the-loop validation</span>
                   </li>
                 </ul>
-              </div>
-            </motion.div>
+                      </div>
+                    </motion.div>
 
             {/* 6. Smart Review */}
-            <motion.div 
+                  <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -2375,7 +2375,7 @@ const Homepage = () => {
               <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Users className="w-7 h-7 text-teal-400" />
-                </div>
+                        </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Collaboration</h3>
                 
@@ -2397,9 +2397,9 @@ const Homepage = () => {
                     <span className="text-sm text-slate-700 dark:text-slate-300">Audit trail for compliance</span>
                   </li>
                 </ul>
-              </div>
-            </motion.div>
-          </div>
+                    </div>
+                  </motion.div>
+                </div>
 
           {/* Bottom CTA */}
           <motion.div 
@@ -2420,7 +2420,7 @@ const Homepage = () => {
                 See ChartrOS in Action
               </motion.button>
             </Link>
-          </motion.div>
+            </motion.div>
         </div>
       </section>
 
@@ -2501,25 +2501,25 @@ const Homepage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-4"
+                          className="space-y-4"
           >
 
             
             {/* Enhanced Feature Highlight */}
             <Link href="/contact">
-              <motion.div 
+            <motion.div 
                 className="relative group max-w-md mx-auto cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-80 transition-all duration-300" />
                 <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="text-xl font-semibold text-white">Start Transforming Your Data</div>
-                </div>
-              </motion.div>
+              </div>
+            </motion.div>
             </Link>
             
             
