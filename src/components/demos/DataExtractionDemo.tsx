@@ -276,9 +276,9 @@ FINDINGS:
   }
 
   return (
-    <section className="py-16 relative overflow-hidden chartr-bg-accent">
+    <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-slate-900">
       {/* Subtle gradient transition */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-transparent dark:via-slate-900/30"></div>
       
       {/* Background Elements - More subtle */}
       <div className="absolute inset-0 opacity-5">
@@ -294,13 +294,13 @@ FINDINGS:
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-white">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+            <span className="text-slate-900 dark:text-white">
              Smart Review in Action:
             </span>{' '}
             <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">End-to-End Clinical Data Processing</span>
           </h2>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             From raw EMR data to structured insights—validated in real time.
           </p>
         </motion.div>
@@ -313,14 +313,14 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden shadow-xl">
+            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
+              <div className="flex items-center space-x-3 p-6 border-b border-slate-200/50 dark:border-slate-700/50">
                 <div className="p-2 bg-cyan-600/20 rounded-lg">
                   <Brain className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white">AI Processing Engine</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">AI Processing Engine</h3>
                 </div>
               </div>
               
@@ -337,8 +337,8 @@ FINDINGS:
                         key={index}
                         className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-500 border ${
                           isCompleted || isHumanValidation
-                            ? 'bg-slate-700/50 border-slate-500/30' 
-                            : 'bg-slate-800/50 border-slate-600/30'
+                            ? 'bg-slate-200/50 dark:bg-slate-700/50 border-slate-300/30 dark:border-slate-500/30' 
+                            : 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200/30 dark:border-slate-600/30'
                         }`}
                       >
                         <div className={`p-2 rounded-lg ${
@@ -358,7 +358,7 @@ FINDINGS:
                           )}
                         </div>
                         <span className={`text-sm font-medium ${
-                          isCompleted || isHumanValidation ? 'text-white' : 'text-slate-400'
+                          isCompleted || isHumanValidation ? 'text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400'
                         }`}>
                           {step.label}
                         </span>
@@ -370,8 +370,8 @@ FINDINGS:
                 {/* Progress Bar */}
                 <div className="mt-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-slate-400">Overall Progress</span>
-                    <span className="text-sm font-medium text-white">{progress}%</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Overall Progress</span>
+                    <span className="text-sm font-medium text-slate-900 dark:text-white">{progress}%</span>
                   </div>
                   <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                     <motion.div 
@@ -393,14 +393,14 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden shadow-xl">
+            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
+              <div className="flex items-center space-x-3 p-6 border-b border-slate-200/50 dark:border-slate-700/50">
                 <div className="p-2 bg-cyan-600/20 rounded-lg">
                   <Users className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white">Smart Review</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Smart Review</h3>
                 </div>
               </div>
               
@@ -418,12 +418,12 @@ FINDINGS:
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: (!isProcessing ? index * 0.1 : 0) }}
-                        className={`p-4 rounded-lg border transition-all duration-300 bg-slate-700/50 ${
+                        className={`p-4 rounded-lg border transition-all duration-300 bg-white/80 dark:bg-slate-700/50 ${
                           index === 0 || index === 2 || index === 3 
                             ? 'border-[#F0B84B]/30' 
                             : index === 1 
                               ? 'border-[#28D0C7]/30' 
-                              : 'border-slate-600/30'
+                              : 'border-slate-300/30 dark:border-slate-600/30'
                         }`}
                       >
                                                 {index === 1 ? (
@@ -431,15 +431,15 @@ FINDINGS:
                             {/* Special layout for Ejection Fraction card */}
                             <div className="flex items-center justify-between">
                               <div className="flex flex-col">
-                                <div className="flex items-center space-x-2 mb-2">
-                                  <span className="text-white font-medium text-sm">{variable.name}</span>
-                                  {isConfirmed || variable.status === 'validated' ? (
-                                    <CheckCircle className="w-4 h-4 text-[#28D0C7]" />
-                                  ) : (
-                                    <AlertTriangle className="w-4 h-4 text-[#F0B84B]" />
-                                  )}
-                                </div>
-                                <span className="text-sm font-medium text-slate-300">{variable.value}</span>
+                                                              <div className="flex items-center space-x-2 mb-2">
+                                <span className="text-slate-900 dark:text-white font-medium text-sm">{variable.name}</span>
+                                {isConfirmed || variable.status === 'validated' ? (
+                                  <CheckCircle className="w-4 h-4 text-[#28D0C7]" />
+                                ) : (
+                                  <AlertTriangle className="w-4 h-4 text-[#F0B84B]" />
+                                )}
+                              </div>
+                              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{variable.value}</span>
                               </div>
                               <div className="flex items-center space-x-2">
                                 <button
@@ -481,7 +481,7 @@ FINDINGS:
                           <>
                             <div className="flex items-center justify-between mb-2">
                               <div className="flex items-center space-x-2">
-                                <span className="text-white font-medium text-sm">{variable.name}</span>
+                                <span className="text-slate-900 dark:text-white font-medium text-sm">{variable.name}</span>
                                 {isConfirmed || variable.status === 'validated' ? (
                                   <CheckCircle className={`w-4 h-4 ${variable.name === "Ejection Fraction" ? 'text-[#28D0C7]' : 'text-[#28D0C7]'}`} />
                                 ) : (
@@ -492,11 +492,11 @@ FINDINGS:
                             
                             {/* Value and Action Buttons in same line */}
                             <div className="flex items-center justify-between">
-                              <span className="text-sm font-medium text-slate-300">{variable.value}</span>
+                              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{variable.value}</span>
                               <div className="flex items-center space-x-2">
                                 <button
                                   onClick={() => handleViewSource(variable.name)}
-                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-700/50 hover:bg-slate-600/50 rounded text-xs text-slate-300 hover:text-white transition-colors"
+                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-200/50 dark:bg-slate-700/50 hover:bg-slate-300/50 dark:hover:bg-slate-600/50 rounded text-xs text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                                 >
                                   <Eye className="w-3 h-3" />
                                   <span>View</span>
@@ -507,7 +507,7 @@ FINDINGS:
                                     {!isConfirmed && (
                                       <button 
                                         onClick={() => handleConfirm(variable.name)}
-                                        className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-300 hover:text-emerald-200 transition-colors"
+                                        className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-colors"
                                       >
                                         <CheckCircle className="w-3 h-3" />
                                         <span>Confirm</span>
@@ -515,7 +515,7 @@ FINDINGS:
                                     )}
                                     <button 
                                       onClick={() => handleEdit(variable.name)}
-                                      className="flex items-center space-x-1 px-2 py-1 bg-[#F0B84B]/20 hover:bg-[#F0B84B]/30 rounded text-xs text-[#F0B84B] hover:text-yellow-900 transition-colors"
+                                      className="flex items-center space-x-1 px-2 py-1 bg-[#F0B84B]/20 hover:bg-[#F0B84B]/30 rounded text-xs text-[#B8860B] dark:text-[#F0B84B] hover:text-yellow-900 dark:hover:text-yellow-900 transition-colors"
                                     >
                                       <Edit className="w-3 h-3" />
                                       <span>Edit</span>
@@ -556,36 +556,36 @@ FINDINGS:
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-slate-800 rounded-2xl border border-slate-700 max-w-4xl max-h-[80vh] overflow-hidden"
+              className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 max-w-4xl max-h-[80vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-slate-700">
+              <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-purple-500/20 rounded-lg">
                     <FileText className="w-5 h-5 text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                       {selectedVariable === "Ejection Fraction" ? "Echo Reports" : "Source Clinical Note"}
                     </h3>
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {selectedVariable === "Ejection Fraction" ? "Last 3 Echo Reports" : `Highlights for: ${selectedVariable}`}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => setShowSourceNote(false)}
-                  className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                  className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                 >
-                  <X className="w-5 h-5 text-slate-400" />
+                  <X className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                 </button>
               </div>
               
               {/* Modal Content */}
               <div className="p-6 overflow-y-auto max-h-[60vh]">
                 <div 
-                  className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap font-mono"
+                  className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap font-mono"
                   dangerouslySetInnerHTML={{ 
                     __html: getHighlightedNote(selectedVariable || '') 
                   }}
@@ -610,27 +610,27 @@ FINDINGS:
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-slate-800 rounded-2xl border border-slate-700 max-w-md w-full"
+              className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-slate-700">
+              <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-amber-500/20 rounded-lg">
                     <Edit className="w-5 h-5 text-amber-400" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">Edit Variable</h3>
-                    <p className="text-sm text-slate-400">
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Edit Variable</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {editingVariable}
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={handleCancelEdit}
-                  className="p-2 hover:bg-slate-700 rounded-lg transition-colors"
+                  className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                 >
-                  <X className="w-5 h-5 text-slate-400" />
+                  <X className="w-5 h-5 text-slate-600 dark:text-slate-400" />
                 </button>
               </div>
               
@@ -638,14 +638,14 @@ FINDINGS:
               <div className="p-6">
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                       Value
                     </label>
                     <input
                       type="text"
                       value={editValue}
                       onChange={(e) => setEditValue(e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                      className="w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                       placeholder="Enter value..."
                     />
                   </div>
@@ -659,7 +659,7 @@ FINDINGS:
                     </button>
                     <button
                       onClick={handleCancelEdit}
-                      className="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-colors"
+                      className="flex-1 px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-900 dark:text-white rounded-lg transition-colors"
                     >
                       Cancel
                     </button>

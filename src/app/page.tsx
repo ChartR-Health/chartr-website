@@ -638,8 +638,8 @@ const Homepage = () => {
             {/* Modular Workflow Explanation */}
             <div className="mt-6 p-4 bg-slate-600/10 rounded-lg border border-slate-500/20">
               <div className="text-center">
-                <h5 className="text-sm font-medium text-slate-300 mb-2">Modular AI/ML Architecture</h5>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <h5 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-2">Modular AI/ML Architecture</h5>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                   Each component operates independently as a specialized AI module, enabling flexible workflows and custom integrations across different clinical specialties and use cases.
                 </p>
               </div>
@@ -878,15 +878,15 @@ const Homepage = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                <h3 className="text-sm font-medium text-slate-200">Surgical Pre-Operative Risk Assessment</h3>
+                <h3 className="text-sm font-medium text-slate-900 dark:text-slate-200">Surgical Pre-Operative Risk Assessment</h3>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded-md border border-emerald-400/30">
+                <span className="text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded-md border border-emerald-400/30">
                   Multi-Module AI Workflow
                 </span>
                 <button
                   onClick={() => setShowModuleSelector(!showModuleSelector)}
-                  className="flex items-center space-x-1 px-2 py-1 bg-violet-500/20 hover:bg-violet-500/30 text-violet-300 text-xs rounded-md border border-violet-400/30 transition-all"
+                  className="flex items-center space-x-1 px-2 py-1 bg-violet-500/20 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300 text-xs rounded-md border border-violet-400/30 transition-all"
                 >
                   <Plus className="w-3 h-3" />
                   <span>Add Module</span>
@@ -932,7 +932,7 @@ const Homepage = () => {
             <div className="grid md:grid-cols-4 gap-6 relative">
               {/* Clinical Notes - Enhanced for Surgery */}
               <div className="flex flex-col relative">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
                   <FileText className="w-4 h-4 mr-2 text-blue-400" />
                   Clinical Retrieval
                 </h4>
@@ -943,24 +943,24 @@ const Homepage = () => {
                     <ArrowRight className="w-3 h-3 text-emerald-400" />
                   </div>
                 </div>
-                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-300 leading-relaxed border border-slate-600/20">
+                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-600/20">
                   <div className="mb-3 pb-3 border-b border-slate-600/30">
-                    <p className="text-xs text-slate-400 mb-2">Surgical Consultation</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Surgical Consultation</p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
+                      <span className="text-slate-700 dark:text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
+                      <span className="text-slate-700 dark:text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
                     </p>
                   </div>
                   
                   <div>
-                    <p className="text-xs text-slate-400 mb-2">Pre-Op Assessment</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Pre-Op Assessment</p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
+                      <span className="text-slate-700 dark:text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
+                      <span className="text-slate-700 dark:text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
                     </p>
                   </div>
                 </div>
@@ -968,7 +968,7 @@ const Homepage = () => {
 
               {/* Data Extraction - Enhanced */}
               <div className="flex flex-col relative">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
                   <Target className="w-4 h-4 mr-2 text-emerald-400" />
                   Multi-Source Extraction
                 </h4>
@@ -983,34 +983,34 @@ const Homepage = () => {
                   <div className="space-y-3">
                     {/* Surgical Factors */}
                     <div>
-                      <h5 className="text-xs font-medium text-violet-300 mb-2">Surgical Factors</h5>
+                      <h5 className="text-xs font-medium text-violet-800 dark:text-violet-300 mb-2">Surgical Factors</h5>
                       <div className="space-y-1">
                         <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
-                          <span className="text-violet-200 text-xs font-medium">Intraperitoneal Surgery</span>
-                          <CheckCircle className="w-3 h-3 text-violet-300" />
+                          <span className="text-violet-800 dark:text-violet-200 text-xs font-medium">Intraperitoneal Surgery</span>
+                          <CheckCircle className="w-3 h-3 text-violet-700 dark:text-violet-300" />
                         </div>
                         <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
-                          <span className="text-violet-200 text-xs font-medium">ASA Class III</span>
-                          <CheckCircle className="w-3 h-3 text-violet-300" />
+                          <span className="text-violet-800 dark:text-violet-200 text-xs font-medium">ASA Class III</span>
+                          <CheckCircle className="w-3 h-3 text-violet-700 dark:text-violet-300" />
                         </div>
                       </div>
                     </div>
 
                     {/* Medical Factors */}
                     <div>
-                      <h5 className="text-xs font-medium text-amber-300 mb-2">Medical History</h5>
+                      <h5 className="text-xs font-medium text-amber-800 dark:text-amber-300 mb-2">Medical History</h5>
                       <div className="space-y-1">
                         <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-200 text-xs font-medium">Ischemic Heart Disease</span>
-                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Ischemic Heart Disease</span>
+                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
                         </div>
                         <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-200 text-xs font-medium">Insulin Therapy</span>
-                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Insulin Therapy</span>
+                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
                         </div>
                         <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-200 text-xs font-medium">Cr &gt;1.5 mg/dL</span>
-                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Cr &gt;1.5 mg/dL</span>
+                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
                         </div>
                       </div>
                     </div>
@@ -1020,7 +1020,7 @@ const Homepage = () => {
 
               {/* Integrated AI Modules - Dynamic Display */}
               <div className="flex flex-col md:col-span-2">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
                   <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
                   Integrated Risk Assessments
                 </h4>
@@ -1042,12 +1042,12 @@ const Homepage = () => {
 
                       const data = riskData[moduleId as keyof typeof riskData];
                       const colorMap = {
-                        rose: 'bg-rose-500/20 border-rose-400/30 text-rose-300',
-                        blue: 'bg-blue-500/20 border-blue-400/30 text-blue-300',
-                        purple: 'bg-purple-500/20 border-purple-400/30 text-purple-300',
-                        amber: 'bg-amber-500/20 border-amber-400/30 text-amber-300',
-                        red: 'bg-red-500/20 border-red-400/30 text-red-300',
-                        cyan: 'bg-cyan-500/20 border-cyan-400/30 text-cyan-300'
+                        rose: 'bg-rose-500/20 border-rose-400/30 text-rose-700 dark:text-rose-300',
+                        blue: 'bg-blue-500/20 border-blue-400/30 text-blue-700 dark:text-blue-300',
+                        purple: 'bg-purple-500/20 border-purple-400/30 text-purple-700 dark:text-purple-300',
+                        amber: 'bg-amber-500/20 border-amber-400/30 text-amber-700 dark:text-amber-300',
+                        red: 'bg-red-500/20 border-red-400/30 text-red-700 dark:text-red-300',
+                        cyan: 'bg-cyan-500/20 border-cyan-400/30 text-cyan-700 dark:text-cyan-300'
                       };
 
                       return (
@@ -1071,10 +1071,10 @@ const Homepage = () => {
                             </button>
                           </div>
                           <div className="text-center mb-2">
-                            <div className="text-xl font-bold">{data.score}</div>
-                            <div className="text-xs opacity-80">{data.level} Risk</div>
+                            <div className="text-xl font-bold text-slate-900 dark:text-white">{data.score}</div>
+                            <div className="text-xs opacity-80 text-slate-700 dark:text-slate-300">{data.level} Risk</div>
                           </div>
-                          <div className="text-xs opacity-90">
+                          <div className="text-xs opacity-90 text-slate-700 dark:text-slate-300">
                             <span className="font-medium">Action:</span> {data.recommendation}
                           </div>
                         </motion.div>
@@ -1096,22 +1096,22 @@ const Homepage = () => {
                   </div>
 
                   {/* Overall Risk Summary */}
-                  <div className="mt-4 pt-4 border-t border-slate-600/30">
+                  <div className="mt-4 pt-4 border-t border-slate-300/30 dark:border-slate-600/30">
                     <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg p-3 border border-emerald-400/30">
-                      <h5 className="text-xs font-medium text-emerald-300 mb-2 flex items-center">
+                      <h5 className="text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-2 flex items-center">
                         <Layers className="w-3 h-3 mr-1" />
                         ChartrOS Integrated Summary
                       </h5>
                       <div className="space-y-1.5">
                         <div className="flex items-start space-x-2">
                           <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
-                          <div className="text-emerald-200 text-xs">
+                          <div className="text-emerald-700 dark:text-emerald-200 text-xs">
                             <span className="font-medium">Proceed with caution - optimize cardiac status</span>
                           </div>
                         </div>
                         <div className="flex items-start space-x-2">
                           <AlertTriangle className="w-3 h-3 text-amber-400 mt-0.5 flex-shrink-0" />
-                          <div className="text-amber-200 text-xs">
+                          <div className="text-amber-700 dark:text-amber-200 text-xs">
                             <span className="font-medium">Consider delaying for medical optimization</span>
                           </div>
                         </div>
@@ -1131,9 +1131,9 @@ const Homepage = () => {
     return (
       <div className="relative w-full">
         {/* Workflow Builder Interface */}
-        <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
+        <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-2xl">
           {/* Header */}
-          <div className="bg-slate-800/80 px-6 py-4 border-b border-slate-700/50">
+          <div className="bg-slate-100 dark:bg-slate-800/80 px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 {/* ChartR Logo */}
@@ -1147,25 +1147,25 @@ const Homepage = () => {
                   <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
                   <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
                 </div>
-                <span className="text-sm text-slate-300 font-medium">ChartrOS Control Center</span>
+                <span className="text-sm text-slate-700 dark:text-slate-300 font-medium">ChartrOS Control Center</span>
               </div>
               <div className="flex items-center space-x-4">
                 {/* Moved stats here - smaller and more compact */}
-                <div className="flex items-center space-x-4 text-xs text-slate-400">
+                <div className="flex items-center space-x-4 text-xs text-slate-500 dark:text-slate-400">
                   <div className="flex items-center space-x-1">
-                    <span className="text-white font-medium">47</span>
+                    <span className="text-slate-900 dark:text-white font-medium">47</span>
                     <span>Active Workflows</span>
                   </div>
                   <div className="flex items-center space-x-1">
-                    <span className="text-white font-medium">2.4M</span>
+                    <span className="text-slate-900 dark:text-white font-medium">2.4M</span>
                     <span>Records Processed</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-emerald-400 font-medium">Live</span>
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Live</span>
                 </div>
-                <span className="text-xs text-slate-500">v2.4.1</span>
+                <span className="text-xs text-slate-400 dark:text-slate-500">v2.4.1</span>
               </div>
             </div>
           </div>
@@ -1173,8 +1173,8 @@ const Homepage = () => {
           {/* Content */}
           <div className="p-6">
 
-            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
-              <Layers className="w-4 h-4 mr-2 text-teal-400" />
+            <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center">
+              <Layers className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
               Deployed Workflows
             </h4>
             
@@ -1182,41 +1182,41 @@ const Homepage = () => {
             <div className="space-y-3">
               {/* Cardiovascular Risk Assessment */}
               <motion.div 
-                className="bg-gradient-to-r from-teal-500/15 to-teal-600/15 border border-teal-500/40 rounded-lg p-4 hover:from-teal-500/20 hover:to-teal-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-r from-teal-500/20 to-teal-600/20 dark:from-teal-500/15 dark:to-teal-600/15 border border-teal-500/50 dark:border-teal-500/40 rounded-lg p-4 hover:from-teal-500/30 hover:to-teal-600/30 dark:hover:from-teal-500/20 dark:hover:to-teal-600/20 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-5 h-5 text-teal-400" />
+                    <div className="w-10 h-10 bg-teal-500/30 dark:bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-teal-600 dark:text-teal-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
                         <span>Pre-Operative Risk Suite</span>
                       </h5>
-                      <p className="text-xs text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
-                    <span className="text-xs text-teal-300 font-medium">Active</span>
+                    <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs text-teal-700 dark:text-teal-300 font-medium">Active</span>
                   </div>
                 </div>
                 
                 <div className="mt-3 grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-sm font-bold text-teal-400">12</div>
-                    <div className="text-xs text-slate-400">Models Deployed</div>
+                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">12</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">Models Deployed</div>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-teal-400">8.4K</div>
-                    <div className="text-xs text-slate-400">Uses</div>
+                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">8.4K</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">Uses</div>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-teal-400">347</div>
-                    <div className="text-xs text-slate-400">High Risk Events</div>
+                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">347</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">High Risk Events</div>
                   </div>
                 </div>
 
@@ -1224,47 +1224,47 @@ const Homepage = () => {
 
               {/* Medicare Advantage Coding */}
               <motion.div 
-                className="bg-gradient-to-r from-cyan-500/15 to-cyan-600/15 border border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/20 hover:to-cyan-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 dark:from-cyan-500/15 dark:to-cyan-600/15 border border-cyan-500/50 dark:border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/30 hover:to-cyan-600/30 dark:hover:from-cyan-500/20 dark:hover:to-cyan-600/20 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <FileCheck className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 bg-cyan-500/30 dark:bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <FileCheck className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
                         <span>HCC Risk Adjustment</span>
                       </h5>
-                      <p className="text-xs text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
                     <motion.div
-                      className="w-2 h-2 bg-cyan-400 rounded-full"
+                      className="w-2 h-2 bg-cyan-500 rounded-full"
                       animate={{ opacity: [1, 0.3, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <span className="text-xs text-cyan-300 font-medium">Processing</span>
+                    <span className="text-xs text-cyan-700 dark:text-cyan-300 font-medium">Processing</span>
                   </div>
                 </div>
                 
-                <div className="bg-slate-700/30 rounded-lg p-3">
+                <div className="bg-slate-200/70 dark:bg-slate-700/30 rounded-lg p-3">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-slate-400">Q1 2024 Batch Processing</span>
-                    <span className="text-xs text-cyan-400 font-medium">67%</span>
+                    <span className="text-xs text-slate-600 dark:text-slate-400">Q1 2024 Batch Processing</span>
+                    <span className="text-xs text-cyan-700 dark:text-cyan-400 font-medium">67%</span>
                   </div>
-                  <div className="w-full bg-slate-700 rounded-full h-2">
+                  <div className="w-full bg-slate-300 dark:bg-slate-700 rounded-full h-2">
                     <motion.div 
-                      className="h-2 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full"
+                      className="h-2 bg-gradient-to-r from-cyan-500 to-cyan-600 dark:from-cyan-400 dark:to-cyan-500 rounded-full"
                       initial={{ width: "0%" }}
                       animate={{ width: "67%" }}
                       transition={{ duration: 1, delay: 0.8 }}
                     />
                   </div>
-                  <div className="flex justify-between mt-2 text-[10px] text-slate-500">
+                  <div className="flex justify-between mt-2 text-[10px] text-slate-500 dark:text-slate-500">
                     <span>42,381 records complete</span>
                     <span>ETA: 14 min</span>
                   </div>
@@ -1273,32 +1273,32 @@ const Homepage = () => {
 
               {/* Sepsis Screening */}
               <motion.div 
-                className="bg-gradient-to-r from-blue-400/15 to-blue-500/15 border border-blue-400/40 rounded-lg p-4 hover:from-blue-400/20 hover:to-blue-500/20 transition-all cursor-pointer group"
+                className="bg-gradient-to-r from-blue-400/20 to-blue-500/20 dark:from-blue-400/15 dark:to-blue-500/15 border border-blue-400/50 dark:border-blue-400/40 rounded-lg p-4 hover:from-blue-400/30 hover:to-blue-500/30 dark:hover:from-blue-400/20 dark:hover:to-blue-500/20 transition-all cursor-pointer group"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Activity className="w-5 h-5 text-blue-400" />
+                    <div className="w-10 h-10 bg-blue-400/30 dark:bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
                         <span>Early Sepsis Detection</span>
                       </h5>
-                      <p className="text-xs text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
                     </div>
                   </div>
-                  <span className="text-xs text-blue-300 font-medium">Ready</span>
+                  <span className="text-xs text-blue-700 dark:text-blue-300 font-medium">Ready</span>
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <div className="text-xs text-slate-400">
-                    <span className="text-white font-medium">98.7%</span> sensitivity • 
-                    <span className="text-white font-medium"> 94.2%</span> specificity
+                  <div className="text-xs text-slate-600 dark:text-slate-400">
+                    <span className="text-slate-900 dark:text-white font-medium">98.7%</span> sensitivity • 
+                    <span className="text-slate-900 dark:text-white font-medium"> 94.2%</span> specificity
                   </div>
-                  <button className="px-3 py-1.5 bg-blue-400/20 hover:bg-blue-400/30 text-blue-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-blue-400/30">
+                  <button className="px-3 py-1.5 bg-blue-400/30 dark:bg-blue-400/20 hover:bg-blue-400/40 dark:hover:bg-blue-400/30 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-blue-400/40 dark:group-hover:bg-blue-400/30">
                     Deploy →
                   </button>
                 </div>
@@ -1307,7 +1307,7 @@ const Homepage = () => {
 
             {/* Add New Workflow - Improved Design */}
             <motion.div 
-              className="mt-4 bg-gradient-to-r from-slate-700/20 to-slate-600/20 border-2 border-dashed border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/5 hover:to-blue-500/5 transition-all cursor-pointer group"
+              className="mt-4 bg-gradient-to-r from-slate-200/50 to-slate-300/50 dark:from-slate-700/20 dark:to-slate-600/20 border-2 border-dashed border-slate-300 dark:border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/10 hover:to-blue-500/10 dark:hover:from-emerald-500/5 dark:hover:to-blue-500/5 transition-all cursor-pointer group"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               initial={{ opacity: 0 }}
@@ -1316,19 +1316,19 @@ const Homepage = () => {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
-                    <span className="text-2xl text-slate-400 group-hover:text-emerald-400 transition-colors">+</span>
+                  <div className="w-10 h-10 bg-slate-300/50 dark:bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
+                    <span className="text-2xl text-slate-600 dark:text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">+</span>
                   </div>
                   <div>
-                    <h5 className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                    <h5 className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                       Deploy New AI Workflow
                     </h5>
-                    <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+                    <p className="text-xs text-slate-500 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
                       Choose from 50+ pre-built templates or create custom ones
                     </p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-slate-500 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
               </div>
             </motion.div>
           </div>
@@ -1338,37 +1338,37 @@ const Homepage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden chartr-bg-accent">
-      {/* Very subtle background gradient that flows throughout */}
-      <div className="fixed inset-0 chartr-bg-accent pointer-events-none" />
+    <div className="min-h-screen bg-white dark:bg-slate-800 text-slate-900 dark:text-white relative overflow-hidden">
+      {/* Sophisticated background gradient that flows throughout */}
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 pointer-events-none" />
       
       {/* Subtle Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/3 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/8 dark:bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/8 dark:bg-purple-500/3 rounded-full blur-3xl" />
         
         {/* Very subtle grid Pattern */}
-        <div className="absolute inset-0 opacity-[0.02]">
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]">
           <div className="h-full w-full" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0)`,
             backgroundSize: '50px 50px'
           }} />
         </div>
       </div>
       
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden chartr-bg-accent">
-        {/* Subtle Hero Background */}
-        <div className="absolute inset-0 chartr-bg-accent" />
+      <section className="relative pb-16 overflow-hidden">
+        {/* Sophisticated Hero Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
         
         {/* Animated Neural Network Background */}
-        <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
           <svg className="w-full h-full" viewBox="0 0 1200 800">
             <defs>
               <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.6" />
-                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.6" />
+                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="1" />
+                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.8" />
               </linearGradient>
             </defs>
             
@@ -1420,13 +1420,13 @@ const Homepage = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-24">
               {/* ChartR Badge */}
               <motion.div 
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 dark:from-indigo-500/10 dark:to-purple-500/10 border border-indigo-400/30 dark:border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <motion.div 
-                  className="w-6 h-6 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full flex items-center justify-center"
+                  className="w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center"
                   animate={{ 
                     rotateY: [0, 180, 360],
                     scale: [1, 1.1, 1]
@@ -1439,25 +1439,25 @@ const Homepage = () => {
                 >
                   <Layers className="w-4 h-4 text-white" />
                 </motion.div>
-                <span className="text-indigo-300 inter text-sm">AI-Enhanced Clinical Intelligence</span>
+                <span className="text-indigo-700 dark:text-indigo-300 inter text-sm font-medium">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-8"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
                 Next-Generation<br />
-                <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 bg-clip-text">
                   AI Infrastructure<br />For Healthcare
                 </span>
               </motion.h1>
               
               {/* Enhanced Subtitle */}
               <motion.p 
-                className="text-xl text-slate-300 chartr-body leading-relaxed max-w-2xl mb-12"
+                className="text-xl text-slate-600 dark:text-slate-300 chartr-body leading-relaxed max-w-2xl mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -1488,7 +1488,7 @@ const Homepage = () => {
               className="mt-12 lg:mt-0 lg:flex-1 lg:pl-6 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
             >
               {/* Background color bar on the right */}
-              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-900/50 to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-100/50 to-transparent dark:from-slate-900/50 pointer-events-none"></div>
               
               {/* Constrained graphic container */}
               <div className="relative z-10 max-w-4xl">
@@ -1500,7 +1500,7 @@ const Homepage = () => {
       </section>
 
       {/* Introducing ChartrOS - Full-Width Accent Section */}
-      <section className="pt-12 pb-24 relative chartr-bg-accent">
+      <section className="pt-12 pb-24 relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -1516,28 +1516,28 @@ const Homepage = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             >
-              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border-2 border-emerald-400/40 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/20">
+              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-emerald-500/25 to-cyan-500/25 dark:from-emerald-500/20 dark:to-cyan-500/20 border-2 border-emerald-400/50 dark:border-emerald-400/40 rounded-full px-8 py-4 shadow-2xl shadow-emerald-500/30 dark:shadow-emerald-500/20">
                 <div className="relative">
-                  <Cpu className="w-6 h-6 text-emerald-400" />
+                  <Cpu className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                   <div className="absolute inset-0 animate-ping">
-                    <Cpu className="w-6 h-6 text-emerald-400 opacity-75" />
+                    <Cpu className="w-6 h-6 text-emerald-600 dark:text-emerald-400 opacity-75" />
                   </div>
                 </div>
-                <span className="text-xl font-semibold bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">
+                <span className="text-xl font-semibold bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-300 dark:to-cyan-300 bg-clip-text text-transparent">
                   Introducing ChartrOS
                 </span>
               </div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               The Industry's First
               <br />
-              <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">
                 AI-Native Healthcare OS
               </span>
             </h2>
             
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
               A modular operating system that powers AI-enhanced clinical workflows.
             </p>
           </motion.div>
@@ -1549,61 +1549,61 @@ const Homepage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="chartr-bg-floating shadow-2xl p-8 md:p-12">
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-3xl shadow-2xl p-8 md:p-12">
               {/* Architecture Flow */}
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 {/* Input Sources */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Data Sources</h3>
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Data Sources</h3>
                   <div className="space-y-3">
                     <motion.div 
-                      className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4 hover:border-blue-500/50 transition-all"
+                      className="bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/50 rounded-lg p-4 hover:border-blue-500/50 transition-all"
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Database className="w-5 h-5 text-cyan-400" />
+                        <Database className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                         <div>
-                          <div className="font-medium text-slate-200">EMR Systems</div>
-                          <div className="text-xs text-slate-400">Epic, Cerner, Legacy Data</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">EMR Systems</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">Epic, Cerner, Legacy Data</div>
                         </div>
                       </div>
                     </motion.div>
                     
                     <motion.div 
-                      className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4 hover:border-purple-500/50 transition-all"
+                      className="bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/50 rounded-lg p-4 hover:border-purple-500/50 transition-all"
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Layers className="w-5 h-5 text-cyan-400" />
+                        <Layers className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Existing AI Abstraction Tools</div>
-                          <div className="text-xs text-slate-400">Seamless vendor integration</div>
+                          <div className="font-medium text-slate-800 dark:text-slate-200">Existing AI Abstraction Tools</div>
+                          <div className="text-xs text-slate-500 dark:text-slate-400">Seamless vendor integration</div>
                         </div>
                       </div>
                     </motion.div>
                     
                     <motion.div 
-                      className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4 hover:border-amber-500/50 transition-all"
+                      className="bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/50 rounded-lg p-4 hover:border-amber-500/50 transition-all"
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <BookOpen className="w-5 h-5 text-cyan-400" />
+                        <BookOpen className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Scientific Literature</div>
-                          <div className="text-xs text-slate-400">Evidence-based Practice</div>
+                          <div className="font-medium text-slate-800 dark:text-slate-200">Scientific Literature</div>
+                          <div className="text-xs text-slate-500 dark:text-slate-400">Evidence-based Practice</div>
                         </div>
                       </div>
                     </motion.div>
                     
                     <motion.div 
-                      className="bg-slate-700/30 border border-slate-600/50 rounded-lg p-4 hover:border-teal-500/50 transition-all"
+                      className="bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/50 rounded-lg p-4 hover:border-teal-500/50 transition-all"
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <FileText className="w-5 h-5 text-cyan-400" />
+                        <FileText className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                         <div>
-                          <div className="font-medium text-slate-200">Clinical Guidelines</div>
-                          <div className="text-xs text-slate-400">Real-Time Updates</div>
+                          <div className="font-medium text-slate-800 dark:text-slate-200">Clinical Guidelines</div>
+                          <div className="text-xs text-slate-500 dark:text-slate-400">Real-Time Updates</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1721,7 +1721,7 @@ const Homepage = () => {
                   >
                     {/* Top Left Badge */}
                     <motion.div
-                      className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
+                      className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 text-slate-800 dark:text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: -20, y: -20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.6 }}
@@ -1731,7 +1731,7 @@ const Homepage = () => {
 
                     {/* Top Right Badge */}
                     <motion.div
-                      className="absolute top-4 right-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
+                      className="absolute top-4 right-4 px-3 py-1 bg-cyan-500/20 text-slate-800 dark:text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: 20, y: -20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.7 }}
@@ -1741,7 +1741,7 @@ const Homepage = () => {
 
                     {/* Bottom Left Badge */}
                     <motion.div
-                      className="absolute bottom-4 left-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
+                      className="absolute bottom-4 left-4 px-3 py-1 bg-cyan-500/20 text-slate-800 dark:text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: -20, y: 20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.8 }}
@@ -1751,7 +1751,7 @@ const Homepage = () => {
 
                     {/* Bottom Right Badge */}
                     <motion.div
-                      className="absolute bottom-4 right-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
+                      className="absolute bottom-4 right-4 px-3 py-1 bg-cyan-500/20 text-slate-800 dark:text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: 20, y: 20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 }}
@@ -1762,7 +1762,7 @@ const Homepage = () => {
                     {/* Centered Logo and Title */}
                     <div className="text-center">
                       <motion.div 
-                        className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-400 rounded-xl flex items-center justify-center mx-auto mb-2"
+                        className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-2"
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.5, type: "spring", stiffness: 100 }}
@@ -1770,7 +1770,7 @@ const Homepage = () => {
                         <img src="/logo.svg" alt="ChartR" className="w-10 h-10 brightness-0 invert" />
                       </motion.div>
                       <motion.h3 
-                        className="text-xl font-semibold text-white"
+                        className="text-xl font-semibold text-slate-900 dark:text-white"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.7 }}
@@ -1783,7 +1783,7 @@ const Homepage = () => {
 
                 {/* Output Modules */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Modular AI Workflows</h3>
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Modular AI Workflows</h3>
                   <div className="space-y-3">
                     <motion.div 
                       className="bg-gradient-to-r from-[#0FE3C2]/10 to-[#0FE3C2]/20 border border-[#0FE3C2]/30 rounded-lg p-4 hover:border-[#0FE3C2]/50 transition-all"
@@ -1792,8 +1792,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Heart className="w-5 h-5 text-[#0FE3C2]" />
                         <div>
-                                                  <div className="font-medium text-slate-200">Risk Assessment</div>
-                        <div className="text-xs text-slate-400">Pre-Op, Sepsis, Readmission</div>
+                                                  <div className="font-medium text-slate-900 dark:text-slate-200">Risk Assessment</div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400">Pre-Op, Sepsis, Readmission</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1805,8 +1805,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <FileCheck className="w-5 h-5 text-[#4EA9FF]" />
                         <div>
-                          <div className="font-medium text-slate-200">Regulatory Reporting</div>
-                          <div className="text-xs text-slate-400">Risk Management, QI, Registries</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">Regulatory Reporting</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">Risk Management, QI, Registries</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1818,8 +1818,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Users className="w-5 h-5 text-[#7E88F6]" />
                         <div>
-                          <div className="font-medium text-slate-200">Patient Screening</div>
-                          <div className="text-xs text-slate-400">Clinical Trials, Organ Donation</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">Patient Screening</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">Clinical Trials, Organ Donation</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1831,8 +1831,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Target className="w-5 h-5 text-[#3A6C82]" />
                         <div>
-                          <div className="font-medium text-slate-200">Referral Triage</div>
-                          <div className="text-xs text-slate-400">Priority Classification</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">Referral Triage</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">Priority Classification</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1847,7 +1847,7 @@ const Homepage = () => {
       </section>
 
       {/* Modular AI Infrastructure - Asymmetric Layout */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Content */}
@@ -1856,11 +1856,11 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Inside</span> ChartrOS
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">Inside</span> ChartrOS
               </h2>
               
-              <p className="text-xl text-slate-300 mb-12 chartr-body">
+              <p className="text-xl text-slate-600 dark:text-slate-300 mb-12 chartr-body">
                 Deploy AI intelligence without disrupting operations.
               </p>
 
@@ -1873,12 +1873,12 @@ const Homepage = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Built for Healthcare Standards</h3>
-                      <p className="text-slate-400 chartr-body">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Built for Healthcare Standards</h3>
+                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
                         Secure, HIPAA-ready, and continuously improving.
                       </p>
                     </div>
@@ -1892,12 +1892,12 @@ const Homepage = () => {
                   transition={{ delay: 0.3 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Seamlessly Compatible</h3>
-                      <p className="text-slate-400 chartr-body">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Seamlessly Compatible</h3>
+                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
                         Integrates with your EMR and existing AI stack.
                       </p>
                     </div>
@@ -1911,12 +1911,12 @@ const Homepage = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Intelligent Retrieval Layer</h3>
-                      <p className="text-slate-400 chartr-body">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Intelligent Retrieval Layer</h3>
+                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
                         Structured clinical insights from notes, registries, and literature.
                       </p>
                     </div>
@@ -1930,12 +1930,12 @@ const Homepage = () => {
                   transition={{ delay: 0.5 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-2">Human-Validated Workflows</h3>
-                      <p className="text-slate-400 chartr-body">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Human-Validated Workflows</h3>
+                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
                         Clinician review built into every critical step.
                       </p>
                     </div>
@@ -1971,9 +1971,9 @@ const Homepage = () => {
       </section>
 
       {/* How We Are Different Section */}
-      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900">
+      <section className="py-24 relative overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-850 dark:to-slate-900">
         {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 dark:opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1px, transparent 0)`,
             backgroundSize: '40px 40px'
@@ -1998,12 +1998,12 @@ const Homepage = () => {
               <span className="text-sm font-medium text-blue-300 uppercase tracking-wider">Why ChartrOS</span>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               How We Are
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text"> Different</span>
             </h2>
             
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
               Purpose-built for healthcare's unique challenges, ChartrOS goes beyond traditional AI solutions
             </p>
           </motion.div>
@@ -2019,29 +2019,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Layers className="w-7 h-7 text-cyan-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">No-Code AI Integration</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Build and deploy complex AI workflows without writing a single line of code. Our intuitive ecosystem adapts to your existing processes.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Purpose-built templates for clinical workflows</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Purpose-built templates for clinical workflows</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Drag-and-drop workflow builder</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Drag-and-drop workflow builder</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Seamless EMR integration</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Seamless EMR integration</span>
                   </li>
                 </ul>
               </div>
@@ -2055,29 +2055,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl blur-xl group-hover:from-emerald-500/20 group-hover:to-teal-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Target className="w-7 h-7 text-emerald-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">Best-in-Class Clinical Retrieval</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Best-in-Class Clinical Retrieval</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Our proprietary retrieval layer identifies the most relevant clinical notes with unmatched precision, enabling confident decision-making.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">99.1% accuracy in note identification</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">99.1% accuracy in note identification</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Prevents false negatives through Smart Review</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Prevents false negatives through Smart Review</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Real-time validation modules</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Real-time validation modules</span>
                   </li>
                 </ul>
               </div>
@@ -2091,29 +2091,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Network className="w-7 h-7 text-purple-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">No Vendor Lock-In</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No Vendor Lock-In</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Use ChartrOS as a comprehensive solution or integrate individual modules. Compatible with your existing tech stack.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Works with existing AI abstraction tools</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Works with existing AI abstraction tools</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Modular architecture for flexibility</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Modular architecture for flexibility</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">API-first design</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">API-first design</span>
                   </li>
                 </ul>
               </div>
@@ -2127,29 +2127,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-2xl blur-xl group-hover:from-amber-500/20 group-hover:to-orange-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-amber-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-amber-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Cpu className="w-7 h-7 text-amber-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">Your AI, Your Way</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Your AI, Your Way</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Deploy your own ML models within our ecosystem or leverage our pre-built AI solutions. The choice is yours.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Support for custom ML models</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Support for custom ML models</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Pre-built ChartR AI solutions</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Pre-built ChartR AI solutions</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Model-agnostic platform</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Model-agnostic platform</span>
                   </li>
                 </ul>
               </div>
@@ -2163,29 +2163,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-indigo-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <TrendingUp className="w-7 h-7 text-indigo-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">Automated RLHF</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Automated RLHF</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Your models get smarter over time with our automated reinforcement learning from human feedback, continuously improving accuracy.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Real-time model improvement</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Real-time model improvement</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Continuous training pipeline</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Continuous training pipeline</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Human-in-the-loop validation</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Human-in-the-loop validation</span>
                   </li>
                 </ul>
               </div>
@@ -2199,29 +2199,29 @@ const Homepage = () => {
               transition={{ duration: 0.6, delay: 0.7 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl blur-xl group-hover:from-teal-500/20 group-hover:to-cyan-500/20 transition-all duration-300"></div>
-              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 h-full">
+              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 h-full shadow-lg">
                 <div className="w-14 h-14 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <Users className="w-7 h-7 text-teal-400" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-white mb-4">Human-AI Collaboration</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Collaboration</h3>
                 
-                <p className="text-slate-400 mb-6 chartr-body">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
                   Smart Review combines AI efficiency with human expertise, ensuring the highest quality outputs for critical healthcare decisions.
                 </p>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Intelligent routing to reviewers</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Intelligent routing to reviewers</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Built-in quality assurance</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Built-in quality assurance</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-300">Audit trail for compliance</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Audit trail for compliance</span>
                   </li>
                 </ul>
               </div>
@@ -2235,7 +2235,7 @@ const Homepage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <p className="text-lg text-slate-300 mb-8 chartr-body">
+            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
               Ready to experience the ChartrOS difference?
             </p>
             <Link href="/contact?tab=demo">
@@ -2261,10 +2261,10 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Enterprise-Grade Infrastructure</span> for Healthcare AI
               </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
                 Built to power diverse tools, users, and environments—on a single, unified platform.
               </p>
             </motion.div>
@@ -2282,8 +2282,8 @@ const Homepage = () => {
                 <CheckCircle className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white font-bold">Federated Learning</div>
-                <div className="text-sm text-slate-400 chartr-body">Train models without moving sensitive data</div>
+                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">Federated Learning</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Train models without moving sensitive data</div>
               </div>
             </div>
             <div className="flex items-start space-x-4 w-full">
@@ -2291,8 +2291,8 @@ const Homepage = () => {
                 <CheckCircle className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white font-bold">Modular + Multi-Tenant</div>
-                <div className="text-sm text-slate-400 chartr-body">Power multiple teams and deployments from a single platform</div>
+                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">Modular + Multi-Tenant</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Power multiple teams and deployments from a single platform</div>
               </div>
             </div>
             <div className="flex items-start space-x-4 w-full">
@@ -2300,8 +2300,8 @@ const Homepage = () => {
                 <CheckCircle className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
-                <div className="text-lg chartr-body-medium text-white font-bold">SOC 2 Type II Audited</div>
-                <div className="text-sm text-slate-400 chartr-body">Verified operational and data security controls</div>
+                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">SOC 2 Type II Audited</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Verified operational and data security controls</div>
               </div>
             </div>
           </motion.div>
@@ -2317,9 +2317,9 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden chartr-bg-accent">
+      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-slate-900">
         {/* Subtle gradient transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-850/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-blue-100/50 dark:via-slate-900/50 dark:to-slate-850/80" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -2328,16 +2328,16 @@ const Homepage = () => {
             transition={{ duration: 0.8 }}
             className="space-y-4"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-transparent dark:bg-gradient-to-r dark:from-white dark:to-slate-200 dark:bg-clip-text mb-4">
               Ready to Transform
               <br />
-              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 bg-clip-text">
                 Your Healthcare Data?
               </span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto chartr-body">
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
               Join leading healthcare organizations saving millions with ChartR's AI platform. 
-              See how our <span className="text-indigo-200 chartr-body-medium">human-AI integration</span> can revolutionize your clinical data management.
+              See how our <span className="text-indigo-700 dark:text-indigo-200 chartr-body-medium">human-AI integration</span> can revolutionize your clinical data management.
             </p>
             
             {/* Enhanced Feature Highlight */}

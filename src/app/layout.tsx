@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import React from 'react'
 import Navigation from '@/components/Navigation'
+import ThemeToggle from '@/components/ThemeToggle'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -39,6 +40,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${outfit.variable}`}>
         <Navigation />
+        <ThemeToggle />
         {children}
       </body>
     </html>
