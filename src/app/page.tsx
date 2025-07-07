@@ -2438,22 +2438,7 @@ const Homepage = () => {
           >
 
             
-            {/* Enhanced Feature Highlight */}
-            <Link href="/contact">
-            <motion.div 
-                className="relative group max-w-md mx-auto cursor-pointer"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-80 transition-all duration-300" />
-                <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="text-xl font-semibold text-white">Start Transforming Your Data</div>
-              </div>
-            </motion.div>
-            </Link>
+
             
             
           </motion.div>
