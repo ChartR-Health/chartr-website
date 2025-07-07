@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Brain, Users, CheckCircle, AlertTriangle, Cpu, Target, Shield, Zap, Eye, Edit, X, FileText } from 'lucide-react'
+import { Brain, Users, CheckCircle, AlertTriangle, Cpu, Target, Shield, Zap, Eye, Edit, X, FileText, Loader2 } from 'lucide-react'
 
 export default function DataExtractionDemo() {
   const [processingStep, setProcessingStep] = useState(0)
@@ -16,12 +16,12 @@ export default function DataExtractionDemo() {
   const [editValue, setEditValue] = useState('')
 
   const processingSteps = [
-    { label: "Connecting to EMR...", icon: Cpu, color: "text-blue-400" },
-    { label: "Retrieving notes with ChartrOS", icon: FileText, color: "text-indigo-400" },
-    { label: "Analyzing Clinical Notes...", icon: Brain, color: "text-purple-400" },
-    { label: "Extracting Variables...", icon: Target, color: "text-cyan-400" },
-    { label: "Calculating Confidence...", icon: Shield, color: "text-emerald-400" },
-    { label: "Human Validation...", icon: Users, color: "text-amber-400" }
+    { label: "Connecting to EMR...", icon: Cpu, color: "text-blue-500" },
+    { label: "Retrieving notes with ChartrOS...", icon: FileText, color: "text-indigo-500" },
+    { label: "Analyzing Clinical Notes...", icon: Brain, color: "text-purple-500" },
+    { label: "Extracting Variables...", icon: Target, color: "text-cyan-500" },
+    { label: "Calculating Confidence...", icon: Shield, color: "text-emerald-500" },
+    { label: "Human Validation...", icon: Users, color: "text-amber-500" }
   ]
 
   const extractedVariables = [
@@ -249,7 +249,7 @@ FINDINGS:
       echoHighlights.forEach(text => {
         highlightedNote = highlightedNote.replace(
           new RegExp(text, 'g'),
-          `<span class="bg-yellow-200 text-yellow-900 px-1 rounded">${text}</span>`
+          `<span class="bg-blue-200 text-blue-950 px-1 rounded">${text}</span>`
         )
       })
       
@@ -267,8 +267,8 @@ FINDINGS:
     
     variableHighlights.forEach(text => {
       highlightedNote = highlightedNote.replace(
-        text,
-        `<span class="bg-yellow-200 text-yellow-900 px-1 rounded">${text}</span>`
+        new RegExp(text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
+        `<span class=\"bg-blue-200 text-blue-950 px-1 rounded\">${text}</span>`
       )
     })
 
@@ -294,19 +294,14 @@ FINDINGS:
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center space-x-2 bg-purple-500/10 border border-purple-400/20 rounded-full px-4 py-2 mb-4">
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-purple-300">ChartR Smart Review</span>
-          </div>
-          
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="text-transparent bg-gradient-to-r from-purple-400 to-cyan-500 bg-clip-text">
-              AI-Powered Extraction
+            <span className="text-white">
+              ChartrOS in Action:
             </span>{' '}
-            with <span className="text-amber-400">Human Validation</span>
+            <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">End-to-End Clinical Data Processing</span>
           </h2>
           <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-            Our hybrid approach combines AI speed with human expertise for maximum accuracy
+            From raw EMR data to structured insights—validated in real time.
           </p>
         </motion.div>
 
@@ -318,15 +313,14 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden">
+            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden shadow-xl">
               {/* Header */}
               <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
-                <div className="p-2 bg-purple-500/20 rounded-lg">
-                  <Brain className="w-5 h-5 text-purple-400" />
+                <div className="p-2 bg-cyan-600/20 rounded-lg">
+                  <Brain className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">AI Processing Engine</h3>
-                  <p className="text-sm text-slate-400">Real-time clinical data extraction</p>
                 </div>
               </div>
               
@@ -341,34 +335,33 @@ FINDINGS:
                     return (
                       <div
                         key={index}
-                        className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-500 ${
+                        className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-500 border ${
                           isCompleted || isHumanValidation
-                            ? 'bg-slate-700/50 border border-slate-600/50' 
-                            : 'bg-slate-800/30 border border-slate-700/30'
+                            ? 'bg-slate-700/50 border-slate-500/30' 
+                            : 'bg-slate-800/50 border-slate-600/30'
                         }`}
                       >
                         <div className={`p-2 rounded-lg ${
                           isCompleted || isHumanValidation ? 'bg-slate-600/50' : 'bg-slate-700/30'
                         }`}>
-                          <Icon className={`w-4 h-4 ${isCompleted || isHumanValidation ? step.color : 'text-slate-500'}`} />
+                          {isCompleted ? (
+                            <CheckCircle className="w-4 h-4 text-cyan-400" />
+                          ) : isHumanValidation ? (
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                            >
+                              <Loader2 className="w-4 h-4 text-blue-400" />
+                            </motion.div>
+                          ) : (
+                            <Icon className="w-4 h-4 text-slate-400 group-hover:text-blue-300 transition-colors" />
+                          )}
                         </div>
                         <span className={`text-sm font-medium ${
-                          isCompleted || isHumanValidation ? 'text-white' : 'text-slate-500'
+                          isCompleted || isHumanValidation ? 'text-white' : 'text-slate-400'
                         }`}>
                           {step.label}
                         </span>
-                        {isHumanValidation && (
-                          <motion.div
-                            className="ml-auto"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                          >
-                            <Zap className="w-4 h-4 text-purple-400" />
-                          </motion.div>
-                        )}
-                        {isCompleted && (
-                          <CheckCircle className="w-4 h-4 text-emerald-400 ml-auto" />
-                        )}
                       </div>
                     )
                   })}
@@ -382,7 +375,7 @@ FINDINGS:
                   </div>
                   <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full"
+                      className="h-full bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full"
                       initial={{ width: 0 }}
                       animate={{ width: `${progress}%` }}
                       transition={{ duration: 0.5 }}
@@ -400,15 +393,14 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden">
+            <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden shadow-xl">
               {/* Header */}
               <div className="flex items-center space-x-3 p-6 border-b border-slate-700/50">
-                <div className="p-2 bg-amber-500/20 rounded-lg">
-                  <Users className="w-5 h-5 text-amber-400" />
+                <div className="p-2 bg-cyan-600/20 rounded-lg">
+                  <Users className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">Smart Review</h3>
-                  <p className="text-sm text-slate-400">Expert validation workflow</p>
                 </div>
               </div>
               
@@ -426,69 +418,117 @@ FINDINGS:
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: (!isProcessing ? index * 0.1 : 0) }}
-                        className={`p-4 rounded-lg border transition-all duration-300 ${
-                          isConfirmed 
-                            ? 'bg-emerald-500/10 border-emerald-500/30' 
-                            : variable.status === 'validated' 
-                              ? 'bg-emerald-500/10 border-emerald-500/30' 
-                              : 'bg-amber-500/10 border-amber-500/30'
+                        className={`p-4 rounded-lg border transition-all duration-300 bg-slate-700/50 ${
+                          index === 0 || index === 2 || index === 3 
+                            ? 'border-[#F0B84B]/30' 
+                            : index === 1 
+                              ? 'border-[#28D0C7]/30' 
+                              : 'border-slate-600/30'
                         }`}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-white font-medium text-sm">{variable.name}</span>
-                            {isConfirmed || variable.status === 'validated' ? (
-                              <CheckCircle className="w-4 h-4 text-emerald-400" />
-                            ) : (
-                              <AlertTriangle className="w-4 h-4 text-amber-400" />
-                            )}
-                          </div>
-                          <span className={`px-2 py-1 rounded text-xs font-medium ${
-                            currentConfidence >= 95 ? 'bg-emerald-500/20 text-emerald-300' :
-                            currentConfidence >= 90 ? 'bg-amber-500/20 text-amber-300' :
-                            'bg-red-500/20 text-red-300'
-                          }`}>
-                            {currentConfidence}%
-                          </span>
-                        </div>
-                        
-                        {/* Value and Action Buttons in same line */}
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-white">{variable.value}</span>
-                          <div className="flex items-center space-x-2">
-                            <button
-                              onClick={() => handleViewSource(variable.name)}
-                              className="flex items-center space-x-1 px-2 py-1 bg-slate-700/50 hover:bg-slate-600/50 rounded text-xs text-slate-300 hover:text-white transition-colors"
-                            >
-                              <Eye className="w-3 h-3" />
-                              <span>View</span>
-                            </button>
-                            
-                            {(variable.requiresReview || isConfirmed) && (
-                              <>
-                                {!isConfirmed && (
-                                  <button 
-                                    onClick={() => handleConfirm(variable.name)}
-                                    className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-300 hover:text-emerald-200 transition-colors"
-                                  >
-                                    <CheckCircle className="w-3 h-3" />
-                                    <span>Confirm</span>
-                                  </button>
-                                )}
-                                <button 
-                                  onClick={() => handleEdit(variable.name)}
-                                  className="flex items-center space-x-1 px-2 py-1 bg-amber-500/20 hover:bg-amber-500/30 rounded text-xs text-amber-300 hover:text-amber-200 transition-colors"
+                                                {index === 1 ? (
+                          <>
+                            {/* Special layout for Ejection Fraction card */}
+                            <div className="flex items-center justify-between">
+                              <div className="flex flex-col">
+                                <div className="flex items-center space-x-2 mb-2">
+                                  <span className="text-white font-medium text-sm">{variable.name}</span>
+                                  {isConfirmed || variable.status === 'validated' ? (
+                                    <CheckCircle className="w-4 h-4 text-[#28D0C7]" />
+                                  ) : (
+                                    <AlertTriangle className="w-4 h-4 text-[#F0B84B]" />
+                                  )}
+                                </div>
+                                <span className="text-sm font-medium text-slate-300">{variable.value}</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  onClick={() => handleViewSource(variable.name)}
+                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-700/50 hover:bg-slate-600/50 rounded text-xs text-slate-300 hover:text-white transition-colors"
                                 >
-                                  <Edit className="w-3 h-3" />
-                                  <span>Edit</span>
+                                  <Eye className="w-3 h-3" />
+                                  <span>View</span>
                                 </button>
-                              </>
-                            )}
-                          </div>
-                        </div>
+                                
+                                {(variable.requiresReview || isConfirmed) && (
+                                  <>
+                                    {!isConfirmed && (
+                                      <button 
+                                        onClick={() => handleConfirm(variable.name)}
+                                        className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-300 hover:text-emerald-200 transition-colors"
+                                      >
+                                        <CheckCircle className="w-3 h-3" />
+                                        <span>Confirm</span>
+                                      </button>
+                                    )}
+                                    <button 
+                                      onClick={() => handleEdit(variable.name)}
+                                      className="flex items-center space-x-1 px-2 py-1 bg-[#F0B84B]/20 hover:bg-[#F0B84B]/30 rounded text-xs text-[#F0B84B] hover:text-yellow-900 transition-colors"
+                                    >
+                                      <Edit className="w-3 h-3" />
+                                      <span>Edit</span>
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                            <div className="mt-3 text-xs text-[#3ED598] bg-[#3ED598]/10 p-2 rounded">
+                              Confirmed by Reviewer
+                            </div>
+                          </>
+                        ) : (
+                          // Original layout for other cards
+                          <>
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="flex items-center space-x-2">
+                                <span className="text-white font-medium text-sm">{variable.name}</span>
+                                {isConfirmed || variable.status === 'validated' ? (
+                                  <CheckCircle className={`w-4 h-4 ${variable.name === "Ejection Fraction" ? 'text-[#28D0C7]' : 'text-[#28D0C7]'}`} />
+                                ) : (
+                                  <AlertTriangle className="w-4 h-4 text-[#F0B84B]" />
+                                )}
+                              </div>
+                            </div>
+                            
+                            {/* Value and Action Buttons in same line */}
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium text-slate-300">{variable.value}</span>
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  onClick={() => handleViewSource(variable.name)}
+                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-700/50 hover:bg-slate-600/50 rounded text-xs text-slate-300 hover:text-white transition-colors"
+                                >
+                                  <Eye className="w-3 h-3" />
+                                  <span>View</span>
+                                </button>
+                                
+                                {(variable.requiresReview || isConfirmed) && (
+                                  <>
+                                    {!isConfirmed && (
+                                      <button 
+                                        onClick={() => handleConfirm(variable.name)}
+                                        className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-300 hover:text-emerald-200 transition-colors"
+                                      >
+                                        <CheckCircle className="w-3 h-3" />
+                                        <span>Confirm</span>
+                                      </button>
+                                    )}
+                                    <button 
+                                      onClick={() => handleEdit(variable.name)}
+                                      className="flex items-center space-x-1 px-2 py-1 bg-[#F0B84B]/20 hover:bg-[#F0B84B]/30 rounded text-xs text-[#F0B84B] hover:text-yellow-900 transition-colors"
+                                    >
+                                      <Edit className="w-3 h-3" />
+                                      <span>Edit</span>
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </>
+                        )}
                         
                         {(variable.requiresReview && !isConfirmed) && (
-                          <div className="mt-3 text-xs text-amber-300 bg-amber-500/10 p-2 rounded">
+                          <div className="mt-3 text-xs text-[#F0B84B] bg-[#F0B84B]/10 p-2 rounded">
                             Requires clinical review for accuracy
                           </div>
                         )}

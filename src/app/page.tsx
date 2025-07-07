@@ -3,9 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
-import ActionableInsightsDemo from '@/components/demos/ActionableInsightsDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -78,9 +77,9 @@ const Homepage = () => {
           </div>
 
           {/* Right Side: Clinical Intelligence Output */}
-          <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-20 h-20 bg-green-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-green-400/20">
-            <BarChart3 className="w-8 h-8 text-green-400 mb-1" />
-            <div className="text-xs text-green-300 font-medium text-center leading-tight">Clinical<br/>Intelligence</div>
+          <div className="absolute top-1/2 right-2 transform -translate-x-1/2 w-20 h-20 bg-cyan-500/15 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm border border-cyan-400/20">
+            <BarChart3 className="w-8 h-8 text-cyan-400 mb-1" />
+            <div className="text-xs text-cyan-300 font-medium text-center leading-tight">Clinical<br/>Intelligence</div>
           </div>
 
           {/* Enhanced Data Flow Lines */}
@@ -416,7 +415,7 @@ const Homepage = () => {
       <div className="relative w-full">
         {/* Main Container with Glass Effect */}
         <motion.div 
-          className="relative bg-slate-800/40 backdrop-blur-xl rounded-3xl lg:rounded-r-none border border-white/10 lg:border-r-0 overflow-hidden shadow-2xl mx-4 lg:ml-0 lg:mr-0"
+          className="relative bg-slate-800/40 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl mx-4 lg:ml-0 lg:mr-0"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -444,34 +443,34 @@ const Homepage = () => {
                   Clinical Notes
                 </h4>
                 <motion.div 
-                  className="bg-slate-700/50 rounded-lg p-4 text-sm text-slate-300 leading-relaxed"
+                  className="bg-slate-700/30 rounded-lg p-4 text-sm text-slate-300 leading-relaxed"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
                 >
                   <div className="mb-4 pb-4 border-b border-slate-600/50">
-                    <p className="text-xs text-slate-500 mb-2">Note 1 - Cardiology Consultation</p>
+                    <p className="text-xs text-slate-400 mb-2">Note 1 - Cardiology Consultation</p>
                     <p className="mb-2">
-                      <span className="text-slate-400">CC:</span> 58-year-old male referred for cardiovascular risk assessment.
+                      <span className="text-slate-300">CC:</span> 58-year-old male referred for cardiovascular risk assessment.
                     </p>
                     <p className="mb-2">
-                      <span className="text-slate-400">PMH:</span> <span className="bg-red-500/20 text-red-300 px-1 rounded">DM Type 2</span> x 8 years, <span className="bg-orange-500/20 text-orange-300 px-1 rounded">HTN</span> on ACE inhibitor.
+                      <span className="text-slate-300">PMH:</span> <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">DM Type 2</span> x 8 years, <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">HTN</span> on ACE inhibitor.
                     </p>
                     <p className="mb-0">
-                      <span className="text-slate-400">Recent Labs:</span> <span className="bg-green-500/20 text-green-300 px-1 rounded">TC 245</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">LDL-C 165</span>, <span className="bg-green-500/20 text-green-300 px-1 rounded">HDL-C 38</span> mg/dL, HbA1c 7.2%.
+                      <span className="text-slate-300">Recent Labs:</span> <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">TC 245</span>, <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">LDL-C 165</span>, <span className="bg-cyan-500/20 text-slate-300 px-1 rounded">HDL-C 38</span> mg/dL, HbA1c 7.2%.
                     </p>
                   </div>
                   
                   <div>
-                    <p className="text-xs text-slate-500 mb-2">Note 2 - Primary Care Follow-up</p>
+                    <p className="text-xs text-slate-400 mb-2">Note 2 - Primary Care Follow-up</p>
                     <p className="mb-2">
-                      <span className="text-slate-400">HPI:</span> Patient returns for routine DM management. Denies chest pain, SOB, or palpitations.
+                      <span className="text-slate-300">HPI:</span> Patient returns for routine DM management. Denies chest pain, SOB, or palpitations.
                     </p>
                     <p className="mb-2">
-                      <span className="text-slate-400">SH:</span> Former <span className="bg-yellow-500/20 text-yellow-300 px-1 rounded">tobacco user</span> (20 pk-yr, quit 2019). Denies ETOH.
+                      <span className="text-slate-300">SH:</span> Former <span className="bg-yellow-500/20 text-slate-300 px-1 rounded">tobacco user</span> (20 pk-yr, quit 2019). Denies ETOH.
                     </p>
                     <p className="mb-0">
-                      <span className="text-slate-400">Vitals:</span> BP <span className="bg-blue-500/20 text-blue-300 px-1 rounded">142/88</span> mmHg, HR 76 bpm, BMI 29.2 kg/m².
+                      <span className="text-slate-300">Vitals:</span> BP <span className="bg-blue-500/20 text-slate-300 px-1 rounded">142/88</span> mmHg, HR 76 bpm, BMI 29.2 kg/m².
                     </p>
                   </div>
                 </motion.div>
@@ -484,7 +483,7 @@ const Homepage = () => {
                   ASCVD Risk Assessment
                 </h4>
                 <motion.div 
-                  className="bg-slate-700/50 rounded-lg p-4"
+                  className="bg-slate-700/30 rounded-lg p-4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 }}
@@ -492,12 +491,12 @@ const Homepage = () => {
                   <div className="space-y-4">
                     {/* Risk Score - Moved to top for prominence */}
                     <motion.div 
-                      className="bg-blue-500/20 rounded-lg p-3 border border-blue-400/30"
+                      className="bg-slate-600/40 rounded-lg p-3 border border-slate-500/20"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.7 }}
                     >
-                      <h5 className="text-xs font-semibold text-blue-300 mb-2">ASCVD RISK SCORE</h5>
+                      <h5 className="text-xs font-semibold text-slate-200 mb-2">ASCVD RISK SCORE</h5>
                       <div className="text-center">
                         {isCalculating ? (
                           <div className="py-2">
@@ -506,15 +505,15 @@ const Homepage = () => {
                               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                               className="inline-block"
                             >
-                              <Brain className="w-5 h-5 text-blue-400 mb-1" />
+                              <Brain className="w-5 h-5 text-slate-300 mb-1" />
                             </motion.div>
                             <div className="text-xs text-slate-400">Calculating...</div>
                           </div>
                         ) : (
                           <>
-                            <div className="text-2xl font-bold text-blue-300 mb-1">{riskScore}%</div>
-                            <div className="text-xs text-blue-400 mb-2">10-Year Risk</div>
-                            <div className="bg-red-500/20 text-red-300 px-2 py-1 rounded text-xs font-medium">
+                            <div className="text-2xl font-bold text-white mb-1">{riskScore}%</div>
+                            <div className="text-xs text-slate-300 mb-2">10-Year Risk</div>
+                            <div className="bg-red-500/20 text-slate-300 px-2 py-1 rounded text-xs font-medium">
                               High Risk - Statin Recommended
                             </div>
                           </>
@@ -524,42 +523,42 @@ const Homepage = () => {
 
                     {/* Risk Factors */}
                     <div>
-                      <h5 className="text-xs font-semibold text-slate-400 mb-2">RISK FACTORS</h5>
+                      <h5 className="text-xs font-semibold text-slate-300 mb-2">RISK FACTORS</h5>
                       <div className="space-y-1.5">
-                        <div className="flex justify-between items-center bg-red-500/10 rounded px-2 py-1.5">
-                          <span className="text-red-300 text-xs font-medium">Diabetes</span>
-                          <CheckCircle className="w-3 h-3 text-red-400" />
+                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <span className="text-slate-300 text-xs font-medium">Diabetes</span>
+                          <AlertTriangle className="w-3 h-3 text-slate-300" />
                         </div>
-                        <div className="flex justify-between items-center bg-orange-500/10 rounded px-2 py-1.5">
-                          <span className="text-orange-300 text-xs font-medium">Hypertension</span>
-                          <CheckCircle className="w-3 h-3 text-orange-400" />
+                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <span className="text-slate-300 text-xs font-medium">Hypertension</span>
+                          <AlertTriangle className="w-3 h-3 text-slate-300" />
                         </div>
-                        <div className="flex justify-between items-center bg-yellow-500/10 rounded px-2 py-1.5">
-                          <span className="text-yellow-300 text-xs font-medium">Former Smoker</span>
-                          <CheckCircle className="w-3 h-3 text-yellow-400" />
+                        <div className="flex justify-between items-center bg-yellow-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <span className="text-slate-300 text-xs font-medium">Former Smoker</span>
+                          <AlertTriangle className="w-3 h-3 text-slate-300" />
                         </div>
                       </div>
                     </div>
 
                     {/* Lab Values */}
                     <div>
-                      <h5 className="text-xs font-semibold text-slate-400 mb-2">LAB VALUES</h5>
+                      <h5 className="text-xs font-semibold text-slate-300 mb-2">LAB VALUES</h5>
                       <div className="grid grid-cols-2 gap-1.5">
-                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
-                          <div className="text-slate-400 text-xs font-medium">Total Chol</div>
-                          <div className="text-green-300 text-xs font-semibold">245 mg/dL</div>
+                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <div className="text-slate-300 text-xs font-medium">Total Chol</div>
+                          <div className="text-slate-300 text-xs font-semibold">245 mg/dL</div>
                         </div>
-                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
-                          <div className="text-slate-400 text-xs font-medium">LDL</div>
-                          <div className="text-green-300 text-xs font-semibold">165 mg/dL</div>
+                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <div className="text-slate-300 text-xs font-medium">LDL</div>
+                          <div className="text-slate-300 text-xs font-semibold">165 mg/dL</div>
                         </div>
-                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
-                          <div className="text-slate-400 text-xs font-medium">HDL</div>
-                          <div className="text-green-300 text-xs font-semibold">38 mg/dL</div>
+                        <div className="bg-cyan-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <div className="text-slate-300 text-xs font-medium">HDL</div>
+                          <div className="text-slate-300 text-xs font-semibold">38 mg/dL</div>
                         </div>
-                        <div className="bg-slate-600/50 rounded px-2 py-1.5">
-                          <div className="text-slate-400 text-xs font-medium">Blood Pressure</div>
-                          <div className="text-blue-300 text-xs font-semibold">142/88</div>
+                        <div className="bg-blue-500/20 rounded px-2 py-1.5 border border-slate-500/20">
+                          <div className="text-slate-300 text-xs font-medium">Blood Pressure</div>
+                          <div className="text-slate-300 text-xs font-semibold">142/88 mmHg</div>
                         </div>
                       </div>
                     </div>
@@ -612,7 +611,7 @@ const Homepage = () => {
     // Structured extracted data (right side) - Green/Blue shades (clean)
     const structuredData = [
       { icon: User, color: 'text-emerald-400', bg: 'bg-emerald-500/20' }, // People (single)
-      { icon: FileCheck, color: 'text-green-400', bg: 'bg-green-500/20' }, // Verified notes with check mark
+      { icon: FileCheck, color: 'text-cyan-400', bg: 'bg-cyan-500/20' }, // Verified notes with check mark
       { icon: TestTube, color: 'text-teal-400', bg: 'bg-teal-500/20' }, // Beakers/labs
       { icon: Pill, color: 'text-blue-400', bg: 'bg-blue-500/20' }, // Pills (medication)
       { icon: HeartPulse, color: 'text-cyan-400', bg: 'bg-cyan-500/20' }, // Heart-pulse
@@ -772,7 +771,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white relative overflow-hidden">
+          <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden">
       {/* Very subtle background gradient that flows throughout */}
       <div className="fixed inset-0 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 pointer-events-none" />
       
@@ -884,7 +883,7 @@ const Homepage = () => {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
                 Next-Generation<br />
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">
+                <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
                   AI Infrastructure<br />For Healthcare
                 </span>
               </motion.h1>
@@ -896,7 +895,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                ChartR's AI platform automates clinical data extraction and registry reporting, turning months of manual work into minutes of intelligent automation.
+                Deploy clinical workflows, integrate structured clinical data, and build your own AI solutions—all on one platform.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -907,21 +906,27 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link href="/contact?tab=demo">
-                  <button className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-cyan-600 text-white chartr-body-medium rounded-xl hover:from-emerald-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white chartr-body-medium rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Book a Demo
                   </button>
                 </Link>
               </motion.div>
             </div>
 
-            {/* Right Column - Visual - Extends to full viewport width */}
+            {/* Right Column - Visual with background bar */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-12 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-6 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
             >
-              <ASCVDHeroDemo />
+              {/* Background color bar on the right */}
+              <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-900/50 to-transparent pointer-events-none"></div>
+              
+              {/* Constrained graphic container */}
+              <div className="relative z-10 max-w-4xl">
+                <ASCVDHeroDemo />
+              </div>
             </motion.div>
           </div>
         </div>
@@ -966,8 +971,7 @@ const Homepage = () => {
             </h2>
             
             <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
-              ChartrOS revolutionizes healthcare data interactions with intelligent retrieval, real-time validation, 
-              and seamless AI integration - go from clinical data to actionable intelligence at unprecedented pace and accuracy.
+              A modular operating system that powers AI-enabled clinical workflows.
             </p>
           </motion.div>
 
@@ -990,7 +994,7 @@ const Homepage = () => {
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Database className="w-5 h-5 text-blue-400" />
+                        <Database className="w-5 h-5 text-cyan-400" />
                         <div>
                           <div className="font-medium text-slate-200">EMR Systems</div>
                           <div className="text-xs text-slate-400">Epic, Cerner, Legacy Data</div>
@@ -1003,7 +1007,7 @@ const Homepage = () => {
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Layers className="w-5 h-5 text-purple-400" />
+                        <Layers className="w-5 h-5 text-cyan-400" />
                         <div>
                           <div className="font-medium text-slate-200">Existing AI Abstraction Tools</div>
                           <div className="text-xs text-slate-400">Seamless integration, no vendor lock-in</div>
@@ -1016,7 +1020,7 @@ const Homepage = () => {
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <BookOpen className="w-5 h-5 text-amber-400" />
+                        <BookOpen className="w-5 h-5 text-cyan-400" />
                         <div>
                           <div className="font-medium text-slate-200">Scientific Literature</div>
                           <div className="text-xs text-slate-400">Evidence-based Practice</div>
@@ -1029,7 +1033,7 @@ const Homepage = () => {
                       whileHover={{ x: 4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <FileText className="w-5 h-5 text-teal-400" />
+                        <FileText className="w-5 h-5 text-cyan-400" />
                         <div>
                           <div className="font-medium text-slate-200">Clinical Guidelines</div>
                           <div className="text-xs text-slate-400">Real-Time Updates</div>
@@ -1150,7 +1154,7 @@ const Homepage = () => {
                   >
                     {/* Top Left Badge */}
                     <motion.div
-                      className="absolute top-4 left-4 px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs border border-emerald-400/30"
+                      className="absolute top-4 left-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: -20, y: -20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.6 }}
@@ -1160,7 +1164,7 @@ const Homepage = () => {
 
                     {/* Top Right Badge */}
                     <motion.div
-                      className="absolute top-4 right-4 px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs border border-blue-400/30"
+                      className="absolute top-4 right-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: 20, y: -20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.7 }}
@@ -1170,7 +1174,7 @@ const Homepage = () => {
 
                     {/* Bottom Left Badge */}
                     <motion.div
-                      className="absolute bottom-4 left-4 px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs border border-purple-400/30"
+                      className="absolute bottom-4 left-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: -20, y: 20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.8 }}
@@ -1180,7 +1184,7 @@ const Homepage = () => {
 
                     {/* Bottom Right Badge */}
                     <motion.div
-                      className="absolute bottom-4 right-4 px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-xs border border-cyan-400/30"
+                      className="absolute bottom-4 right-4 px-3 py-1 bg-cyan-500/20 text-white rounded-full text-xs border border-cyan-400/30"
                       initial={{ opacity: 0, x: 20, y: 20 }}
                       animate={{ opacity: 1, x: 0, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.9 }}
@@ -1215,11 +1219,11 @@ const Homepage = () => {
                   <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Modular AI Workflows</h3>
                   <div className="space-y-3">
                     <motion.div 
-                      className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 border border-emerald-500/30 rounded-lg p-4 hover:border-emerald-400/50 transition-all"
+                      className="bg-gradient-to-r from-[#0FE3C2]/10 to-[#0FE3C2]/20 border border-[#0FE3C2]/30 rounded-lg p-4 hover:border-[#0FE3C2]/50 transition-all"
                       whileHover={{ x: -4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Heart className="w-5 h-5 text-emerald-400" />
+                        <Heart className="w-5 h-5 text-[#0FE3C2]" />
                         <div>
                           <div className="font-medium text-slate-200">Risk Assessment</div>
                           <div className="text-xs text-slate-400">ASCVD, Sepsis, Readmission</div>
@@ -1228,11 +1232,11 @@ const Homepage = () => {
                     </motion.div>
                     
                     <motion.div 
-                      className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 border border-blue-500/30 rounded-lg p-4 hover:border-blue-400/50 transition-all"
+                      className="bg-gradient-to-r from-[#4EA9FF]/10 to-[#4EA9FF]/20 border border-[#4EA9FF]/30 rounded-lg p-4 hover:border-[#4EA9FF]/50 transition-all"
                       whileHover={{ x: -4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <FileCheck className="w-5 h-5 text-blue-400" />
+                        <FileCheck className="w-5 h-5 text-[#4EA9FF]" />
                         <div>
                           <div className="font-medium text-slate-200">Regulatory Reporting</div>
                           <div className="text-xs text-slate-400">Risk Management, QI, Registries</div>
@@ -1241,11 +1245,11 @@ const Homepage = () => {
                     </motion.div>
 
                     <motion.div 
-                      className="bg-gradient-to-r from-purple-500/10 to-purple-600/10 border border-purple-500/30 rounded-lg p-4 hover:border-purple-400/50 transition-all"
+                      className="bg-gradient-to-r from-[#7E88F6]/10 to-[#7E88F6]/20 border border-[#7E88F6]/30 rounded-lg p-4 hover:border-[#7E88F6]/50 transition-all"
                       whileHover={{ x: -4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Users className="w-5 h-5 text-purple-400" />
+                        <Users className="w-5 h-5 text-[#7E88F6]" />
                         <div>
                           <div className="font-medium text-slate-200">Patient Screening</div>
                           <div className="text-xs text-slate-400">Clinical Trials, Organ Donation</div>
@@ -1254,11 +1258,11 @@ const Homepage = () => {
                     </motion.div>
 
                     <motion.div 
-                      className="bg-gradient-to-r from-amber-500/10 to-amber-600/10 border border-amber-500/30 rounded-lg p-4 hover:border-amber-400/50 transition-all"
+                      className="bg-gradient-to-r from-[#3A6C82]/10 to-[#3A6C82]/20 border border-[#3A6C82]/30 rounded-lg p-4 hover:border-[#3A6C82]/50 transition-all"
                       whileHover={{ x: -4 }}
                     >
                       <div className="flex items-center space-x-3">
-                        <Target className="w-5 h-5 text-amber-400" />
+                        <Target className="w-5 h-5 text-[#3A6C82]" />
                         <div>
                           <div className="font-medium text-slate-200">Referral Triage</div>
                           <div className="text-xs text-slate-400">Priority Classification</div>
@@ -1269,30 +1273,7 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* Key Features */}
-              <div className="mt-12 grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Zap className="w-6 h-6 text-teal-400" />
-                  </div>
-                  <h4 className="font-semibold text-white mb-2">No-Code Integration</h4>
-                  <p className="text-sm text-slate-400">Deploy workflows instantly without technical expertise</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Target className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <h4 className="font-semibold text-white mb-2">Use-Case Specific</h4>
-                  <p className="text-sm text-slate-400">Models fine-tuned for each individual workflow</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Shield className="w-6 h-6 text-pink-400" />
-                  </div>
-                  <h4 className="font-semibold text-white mb-2">Continuous Learning</h4>
-                  <p className="text-sm text-slate-400">HIPAA-compliant AI that improves instantly</p>
-                </div>
-              </div>
+
             </div>
           </motion.div>
         </div>
@@ -1301,7 +1282,7 @@ const Homepage = () => {
       {/* Modular AI Infrastructure - Asymmetric Layout */}
       <section className="py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -1309,8 +1290,7 @@ const Homepage = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
-                Modular AI Infrastructure.
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text"> Seamless Integration</span>
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Inside</span> ChartrOS
               </h2>
               
               <p className="text-xl text-slate-300 mb-12 chartr-body">
@@ -1326,14 +1306,13 @@ const Homepage = () => {
                   transition={{ delay: 0.2 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-emerald-400" />
+                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">HIPAA-Compliant AI Learning</h3>
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Built for Healthcare Standards</h3>
                       <p className="text-slate-400 chartr-body">
-                        Continuous model fine-tuning on your data with enterprise-grade security 
-                        and compliance built into every layer of the platform.
+                        Secure, HIPAA-ready, and continuously improving.
                       </p>
                     </div>
                   </div>
@@ -1346,14 +1325,13 @@ const Homepage = () => {
                   transition={{ delay: 0.3 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-indigo-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-indigo-400" />
+                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Universal Compatibility</h3>
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Seamlessly Compatible</h3>
                       <p className="text-slate-400 chartr-body">
-                        EMR and model agnostic design integrates seamlessly with Epic, Cerner, 
-                        and any existing AI data abstraction solutions.
+                        Integrates with your EMR and existing AI stack.
                       </p>
                     </div>
                   </div>
@@ -1366,14 +1344,13 @@ const Homepage = () => {
                   transition={{ delay: 0.4 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-purple-400" />
+                    <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Clinical Retrieval Layer</h3>
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Intelligent Retrieval Layer</h3>
                       <p className="text-slate-400 chartr-body">
-                        Best-in-class AI intelligently identifies relevant clinical information 
-                        and literature for truly actionable insights.
+                        Structured clinical insights from notes, registries, and literature.
                       </p>
                     </div>
                   </div>
@@ -1390,10 +1367,9 @@ const Homepage = () => {
                       <CheckCircle className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg chartr-subheading text-white mb-2">Human-in-the-Loop Validation</h3>
+                      <h3 className="text-lg chartr-subheading text-white mb-2">Human-Validated Workflows</h3>
                       <p className="text-slate-400 chartr-body">
-                        Streamlined validation workflows reduce false negatives while maintaining 
-                        clinical accuracy and regulatory compliance.
+                        Clinician review built into every critical step.
                       </p>
                     </div>
                   </div>
@@ -1447,23 +1423,20 @@ const Homepage = () => {
                 {/* Content */}
                 <div className="p-6">
                   {/* Quick Stats Bar */}
-                  <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-slate-700/50">
+                  <div className="flex justify-center gap-8 mb-6 pb-6 border-b border-slate-700/50">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-white">47</div>
                       <div className="text-xs text-slate-400">Active Workflows</div>
                     </div>
+
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-emerald-400">98.3%</div>
-                      <div className="text-xs text-slate-400">Avg Accuracy</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">2.4M</div>
+                      <div className="text-2xl font-bold text-white">2.4M</div>
                       <div className="text-xs text-slate-400">Records Processed</div>
                     </div>
                   </div>
 
                   <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
-                    <Layers className="w-4 h-4 mr-2 text-emerald-400" />
+                    <Layers className="w-4 h-4 mr-2 text-teal-400" />
                     Deployed Workflows
                   </h4>
                   
@@ -1471,88 +1444,73 @@ const Homepage = () => {
                   <div className="space-y-3">
                     {/* Cardiovascular Risk Assessment */}
                     <motion.div 
-                      className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 border border-emerald-500/30 rounded-lg p-4 hover:from-emerald-500/15 hover:to-emerald-600/15 transition-all cursor-pointer"
+                      className="bg-gradient-to-r from-teal-500/15 to-teal-600/15 border border-teal-500/40 rounded-lg p-4 hover:from-teal-500/20 hover:to-teal-600/20 transition-all cursor-pointer"
                       initial={{ x: 20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.4 }}
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Heart className="w-5 h-5 text-emerald-400" />
+                          <div className="w-10 h-10 bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Heart className="w-5 h-5 text-teal-400" />
                           </div>
                           <div>
                             <h5 className="font-semibold text-white flex items-center space-x-2">
                               <span>ASCVD Risk Calculator</span>
-                              <span className="text-xs text-emerald-400 bg-emerald-400/20 px-2 py-0.5 rounded-full">AI Enhanced</span>
                             </h5>
                             <p className="text-xs text-slate-400 mt-1">ACC/AHA 2023 Guidelines + Literature Review</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                          <span className="text-xs text-emerald-300 font-medium">Active</span>
+                          <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+                          <span className="text-xs text-teal-300 font-medium">Active</span>
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-4 gap-3 text-xs">
-                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
-                          <div className="text-white font-semibold">18,742</div>
-                          <div className="text-slate-500 text-[10px]">Patients</div>
-                        </div>
-                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
-                          <div className="text-emerald-400 font-semibold">99.1%</div>
-                          <div className="text-slate-500 text-[10px]">Accuracy</div>
-                        </div>
-                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
-                          <div className="text-blue-400 font-semibold">3.2s</div>
-                          <div className="text-slate-500 text-[10px]">Avg Time</div>
-                        </div>
-                        <div className="bg-slate-700/30 rounded-lg p-2 text-center">
-                          <div className="text-purple-400 font-semibold">$847K</div>
-                          <div className="text-slate-500 text-[10px]">Saved YTD</div>
-                        </div>
+                      <div className="mt-3 text-center">
+                        <div className="text-lg font-bold text-teal-400">99.1%</div>
+                        <div className="text-xs text-slate-400">Accuracy</div>
                       </div>
+
                     </motion.div>
 
                     {/* Medicare Advantage Coding */}
                     <motion.div 
-                      className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 border border-blue-500/30 rounded-lg p-4 hover:from-blue-500/15 hover:to-blue-600/15 transition-all cursor-pointer"
+                      className="bg-gradient-to-r from-cyan-500/15 to-cyan-600/15 border border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/20 hover:to-cyan-600/20 transition-all cursor-pointer"
                       initial={{ x: 20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.5 }}
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <FileCheck className="w-5 h-5 text-blue-400" />
+                          <div className="w-10 h-10 bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <FileCheck className="w-5 h-5 text-cyan-400" />
                           </div>
                           <div>
                             <h5 className="font-semibold text-white flex items-center space-x-2">
                               <span>HCC Risk Adjustment</span>
-                              <span className="text-xs text-blue-400 bg-blue-400/20 px-2 py-0.5 rounded-full">Auto-Validated</span>
                             </h5>
                             <p className="text-xs text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
                           <motion.div
-                            className="w-2 h-2 bg-blue-400 rounded-full"
+                            className="w-2 h-2 bg-cyan-400 rounded-full"
                             animate={{ opacity: [1, 0.3, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                           />
-                          <span className="text-xs text-blue-300 font-medium">Processing</span>
+                          <span className="text-xs text-cyan-300 font-medium">Processing</span>
                         </div>
                       </div>
                       
                       <div className="bg-slate-700/30 rounded-lg p-3">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs text-slate-400">Q1 2024 Batch Processing</span>
-                          <span className="text-xs text-blue-400 font-medium">67%</span>
+                          <span className="text-xs text-cyan-400 font-medium">67%</span>
                         </div>
                         <div className="w-full bg-slate-700 rounded-full h-2">
                           <motion.div 
-                            className="h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full"
+                            className="h-2 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full"
                             initial={{ width: "0%" }}
                             animate={{ width: "67%" }}
                             transition={{ duration: 1, delay: 0.8 }}
@@ -1567,25 +1525,24 @@ const Homepage = () => {
 
                     {/* Sepsis Screening */}
                     <motion.div 
-                      className="bg-gradient-to-r from-purple-500/10 to-purple-600/10 border border-purple-500/30 rounded-lg p-4 hover:from-purple-500/15 hover:to-purple-600/15 transition-all cursor-pointer group"
+                      className="bg-gradient-to-r from-blue-400/15 to-blue-500/15 border border-blue-400/40 rounded-lg p-4 hover:from-blue-400/20 hover:to-blue-500/20 transition-all cursor-pointer group"
                       initial={{ x: 20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.6 }}
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Activity className="w-5 h-5 text-purple-400" />
+                          <div className="w-10 h-10 bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Activity className="w-5 h-5 text-blue-400" />
                           </div>
                           <div>
                             <h5 className="font-semibold text-white flex items-center space-x-2">
                               <span>Early Sepsis Detection</span>
-                              <span className="text-xs text-purple-400 bg-purple-400/20 px-2 py-0.5 rounded-full">ML Model v3</span>
                             </h5>
                             <p className="text-xs text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
                           </div>
                         </div>
-                        <span className="text-xs text-purple-300 font-medium">Ready</span>
+                        <span className="text-xs text-blue-300 font-medium">Ready</span>
                       </div>
                       
                       <div className="flex items-center justify-between">
@@ -1593,7 +1550,7 @@ const Homepage = () => {
                           <span className="text-white font-medium">98.7%</span> sensitivity • 
                           <span className="text-white font-medium"> 94.2%</span> specificity
                         </div>
-                        <button className="px-3 py-1.5 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-purple-500/30">
+                        <button className="px-3 py-1.5 bg-blue-400/20 hover:bg-blue-400/30 text-blue-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-blue-400/30">
                           Deploy →
                         </button>
                       </div>
@@ -1644,49 +1601,40 @@ const Homepage = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-4xl md:text-5xl chartr-heading text-white mb-6">
-                Enterprise-Grade AI.
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text"> Built for Healthcare</span>
+                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Enterprise-Grade Infrastructure</span> for Healthcare AI
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
-                Military-grade security, federated learning, and compliance-first architecture 
-                ensure your data never leaves your control while delivering enterprise-scale AI.
+                Built to power multiple teams, tools, and environments—on a single, unified platform.
               </p>
             </motion.div>
           </div>
 
-          {/* Compliance & Security Badges - Floating Style */}
+          {/* Compliance & Security Badges - Vertical Stack */}
           <motion.div
-            className="flex flex-wrap justify-center gap-6 mb-16"
+            className="flex flex-col items-center space-y-6 mb-16 max-w-lg mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
-              <Shield className="w-6 h-6 text-indigo-400" />
+            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
+              <CheckCircle className="w-8 h-8 text-teal-400" />
               <div>
-                <div className="text-sm chartr-body-medium text-white">HIPAA Compliant</div>
-                <div className="text-xs text-slate-400 chartr-body">End-to-end encryption</div>
+                <div className="text-lg chartr-body-medium text-white">Federated Learning</div>
+                <div className="text-sm text-slate-400 chartr-body">Train models without moving sensitive data</div>
               </div>
             </div>
-            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
-              <CheckCircle className="w-6 h-6 text-emerald-400" />
+            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
+              <CheckCircle className="w-8 h-8 text-teal-400" />
               <div>
-                <div className="text-sm chartr-body-medium text-white">SOC 2 Type II</div>
-                <div className="text-xs text-slate-400 chartr-body">Audited security controls</div>
+                <div className="text-lg chartr-body-medium text-white">Modular + Multi-Tenant</div>
+                <div className="text-sm text-slate-400 chartr-body">Power multiple teams and deployments from a single platform</div>
               </div>
             </div>
-            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
-              <Database className="w-6 h-6 text-purple-400" />
+            <div className="flex items-center space-x-4 bg-teal-500/10 border border-teal-500/30 rounded-lg px-8 py-6 shadow-lg w-full">
+              <CheckCircle className="w-8 h-8 text-teal-400" />
               <div>
-                <div className="text-sm chartr-body-medium text-white">Federated Learning</div>
-                <div className="text-xs text-slate-400 chartr-body">Data never leaves your environment</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3 chartr-bg-floating px-6 py-4 shadow-lg">
-              <Network className="w-6 h-6 text-cyan-400" />
-              <div>
-                <div className="text-sm chartr-body-medium text-white">Multi-Tenant</div>
-                <div className="text-xs text-slate-400 chartr-body">Secure isolation & scalability</div>
+                <div className="text-lg chartr-body-medium text-white">SOC 2 Type II Audited</div>
+                <div className="text-sm text-slate-400 chartr-body">Verified operational and data security controls</div>
               </div>
             </div>
           </motion.div>
@@ -1700,8 +1648,6 @@ const Homepage = () => {
 
       {/* Live Demo Sections */}
       <DataExtractionDemo />
-      
-      <ActionableInsightsDemo />
 
       {/* CTA Section */}
       <section className="py-16 relative overflow-hidden">
@@ -1718,7 +1664,7 @@ const Homepage = () => {
             <h2 className="text-3xl md:text-4xl chartr-heading text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
               Ready to Transform
               <br />
-              <span className="text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text">
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text">
                 Your Healthcare Data?
               </span>
             </h2>
@@ -1734,9 +1680,9 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/30 via-purple-500/30 to-cyan-500/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-purple-600/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
               <div className="relative bg-white/10 rounded-2xl p-6 backdrop-blur-xl border border-white/20">
-                <div className="text-lg chartr-subheading text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-lg chartr-subheading text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
                 <div className="text-sm text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
               </div>
             </motion.div>

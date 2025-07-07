@@ -142,10 +142,10 @@ export default function ActionableInsightsDemo() {
         </motion.div>
 
         {/* Application Showcase */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
           {/* Application Selector */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white mb-4">Clinical Applications</h3>
+            <h3 className="text-lg font-semibold text-white mb-4 text-center">Clinical Applications</h3>
             {applications.map((app, index) => {
               const AppIcon = app.icon
               const isActive = index === activeApplication
@@ -156,23 +156,23 @@ export default function ActionableInsightsDemo() {
                   onClick={() => setActiveApplication(index)}
                   className={`w-full p-4 rounded-xl border text-left transition-all duration-300 ${
                     isActive 
-                      ? 'border-emerald-400/50 bg-emerald-500/10 shadow-lg backdrop-blur-sm scale-105' 
-                      : 'border-slate-600/50 bg-slate-800/40 hover:border-slate-500/50 backdrop-blur-xl hover:scale-102'
+                      ? 'border-emerald-400/50 bg-[#D1E0FF]/80 shadow-xl backdrop-blur-sm scale-105' 
+                      : 'border-slate-300/50 bg-[#D1E0FF]/80 hover:border-slate-400/50 backdrop-blur-xl hover:scale-102 shadow-md hover:shadow-lg'
                   }`}
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className={`p-2 rounded-lg ${isActive ? 'bg-white/20' : 'bg-slate-700/50'}`}>
-                      <AppIcon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                    <div className={`p-2 rounded-lg ${isActive ? 'bg-emerald-500/20' : 'bg-slate-600/30'}`}>
+                      <AppIcon className={`w-5 h-5 ${isActive ? 'text-emerald-600' : 'text-slate-600'}`} />
                     </div>
                     <div>
-                      <h4 className={`font-semibold text-sm ${isActive ? 'text-white' : 'text-slate-200'}`}>
+                      <h4 className={`font-semibold text-sm ${isActive ? 'text-slate-800' : 'text-slate-700'}`}>
                         {app.title}
                       </h4>
                     </div>
                   </div>
-                  <p className={`text-xs ${isActive ? 'text-slate-200' : 'text-slate-400'} leading-tight`}>
+                  <p className={`text-xs ${isActive ? 'text-slate-700' : 'text-slate-600'} leading-tight`}>
                     {app.description}
                   </p>
                   
@@ -196,7 +196,7 @@ export default function ActionableInsightsDemo() {
           </div>
 
           {/* Active Application Details */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 lg:pt-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeApplication}
@@ -207,7 +207,7 @@ export default function ActionableInsightsDemo() {
                 className="space-y-6"
               >
                 {/* Main Application Card */}
-                <div className="bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-700/50 overflow-hidden">
+                <div className="bg-[#D1E0FF]/80 backdrop-blur-xl rounded-2xl border border-slate-300/50 overflow-hidden shadow-xl">
                   {/* Header */}
                   <div className="p-6 border-b border-slate-700/50">
                     <div className="flex items-center space-x-4">
@@ -215,8 +215,8 @@ export default function ActionableInsightsDemo() {
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-white">{currentApp.title}</h3>
-                        <p className="text-slate-300 mt-1">{currentApp.description}</p>
+                        <h3 className="text-2xl font-bold text-slate-800">{currentApp.title}</h3>
+                        <p className="text-slate-600 mt-1">{currentApp.description}</p>
                       </div>
                     </div>
                   </div>
@@ -225,15 +225,15 @@ export default function ActionableInsightsDemo() {
                   <div className="p-6 space-y-6">
                     {/* Use Case */}
                     <div>
-                      <h4 className="font-semibold text-white mb-3">Use Case</h4>
-                      <p className="text-slate-300 leading-relaxed">
+                      <h4 className="font-semibold text-slate-800 mb-3">Use Case</h4>
+                      <p className="text-slate-700 leading-relaxed">
                         {currentApp.useCase}
                       </p>
                     </div>
 
                     {/* Key Outcomes */}
                     <div>
-                      <h4 className="font-semibold text-white mb-3">Key Outcomes</h4>
+                      <h4 className="font-semibold text-slate-800 mb-3">Key Outcomes</h4>
                       <div className="grid grid-cols-2 gap-3">
                         {currentApp.outcomes.map((outcome, index) => (
                           <motion.div 
@@ -243,8 +243,8 @@ export default function ActionableInsightsDemo() {
                             transition={{ duration: 0.3, delay: index * 0.1 }}
                             className="flex items-center space-x-2"
                           >
-                            <CheckCircle className="w-4 h-4 text-emerald-400" />
-                            <span className="text-sm text-slate-300">{outcome}</span>
+                            <CheckCircle className="w-4 h-4 text-emerald-600" />
+                            <span className="text-sm text-slate-700">{outcome}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -255,7 +255,7 @@ export default function ActionableInsightsDemo() {
                 {/* Impact Metrics */}
                 <div className="grid grid-cols-3 gap-4">
                   <motion.div 
-                    className="bg-slate-800/50 backdrop-blur-xl rounded-xl border border-slate-700/50 p-6 text-center"
+                    className="bg-[#D1E0FF]/80 backdrop-blur-xl rounded-xl border border-slate-300/50 p-6 text-center shadow-xl"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
@@ -263,11 +263,11 @@ export default function ActionableInsightsDemo() {
                     <div className={`text-3xl font-black text-transparent bg-gradient-to-r ${currentApp.color} bg-clip-text mb-2`}>
                       {currentApp.metrics.primary}
                     </div>
-                    <p className="text-sm text-slate-400 font-medium">{currentApp.metrics.primaryLabel}</p>
+                    <p className="text-sm text-slate-600 font-medium">{currentApp.metrics.primaryLabel}</p>
                   </motion.div>
                   
                   <motion.div 
-                    className="bg-slate-800/50 backdrop-blur-xl rounded-xl border border-slate-700/50 p-6 text-center"
+                    className="bg-[#D1E0FF]/80 backdrop-blur-xl rounded-xl border border-slate-300/50 p-6 text-center shadow-xl"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -275,19 +275,19 @@ export default function ActionableInsightsDemo() {
                     <div className={`text-3xl font-black text-transparent bg-gradient-to-r ${currentApp.color} bg-clip-text mb-2`}>
                       {currentApp.metrics.secondary}
                     </div>
-                    <p className="text-sm text-slate-400 font-medium">{currentApp.metrics.secondaryLabel}</p>
+                    <p className="text-sm text-slate-600 font-medium">{currentApp.metrics.secondaryLabel}</p>
                   </motion.div>
                   
                   <motion.div 
-                    className="bg-slate-800/50 backdrop-blur-xl rounded-xl border border-slate-700/50 p-6 text-center"
+                    className="bg-[#D1E0FF]/80 backdrop-blur-xl rounded-xl border border-slate-300/50 p-6 text-center shadow-xl"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    <div className="text-lg font-bold text-white mb-2">
+                    <div className="text-lg font-bold text-slate-800 mb-2">
                       {currentApp.metrics.impact}
                     </div>
-                    <p className="text-sm text-slate-400 font-medium">Total Impact</p>
+                    <p className="text-sm text-slate-600 font-medium">Total Impact</p>
                   </motion.div>
                 </div>
               </motion.div>
