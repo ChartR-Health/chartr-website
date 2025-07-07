@@ -1301,26 +1301,21 @@ const Homepage = () => {
 
   const ChartrOSControlCenter = () => {
     return (
-      <div className="relative w-full">
+      <div className="relative w-full max-w-4xl mx-auto">
         {/* Workflow Builder Interface */}
         <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-2xl">
           {/* Header */}
-          <div className="bg-slate-100 dark:bg-slate-800/80 px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
+          <div className="bg-slate-100 dark:bg-slate-800/80 px-10 py-4 border-b border-slate-200 dark:border-slate-700/50">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                {/* ChartR Logo */}
-                <img 
-                  src="/logo.svg" 
-                  alt="ChartR Logo" 
-                  className="w-8 h-8"
-                />
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
+                              <div className="flex items-center space-x-3">
+                  {/* ChartR Logo */}
+                  <img 
+                    src="/logo.svg" 
+                    alt="ChartR Logo" 
+                    className="w-8 h-8"
+                  />
+                  <span className="text-sm text-slate-700 dark:text-slate-300 font-medium">ChartrOS Control Center</span>
                 </div>
-                <span className="text-sm text-slate-700 dark:text-slate-300 font-medium">ChartrOS Control Center</span>
-              </div>
               <div className="flex items-center space-x-4">
                 {/* Moved stats here - smaller and more compact */}
                 <div className="flex items-center space-x-4 text-xs text-slate-500 dark:text-slate-400">
@@ -1343,7 +1338,7 @@ const Homepage = () => {
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-8">
 
             <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center">
               <Layers className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
@@ -1366,9 +1361,9 @@ const Homepage = () => {
                     </div>
                     <div>
                       <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
-                        <span>Pre-Operative Risk Suite</span>
+                        <span>Pre-Operative Risk Assessment</span>
                       </h5>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">AI-powered surgical risk stratification with real-time monitoring</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -1408,9 +1403,9 @@ const Homepage = () => {
                     </div>
                     <div>
                       <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
-                        <span>HCC Risk Adjustment</span>
+                        <span>CMS HOQR and HIQR Reporting</span>
                       </h5>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Hospital Quality Reporting • Real-time Processing</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -1425,7 +1420,7 @@ const Homepage = () => {
                 
                 <div className="bg-slate-200/70 dark:bg-slate-700/30 rounded-lg p-3">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">Q1 2024 Batch Processing</span>
+                    <span className="text-xs text-slate-600 dark:text-slate-400">Q1 2025 Batch Processing</span>
                     <span className="text-xs text-cyan-700 dark:text-cyan-400 font-medium">67%</span>
                   </div>
                   <div className="w-full bg-slate-300 dark:bg-slate-700 rounded-full h-2">
