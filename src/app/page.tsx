@@ -2114,6 +2114,25 @@ const Homepage = () => {
                     </div>
                   </div>
                 </motion.div>
+
+                <motion.div 
+                  className="group"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Infrastructure</h3>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                        Power diverse teams and tools on single platform.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
 
               {/* CTA Button - Compact */}
@@ -2199,22 +2218,18 @@ const Homepage = () => {
                       
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Build and deploy complex AI workflows without writing a single line of code. Our intuitive ecosystem adapts to your existing processes.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Purpose-built templates for clinical workflows</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Build AI workflows using clinical templates</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Drag-and-drop workflow builder</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Drag-and-drop configuration, no coding required</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Seamless EMR integration</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Seamless and immediate EMR integration</span>
                   </li>
                 </ul>
                       </div>
@@ -2235,22 +2250,18 @@ const Homepage = () => {
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Best-in-Class Clinical Retrieval</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Our proprietary retrieval layer identifies the most relevant clinical notes with unmatched precision, enabling confident decision-making.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">99.1% accuracy in note identification</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Identify the most relevant clinical notes for decision-making</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Prevents false negatives through Smart Review</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Prevent false negatives with Smart Review</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Real-time validation modules</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Validate results in real time for confident decisions</span>
                   </li>
                 </ul>
                           </div>
@@ -2271,22 +2282,18 @@ const Homepage = () => {
                       
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No Vendor Lock-In</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Use ChartrOS as a comprehensive solution or integrate individual modules. Compatible with your existing tech stack.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Works with existing AI abstraction tools</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Compatible with existing AI abstraction tools</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Modular architecture for flexibility</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Modular, API-first design for easy integration</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">API-first design</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Use as a full platform or standalone modules</span>
                   </li>
                 </ul>
                         </div>
@@ -2307,22 +2314,18 @@ const Homepage = () => {
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Your AI, Your Way</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Deploy your own ML models within our ecosystem or leverage our pre-built AI solutions. The choice is yours.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Support for custom ML models</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Deploy custom ML models or pre-built solutions</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Pre-built ChartR AI solutions</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Model-agnostic platform works with your stack</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Model-agnostic platform</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Flexible AI deployment options</span>
                   </li>
                 </ul>
                       </div>
@@ -2343,22 +2346,18 @@ const Homepage = () => {
                       
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Automated RLHF</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Your models get smarter over time with our automated reinforcement learning from human feedback, continuously improving accuracy.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Real-time model improvement</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Continuously improve models with human feedback</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Continuous training pipeline</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Automated training pipeline for real-time updates</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Human-in-the-loop validation</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Human-in-the-loop validation ensures accuracy</span>
                   </li>
                 </ul>
                       </div>
@@ -2379,22 +2378,18 @@ const Homepage = () => {
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Collaboration</h3>
                 
-                <p className="text-slate-600 dark:text-slate-400 mb-6 chartr-body">
-                  Smart Review combines AI efficiency with human expertise, ensuring the highest quality outputs for critical healthcare decisions.
-                </p>
-                
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Intelligent routing to reviewers</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Route critical outputs to human reviewers</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Built-in quality assurance</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Built-in quality assurance checks</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Audit trail for compliance</span>
+                    <span className="text-sm text-slate-700 dark:text-slate-300">Maintain a full audit trail for compliance</span>
                   </li>
                 </ul>
                     </div>
@@ -2421,68 +2416,6 @@ const Homepage = () => {
               </motion.button>
             </Link>
             </motion.div>
-        </div>
-      </section>
-
-      {/* Enterprise-Grade AI Section - Diagonal Layout */}
-      <section className="py-24 relative overflow-hidden chartr-bg-accent">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">Enterprise-Grade Infrastructure</span> for Healthcare AI
-              </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
-                Built to power diverse tools, users, and environments—on a single, unified platform.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Compliance & Security Badges - Vertical Stack */}
-          <motion.div
-            className="flex flex-col items-center space-y-8 mb-16 max-w-lg mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="flex items-start space-x-4 w-full">
-              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 h-5 text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">Federated Learning</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Train models without moving sensitive data</div>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4 w-full">
-              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 h-5 text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">Modular + Multi-Tenant</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Power multiple teams and deployments from a single platform</div>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4 w-full">
-              <div className="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 h-5 text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-lg chartr-body-medium text-slate-900 dark:text-white font-bold">SOC 2 Type II Audited</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400 chartr-body">Verified operational and data security controls</div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Key Enterprise Features - Asymmetric Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Removed Zero-Trust Architecture, Federated Learning, and Infinite Scalability cards as requested */}
-          </div>
         </div>
       </section>
 
