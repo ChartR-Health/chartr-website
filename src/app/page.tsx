@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -762,6 +762,285 @@ const Homepage = () => {
     );
   };
 
+  const PreOperativeRiskDemo = () => {
+    const [selectedModules, setSelectedModules] = useState(['cardiac', 'pulmonary']);
+    const [showModuleSelector, setShowModuleSelector] = useState(false);
+    
+    const availableModules = [
+      { id: 'cardiac', name: 'Cardiac Risk (RCRI)', icon: Heart, color: 'rose' },
+      { id: 'pulmonary', name: 'Pulmonary Risk', icon: Activity, color: 'blue' },
+      { id: 'nsqip', name: 'ACS NSQIP Calculator', icon: Calculator, color: 'purple' },
+      { id: 'frailty', name: 'Frailty Assessment', icon: Users, color: 'amber' },
+      { id: 'bleeding', name: 'Bleeding Risk', icon: Droplet, color: 'red' },
+      { id: 'renal', name: 'Renal Risk', icon: Beaker, color: 'cyan' }
+    ];
+
+    const toggleModule = (moduleId: string) => {
+      setSelectedModules(prev => 
+        prev.includes(moduleId) 
+          ? prev.filter(id => id !== moduleId)
+          : [...prev, moduleId]
+      );
+    };
+
+    return (
+      <div className="relative w-full">
+        {/* Main Container - Professional Healthcare Design */}
+        <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
+          {/* Enhanced Header with Module Controls */}
+          <div className="bg-slate-700/30 px-6 py-3 border-b border-slate-200/10">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <h3 className="text-sm font-medium text-slate-200">Surgical Pre-Operative Risk Assessment</h3>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded-md border border-emerald-400/30">
+                  Multi-Module AI Workflow
+                </span>
+                <button
+                  onClick={() => setShowModuleSelector(!showModuleSelector)}
+                  className="flex items-center space-x-1 px-2 py-1 bg-violet-500/20 hover:bg-violet-500/30 text-violet-300 text-xs rounded-md border border-violet-400/30 transition-all"
+                >
+                  <Plus className="w-3 h-3" />
+                  <span>Add Module</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Module Selector Dropdown */}
+          {showModuleSelector && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute top-14 right-6 z-20 bg-slate-800/95 backdrop-blur-sm rounded-lg border border-slate-600/50 shadow-2xl p-4 min-w-[250px]"
+            >
+              <h4 className="text-xs font-medium text-slate-300 mb-3">Available AI Modules</h4>
+              <div className="space-y-2">
+                {availableModules.map(module => (
+                  <button
+                    key={module.id}
+                    onClick={() => toggleModule(module.id)}
+                    className={`w-full flex items-center justify-between p-2 rounded-lg border transition-all ${
+                      selectedModules.includes(module.id)
+                        ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300'
+                        : 'bg-slate-700/30 border-slate-600/30 text-slate-400 hover:bg-slate-700/50'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-2">
+                      <module.icon className="w-4 h-4" />
+                      <span className="text-xs font-medium">{module.name}</span>
+                    </div>
+                    {selectedModules.includes(module.id) && (
+                      <CheckCircle className="w-3 h-3" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Content - Adaptive Layout */}
+          <div className="p-6 lg:p-8">
+            <div className="grid md:grid-cols-4 gap-6 relative">
+              {/* Clinical Notes - Enhanced for Surgery */}
+              <div className="flex flex-col relative">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <FileText className="w-4 h-4 mr-2 text-blue-400" />
+                  Clinical Retrieval
+                </h4>
+                
+                {/* Arrow to next step */}
+                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
+                    <ArrowRight className="w-3 h-3 text-emerald-400" />
+                  </div>
+                </div>
+                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-300 leading-relaxed border border-slate-600/20">
+                  <div className="mb-3 pb-3 border-b border-slate-600/30">
+                    <p className="text-xs text-slate-400 mb-2">Surgical Consultation</p>
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
+                    </p>
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <p className="text-xs text-slate-400 mb-2">Pre-Op Assessment</p>
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
+                    </p>
+                    <p className="mb-2 text-xs">
+                      <span className="text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Data Extraction - Enhanced */}
+              <div className="flex flex-col relative">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <Target className="w-4 h-4 mr-2 text-emerald-400" />
+                  Multi-Source Extraction
+                </h4>
+                
+                {/* Arrow to next step */}
+                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
+                    <ArrowRight className="w-3 h-3 text-violet-400" />
+                  </div>
+                </div>
+                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                  <div className="space-y-3">
+                    {/* Surgical Factors */}
+                    <div>
+                      <h5 className="text-xs font-medium text-violet-300 mb-2">Surgical Factors</h5>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
+                          <span className="text-violet-200 text-xs font-medium">Intraperitoneal Surgery</span>
+                          <CheckCircle className="w-3 h-3 text-violet-300" />
+                        </div>
+                        <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
+                          <span className="text-violet-200 text-xs font-medium">ASA Class III</span>
+                          <CheckCircle className="w-3 h-3 text-violet-300" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Medical Factors */}
+                    <div>
+                      <h5 className="text-xs font-medium text-amber-300 mb-2">Medical History</h5>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Ischemic Heart Disease</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                        </div>
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Insulin Therapy</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                        </div>
+                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
+                          <span className="text-amber-200 text-xs font-medium">Cr &gt;1.5 mg/dL</span>
+                          <CheckCircle className="w-3 h-3 text-amber-300" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Integrated AI Modules - Dynamic Display */}
+              <div className="flex flex-col md:col-span-2">
+                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
+                  <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
+                  Integrated Risk Assessments
+                </h4>
+                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    {selectedModules.map(moduleId => {
+                      const module = availableModules.find(m => m.id === moduleId);
+                      if (!module) return null;
+
+                      // Module-specific risk displays
+                      const riskData = {
+                        cardiac: { score: '15.3%', level: 'Elevated', recommendation: 'Cardiology consult, Beta-blockers' },
+                        pulmonary: { score: '8.2%', level: 'Moderate', recommendation: 'Pulmonary function tests' },
+                        nsqip: { score: '12.4%', level: 'High', recommendation: 'Optimize medical conditions' },
+                        frailty: { score: '4/7', level: 'Pre-frail', recommendation: 'PT evaluation, nutrition' },
+                        bleeding: { score: '22%', level: 'High', recommendation: 'Hold anticoagulation' },
+                        renal: { score: '18%', level: 'Moderate', recommendation: 'Nephrology consult' }
+                      };
+
+                      const data = riskData[moduleId as keyof typeof riskData];
+                      const colorMap = {
+                        rose: 'bg-rose-500/20 border-rose-400/30 text-rose-300',
+                        blue: 'bg-blue-500/20 border-blue-400/30 text-blue-300',
+                        purple: 'bg-purple-500/20 border-purple-400/30 text-purple-300',
+                        amber: 'bg-amber-500/20 border-amber-400/30 text-amber-300',
+                        red: 'bg-red-500/20 border-red-400/30 text-red-300',
+                        cyan: 'bg-cyan-500/20 border-cyan-400/30 text-cyan-300'
+                      };
+
+                      return (
+                        <motion.div
+                          key={moduleId}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.9 }}
+                          className={`${colorMap[module.color as keyof typeof colorMap]} rounded-lg p-3 border`}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <h5 className="text-xs font-medium flex items-center">
+                              <module.icon className="w-3 h-3 mr-1" />
+                              {module.name}
+                            </h5>
+                            <button
+                              onClick={() => toggleModule(moduleId)}
+                              className="w-4 h-4 hover:opacity-70 transition-opacity"
+                            >
+                              <X className="w-3 h-3" />
+                            </button>
+                          </div>
+                          <div className="text-center mb-2">
+                            <div className="text-xl font-bold">{data.score}</div>
+                            <div className="text-xs opacity-80">{data.level} Risk</div>
+                          </div>
+                          <div className="text-xs opacity-90">
+                            <span className="font-medium">Action:</span> {data.recommendation}
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                    
+                    {/* Add Module Card */}
+                    {selectedModules.length < availableModules.length && (
+                      <motion.button
+                        onClick={() => setShowModuleSelector(true)}
+                        className="bg-slate-700/30 hover:bg-slate-700/50 border-2 border-dashed border-slate-600/50 hover:border-violet-500/50 rounded-lg p-6 flex flex-col items-center justify-center transition-all min-h-[120px]"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Plus className="w-6 h-6 text-violet-400 mb-2" />
+                        <span className="text-xs text-slate-400">Add Risk Module</span>
+                      </motion.button>
+                    )}
+                  </div>
+
+                  {/* Overall Risk Summary */}
+                  <div className="mt-4 pt-4 border-t border-slate-600/30">
+                    <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg p-3 border border-emerald-400/30">
+                      <h5 className="text-xs font-medium text-emerald-300 mb-2 flex items-center">
+                        <Layers className="w-3 h-3 mr-1" />
+                        ChartrOS Integrated Summary
+                      </h5>
+                      <div className="space-y-1.5">
+                        <div className="flex items-start space-x-2">
+                          <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
+                          <div className="text-emerald-200 text-xs">
+                            <span className="font-medium">Proceed with caution - optimize cardiac status</span>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-2">
+                          <AlertTriangle className="w-3 h-3 text-amber-400 mt-0.5 flex-shrink-0" />
+                          <div className="text-amber-200 text-xs">
+                            <span className="font-medium">Consider delaying for medical optimization</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
           <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden">
       {/* Very subtle background gradient that flows throughout */}
@@ -917,7 +1196,7 @@ const Homepage = () => {
               
               {/* Constrained graphic container */}
               <div className="relative z-10 max-w-4xl">
-                <ASCVDHeroDemo />
+                <PreOperativeRiskDemo />
               </div>
             </motion.div>
           </div>
@@ -1217,8 +1496,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Heart className="w-5 h-5 text-[#0FE3C2]" />
                         <div>
-                          <div className="font-medium text-slate-200">Risk Assessment</div>
-                          <div className="text-xs text-slate-400">ASCVD, Sepsis, Readmission</div>
+                                                  <div className="font-medium text-slate-200">Risk Assessment</div>
+                        <div className="text-xs text-slate-400">Pre-Op, Sepsis, Readmission</div>
                         </div>
                       </div>
                     </motion.div>
@@ -1448,9 +1727,9 @@ const Homepage = () => {
                           </div>
                           <div>
                             <h5 className="font-semibold text-white flex items-center space-x-2">
-                              <span>ASCVD Risk Calculator</span>
+                              <span>Pre-Operative Risk Suite</span>
                             </h5>
-                            <p className="text-xs text-slate-400 mt-1">ACC/AHA 2023 Guidelines + Literature Review</p>
+                            <p className="text-xs text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
