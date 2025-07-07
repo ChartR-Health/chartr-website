@@ -1127,6 +1127,201 @@ const Homepage = () => {
     );
   };
 
+  const ChartrOSControlCenter = () => {
+    return (
+      <div className="relative w-full">
+        {/* Workflow Builder Interface */}
+        <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
+          {/* Header */}
+          <div className="bg-slate-800/80 px-6 py-4 border-b border-slate-700/50">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="flex space-x-2">
+                  <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
+                  <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
+                  <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
+                </div>
+                <span className="text-sm text-slate-300 font-medium">ChartrOS Control Center</span>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                  <span className="text-xs text-emerald-400 font-medium">Live</span>
+                </div>
+                <span className="text-xs text-slate-500">v2.4.1</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            {/* Quick Stats Bar */}
+            <div className="flex justify-center gap-8 mb-6 pb-6 border-b border-slate-700/50">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">47</div>
+                <div className="text-xs text-slate-400">Active Workflows</div>
+              </div>
+
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">2.4M</div>
+                <div className="text-xs text-slate-400">Records Processed</div>
+              </div>
+            </div>
+
+            <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
+              <Layers className="w-4 h-4 mr-2 text-teal-400" />
+              Deployed Workflows
+            </h4>
+            
+            {/* Workflow Cards */}
+            <div className="space-y-3">
+              {/* Cardiovascular Risk Assessment */}
+              <motion.div 
+                className="bg-gradient-to-r from-teal-500/15 to-teal-600/15 border border-teal-500/40 rounded-lg p-4 hover:from-teal-500/20 hover:to-teal-600/20 transition-all cursor-pointer"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-5 h-5 text-teal-400" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                        <span>Pre-Operative Risk Suite</span>
+                      </h5>
+                      <p className="text-xs text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+                    <span className="text-xs text-teal-300 font-medium">Active</span>
+                  </div>
+                </div>
+                
+                <div className="mt-3 text-center">
+                  <div className="text-lg font-bold text-teal-400">99.1%</div>
+                  <div className="text-xs text-slate-400">Accuracy</div>
+                </div>
+
+              </motion.div>
+
+              {/* Medicare Advantage Coding */}
+              <motion.div 
+                className="bg-gradient-to-r from-cyan-500/15 to-cyan-600/15 border border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/20 hover:to-cyan-600/20 transition-all cursor-pointer"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <FileCheck className="w-5 h-5 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                        <span>HCC Risk Adjustment</span>
+                      </h5>
+                      <p className="text-xs text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <motion.div
+                      className="w-2 h-2 bg-cyan-400 rounded-full"
+                      animate={{ opacity: [1, 0.3, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className="text-xs text-cyan-300 font-medium">Processing</span>
+                  </div>
+                </div>
+                
+                <div className="bg-slate-700/30 rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-slate-400">Q1 2024 Batch Processing</span>
+                    <span className="text-xs text-cyan-400 font-medium">67%</span>
+                  </div>
+                  <div className="w-full bg-slate-700 rounded-full h-2">
+                    <motion.div 
+                      className="h-2 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full"
+                      initial={{ width: "0%" }}
+                      animate={{ width: "67%" }}
+                      transition={{ duration: 1, delay: 0.8 }}
+                    />
+                  </div>
+                  <div className="flex justify-between mt-2 text-[10px] text-slate-500">
+                    <span>42,381 records complete</span>
+                    <span>ETA: 14 min</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Sepsis Screening */}
+              <motion.div 
+                className="bg-gradient-to-r from-blue-400/15 to-blue-500/15 border border-blue-400/40 rounded-lg p-4 hover:from-blue-400/20 hover:to-blue-500/20 transition-all cursor-pointer group"
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-5 h-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <h5 className="font-semibold text-white flex items-center space-x-2">
+                        <span>Early Sepsis Detection</span>
+                      </h5>
+                      <p className="text-xs text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-blue-300 font-medium">Ready</span>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-slate-400">
+                    <span className="text-white font-medium">98.7%</span> sensitivity • 
+                    <span className="text-white font-medium"> 94.2%</span> specificity
+                  </div>
+                  <button className="px-3 py-1.5 bg-blue-400/20 hover:bg-blue-400/30 text-blue-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-blue-400/30">
+                    Deploy →
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Add New Workflow - Improved Design */}
+            <motion.div 
+              className="mt-4 bg-gradient-to-r from-slate-700/20 to-slate-600/20 border-2 border-dashed border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/5 hover:to-blue-500/5 transition-all cursor-pointer group"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
+                    <span className="text-2xl text-slate-400 group-hover:text-emerald-400 transition-colors">+</span>
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                      Deploy New AI Workflow
+                    </h5>
+                    <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
+                      Choose from 50+ pre-built templates or create custom ones
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden chartr-bg-accent">
       {/* Very subtle background gradient that flows throughout */}
@@ -1282,7 +1477,7 @@ const Homepage = () => {
               
               {/* Constrained graphic container */}
               <div className="relative z-10 max-w-4xl">
-                <PreOperativeRiskDemo />
+                <ChartrOSControlCenter />
               </div>
             </motion.div>
           </div>
@@ -1754,194 +1949,7 @@ const Homepage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              {/* Workflow Builder Interface */}
-              <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
-                {/* Header */}
-                <div className="bg-slate-800/80 px-6 py-4 border-b border-slate-700/50">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="flex space-x-2">
-                        <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
-                        <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
-                        <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
-                      </div>
-                      <span className="text-sm text-slate-300 font-medium">ChartrOS Control Center</span>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-emerald-400 font-medium">Live</span>
-                      </div>
-                      <span className="text-xs text-slate-500">v2.4.1</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  {/* Quick Stats Bar */}
-                  <div className="flex justify-center gap-8 mb-6 pb-6 border-b border-slate-700/50">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-white">47</div>
-                      <div className="text-xs text-slate-400">Active Workflows</div>
-                    </div>
-
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-white">2.4M</div>
-                      <div className="text-xs text-slate-400">Records Processed</div>
-                    </div>
-                  </div>
-
-                  <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center">
-                    <Layers className="w-4 h-4 mr-2 text-teal-400" />
-                    Deployed Workflows
-                  </h4>
-                  
-                  {/* Workflow Cards */}
-                  <div className="space-y-3">
-                    {/* Cardiovascular Risk Assessment */}
-                    <motion.div 
-                      className="bg-gradient-to-r from-teal-500/15 to-teal-600/15 border border-teal-500/40 rounded-lg p-4 hover:from-teal-500/20 hover:to-teal-600/20 transition-all cursor-pointer"
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Heart className="w-5 h-5 text-teal-400" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-white flex items-center space-x-2">
-                              <span>Pre-Operative Risk Suite</span>
-                            </h5>
-                            <p className="text-xs text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
-                          <span className="text-xs text-teal-300 font-medium">Active</span>
-                        </div>
-                      </div>
-                      
-                      <div className="mt-3 text-center">
-                        <div className="text-lg font-bold text-teal-400">99.1%</div>
-                        <div className="text-xs text-slate-400">Accuracy</div>
-                      </div>
-
-                    </motion.div>
-
-                    {/* Medicare Advantage Coding */}
-                    <motion.div 
-                      className="bg-gradient-to-r from-cyan-500/15 to-cyan-600/15 border border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/20 hover:to-cyan-600/20 transition-all cursor-pointer"
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <FileCheck className="w-5 h-5 text-cyan-400" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-white flex items-center space-x-2">
-                              <span>HCC Risk Adjustment</span>
-                            </h5>
-                            <p className="text-xs text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <motion.div
-                            className="w-2 h-2 bg-cyan-400 rounded-full"
-                            animate={{ opacity: [1, 0.3, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                          <span className="text-xs text-cyan-300 font-medium">Processing</span>
-                        </div>
-                      </div>
-                      
-                      <div className="bg-slate-700/30 rounded-lg p-3">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs text-slate-400">Q1 2024 Batch Processing</span>
-                          <span className="text-xs text-cyan-400 font-medium">67%</span>
-                        </div>
-                        <div className="w-full bg-slate-700 rounded-full h-2">
-                          <motion.div 
-                            className="h-2 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full"
-                            initial={{ width: "0%" }}
-                            animate={{ width: "67%" }}
-                            transition={{ duration: 1, delay: 0.8 }}
-                          />
-                        </div>
-                        <div className="flex justify-between mt-2 text-[10px] text-slate-500">
-                          <span>42,381 records complete</span>
-                          <span>ETA: 14 min</span>
-                        </div>
-                      </div>
-                    </motion.div>
-
-                    {/* Sepsis Screening */}
-                    <motion.div 
-                      className="bg-gradient-to-r from-blue-400/15 to-blue-500/15 border border-blue-400/40 rounded-lg p-4 hover:from-blue-400/20 hover:to-blue-500/20 transition-all cursor-pointer group"
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ delay: 0.6 }}
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-start space-x-3">
-                          <div className="w-10 h-10 bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Activity className="w-5 h-5 text-blue-400" />
-                          </div>
-                          <div>
-                            <h5 className="font-semibold text-white flex items-center space-x-2">
-                              <span>Early Sepsis Detection</span>
-                            </h5>
-                            <p className="text-xs text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
-                          </div>
-                        </div>
-                        <span className="text-xs text-blue-300 font-medium">Ready</span>
-                      </div>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="text-xs text-slate-400">
-                          <span className="text-white font-medium">98.7%</span> sensitivity • 
-                          <span className="text-white font-medium"> 94.2%</span> specificity
-                        </div>
-                        <button className="px-3 py-1.5 bg-blue-400/20 hover:bg-blue-400/30 text-blue-300 rounded-lg text-xs font-medium transition-colors group-hover:bg-blue-400/30">
-                          Deploy →
-                        </button>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Add New Workflow - Improved Design */}
-                  <motion.div 
-                    className="mt-4 bg-gradient-to-r from-slate-700/20 to-slate-600/20 border-2 border-dashed border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/5 hover:to-blue-500/5 transition-all cursor-pointer group"
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
-                          <span className="text-2xl text-slate-400 group-hover:text-emerald-400 transition-colors">+</span>
-                        </div>
-                        <div>
-                          <h5 className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
-                            Deploy New AI Workflow
-                          </h5>
-                          <p className="text-xs text-slate-500 group-hover:text-slate-400 transition-colors">
-                            Choose from 50+ pre-built templates or create custom ones
-                          </p>
-                        </div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors" />
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
+              <PreOperativeRiskDemo />
             </motion.div>
           </div>
         </div>
