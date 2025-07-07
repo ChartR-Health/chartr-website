@@ -2347,10 +2347,10 @@ const Homepage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-purple-600/30 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-white/10 rounded-2xl p-6 backdrop-blur-xl border border-white/20">
-                <div className="text-lg font-semibold text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text mb-2">Leading the Future of Healthcare Intelligence</div>
-                <div className="text-sm text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl blur-sm opacity-60 group-hover:opacity-80 transition-all duration-300" />
+              <div className="relative bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-purple-600/20 rounded-2xl p-6 backdrop-blur-sm border border-slate-200/50 dark:border-slate-600/50 shadow-lg">
+                <div className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Leading the Future of Healthcare Intelligence</div>
+                <div className="text-sm text-slate-700 dark:text-slate-300 chartr-body">AI-assisted, human-validated clinical data curation at scale</div>
               </div>
             </motion.div>
             

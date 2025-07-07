@@ -342,7 +342,7 @@ FINDINGS:
                         }`}
                       >
                         <div className={`p-2 rounded-lg ${
-                          isCompleted || isHumanValidation ? 'bg-slate-600/50' : 'bg-slate-700/30'
+                          isCompleted || isHumanValidation ? 'bg-cyan-500/25 dark:bg-cyan-500/20' : 'bg-slate-700/30'
                         }`}>
                           {isCompleted ? (
                             <CheckCircle className="w-4 h-4 text-cyan-400" />
@@ -444,7 +444,7 @@ FINDINGS:
                               <div className="flex items-center space-x-2">
                                 <button
                                   onClick={() => handleViewSource(variable.name)}
-                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-700/50 hover:bg-slate-600/50 rounded text-xs text-slate-300 hover:text-white transition-colors"
+                                  className="flex items-center space-x-1 px-2 py-1 bg-slate-200/50 dark:bg-slate-700/50 hover:bg-slate-300/50 dark:hover:bg-slate-600/50 rounded text-xs text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                                 >
                                   <Eye className="w-3 h-3" />
                                   <span>View</span>
