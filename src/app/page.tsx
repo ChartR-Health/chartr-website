@@ -1582,6 +1582,287 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* How We Are Different Section */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div 
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-400/20 rounded-full px-6 py-3 mb-8"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-blue-300 uppercase tracking-wider">Why ChartrOS</span>
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              How We Are
+              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text"> Different</span>
+            </h2>
+            
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto chartr-body">
+              Purpose-built for healthcare's unique challenges, ChartrOS goes beyond traditional AI solutions
+            </p>
+          </motion.div>
+
+          {/* Key Differentiators Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {/* 1. No-Code, Seamless Integration */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Layers className="w-7 h-7 text-cyan-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">No-Code AI Integration</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Build and deploy complex AI workflows without writing a single line of code. Our intuitive ecosystem adapts to your existing processes.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Purpose-built templates for clinical workflows</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Drag-and-drop workflow builder</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Seamless EMR integration</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 2. Clinical Retrieval Layer */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl blur-xl group-hover:from-emerald-500/20 group-hover:to-teal-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Target className="w-7 h-7 text-emerald-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">Best-in-Class Clinical Retrieval</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Our proprietary retrieval layer identifies the most relevant clinical notes with unmatched precision, enabling confident decision-making.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">99.1% accuracy in note identification</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Prevents false negatives through Smart Review</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Real-time validation modules</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 3. Flexible Deployment */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Network className="w-7 h-7 text-purple-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">No Vendor Lock-In</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Use ChartrOS as a comprehensive solution or integrate individual modules. Compatible with your existing tech stack.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Works with existing AI abstraction tools</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Modular architecture for flexibility</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">API-first design</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 4. Bring Your Own AI */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-2xl blur-xl group-hover:from-amber-500/20 group-hover:to-orange-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-amber-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Cpu className="w-7 h-7 text-amber-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">Your AI, Your Way</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Deploy your own ML models within our ecosystem or leverage our pre-built AI solutions. The choice is yours.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Support for custom ML models</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Pre-built ChartR AI solutions</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Model-agnostic platform</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 5. Continuous Learning */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-indigo-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="w-7 h-7 text-indigo-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">Automated RLHF</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Your models get smarter over time with our automated reinforcement learning from human feedback, continuously improving accuracy.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Real-time model improvement</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Continuous training pipeline</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Human-in-the-loop validation</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* 6. Smart Review */}
+            <motion.div 
+              className="group relative"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl blur-xl group-hover:from-teal-500/20 group-hover:to-cyan-500/20 transition-all duration-300"></div>
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 h-full">
+                <div className="w-14 h-14 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Users className="w-7 h-7 text-teal-400" />
+                </div>
+                
+                <h3 className="text-xl font-semibold text-white mb-4">Human-AI Collaboration</h3>
+                
+                <p className="text-slate-400 mb-6 chartr-body">
+                  Smart Review combines AI efficiency with human expertise, ensuring the highest quality outputs for critical healthcare decisions.
+                </p>
+                
+                <ul className="space-y-3">
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Intelligent routing to reviewers</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Built-in quality assurance</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-300">Audit trail for compliance</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div 
+            className="text-center mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <p className="text-lg text-slate-300 mb-8 chartr-body">
+              Ready to experience the ChartrOS difference?
+            </p>
+            <Link href="/contact?tab=demo">
+              <motion.button 
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                See ChartrOS in Action
+              </motion.button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Enterprise-Grade AI Section - Diagonal Layout */}
       <section className="py-24 relative overflow-hidden chartr-bg-diagonal">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5"></div>
