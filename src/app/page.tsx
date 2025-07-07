@@ -409,68 +409,87 @@ const Homepage = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                <h3 className="text-sm font-medium text-slate-200">ASCVD Risk Assessment</h3>
+                <h3 className="text-sm font-medium text-slate-200">ChartR OS - Modular Workflow</h3>
               </div>
               <span className="text-xs text-blue-300 bg-blue-500/20 px-2 py-1 rounded-md border border-blue-400/30">
-                Enhanced by ChartrOS
+                AI + ML Components
               </span>
             </div>
           </div>
 
-          {/* Content - Clean 3-Column Layout */}
+          {/* Content - Clean 4-Column Layout */}
           <div className="p-6 lg:p-8">
-            <div className="grid md:grid-cols-3 gap-6 relative">
-              {/* Clinical Notes - Minimal Design */}
+            <div className="grid md:grid-cols-4 gap-4 relative">
+              {/* Clinical Retrieval Module */}
               <div className="flex flex-col relative">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
-                  <FileText className="w-4 h-4 mr-2 text-blue-400" />
-                  Clinical Retrieval
-                </h4>
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-sm font-medium text-slate-300 flex items-center">
+                      <FileText className="w-4 h-4 mr-2 text-blue-400" />
+                      Clinical Retrieval
+                    </h4>
+                    <span className="text-xs text-blue-300 bg-blue-500/20 px-2 py-1 rounded border border-blue-400/30">
+                      AI Module
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 mb-2">
+                    AI-powered clinical note analysis & information extraction
+                  </p>
+                </div>
                 
                 {/* Arrow to next step */}
-                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
+                <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                  <div className="w-5 h-5 bg-emerald-500/30 rounded-full flex items-center justify-center border border-emerald-400/50">
                     <ArrowRight className="w-3 h-3 text-emerald-400" />
                   </div>
                 </div>
-                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-300 leading-relaxed border border-slate-600/20">
+                <div className="bg-slate-700/20 rounded-lg p-3 text-sm text-slate-300 leading-relaxed border border-slate-600/20">
                   <div className="mb-3 pb-3 border-b border-slate-600/30">
                     <p className="text-xs text-slate-400 mb-2">Cardiology Consultation</p>
-                    {/* Heavily redacted with only key medical data visible */}
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span> x 8 years, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">HTN</span> on <span className="inline-block h-2 bg-slate-600/40 rounded w-16"></span>.
+                      <span className="text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span> x 8 years, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">HTN</span> on <span className="inline-block h-2 bg-slate-600/40 rounded w-12"></span>.
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Recent Labs:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">TC 245</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">LDL-C 165</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">HDL-C 38</span> mg/dL, <span className="inline-block h-2 bg-slate-600/40 rounded w-12"></span>.
+                      <span className="text-slate-300">Recent Labs:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">TC 245</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">LDL 165</span>, <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">HDL 38</span> mg/dL.
                     </p>
                   </div>
                   
                   <div>
                     <p className="text-xs text-slate-400 mb-2">Primary Care Follow-up</p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Social History:</span> Former <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">tobacco user</span> (20 pk-yr, quit 2019). <span className="inline-block h-2 bg-slate-600/40 rounded w-16"></span>.
+                      <span className="text-slate-300">Social History:</span> Former <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">tobacco user</span> (20 pk-yr, quit 2019).
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-300">Vitals:</span> BP <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">142/88</span> mmHg, HR 76 bpm, <span className="inline-block h-2 bg-slate-600/40 rounded w-20"></span>.
+                      <span className="text-slate-300">Vitals:</span> BP <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">142/88</span> mmHg, HR 76 bpm.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Data Extraction - Subtle Animation */}
+              {/* Data Extraction Module */}
               <div className="flex flex-col relative">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
-                  <Target className="w-4 h-4 mr-2 text-emerald-400" />
-                  Data Extraction
-                </h4>
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-sm font-medium text-slate-300 flex items-center">
+                      <Target className="w-4 h-4 mr-2 text-emerald-400" />
+                      Data Extraction
+                    </h4>
+                    <span className="text-xs text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded border border-emerald-400/30">
+                      AI Module
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 mb-2">
+                    Structured data extraction & validation pipeline
+                  </p>
+                </div>
                 
                 {/* Arrow to next step */}
-                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
-                    <ArrowRight className="w-3 h-3 text-violet-400" />
+                <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                  <div className="w-5 h-5 bg-purple-500/30 rounded-full flex items-center justify-center border border-purple-400/50">
+                    <ArrowRight className="w-3 h-3 text-purple-400" />
                   </div>
                 </div>
-                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                <div className="bg-slate-700/20 rounded-lg p-3 border border-slate-600/20">
                   <div className="space-y-3">
                     {/* Risk Factors */}
                     <div>
@@ -496,16 +515,16 @@ const Homepage = () => {
                       <h5 className="text-xs font-medium text-blue-300 mb-2">Lab Values</h5>
                       <div className="space-y-1">
                         <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
-                          <div className="text-blue-200 text-xs font-medium">Total Cholesterol: 245 mg/dL</div>
+                          <div className="text-blue-200 text-xs font-medium">TC: 245 mg/dL</div>
                         </div>
                         <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
-                          <div className="text-blue-200 text-xs font-medium">LDL-C: 165 mg/dL</div>
+                          <div className="text-blue-200 text-xs font-medium">LDL: 165 mg/dL</div>
                         </div>
                         <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
-                          <div className="text-blue-200 text-xs font-medium">HDL-C: 38 mg/dL</div>
+                          <div className="text-blue-200 text-xs font-medium">HDL: 38 mg/dL</div>
                         </div>
                         <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
-                          <div className="text-blue-200 text-xs font-medium">Blood Pressure: 142/88 mmHg</div>
+                          <div className="text-blue-200 text-xs font-medium">BP: 142/88 mmHg</div>
                         </div>
                       </div>
                     </div>
@@ -513,37 +532,85 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* Risk Assessment - Clean Clinical Design */}
-              <div className="flex flex-col">
-                <h4 className="text-sm font-medium text-slate-300 mb-3 flex items-center">
-                  <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
-                  Evidence-Based Practice
-                </h4>
-                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+              {/* ASCVD Risk Calculator Module */}
+              <div className="flex flex-col relative">
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-sm font-medium text-slate-300 flex items-center">
+                      <BarChart3 className="w-4 h-4 mr-2 text-purple-400" />
+                      Risk Calculator
+                    </h4>
+                    <span className="text-xs text-purple-300 bg-purple-500/20 px-2 py-1 rounded border border-purple-400/30">
+                      ML Component
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 mb-2">
+                    ASCVD risk computation using validated models
+                  </p>
+                </div>
+                
+                {/* Arrow to next step */}
+                <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                  <div className="w-5 h-5 bg-rose-500/30 rounded-full flex items-center justify-center border border-rose-400/50">
+                    <ArrowRight className="w-3 h-3 text-rose-400" />
+                  </div>
+                </div>
+                <div className="bg-slate-700/20 rounded-lg p-3 border border-slate-600/20">
                   <div className="space-y-3">
-                    {/* Risk Score - Professional Display */}
-                    <div className="bg-violet-500/20 rounded-lg p-3 border border-violet-400/30">
-                      <h5 className="text-xs font-medium text-violet-300 mb-2">10-Year ASCVD Risk</h5>
+                    {/* Risk Score Display */}
+                    <div className="bg-purple-500/20 rounded-lg p-3 border border-purple-400/30">
+                      <h5 className="text-xs font-medium text-purple-300 mb-2">10-Year ASCVD Risk</h5>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-violet-200 mb-1">{riskScore}%</div>
-                        <div className="text-xs text-violet-300 bg-violet-500/20 px-2 py-1 rounded">High Risk</div>
+                        <div className="text-2xl font-bold text-purple-200 mb-1">{riskScore}%</div>
+                        <div className="text-xs text-purple-300 bg-purple-500/20 px-2 py-1 rounded">High Risk</div>
                       </div>
                     </div>
 
-                    {/* Clinical Recommendations - Professional Format */}
+                    {/* Model Info */}
+                    <div className="bg-slate-600/20 rounded p-2 border border-slate-500/30">
+                      <div className="text-xs text-slate-400">
+                        <div className="mb-1">• AHA/ACC Guidelines</div>
+                        <div className="mb-1">• Pooled Cohort Equations</div>
+                        <div>• Risk Enhancement Factors</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Clinical Recommendations Module */}
+              <div className="flex flex-col">
+                <div className="mb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-sm font-medium text-slate-300 flex items-center">
+                      <Brain className="w-4 h-4 mr-2 text-rose-400" />
+                      Recommendations
+                    </h4>
+                    <span className="text-xs text-rose-300 bg-rose-500/20 px-2 py-1 rounded border border-rose-400/30">
+                      AI Process
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 mb-2">
+                    Guideline retrieval + AI processing for personalized care
+                  </p>
+                </div>
+                
+                <div className="bg-slate-700/20 rounded-lg p-3 border border-slate-600/20">
+                  <div className="space-y-3">
+                    {/* Clinical Recommendations */}
                     <div className="bg-emerald-500/20 rounded-lg p-3 border border-emerald-400/30">
-                      <h5 className="text-xs font-medium text-emerald-300 mb-2">Clinical Recommendations</h5>
+                      <h5 className="text-xs font-medium text-emerald-300 mb-2">Clinical Actions</h5>
                       <div className="space-y-1.5">
                         <div className="flex items-start space-x-2">
                           <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <div className="text-emerald-200 text-xs">
-                            <span className="font-medium">High-intensity statin therapy</span>
+                            <span className="font-medium">High-intensity statin</span>
                           </div>
                         </div>
                         <div className="flex items-start space-x-2">
                           <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
                           <div className="text-emerald-200 text-xs">
-                            <span className="font-medium">Blood pressure target &lt;130/80</span>
+                            <span className="font-medium">BP target &lt;130/80</span>
                           </div>
                         </div>
                         <div className="flex items-start space-x-2">
@@ -554,8 +621,27 @@ const Homepage = () => {
                         </div>
                       </div>
                     </div>
+
+                    {/* Process Steps */}
+                    <div className="bg-slate-600/20 rounded p-2 border border-slate-500/30">
+                      <div className="text-xs text-slate-400">
+                        <div className="mb-1">• Guideline database query</div>
+                        <div className="mb-1">• Patient-specific analysis</div>
+                        <div>• Personalized recommendations</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Modular Workflow Explanation */}
+            <div className="mt-6 p-4 bg-slate-600/10 rounded-lg border border-slate-500/20">
+              <div className="text-center">
+                <h5 className="text-sm font-medium text-slate-300 mb-2">Modular AI/ML Architecture</h5>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Each component operates independently as a specialized AI module, enabling flexible workflows and custom integrations across different clinical specialties and use cases.
+                </p>
               </div>
             </div>
           </div>
@@ -1042,9 +1128,9 @@ const Homepage = () => {
   };
 
   return (
-          <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-slate-800 text-white relative overflow-hidden chartr-bg-accent">
       {/* Very subtle background gradient that flows throughout */}
-      <div className="fixed inset-0 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 pointer-events-none" />
+      <div className="fixed inset-0 chartr-bg-accent pointer-events-none" />
       
       {/* Subtle Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -1061,9 +1147,9 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden chartr-bg-primary">
+      <section className="relative pb-16 overflow-hidden chartr-bg-accent">
         {/* Subtle Hero Background */}
-        <div className="absolute inset-0 chartr-bg-hero" />
+        <div className="absolute inset-0 chartr-bg-accent" />
         
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
@@ -1204,7 +1290,7 @@ const Homepage = () => {
       </section>
 
       {/* Introducing ChartrOS - Full-Width Accent Section */}
-      <section className="pt-12 pb-24 relative chartr-bg-accent border-t border-indigo-400/10">
+      <section className="pt-12 pb-24 relative chartr-bg-accent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -2143,7 +2229,7 @@ const Homepage = () => {
       </section>
 
       {/* Enterprise-Grade AI Section - Diagonal Layout */}
-      <section className="py-24 relative overflow-hidden chartr-bg-diagonal">
+      <section className="py-24 relative overflow-hidden chartr-bg-accent">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -2208,7 +2294,7 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden">
+      <section className="py-16 relative overflow-hidden chartr-bg-accent">
         {/* Subtle gradient transition */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-850/80" />
         
@@ -2217,7 +2303,7 @@ const Homepage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-                          className="space-y-4"
+            className="space-y-4"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-white to-slate-200 bg-clip-text mb-4">
               Ready to Transform

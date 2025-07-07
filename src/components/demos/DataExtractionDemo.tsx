@@ -276,7 +276,7 @@ FINDINGS:
   }
 
   return (
-    <section className="py-16 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden chartr-bg-accent">
       {/* Subtle gradient transition */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/30 to-transparent"></div>
       
