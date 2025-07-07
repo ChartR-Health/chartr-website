@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -851,6 +851,9 @@ const Homepage = () => {
   const PreOperativeRiskDemo = () => {
     const [selectedModules, setSelectedModules] = useState(['cardiac', 'pulmonary']);
     const [showModuleSelector, setShowModuleSelector] = useState(false);
+    const [showWorkflowSettings, setShowWorkflowSettings] = useState(false);
+    const moduleSelectorRef = useRef<HTMLDivElement>(null);
+    const workflowSettingsRef = useRef<HTMLDivElement>(null);
     
     const availableModules = [
       { id: 'cardiac', name: 'Cardiac Risk (RCRI)', icon: Heart, color: 'rose' },
@@ -869,40 +872,136 @@ const Homepage = () => {
       );
     };
 
+    // Calculate dynamic risk scores based on selected modules
+    const calculateRiskScores = () => {
+      const riskData = {
+        cardiac: { score: 15.3, level: 'Elevated' },
+        pulmonary: { score: 8.2, level: 'Moderate' },
+        nsqip: { score: 12.4, level: 'High' },
+        frailty: { score: 7.8, level: 'Moderate' },
+        bleeding: { score: 22.0, level: 'High' },
+        renal: { score: 18.0, level: 'Moderate' }
+      };
+
+      const activeRisks = selectedModules.map(moduleId => ({
+        moduleId,
+        ...riskData[moduleId as keyof typeof riskData]
+      }));
+
+      const totalRisk = activeRisks.reduce((sum, risk) => sum + risk.score, 0);
+      const avgRisk = activeRisks.length > 0 ? totalRisk / activeRisks.length : 0;
+      
+      let overallLevel = 'Low';
+      if (avgRisk > 15) overallLevel = 'High';
+      else if (avgRisk > 10) overallLevel = 'Moderate-High';
+      else if (avgRisk > 5) overallLevel = 'Moderate';
+
+      return { activeRisks, avgRisk, overallLevel };
+    };
+
+    // Click outside to close dropdowns
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (moduleSelectorRef.current && !moduleSelectorRef.current.contains(event.target as Node)) {
+          setShowModuleSelector(false);
+        }
+        if (workflowSettingsRef.current && !workflowSettingsRef.current.contains(event.target as Node)) {
+          setShowWorkflowSettings(false);
+        }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     return (
       <div className="relative w-full">
         {/* Main Container - Professional Healthcare Design */}
-        <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
+        <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
           {/* Enhanced Header with Module Controls */}
-          <div className="bg-slate-700/30 px-6 py-3 border-b border-slate-200/10">
+          <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <img 
+                  src="/logo.svg" 
+                  alt="ChartR Logo" 
+                  className="w-5 h-5"
+                />
                 <h3 className="text-sm font-medium text-slate-900 dark:text-slate-200">Surgical Pre-Operative Risk Assessment</h3>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-xs text-emerald-700 dark:text-emerald-300 bg-emerald-500/20 px-2 py-1 rounded-md border border-emerald-400/30">
-                  Multi-Module AI Workflow
-                </span>
                 <button
-                  onClick={() => setShowModuleSelector(!showModuleSelector)}
+                  onClick={() => setShowWorkflowSettings(!showWorkflowSettings)}
                   className="flex items-center space-x-1 px-2 py-1 bg-violet-500/20 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300 text-xs rounded-md border border-violet-400/30 transition-all"
                 >
-                  <Plus className="w-3 h-3" />
-                  <span>Add Module</span>
+                  <Settings className="w-3 h-3" />
+                  <span>Workflow Settings</span>
                 </button>
               </div>
             </div>
           </div>
 
+          {/* Workflow Settings Dropdown */}
+          {showWorkflowSettings && (
+            <motion.div 
+              ref={workflowSettingsRef}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute top-14 right-6 z-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-600/50 shadow-2xl p-4 min-w-[250px]"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-xs font-medium text-slate-700 dark:text-slate-300">Workflow Settings</h4>
+                <button
+                  onClick={() => setShowWorkflowSettings(false)}
+                  className="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+              <div className="space-y-2">
+                <button
+                  className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
+                >
+                  <Settings className="w-4 h-4 mr-2" />
+                  <span className="text-xs font-medium">Edit Variables</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setShowModuleSelector(true);
+                    setShowWorkflowSettings(false);
+                  }}
+                  className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  <span className="text-xs font-medium">Add New Module</span>
+                </button>
+                <button
+                  className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
+                >
+                  <Brain className="w-4 h-4 mr-2" />
+                  <span className="text-xs font-medium">Set Up Continuous Learning</span>
+                </button>
+              </div>
+            </motion.div>
+          )}
+
           {/* Module Selector Dropdown */}
           {showModuleSelector && (
             <motion.div 
+              ref={moduleSelectorRef}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute top-14 right-6 z-20 bg-slate-800/95 backdrop-blur-sm rounded-lg border border-slate-600/50 shadow-2xl p-4 min-w-[250px]"
+              className="absolute top-14 right-6 z-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-600/50 shadow-2xl p-4 min-w-[250px]"
             >
-              <h4 className="text-xs font-medium text-slate-300 mb-3">Available AI Modules</h4>
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-xs font-medium text-slate-700 dark:text-slate-300">Available AI Modules</h4>
+                <button
+                  onClick={() => setShowModuleSelector(false)}
+                  className="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
               <div className="space-y-2">
                 {availableModules.map(module => (
                   <button
@@ -910,8 +1009,8 @@ const Homepage = () => {
                     onClick={() => toggleModule(module.id)}
                     className={`w-full flex items-center justify-between p-2 rounded-lg border transition-all ${
                       selectedModules.includes(module.id)
-                        ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-300'
-                        : 'bg-slate-700/30 border-slate-600/30 text-slate-400 hover:bg-slate-700/50'
+                        ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-700 dark:text-emerald-300'
+                        : 'bg-slate-100/50 dark:bg-slate-700/30 border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'
                     }`}
                   >
                     <div className="flex items-center space-x-2">
@@ -929,9 +1028,9 @@ const Homepage = () => {
 
           {/* Content - Adaptive Layout */}
           <div className="p-6 lg:p-8">
-            <div className="grid md:grid-cols-4 gap-6 relative">
+            <div className="grid md:grid-cols-6 gap-6 relative">
               {/* Clinical Notes - Enhanced for Surgery */}
-              <div className="flex flex-col relative">
+              <div className="flex flex-col relative md:col-span-2">
                 <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
                   <FileText className="w-4 h-4 mr-2 text-blue-400" />
                   Clinical Retrieval
@@ -939,35 +1038,35 @@ const Homepage = () => {
                 
                 {/* Arrow to next step */}
                 <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
+                  <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
                     <ArrowRight className="w-3 h-3 text-emerald-400" />
                   </div>
                 </div>
-                <div className="bg-slate-700/20 rounded-lg p-4 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-600/20">
-                  <div className="mb-3 pb-3 border-b border-slate-600/30">
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-200/50 dark:border-slate-600/20">
+                  <div className="mb-3 pb-3 border-b border-slate-200/50 dark:border-slate-600/30">
                     <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Surgical Consultation</p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
+                      <span className="text-slate-700 dark:text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
+                      <span className="text-slate-700 dark:text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
                     </p>
                   </div>
                   
                   <div>
                     <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Pre-Op Assessment</p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
+                      <span className="text-slate-700 dark:text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
                     </p>
                     <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
+                      <span className="text-slate-700 dark:text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Data Extraction - Enhanced */}
-              <div className="flex flex-col relative">
+              <div className="flex flex-col relative md:col-span-2">
                 <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
                   <Target className="w-4 h-4 mr-2 text-emerald-400" />
                   Multi-Source Extraction
@@ -975,11 +1074,11 @@ const Homepage = () => {
                 
                 {/* Arrow to next step */}
                 <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
+                  <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
                     <ArrowRight className="w-3 h-3 text-violet-400" />
                   </div>
                 </div>
-                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 border border-slate-200/50 dark:border-slate-600/20">
                   <div className="space-y-3">
                     {/* Surgical Factors */}
                     <div>
@@ -1024,8 +1123,8 @@ const Homepage = () => {
                   <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
                   Integrated Risk Assessments
                 </h4>
-                <div className="bg-slate-700/20 rounded-lg p-4 border border-slate-600/20">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 border border-slate-200/50 dark:border-slate-600/20">
+                  <div className="grid grid-cols-1 gap-3">
                     {selectedModules.map(moduleId => {
                       const module = availableModules.find(m => m.id === moduleId);
                       if (!module) return null;
@@ -1085,37 +1184,110 @@ const Homepage = () => {
                     {selectedModules.length < availableModules.length && (
                       <motion.button
                         onClick={() => setShowModuleSelector(true)}
-                        className="bg-slate-700/30 hover:bg-slate-700/50 border-2 border-dashed border-slate-600/50 hover:border-violet-500/50 rounded-lg p-6 flex flex-col items-center justify-center transition-all min-h-[120px]"
+                        className="bg-slate-100/50 dark:bg-slate-700/30 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 border-2 border-dashed border-slate-200/50 dark:border-slate-600/50 hover:border-violet-500/50 rounded-lg p-6 flex flex-col items-center justify-center transition-all min-h-[120px]"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <Plus className="w-6 h-6 text-violet-400 mb-2" />
-                        <span className="text-xs text-slate-400">Add Risk Module</span>
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Add Risk Module</span>
                       </motion.button>
                     )}
                   </div>
 
-                  {/* Overall Risk Summary */}
-                  <div className="mt-4 pt-4 border-t border-slate-300/30 dark:border-slate-600/30">
-                    <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg p-3 border border-emerald-400/30">
-                      <h5 className="text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-2 flex items-center">
-                        <Layers className="w-3 h-3 mr-1" />
-                        ChartrOS Integrated Summary
-                      </h5>
-                      <div className="space-y-1.5">
-                        <div className="flex items-start space-x-2">
-                          <CheckCircle className="w-3 h-3 text-emerald-400 mt-0.5 flex-shrink-0" />
-                          <div className="text-emerald-700 dark:text-emerald-200 text-xs">
-                            <span className="font-medium">Proceed with caution - optimize cardiac status</span>
+
+                </div>
+              </div>
+            </div>
+            
+            {/* ChartrOS Integrated Summary - Horizontal Section */}
+            <div className="mt-6 pt-6 border-t border-slate-300/30 dark:border-slate-600/30">
+              <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg p-4 border border-emerald-400/30">
+                <h5 className="text-sm font-medium text-emerald-700 dark:text-emerald-300 mb-3 flex items-center">
+                  <Layers className="w-4 h-4 mr-2" />
+                  ChartrOS Integrated Summary
+                </h5>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    {(() => {
+                      const { overallLevel, avgRisk } = calculateRiskScores();
+                      const isHighRisk = avgRisk > 15;
+                      const isModerateRisk = avgRisk > 5;
+                      
+                      return (
+                        <>
+                          <div className="flex items-start space-x-2">
+                            {isHighRisk ? (
+                              <AlertTriangle className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                            ) : (
+                              <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                            )}
+                            <div className={`text-sm ${isHighRisk ? 'text-red-700 dark:text-red-200' : 'text-amber-700 dark:text-amber-200'}`}>
+                              <span className="font-medium">
+                                {isHighRisk 
+                                  ? "High risk - consider postponing surgery" 
+                                  : isModerateRisk 
+                                    ? "Proceed with caution - optimize risk factors" 
+                                    : "Acceptable risk - proceed with standard care"
+                                }
+                              </span>
+                              <p className="text-xs mt-1 opacity-90">
+                                {isHighRisk 
+                                  ? "Multiple high-risk factors requiring optimization before surgery"
+                                  : isModerateRisk 
+                                    ? "Several risk factors identified requiring pre-operative optimization"
+                                    : "Patient appears to be at acceptable risk for surgery"
+                                }
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="flex items-start space-x-2">
-                          <AlertTriangle className="w-3 h-3 text-amber-400 mt-0.5 flex-shrink-0" />
-                          <div className="text-amber-700 dark:text-amber-200 text-xs">
-                            <span className="font-medium">Consider delaying for medical optimization</span>
-                          </div>
-                        </div>
-                      </div>
+                          {isModerateRisk && (
+                            <div className="flex items-start space-x-2">
+                              <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                              <div className="text-amber-700 dark:text-amber-200 text-sm">
+                                <span className="font-medium">
+                                  {selectedModules.includes('cardiac') ? "Cardiology clearance recommended" : "Consider specialist consultation"}
+                                </span>
+                                <p className="text-xs mt-1 opacity-90">
+                                  {selectedModules.includes('cardiac') ? "Beta-blocker therapy and cardiac optimization" : "Specialist evaluation may be beneficial"}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      );
+                    })()}
+                  </div>
+                  <div className="bg-slate-100/50 dark:bg-slate-700/30 rounded-lg p-3">
+                    <h6 className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Risk Score Summary</h6>
+                    <div className="space-y-1">
+                      {(() => {
+                        const { activeRisks, avgRisk, overallLevel } = calculateRiskScores();
+                        const overallColor = avgRisk > 15 ? 'text-red-700 dark:text-red-300' : 
+                                           avgRisk > 10 ? 'text-amber-700 dark:text-amber-300' : 
+                                           'text-emerald-700 dark:text-emerald-300';
+                        
+                        return (
+                          <>
+                            <div className="flex justify-between items-center">
+                              <span className="text-xs text-slate-600 dark:text-slate-400">Overall Risk</span>
+                              <span className={`text-xs font-medium ${overallColor}`}>{overallLevel}</span>
+                            </div>
+                            {activeRisks.map((risk) => {
+                              const module = availableModules.find(m => m.id === risk.moduleId);
+                              const colorClass = risk.level === 'High' ? 'text-red-700 dark:text-red-300' :
+                                                risk.level === 'Elevated' ? 'text-orange-700 dark:text-orange-300' :
+                                                'text-blue-700 dark:text-blue-300';
+                              
+                              return (
+                                <div key={risk.moduleId} className="flex justify-between items-center">
+                                  <span className="text-xs text-slate-600 dark:text-slate-400">{module?.name}</span>
+                                  <span className={`text-xs font-medium ${colorClass}`}>{risk.score}%</span>
+                                </div>
+                              );
+                            })}
+                          </>
+                        );
+                      })()}
                     </div>
                   </div>
                 </div>
@@ -1849,37 +2021,38 @@ const Homepage = () => {
       {/* Modular AI Infrastructure - Asymmetric Layout */}
       <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left: Content */}
+          <div className="grid lg:grid-cols-6 gap-12 items-center">
+            {/* Left: Content - More Compact */}
             <motion.div
+              className="lg:col-span-2"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">Inside</span> ChartrOS
+              <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
+                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">Inside</span><br/>ChartrOS
               </h2>
               
-              <p className="text-xl text-slate-600 dark:text-slate-300 mb-12 chartr-body">
+              <p className="text-base text-slate-600 dark:text-slate-300 mb-6 chartr-body">
                 Deploy AI intelligence without disrupting operations.
               </p>
 
-              {/* Feature List */}
-              <div className="space-y-8">
+              {/* Feature List - Compact */}
+              <div className="space-y-4">
                 <motion.div 
                   className="group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Built for Healthcare Standards</h3>
-                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
-                        Secure, HIPAA-ready, and continuously improving.
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Healthcare Standards</h3>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                        HIPAA-ready and continuously improving.
                       </p>
                     </div>
                   </div>
@@ -1891,13 +2064,13 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Seamlessly Compatible</h3>
-                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Seamlessly Compatible</h3>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
                         Integrates with your EMR and existing AI stack.
                       </p>
                     </div>
@@ -1910,14 +2083,14 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Intelligent Retrieval Layer</h3>
-                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
-                        Structured clinical insights from notes, registries, and literature.
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Intelligent Retrieval</h3>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                        Proprietary, clinically-grounded retrieval layer.
                       </p>
                     </div>
                   </div>
@@ -1929,25 +2102,25 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <div className="flex items-start space-x-4">
-                    <div className="w-10 h-10 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Human-Validated Workflows</h3>
-                      <p className="text-slate-600 dark:text-slate-400 chartr-body">
-                        Clinician review built into every critical step.
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Human-Validated</h3>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                        Clinician review in every critical step.
                       </p>
                     </div>
                   </div>
                 </motion.div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="mt-12 flex flex-wrap gap-4">
+              {/* CTA Button - Compact */}
+              <div className="mt-6">
                 <Link href="/contact">
                   <motion.button 
-                    className="px-6 py-3 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-semibold rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all"
+                    className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-blue-500 text-white text-sm font-semibold rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -1957,12 +2130,12 @@ const Homepage = () => {
               </div>
             </motion.div>
 
-            {/* Right: Interactive Demo */}
+            {/* Right: Interactive Demo - Much Wider */}
             <motion.div
+              className="lg:col-span-4 relative"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
             >
               <PreOperativeRiskDemo />
             </motion.div>
