@@ -2397,10 +2397,10 @@ const Homepage = () => {
                 </div>
 
           {/* Bottom CTA */}
-          <motion.div 
+            <motion.div
             className="text-center mt-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
@@ -2415,7 +2415,7 @@ const Homepage = () => {
                 See ChartrOS in Action
               </motion.button>
             </Link>
-            </motion.div>
+          </motion.div>
         </div>
       </section>
 
