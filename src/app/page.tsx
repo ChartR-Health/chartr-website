@@ -1784,7 +1784,7 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-20 overflow-hidden">
+      <section className="relative pt-16 sm:pt-16 lg:pt-20 pb-20 overflow-hidden">
         {/* Sophisticated Hero Background */}
         <div className="absolute inset-0 bg-white" />
         
@@ -1844,7 +1844,7 @@ const Homepage = () => {
         <div className="relative z-10">
           <div className="lg:flex lg:items-center">
             {/* Left Column - Text Content - Constrained */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-20 sm:pt-24 lg:pt-24">
               {/* ChartR Badge */}
               <motion.div 
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 dark:from-indigo-500/10 dark:to-purple-500/10 border border-indigo-400/30 dark:border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
@@ -1871,7 +1871,7 @@ const Homepage = () => {
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-5xl md:text-[3.5rem] lg:text-[3.5rem] font-bold text-slate-900 mb-8"
+                className="text-5xl md:text-[3.5rem] lg:text-[3.5rem] font-bold text-slate-900 mb-10"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -1913,7 +1913,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-20 lg:pt-24 relative"
             >
               {/* Background color bar on the right */}
               <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-100/50 to-transparent dark:from-slate-900/50 pointer-events-none"></div>
