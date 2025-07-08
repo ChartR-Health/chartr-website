@@ -122,7 +122,7 @@ const MedicalSocietiesSolutionsPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
@@ -132,14 +132,14 @@ const MedicalSocietiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <div className="flex items-center justify-center gap-2 text-purple-400 mb-6">
+            <div className="flex items-center justify-center gap-2 text-purple-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Medical Societies</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Modern Registry Infrastructure, Built for <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Clinical Impact</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Streamline data entry, manage variables in real-time, and deliver point-of-care decision support—all in one integrated platform designed for today's medical societies.
             </p>
           </motion.div>
@@ -159,26 +159,26 @@ const MedicalSocietiesSolutionsPage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`p-6 rounded-2xl border ${
                   index === 0 
-                    ? "bg-gradient-to-r from-purple-600/30 to-purple-500/30 border-purple-500/30" 
+                    ? "bg-gradient-to-r from-purple-200/30 to-purple-100/30 border-purple-200/30" 
                     : index === 1 
-                    ? "bg-gradient-to-r from-purple-500/30 to-purple-400/30 border-purple-500/30"
+                    ? "bg-gradient-to-r from-purple-100/30 to-purple-50/30 border-purple-200/30"
                     : index === 2
-                    ? "bg-gradient-to-r from-purple-400/30 to-purple-300/30 border-purple-400/30"
-                    : "bg-gradient-to-r from-purple-300/30 to-fuchsia-400/30 border-fuchsia-400/30"
+                    ? "bg-gradient-to-r from-purple-50/30 to-pink-50/30 border-purple-200/30"
+                    : "bg-gradient-to-r from-pink-50/30 to-fuchsia-100/30 border-fuchsia-200/30"
                 }`}
               >
                 <div className={`text-3xl font-bold mb-2 ${
                   index === 0 
-                    ? "text-purple-500" 
+                    ? "text-purple-700" 
                     : index === 1 
-                    ? "text-purple-500"
+                    ? "text-purple-700"
                     : index === 2
-                    ? "text-purple-400"
-                    : "text-fuchsia-400"
+                    ? "text-purple-600"
+                    : "text-fuchsia-600"
                 }`}>
                   {stat.stat}
                 </div>
-                <div className="text-slate-300">{stat.description}</div>
+                <div className="text-slate-600">{stat.description}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -186,7 +186,7 @@ const MedicalSocietiesSolutionsPage = () => {
       </section>
 
       {/* Challenges Section */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-20 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -194,10 +194,10 @@ const MedicalSocietiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               The Registry Management Challenge
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Medical societies need robust registry platforms that can adapt to evolving guidelines while delivering clinical insights to participating providers.
             </p>
           </motion.div>
@@ -209,16 +209,16 @@ const MedicalSocietiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-red-900/20 to-red-800/20 backdrop-blur-lg rounded-2xl border border-red-400/20"
+                className="p-8 bg-gradient-to-br from-red-100/60 to-red-50/40 backdrop-blur-sm rounded-2xl border border-red-200/30"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-red-500/20 rounded-lg">
-                    <painPoint.icon className="w-6 h-6 text-red-400" />
+                    <painPoint.icon className="w-6 h-6 text-red-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{painPoint.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900">{painPoint.title}</h3>
                 </div>
-                <p className="text-slate-300 mb-4">{painPoint.description}</p>
-                {painPoint.impact && <div className="text-sm font-semibold text-red-400">{painPoint.impact}</div>}
+                <p className="text-slate-600 mb-4">{painPoint.description}</p>
+                {painPoint.impact && <div className="text-sm font-semibold text-red-600">{painPoint.impact}</div>}
               </motion.div>
             ))}
           </div>
@@ -234,10 +234,10 @@ const MedicalSocietiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Comprehensive Solutions
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Delivering real-time updates, better data quality, and point of care decision support in one integrated platform.
             </p>
           </motion.div>
@@ -249,27 +249,27 @@ const MedicalSocietiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className={`bg-gradient-to-r backdrop-blur-lg rounded-3xl p-8 border h-[350px] ${
+                className={`bg-gradient-to-r backdrop-blur-sm rounded-3xl p-8 border h-[350px] ${
                   index === 0 
-                    ? "from-purple-500/20 to-purple-400/20 border-purple-400/20" 
+                    ? "from-purple-100/60 to-purple-50/40 border-purple-200/30" 
                     : index === 1 
-                    ? "from-purple-400/20 to-purple-300/20 border-purple-400/20"
-                    : "from-purple-300/20 to-pink-300/20 border-pink-300/20"
+                    ? "from-purple-50/60 to-purple-25/40 border-purple-200/30"
+                    : "from-purple-25/60 to-pink-50/40 border-pink-200/30"
                 }`}
               >
-                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
-                <p className="text-slate-300 mb-6">{solution.description}</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{solution.title}</h3>
+                <p className="text-slate-600 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                         index === 0 
-                          ? "text-purple-400" 
+                          ? "text-purple-600" 
                           : index === 1 
-                          ? "text-purple-400"
-                          : "text-pink-400"
+                          ? "text-purple-600"
+                          : "text-pink-600"
                       }`} />
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-600">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -284,23 +284,23 @@ const MedicalSocietiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className={`bg-gradient-to-r backdrop-blur-lg rounded-3xl p-8 border h-[350px] ${
+                className={`bg-gradient-to-r backdrop-blur-sm rounded-3xl p-8 border h-[350px] ${
                   index === 0 
-                    ? "from-purple-500/20 to-purple-400/20 border-purple-400/20" 
-                    : "from-purple-400/20 to-pink-300/20 border-pink-300/20"
+                    ? "from-purple-100/60 to-purple-50/40 border-purple-200/30" 
+                    : "from-purple-50/60 to-pink-50/40 border-pink-200/30"
                 }`}
               >
-                <h3 className="text-2xl font-bold text-white mb-4">{solution.title}</h3>
-                <p className="text-slate-300 mb-6">{solution.description}</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{solution.title}</h3>
+                <p className="text-slate-600 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
                         index === 0 
-                          ? "text-purple-400" 
-                          : "text-pink-400"
+                          ? "text-purple-600" 
+                          : "text-pink-600"
                       }`} />
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-600">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -319,10 +319,10 @@ const MedicalSocietiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Trusted by Leading Medical Societies
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               See how ChartR is transforming evidence synthesis for medical societies worldwide.
             </p>
           </motion.div>
@@ -334,19 +334,19 @@ const MedicalSocietiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-lg rounded-2xl border border-purple-400/20"
+                className="p-8 bg-gradient-to-br from-purple-100/60 to-pink-100/60 backdrop-blur-sm rounded-2xl border border-purple-200/30"
               >
-                <blockquote className="text-slate-300 text-lg mb-6 italic">
+                <blockquote className="text-slate-600 text-lg mb-6 italic">
                   "{testimonial.quote}"
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-purple-400" />
+                    <Users className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <div className="font-semibold text-white">{testimonial.author}</div>
-                    <div className="text-sm text-slate-400">{testimonial.role}</div>
-                    <div className="text-sm text-purple-400">{testimonial.society}</div>
+                    <div className="font-semibold text-slate-900">{testimonial.author}</div>
+                    <div className="text-sm text-slate-500">{testimonial.role}</div>
+                    <div className="text-sm text-purple-600">{testimonial.society}</div>
                   </div>
                 </div>
               </motion.div>
@@ -356,24 +356,24 @@ const MedicalSocietiesSolutionsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-purple-600/20 to-pink-600/20">
+      <section className="py-20 px-6 bg-gradient-to-r from-purple-200/20 to-pink-200/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Ready to Transform Your Evidence Synthesis?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-600 mb-8">
               Join leading medical societies using ChartR to accelerate reviews and improve evidence quality.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Schedule Consultation
               </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-lg text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 font-semibold rounded-xl border border-slate-200/30 hover:bg-white transition-all duration-300">
                 Download Evidence Brief
               </button>
             </div>

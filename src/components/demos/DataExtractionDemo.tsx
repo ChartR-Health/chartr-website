@@ -4,6 +4,37 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Brain, Users, CheckCircle, AlertTriangle, Cpu, Target, Shield, Zap, Eye, Edit, X, FileText, Loader2 } from 'lucide-react'
 
+const extractedVariables = [
+  { 
+    name: "NYHA Functional Class", 
+    value: "Class III", 
+    confidence: 87, 
+    status: "flagged",
+    requiresReview: true
+  },
+  { 
+    name: "Ejection Fraction", 
+    value: "Moderately Reduced", 
+    confidence: 92, 
+    status: "validated",
+    requiresReview: false
+  },
+  { 
+    name: "Medication Adherence", 
+    value: "Suboptimal", 
+    confidence: 78, 
+    status: "flagged",
+    requiresReview: true
+  },
+  { 
+    name: "Functional Status", 
+    value: "Limited", 
+    confidence: 89, 
+    status: "flagged",
+    requiresReview: true
+  }
+]
+
 export default function DataExtractionDemo() {
   const [processingStep, setProcessingStep] = useState(0)
   const [isProcessing, setIsProcessing] = useState(true)
@@ -24,36 +55,7 @@ export default function DataExtractionDemo() {
     { label: "Human Validation...", icon: Users, color: "text-amber-500" }
   ]
 
-  const extractedVariables = [
-    { 
-      name: "NYHA Functional Class", 
-      value: "Class III", 
-      confidence: 87, 
-      status: "flagged",
-      requiresReview: true
-    },
-    { 
-      name: "Ejection Fraction", 
-      value: "Moderately Reduced", 
-      confidence: 92, 
-      status: "validated",
-      requiresReview: false
-    },
-    { 
-      name: "Medication Adherence", 
-      value: "Suboptimal", 
-      confidence: 78, 
-      status: "flagged",
-      requiresReview: true
-    },
-    { 
-      name: "Functional Status", 
-      value: "Limited", 
-      confidence: 89, 
-      status: "flagged",
-      requiresReview: true
-    }
-  ]
+
 
   const mockClinicalNote = `
 CLINICAL NOTE - CARDIOLOGY CONSULTATION
@@ -173,7 +175,7 @@ FINDINGS:
       setProcessingStep(0)
       setIsProcessing(true)
       setVariableStates({}) // Reset confirmations
-    }, 12000)
+    }, 20000) // Extended time for better UX
     
     return () => {
       clearTimeout(timeout)
@@ -184,9 +186,11 @@ FINDINGS:
   // Update progress based on confirmed variables
   useEffect(() => {
     if (!isProcessing) {
-      const confirmedCount = Object.values(variableStates).filter(state => state.confirmed).length
+      // Count variables that need review
+      const needsReviewVariables = extractedVariables.filter(v => v.requiresReview)
+      const confirmedCount = needsReviewVariables.filter(v => variableStates[v.name]?.confirmed).length
       const newProgress = 97 + confirmedCount // Start at 97% and increment by 1% for each confirmed
-      setProgress(newProgress)
+      setProgress(Math.min(newProgress, 100)) // Cap at 100%
     }
   }, [variableStates, isProcessing])
 
@@ -283,9 +287,9 @@ FINDINGS:
   }
 
   return (
-    <section className="py-16 relative overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50 dark:bg-slate-900">
+    <section className="py-16 relative overflow-hidden bg-white dark:bg-slate-950">
       {/* Subtle gradient transition */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-transparent dark:via-slate-900/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/10 to-transparent dark:via-slate-900/10"></div>
       
       {/* Background Elements - More subtle */}
       <div className="absolute inset-0 opacity-5">
@@ -301,14 +305,25 @@ FINDINGS:
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-            <span className="text-slate-900 dark:text-white">
-             Smart Review in Action:
-            </span>{' '}
-            <span className="text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text">End-to-End Clinical Data Processing</span>
-          </h2>
+          <div className="flex flex-col items-center space-y-4 mb-4">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 rounded-full">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
+              <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                ChartR Smart Review
+              </span>
+            </div>
+            
+            {/* Main Title */}
+            <h2 className="text-3xl md:text-4xl font-bold text-center">
+              <span className="text-slate-900 dark:text-white">Intelligence You Can </span>
+              <span className="text-black dark:text-white">
+                Trust
+              </span>
+            </h2>
+          </div>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            From raw EMR data to structured insights—validated in real time.
+            See how ChartR's Smart Review combines AI precision with clinical expertise
           </p>
         </motion.div>
 
@@ -320,19 +335,19 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl">
+            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full max-h-[610px] flex flex-col">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-200/50 dark:border-slate-700/50">
+              <div className="flex items-center space-x-3 p-4 border-b border-slate-200/50 dark:border-slate-700/50 flex-shrink-0">
                 <div className="p-2 bg-cyan-600/20 rounded-lg">
                   <Brain className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">AI Processing Engine</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Clinical Retrieval Workflow</h3>
                 </div>
               </div>
               
               {/* Processing Steps */}
-              <div className="p-6 space-y-4">
+              <div className="p-4 space-y-4 overflow-y-auto flex-1 scrollbar-hide">
                 <div className="space-y-3">
                   {processingSteps.map((step, index) => {
                     const Icon = step.icon
@@ -343,7 +358,7 @@ FINDINGS:
                     return (
                       <div
                         key={index}
-                        className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-500 border ${
+                        className={`flex items-center space-x-3 p-2 rounded-lg transition-all duration-500 border ${
                           isCompleted || isHumanValidation
                             ? 'bg-slate-200/50 dark:bg-slate-700/50 border-slate-300/30 dark:border-slate-500/30' 
                             : 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200/30 dark:border-slate-600/30'
@@ -380,7 +395,7 @@ FINDINGS:
                 </div>
                 
                 {/* Progress Bar */}
-                <div className="mt-6">
+                <div className="mt-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-slate-600 dark:text-slate-400">Overall Progress</span>
                     <span className="text-sm font-medium text-slate-900 dark:text-white">{progress}%</span>
@@ -409,19 +424,19 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl">
+            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full max-h-[610px] flex flex-col">
               {/* Header */}
-              <div className="flex items-center space-x-3 p-6 border-b border-slate-200/50 dark:border-slate-700/50">
+              <div className="flex items-center space-x-3 p-4 border-b border-slate-200/50 dark:border-slate-700/50 flex-shrink-0">
                 <div className="p-2 bg-cyan-600/20 rounded-lg">
                   <Users className="w-5 h-5 text-cyan-600" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Smart Review</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">ChartR Smart Review</h3>
                 </div>
               </div>
               
               {/* Review Results */}
-              <div className="p-6 space-y-3">
+              <div className="p-4 space-y-2 overflow-y-auto flex-1 scrollbar-hide">
                 <AnimatePresence>
                   {extractedVariables.map((variable, index) => {
                     const state = getVariableState(variable.name)
@@ -434,7 +449,7 @@ FINDINGS:
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: (!isProcessing ? index * 0.1 : 0) }}
-                        className={`p-4 rounded-lg border transition-all duration-300 bg-white/80 dark:bg-slate-700/50 ${
+                        className={`p-3 rounded-lg border transition-all duration-300 bg-white/80 dark:bg-slate-700/50 ${
                           index === 0 || index === 2 || index === 3 
                             ? 'border-[#F0B84B]/30' 
                             : index === 1 

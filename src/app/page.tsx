@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings, ClipboardCheck, ExternalLink, Eye, Flag } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -849,19 +849,22 @@ const Homepage = () => {
   };
 
   const PreOperativeRiskDemo = () => {
-    const [selectedModules, setSelectedModules] = useState(['cardiac', 'pulmonary']);
+    const [selectedModules, setSelectedModules] = useState(['cardiac', 'pulmonary', 'preop-planning']);
     const [showModuleSelector, setShowModuleSelector] = useState(false);
     const [showWorkflowSettings, setShowWorkflowSettings] = useState(false);
+    const [showBuildModuleModal, setShowBuildModuleModal] = useState(false);
     const moduleSelectorRef = useRef<HTMLDivElement>(null);
     const workflowSettingsRef = useRef<HTMLDivElement>(null);
     
     const availableModules = [
-      { id: 'cardiac', name: 'Cardiac Risk (RCRI)', icon: Heart, color: 'rose' },
+      { id: 'cardiac', name: 'Cardiac Risk', icon: Heart, color: 'rose' },
       { id: 'pulmonary', name: 'Pulmonary Risk', icon: Activity, color: 'blue' },
       { id: 'nsqip', name: 'ACS NSQIP Calculator', icon: Calculator, color: 'purple' },
       { id: 'frailty', name: 'Frailty Assessment', icon: Users, color: 'amber' },
       { id: 'bleeding', name: 'Bleeding Risk', icon: Droplet, color: 'red' },
-      { id: 'renal', name: 'Renal Risk', icon: Beaker, color: 'cyan' }
+      { id: 'renal', name: 'Renal Risk', icon: Beaker, color: 'cyan' },
+      { id: 'preop-planning', name: 'Pre-Operative Planning', icon: ClipboardCheck, color: 'emerald' },
+      { id: 'dvt', name: 'DVT Risk Assessment', icon: Flag, color: 'orange' }
     ];
 
     const toggleModule = (moduleId: string) => {
@@ -875,12 +878,23 @@ const Homepage = () => {
   // Calculate dynamic risk scores based on selected modules
   const calculateRiskScores = () => {
     const riskData = {
-      cardiac: { score: 15.3, level: 'Elevated' },
-      pulmonary: { score: 8.2, level: 'Moderate' },
-      nsqip: { score: 12.4, level: 'High' },
-      frailty: { score: 7.8, level: 'Moderate' },
-      bleeding: { score: 22.0, level: 'High' },
-      renal: { score: 18.0, level: 'Moderate' }
+      cardiac: { score: '15.3%', level: 'Elevated', recommendation: 'Cardiology consult, Beta-blockers' },
+      pulmonary: { score: '8.2%', level: 'Moderate', recommendation: 'Pulmonary function tests' },
+      nsqip: { score: '12.4%', level: 'High', recommendation: 'Optimize medical conditions' },
+      frailty: { score: '4/7', level: 'Pre-frail', recommendation: 'PT evaluation, nutrition' },
+      bleeding: { score: '22%', level: 'High', recommendation: 'Hold anticoagulation' },
+      renal: { score: '18%', level: 'Moderate', recommendation: 'Nephrology consult' },
+      'preop-planning': { 
+        score: '2/3', 
+        level: 'In Progress', 
+        recommendation: 'DVT prophylaxis pending', 
+        items: [
+          { name: 'Patient is NPO', status: 'completed', icon: CheckCircle },
+          { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle },
+          { name: 'DVT Prophylaxis', status: 'pending', icon: selectedModules.includes('dvt') ? Flag : AlertTriangle, note: selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Add DVT Risk Module' }
+        ]
+      },
+      dvt: { score: '18%', level: 'Moderate', recommendation: 'Add Lovenox 40 mg SQ daily' }
     };
 
     const activeRisks = selectedModules.map(moduleId => ({
@@ -888,20 +902,23 @@ const Homepage = () => {
       ...riskData[moduleId as keyof typeof riskData]
     }));
 
-    const totalRisk = activeRisks.reduce((sum, risk) => sum + risk.score, 0);
-    const avgRisk = activeRisks.length > 0 ? totalRisk / activeRisks.length : 0;
+    // Determine overall risk based on selected modules
+    const hasHighRisk = activeRisks.some(risk => risk.level === 'High' || risk.level === 'Elevated');
+    const hasModerateRisk = activeRisks.some(risk => risk.level === 'Moderate' || risk.level === 'Pre-frail');
     
     let overallLevel = 'Low';
-    if (avgRisk > 15) overallLevel = 'High';
-    else if (avgRisk > 10) overallLevel = 'Moderate-High';
-    else if (avgRisk > 5) overallLevel = 'Moderate';
+    if (hasHighRisk) overallLevel = 'High';
+    else if (hasModerateRisk) overallLevel = 'Moderate';
 
-    return { activeRisks, avgRisk, overallLevel };
+    return { activeRisks, overallLevel };
   };
 
   // Click outside to close dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Don't close dropdowns if modal is open
+      if (showBuildModuleModal) return;
+      
       if (moduleSelectorRef.current && !moduleSelectorRef.current.contains(event.target as Node)) {
         setShowModuleSelector(false);
       }
@@ -912,12 +929,12 @@ const Homepage = () => {
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [showBuildModuleModal]);
 
   return (
       <div className="relative w-full">
         {/* Main Container - Professional Healthcare Design */}
-        <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg mx-4 lg:ml-0 lg:mr-0">
+        <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg">
           {/* Enhanced Header with Module Controls */}
           <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10">
             <div className="flex items-center justify-between">
@@ -965,16 +982,17 @@ const Homepage = () => {
                   <Settings className="w-4 h-4 mr-2" />
                   <span className="text-xs font-medium">Edit Variables</span>
                 </button>
-                <button
-                  onClick={() => {
-                    setShowModuleSelector(true);
-                    setShowWorkflowSettings(false);
-                  }}
-                  className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
-                >
-                  <Plus className="w-4 h-4 mr-2" />
-                  <span className="text-xs font-medium">Add New Module</span>
-                </button>
+
+                                  <button
+                    onClick={() => {
+                      setShowBuildModuleModal(true);
+                      setShowWorkflowSettings(false);
+                    }}
+                    className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
+                  >
+                    <TrendingUp className="w-4 h-4 mr-2" />
+                    <span className="text-xs font-medium">Build New Module</span>
+                  </button>
                 <button
                   className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
                 >
@@ -987,129 +1005,175 @@ const Homepage = () => {
 
           {/* Module Selector Dropdown */}
           {showModuleSelector && (
-            <motion.div 
+            <div 
               ref={moduleSelectorRef}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute top-14 right-6 z-20 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-600/50 shadow-2xl p-4 min-w-[250px]"
+              className="absolute right-6 top-16 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-50"
             >
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="text-xs font-medium text-slate-700 dark:text-slate-300">Available AI Modules</h4>
-                <button
-                  onClick={() => setShowModuleSelector(false)}
-                  className="w-5 h-5 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-                >
-                  <X className="w-3 h-3" />
-                </button>
+              <div className="p-3 border-b border-slate-200 dark:border-slate-700">
+                <h4 className="text-sm font-medium text-slate-900 dark:text-white">Available Modules</h4>
               </div>
-              <div className="space-y-2">
-                {availableModules.map(module => (
+              <div className="p-2 max-h-64 overflow-y-auto">
+                {availableModules.filter(m => !selectedModules.includes(m.id)).map(module => (
                   <button
                     key={module.id}
-                    onClick={() => toggleModule(module.id)}
-                    className={`w-full flex items-center justify-between p-2 rounded-lg border transition-all ${
-                      selectedModules.includes(module.id)
-                        ? 'bg-emerald-500/20 border-emerald-400/50 text-emerald-700 dark:text-emerald-300'
-                        : 'bg-slate-100/50 dark:bg-slate-700/30 border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'
-                    }`}
+                    onClick={() => {
+                      toggleModule(module.id);
+                      setShowModuleSelector(false);
+                    }}
+                    className="w-full flex items-center space-x-3 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
                   >
-                    <div className="flex items-center space-x-2">
-                      <module.icon className="w-4 h-4" />
-                      <span className="text-xs font-medium">{module.name}</span>
+                    <div className={`w-8 h-8 bg-${module.color}-500/20 rounded-lg flex items-center justify-center`}>
+                      <module.icon className={`w-4 h-4 text-${module.color}-700 dark:text-${module.color}-400`} />
                     </div>
-                    {selectedModules.includes(module.id) && (
-                      <CheckCircle className="w-3 h-3" />
-                    )}
+                    <div className="text-left">
+                      <div className="text-sm font-medium text-slate-900 dark:text-white">{module.name}</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-400">
+                        {module.id === 'dvt' && 'Recommended for pre-op planning'}
+                        {module.id === 'nsqip' && 'Comprehensive surgical risk'}
+                        {module.id === 'frailty' && 'Assess functional status'}
+                        {module.id === 'bleeding' && 'Bleeding risk assessment'}
+                        {module.id === 'renal' && 'Kidney function assessment'}
+                        {module.id === 'preop-planning' && 'Comprehensive pre-op checklist'}
+                      </div>
+                    </div>
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Content - Adaptive Layout */}
           <div className="p-6 lg:p-8">
-            <div className="grid md:grid-cols-6 gap-6 relative">
+            <div className="flex flex-col md:flex-row gap-4">
               {/* Clinical Notes - Enhanced for Surgery */}
-              <div className="flex flex-col relative md:col-span-2">
-                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
-                  <FileText className="w-4 h-4 mr-2 text-blue-400" />
+              <div className="flex flex-col relative flex-1 md:max-w-2xl">
+                <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
+                  <FileText className="w-3 h-3 mr-1 text-blue-400" />
                   Clinical Retrieval
                 </h4>
                 
                 {/* Arrow to next step */}
-                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center border border-emerald-400/30">
-                    <ArrowRight className="w-3 h-3 text-emerald-400" />
-                  </div>
+                <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                  <ArrowRight className="w-4 h-4 text-emerald-400" />
                 </div>
-                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 text-sm text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-200/50 dark:border-slate-600/20">
-                  <div className="mb-3 pb-3 border-b border-slate-200/50 dark:border-slate-600/30">
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Surgical Consultation</p>
-                    <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1.5 py-0.5 rounded text-xs font-medium">Laparoscopic Cholecystectomy</span>
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-3 text-xs text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-200/50 dark:border-slate-600/20 h-full">
+                  <div className="mb-2 pb-2 border-b border-slate-200/50 dark:border-slate-600/30">
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">Surgical Consultation</p>
+                    <p className="mb-1">
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1 py-0.5 rounded text-[10px] font-medium">Laparoscopic Gastrectomy</span>
                     </p>
-                    <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1.5 py-0.5 rounded text-xs font-medium">DM Type 2</span>
+                    <p className="mb-1">
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">DM Type 2</span>
                     </p>
+                    <div className="space-y-0.5 mt-1">
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-3/4"></div>
+                    </div>
                   </div>
                   
+                  <div className="mb-2 pb-2 border-b border-slate-200/50 dark:border-slate-600/30">
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">Pre-Op Assessment</p>
+                    <div className="space-y-0.5 mb-1">
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-5/6"></div>
+                    </div>
+                    <p className="mb-1">
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1 py-0.5 rounded text-[10px] font-medium">METs &lt;4</span>
+                    </p>
+                    <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                  </div>
+                  
+                  {/* EMR Lab Values */}
                   <div>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">Pre-Op Assessment</p>
-                    <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">METs &lt;4</span>
-                    </p>
-                    <p className="mb-2 text-xs">
-                      <span className="text-slate-700 dark:text-slate-300">Labs:</span> Cr <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">1.8</span>, Hgb <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1.5 py-0.5 rounded text-xs font-medium">10.2</span>
-                    </p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">EMR Labs (03/14/24)</p>
+                    <div className="space-y-0.5 text-[9px]">
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">Creatinine 1.8 mg/dL</span></p>
+                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">Hemoglobin 10.2 g/dL</span></p>
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">HbA1c 8.4%</span></p>
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
+                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">BNP 342 pg/mL</span></p>
+                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-4/5"></div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Data Extraction - Enhanced */}
-              <div className="flex flex-col relative md:col-span-2">
-                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
-                  <Target className="w-4 h-4 mr-2 text-emerald-400" />
-                  Multi-Source Extraction
+              <div className="flex flex-col relative flex-1 md:max-w-2xl">
+                <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
+                  <Database className="w-3 h-3 mr-1 text-purple-400" />
+                  Data Mapping
                 </h4>
                 
                 {/* Arrow to next step */}
-                <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                  <div className="w-6 h-6 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center border border-violet-400/30">
-                    <ArrowRight className="w-3 h-3 text-violet-400" />
-                  </div>
+                <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                  <ArrowRight className="w-4 h-4 text-emerald-400" />
                 </div>
-                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 border border-slate-200/50 dark:border-slate-600/20">
-                  <div className="space-y-3">
+                
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-3 border border-slate-200/50 dark:border-slate-600/20 h-full">
+                  <div className="space-y-2">
                     {/* Surgical Factors */}
                     <div>
-                      <h5 className="text-xs font-medium text-violet-800 dark:text-violet-300 mb-2">Surgical Factors</h5>
+                      <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Surgical Factors</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
-                          <span className="text-violet-800 dark:text-violet-200 text-xs font-medium">Intraperitoneal Surgery</span>
-                          <CheckCircle className="w-3 h-3 text-violet-700 dark:text-violet-300" />
+                        <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
+                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">Non-cardiac Surgery</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-violet-500/20 rounded px-2 py-1 border border-violet-400/30">
-                          <span className="text-violet-800 dark:text-violet-200 text-xs font-medium">ASA Class III</span>
-                          <CheckCircle className="w-3 h-3 text-violet-700 dark:text-violet-300" />
+                        <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
+                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">ASA Class III</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
                         </div>
                       </div>
                     </div>
 
-                    {/* Medical Factors */}
+                    {/* Medical History Mappings */}
                     <div>
-                      <h5 className="text-xs font-medium text-amber-800 dark:text-amber-300 mb-2">Medical History</h5>
+                      <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Risk Factors</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Ischemic Heart Disease</span>
-                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
+                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
+                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Ischemic Heart Disease</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Insulin Therapy</span>
-                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
+                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
+                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Insulin-dependent DM</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-amber-500/20 rounded px-2 py-1 border border-amber-400/30">
-                          <span className="text-amber-800 dark:text-amber-200 text-xs font-medium">Cr &gt;1.5 mg/dL</span>
-                          <CheckCircle className="w-3 h-3 text-amber-700 dark:text-amber-300" />
+                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
+                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">COPD (Active)</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        </div>
+                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
+                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Chronic Kidney Disease</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Functional Status */}
+                    <div>
+                      <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Functional Status</h5>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 rounded px-2 py-0.5 border border-blue-200 dark:border-blue-800/50">
+                          <span className="text-blue-900 dark:text-blue-200 text-[10px]">Mobility</span>
+                          <span className="text-blue-900 dark:text-blue-200 text-[10px] font-medium">Limited</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Lab Abnormalities */}
+                    <div>
+                      <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Lab Abnormalities</h5>
+                      <div className="space-y-1">
+                        <div className="flex justify-between items-center bg-rose-50 dark:bg-rose-900/20 rounded px-2 py-0.5 border border-rose-200 dark:border-rose-800/50">
+                          <span className="text-rose-900 dark:text-rose-200 text-[10px]">Renal Function</span>
+                          <span className="text-rose-900 dark:text-rose-200 text-[10px] font-medium">Impaired</span>
+                        </div>
+                        <div className="flex justify-between items-center bg-orange-50 dark:bg-orange-900/20 rounded px-2 py-0.5 border border-orange-200 dark:border-orange-800/50">
+                          <span className="text-orange-900 dark:text-orange-200 text-[10px]">Anemia</span>
+                          <span className="text-orange-900 dark:text-orange-200 text-[10px] font-medium">Moderate</span>
                         </div>
                       </div>
                     </div>
@@ -1118,13 +1182,13 @@ const Homepage = () => {
               </div>
 
               {/* Integrated AI Modules - Dynamic Display */}
-              <div className="flex flex-col md:col-span-2">
-                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-300 mb-3 flex items-center">
-                  <BarChart3 className="w-4 h-4 mr-2 text-violet-400" />
-                  Integrated Risk Assessments
+              <div className="flex flex-col w-full md:w-[300px]">
+                <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
+                  <BarChart3 className="w-3 h-3 mr-1 text-violet-400" />
+                  Integrated Modules
                 </h4>
-                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-4 border border-slate-200/50 dark:border-slate-600/20">
-                  <div className="grid grid-cols-1 gap-3">
+                <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-3 border border-slate-200/50 dark:border-slate-600/20">
+                  <div className="grid grid-cols-2 gap-2">
                     {selectedModules.map(moduleId => {
                       const module = availableModules.find(m => m.id === moduleId);
                       if (!module) return null;
@@ -1136,44 +1200,105 @@ const Homepage = () => {
                         nsqip: { score: '12.4%', level: 'High', recommendation: 'Optimize medical conditions' },
                         frailty: { score: '4/7', level: 'Pre-frail', recommendation: 'PT evaluation, nutrition' },
                         bleeding: { score: '22%', level: 'High', recommendation: 'Hold anticoagulation' },
-                        renal: { score: '18%', level: 'Moderate', recommendation: 'Nephrology consult' }
+                        renal: { score: '18%', level: 'Moderate', recommendation: 'Nephrology consult' },
+                        'preop-planning': { 
+                          score: '2/3', 
+                          level: 'In Progress', 
+                          recommendation: 'DVT prophylaxis pending', 
+                          items: [
+                            { name: 'Patient is NPO', status: 'completed', icon: CheckCircle },
+                            { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle },
+                            { name: 'DVT Prophylaxis', status: 'pending', icon: selectedModules.includes('dvt') ? Flag : AlertTriangle, note: selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Add DVT Risk Module' }
+                          ]
+                        },
+                        dvt: { score: '18%', level: 'Moderate', recommendation: 'Add Lovenox 40 mg SQ daily' }
                       };
 
                       const data = riskData[moduleId as keyof typeof riskData];
-                      const colorMap = {
-                        rose: 'bg-rose-500/20 border-rose-400/30 text-rose-700 dark:text-rose-300',
-                        blue: 'bg-blue-500/20 border-blue-400/30 text-blue-700 dark:text-blue-300',
-                        purple: 'bg-purple-500/20 border-purple-400/30 text-purple-700 dark:text-purple-300',
-                        amber: 'bg-amber-500/20 border-amber-400/30 text-amber-700 dark:text-amber-300',
-                        red: 'bg-red-500/20 border-red-400/30 text-red-700 dark:text-red-300',
-                        cyan: 'bg-cyan-500/20 border-cyan-400/30 text-cyan-700 dark:text-cyan-300'
+                      const Icon = module.icon;
+                      const colorClasses = {
+                        rose: 'from-rose-500/20 to-rose-600/20 border-rose-500/50',
+                        blue: 'from-blue-500/20 to-blue-600/20 border-blue-500/50',
+                        purple: 'from-purple-500/20 to-purple-600/20 border-purple-500/50',
+                        amber: 'from-amber-500/20 to-amber-600/20 border-amber-500/50',
+                        red: 'from-red-500/20 to-red-600/20 border-red-500/50',
+                        cyan: 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/50',
+                        emerald: 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/50',
+                        orange: 'from-orange-500/20 to-orange-600/20 border-orange-500/50'
                       };
+
+                      if (moduleId === 'preop-planning' && 'items' in data) {
+                        return (
+                          <motion.div
+                            key={moduleId}
+                            className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} border rounded-lg p-3 relative col-span-2`}
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <button
+                              onClick={() => toggleModule(moduleId)}
+                              className="absolute top-1 right-1 p-0.5 hover:bg-slate-200/50 rounded transition-colors"
+                            >
+                              <X className="w-3 h-3 text-slate-600 dark:text-slate-400" />
+                            </button>
+                            
+                            <div className="flex items-center space-x-2 mb-2">
+                              <div className={`w-6 h-6 bg-${module.color}-500/30 rounded-lg flex items-center justify-center`}>
+                                <Icon className={`w-3 h-3 text-${module.color}-700 dark:text-${module.color}-400`} />
+                              </div>
+                              <h5 className="text-[10px] font-medium text-slate-900 dark:text-white">{module.name}</h5>
+                            </div>
+                            
+                            <div className="space-y-1">
+                              {('items' in data && data.items) && data.items.map((item: any, idx: number) => {
+                                const ItemIcon = item.icon;
+                                return (
+                                  <div key={idx} className="flex items-center justify-between text-[10px]">
+                                    <div className="flex items-center space-x-1">
+                                      <ItemIcon className={`w-3 h-3 ${item.status === 'completed' ? 'text-emerald-600' : item.name === 'DVT Prophylaxis' ? (selectedModules.includes('dvt') ? 'text-orange-600' : 'text-red-600') : 'text-orange-600'}`} />
+                                      <span className="text-slate-700 dark:text-slate-300">{item.name}</span>
+                                    </div>
+                                    {item.note && (
+                                      <span className={`text-[9px] font-medium ${item.name === 'DVT Prophylaxis' ? (selectedModules.includes('dvt') ? 'text-orange-600 dark:text-orange-400' : 'text-red-600 dark:text-red-400') : 'text-orange-600 dark:text-orange-400'}`}>{item.note}</span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        );
+                      }
 
                       return (
                         <motion.div
                           key={moduleId}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          className={`${colorMap[module.color as keyof typeof colorMap]} rounded-lg p-3 border`}
+                          className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} border rounded-lg p-3 relative`}
+                          initial={{ scale: 0.8, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.8, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
                         >
-                          <div className="flex items-center justify-between mb-2">
-                            <h5 className="text-xs font-medium flex items-center">
-                              <module.icon className="w-3 h-3 mr-1" />
-                              {module.name}
-                            </h5>
-                            <button
-                              onClick={() => toggleModule(moduleId)}
-                              className="w-4 h-4 hover:opacity-70 transition-opacity"
-                            >
-                              <X className="w-3 h-3" />
-                            </button>
+                          <button
+                            onClick={() => toggleModule(moduleId)}
+                            className="absolute top-1 right-1 p-0.5 hover:bg-slate-200/50 rounded transition-colors"
+                          >
+                            <X className="w-3 h-3 text-slate-600 dark:text-slate-400" />
+                          </button>
+                          
+                          <div className="flex items-center space-x-1 mb-1">
+                            <div className={`w-5 h-5 bg-${module.color}-500/30 rounded-lg flex items-center justify-center`}>
+                              <Icon className={`w-3 h-3 text-${module.color}-700 dark:text-${module.color}-400`} />
+                            </div>
+                            <h5 className="text-[10px] font-medium text-slate-900 dark:text-white">{module.name}</h5>
                           </div>
-                          <div className="text-center mb-2">
-                            <div className="text-xl font-bold text-slate-900 dark:text-white">{data.score}</div>
-                            <div className="text-xs opacity-80 text-slate-700 dark:text-slate-300">{data.level} Risk</div>
+                          
+                          <div className="text-center mb-1">
+                            <div className="text-sm font-bold text-slate-900 dark:text-white">{data.score}</div>
+                            <div className="text-[10px] opacity-80 text-slate-700 dark:text-slate-300">{data.level} Risk</div>
                           </div>
-                          <div className="text-xs opacity-90 text-slate-700 dark:text-slate-300">
+                          <div className="text-[10px] opacity-90 text-slate-700 dark:text-slate-300">
                             <span className="font-medium">Action:</span> {data.recommendation}
                           </div>
                         </motion.div>
@@ -1184,12 +1309,12 @@ const Homepage = () => {
                     {selectedModules.length < availableModules.length && (
                       <motion.button
                         onClick={() => setShowModuleSelector(true)}
-                        className="bg-slate-100/50 dark:bg-slate-700/30 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 border-2 border-dashed border-slate-200/50 dark:border-slate-600/50 hover:border-violet-500/50 rounded-lg p-6 flex flex-col items-center justify-center transition-all min-h-[120px]"
+                        className="bg-slate-100/50 dark:bg-slate-700/30 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 border-2 border-dashed border-slate-200/50 dark:border-slate-600/50 hover:border-violet-500/50 rounded-lg p-4 flex flex-col items-center justify-center transition-all min-h-[100px]"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <Plus className="w-6 h-6 text-violet-400 mb-2" />
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Add Risk Module</span>
+                        <Plus className="w-5 h-5 text-violet-400 mb-1" />
+                        <span className="text-[10px] text-slate-600 dark:text-slate-400">Add Modules</span>
                       </motion.button>
                     )}
                   </div>
@@ -1201,174 +1326,248 @@ const Homepage = () => {
             
             {/* ChartrOS Integrated Summary - Horizontal Section */}
             <div className="mt-6 pt-6 border-t border-slate-300/30 dark:border-slate-600/30">
-              <div className="bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-lg p-4 border border-emerald-400/30">
-                <h5 className="text-sm font-medium text-emerald-700 dark:text-emerald-300 mb-3 flex items-center">
-                  <Layers className="w-4 h-4 mr-2" />
-                  ChartrOS Integrated Summary
+              <div className="bg-slate-50 dark:bg-slate-800/30 rounded-lg p-4 border border-slate-200 dark:border-slate-700/50">
+                <h5 className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-3 flex items-center">
+                  <Layers className="w-4 h-4 mr-2 text-indigo-600 dark:text-indigo-400" />
+                  ChartrOS Guideline-Directed Recommendations
                 </h5>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    {(() => {
-                      const { overallLevel, avgRisk } = calculateRiskScores();
-                      const isHighRisk = avgRisk > 15;
-                      const isModerateRisk = avgRisk > 5;
-                      
-                      return (
-                        <>
-                          <div className="flex items-start space-x-2">
+                <div className="space-y-3">
+                  {(() => {
+                    const { overallLevel } = calculateRiskScores();
+                    const isHighRisk = overallLevel === 'High';
+                    const isModerateRisk = overallLevel === 'Moderate';
+                    
+                    return (
+                      <>
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-start space-x-2 flex-1">
                             {isHighRisk ? (
-                              <AlertTriangle className="w-4 h-4 text-red-400 mt-0.5 flex-shrink-0" />
+                              <AlertTriangle className="w-4 h-4 text-rose-500 dark:text-rose-400 mt-0.5 flex-shrink-0" />
                             ) : (
-                              <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+                              <AlertTriangle className="w-4 h-4 text-amber-500 dark:text-amber-400 mt-0.5 flex-shrink-0" />
                             )}
-                            <div className={`text-sm ${isHighRisk ? 'text-red-700 dark:text-red-200' : 'text-amber-700 dark:text-amber-200'}`}>
-                              <span className="font-medium">
-                                {isHighRisk 
-                                  ? "High risk - consider postponing surgery" 
-                                  : isModerateRisk 
-                                    ? "Proceed with caution - optimize risk factors" 
-                                    : "Acceptable risk - proceed with standard care"
-                                }
-                              </span>
-                              <p className="text-xs mt-1 opacity-90">
-                                {isHighRisk 
-                                  ? "Multiple high-risk factors requiring optimization before surgery"
-                                  : isModerateRisk 
-                                    ? "Several risk factors identified requiring pre-operative optimization"
-                                    : "Patient appears to be at acceptable risk for surgery"
-                                }
-                              </p>
-                            </div>
-                          </div>
-                          {isModerateRisk && (
-                            <div className="flex items-start space-x-2">
-                              <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                              <div className="text-amber-700 dark:text-amber-200 text-sm">
+                            <div className="flex-1">
+                              <div className={`text-sm ${isHighRisk ? 'text-rose-700 dark:text-rose-300' : 'text-amber-700 dark:text-amber-300'}`}>
                                 <span className="font-medium">
-                                  {selectedModules.includes('cardiac') ? "Cardiology clearance recommended" : "Consider specialist consultation"}
+                                  {isHighRisk 
+                                    ? "High risk - consider postponing surgery" 
+                                    : isModerateRisk 
+                                      ? "Proceed with caution - optimize risk factors" 
+                                      : "Acceptable risk - proceed with standard care"
+                                  }
                                 </span>
-                                <p className="text-xs mt-1 opacity-90">
-                                  {selectedModules.includes('cardiac') ? "Beta-blocker therapy and cardiac optimization" : "Specialist evaluation may be beneficial"}
+                                <p className="text-xs mt-1 text-slate-600 dark:text-slate-400">
+                                  {isHighRisk 
+                                    ? "Multiple high-risk factors requiring optimization before surgery"
+                                    : isModerateRisk 
+                                      ? "Several risk factors identified requiring pre-operative optimization"
+                                      : "Patient appears to be at acceptable risk for surgery"
+                                  }
                                 </p>
                               </div>
                             </div>
-                          )}
-                        </>
-                      );
-                    })()}
-                  </div>
-                  <div className="bg-slate-100/50 dark:bg-slate-700/30 rounded-lg p-3">
-                    <h6 className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">Risk Score Summary</h6>
-                    <div className="space-y-1">
-                      {(() => {
-                        const { activeRisks, avgRisk, overallLevel } = calculateRiskScores();
-                        const overallColor = avgRisk > 15 ? 'text-red-700 dark:text-red-300' : 
-                                           avgRisk > 10 ? 'text-amber-700 dark:text-amber-300' : 
-                                           'text-emerald-700 dark:text-emerald-300';
-                        
-                        return (
-                          <>
-                            <div className="flex justify-between items-center">
-                              <span className="text-xs text-slate-600 dark:text-slate-400">Overall Risk</span>
-                              <span className={`text-xs font-medium ${overallColor}`}>{overallLevel}</span>
-                            </div>
-                            {activeRisks.map((risk) => {
-                              const module = availableModules.find(m => m.id === risk.moduleId);
-                              const colorClass = risk.level === 'High' ? 'text-red-700 dark:text-red-300' :
-                                                risk.level === 'Elevated' ? 'text-orange-700 dark:text-orange-300' :
-                                                'text-blue-700 dark:text-blue-300';
-                              
-                              return (
-                                <div key={risk.moduleId} className="flex justify-between items-center">
-                                  <span className="text-xs text-slate-600 dark:text-slate-400">{module?.name}</span>
-                                  <span className={`text-xs font-medium ${colorClass}`}>{risk.score}%</span>
+                          </div>
+                          <button 
+                            className="ml-3 px-2 py-1 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-md text-xs text-slate-700 dark:text-slate-300 font-medium transition-colors flex items-center space-x-1 group cursor-pointer"
+                          >
+                            <Eye className="w-3 h-3" />
+                            <span>View</span>
+                          </button>
+                        </div>
+                        {isModerateRisk && selectedModules.includes('cardiac') && (
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-start space-x-2 flex-1">
+                              <AlertTriangle className="w-4 h-4 text-amber-500 dark:text-amber-400 mt-0.5 flex-shrink-0" />
+                              <div className="flex-1">
+                                <div className="text-amber-700 dark:text-amber-300 text-sm">
+                                  <span className="font-medium">Cardiology clearance recommended</span>
+                                  <p className="text-xs mt-1 text-slate-600 dark:text-slate-400">
+                                    Beta-blocker therapy and cardiac optimization
+                                  </p>
                                 </div>
-                              );
-                            })}
-                          </>
-                        );
-                      })()}
-                    </div>
-                  </div>
+                              </div>
+                            </div>
+                            <button 
+                              className="ml-3 px-2 py-1 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-md text-xs text-slate-700 dark:text-slate-300 font-medium transition-colors flex items-center space-x-1 group cursor-pointer"
+                            >
+                              <Eye className="w-3 h-3" />
+                              <span>View</span>
+                            </button>
+                          </div>
+                        )}
+                                                {selectedModules.includes('preop-planning') && (
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-start space-x-2 flex-1">
+                              {selectedModules.includes('dvt') ? (
+                                <Flag className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-500 dark:text-orange-400" />
+                              ) : (
+                                <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500 dark:text-red-400" />
+                              )}
+                              <div className="flex-1">
+                                <div className={`text-sm ${selectedModules.includes('dvt') ? 'text-orange-700 dark:text-orange-300' : 'text-red-700 dark:text-red-300'}`}>
+                                  <span className="font-medium">
+                                    {selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Needs DVT Prophylaxis Assessment'}
+                                  </span>
+                                  <p className="text-xs mt-1 text-slate-600 dark:text-slate-400">
+                                    {selectedModules.includes('dvt') 
+                                      ? 'Risk assessment complete - recommend Lovenox 40 mg SQ daily'
+                                      : 'Consider adding DVT Risk Assessment module for complete evaluation'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <button 
+                              className="ml-3 px-2 py-1 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-md text-xs text-slate-700 dark:text-slate-300 font-medium transition-colors flex items-center space-x-1 group cursor-pointer"
+                            >
+                              <Eye className="w-3 h-3" />
+                              <span>View</span>
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Build Module Modal - Rendered outside main container */}
+        {showBuildModuleModal && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 bg-black/30"
+              onClick={() => setShowBuildModuleModal(false)}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-lg mx-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl overflow-hidden"
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 px-6 py-4 border-b border-slate-200/30 dark:border-slate-700/30">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Build Custom AI Models</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">with ChartrOS</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setShowBuildModuleModal(false)}
+                    className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 rounded-lg transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <p className="text-slate-700 dark:text-slate-300 mb-6">
+                  Use ChartrOS to create AI models unique to your patient population and practice - with built-in ML tools for no-code development. Choose from our templates or design your own:
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  {[
+                    { icon: Target, title: 'Risk Assessment Models', desc: 'Custom scoring algorithms for your specialty' },
+                    { icon: Users, title: 'Clinical Triage Algorithms', desc: 'Intelligent patient prioritization systems' },
+                    { icon: ClipboardCheck, title: 'Treatment Planning Tools', desc: 'Evidence-based care pathway automation' },
+                    { icon: BarChart3, title: 'Quality Metrics Tracking', desc: 'Outcome monitoring and benchmarking' }
+                  ].map((template, idx) => (
+                    <div key={idx} className="flex items-start space-x-3 p-3 rounded-lg bg-slate-50/50 dark:bg-slate-700/30 border border-slate-200/30 dark:border-slate-600/30">
+                      <div className="w-8 h-8 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <template.icon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-slate-900 dark:text-slate-100 text-sm">{template.title}</h4>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{template.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200/30 dark:border-slate-700/30">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Ready to build? Contact our team to get started.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-medium rounded-lg transition-all transform hover:scale-105 inline-block"
+                  >
+                    Contact Team
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     );
   };
 
   const ChartrOSControlCenter = () => {
     return (
-      <div className="relative w-full">
+      <div className="relative w-full max-w-xl mx-auto">
         {/* Workflow Builder Interface */}
-        <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-2xl">
+        <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-700/50 overflow-hidden shadow-xl">
           {/* Header */}
-          <div className="bg-slate-100 dark:bg-slate-800/80 px-6 py-4 border-b border-slate-200 dark:border-slate-700/50">
+          <div className="bg-slate-100 dark:bg-slate-800/80 px-6 py-3 border-b border-slate-200 dark:border-slate-700/50">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-1">
                 {/* ChartR Logo */}
                 <img 
                   src="/logo.svg" 
                   alt="ChartR Logo" 
-                  className="w-8 h-8"
+                  className="w-6 h-6"
                 />
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
-                </div>
-                <span className="text-sm text-slate-700 dark:text-slate-300 font-medium">ChartrOS Control Center</span>
               </div>
-              <div className="flex items-center space-x-4">
-                {/* Moved stats here - smaller and more compact */}
-                <div className="flex items-center space-x-4 text-xs text-slate-500 dark:text-slate-400">
-                  <div className="flex items-center space-x-1">
-                    <span className="text-slate-900 dark:text-white font-medium">47</span>
-                    <span>Active Workflows</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <span className="text-slate-900 dark:text-white font-medium">2.4M</span>
-                    <span>Records Processed</span>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Live</span>
-                </div>
-                <span className="text-xs text-slate-400 dark:text-slate-500">v2.4.1</span>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Live</span>
               </div>
             </div>
           </div>
 
           {/* Content */}
-          <div className="p-6">
+          <div className="p-4">
 
-            <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-4 flex items-center">
-              <Layers className="w-4 h-4 mr-2 text-teal-600 dark:text-teal-400" />
+            <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-3 flex items-center">
+              <Layers className="w-3 h-3 mr-1 text-teal-600 dark:text-teal-400" />
               Deployed Workflows
             </h4>
             
             {/* Workflow Cards */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               {/* Cardiovascular Risk Assessment */}
               <motion.div 
-                className="bg-gradient-to-r from-teal-500/20 to-teal-600/20 dark:from-teal-500/15 dark:to-teal-600/15 border border-teal-500/50 dark:border-teal-500/40 rounded-lg p-4 hover:from-teal-500/30 hover:to-teal-600/30 dark:hover:from-teal-500/20 dark:hover:to-teal-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-r from-teal-500/20 to-teal-600/20 dark:from-teal-500/15 dark:to-teal-600/15 border border-teal-500/50 dark:border-teal-500/40 rounded-lg p-3 hover:from-teal-500/30 hover:to-teal-600/30 dark:hover:from-teal-500/20 dark:hover:to-teal-600/20 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-teal-500/30 dark:bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Heart className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-8 h-8 bg-teal-500/30 dark:bg-teal-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Heart className="w-4 h-4 text-teal-600 dark:text-teal-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
-                        <span>Pre-Operative Risk Suite</span>
+                      <h5 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
+                        <span>Pre-Operative Risk Assessment</span>
                       </h5>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Multi-module AI Assessment + Clinical Guidelines</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">AI-powered surgical risk stratification with real-time monitoring</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -1377,17 +1576,17 @@ const Homepage = () => {
                   </div>
                 </div>
                 
-                <div className="mt-3 grid grid-cols-3 gap-4 text-center">
+                <div className="mt-2 grid grid-cols-3 gap-2 text-center">
                   <div>
-                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">12</div>
+                    <div className="text-xs font-bold text-teal-600 dark:text-teal-400">12</div>
                     <div className="text-xs text-slate-600 dark:text-slate-400">Models Deployed</div>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">8.4K</div>
+                    <div className="text-xs font-bold text-teal-600 dark:text-teal-400">8.4K</div>
                     <div className="text-xs text-slate-600 dark:text-slate-400">Uses</div>
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-teal-600 dark:text-teal-400">347</div>
+                    <div className="text-xs font-bold text-teal-600 dark:text-teal-400">347</div>
                     <div className="text-xs text-slate-600 dark:text-slate-400">High Risk Events</div>
                   </div>
                 </div>
@@ -1396,21 +1595,21 @@ const Homepage = () => {
 
               {/* Medicare Advantage Coding */}
               <motion.div 
-                className="bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 dark:from-cyan-500/15 dark:to-cyan-600/15 border border-cyan-500/50 dark:border-cyan-500/40 rounded-lg p-4 hover:from-cyan-500/30 hover:to-cyan-600/30 dark:hover:from-cyan-500/20 dark:hover:to-cyan-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 dark:from-cyan-500/15 dark:to-cyan-600/15 border border-cyan-500/50 dark:border-cyan-500/40 rounded-lg p-3 hover:from-cyan-500/30 hover:to-cyan-600/30 dark:hover:from-cyan-500/20 dark:hover:to-cyan-600/20 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-cyan-500/30 dark:bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <FileCheck className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-8 h-8 bg-cyan-500/30 dark:bg-cyan-500/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <FileCheck className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
-                        <span>HCC Risk Adjustment</span>
+                      <h5 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
+                        <span>CMS HOQR and HIQR Reporting</span>
                       </h5>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">CMS-HCC v28 Model • Real-time Processing</p>
+                      <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Hospital Quality Reporting • Real-time Processing</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -1425,7 +1624,7 @@ const Homepage = () => {
                 
                 <div className="bg-slate-200/70 dark:bg-slate-700/30 rounded-lg p-3">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-slate-600 dark:text-slate-400">Q1 2024 Batch Processing</span>
+                    <span className="text-xs text-slate-600 dark:text-slate-400">Q1 2025 Batch Processing</span>
                     <span className="text-xs text-cyan-700 dark:text-cyan-400 font-medium">67%</span>
                   </div>
                   <div className="w-full bg-slate-300 dark:bg-slate-700 rounded-full h-2">
@@ -1445,18 +1644,18 @@ const Homepage = () => {
 
               {/* Sepsis Screening */}
               <motion.div 
-                className="bg-gradient-to-r from-blue-400/20 to-blue-500/20 dark:from-blue-400/15 dark:to-blue-500/15 border border-blue-400/50 dark:border-blue-400/40 rounded-lg p-4 hover:from-blue-400/30 hover:to-blue-500/30 dark:hover:from-blue-400/20 dark:hover:to-blue-500/20 transition-all cursor-pointer group"
+                className="bg-gradient-to-r from-blue-400/20 to-blue-500/20 dark:from-blue-400/15 dark:to-blue-500/15 border border-blue-400/50 dark:border-blue-400/40 rounded-lg p-3 hover:from-blue-400/30 hover:to-blue-500/30 dark:hover:from-blue-400/20 dark:hover:to-blue-500/20 transition-all cursor-pointer group"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-10 h-10 bg-blue-400/30 dark:bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-8 h-8 bg-blue-400/30 dark:bg-blue-400/25 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Activity className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h5 className="font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
+                      <h5 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center space-x-2">
                         <span>Early Sepsis Detection</span>
                       </h5>
                       <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">Real-time ED Monitoring • 15-min intervals</p>
@@ -1479,7 +1678,7 @@ const Homepage = () => {
 
             {/* Add New Workflow - Improved Design */}
             <motion.div 
-              className="mt-4 bg-gradient-to-r from-slate-200/50 to-slate-300/50 dark:from-slate-700/20 dark:to-slate-600/20 border-2 border-dashed border-slate-300 dark:border-slate-600/50 rounded-lg p-4 hover:border-emerald-500/50 hover:from-emerald-500/10 hover:to-blue-500/10 dark:hover:from-emerald-500/5 dark:hover:to-blue-500/5 transition-all cursor-pointer group"
+              className="mt-3 bg-gradient-to-r from-slate-200/50 to-slate-300/50 dark:from-slate-700/20 dark:to-slate-600/20 border-2 border-dashed border-slate-300 dark:border-slate-600/50 rounded-lg p-3 hover:border-emerald-500/50 hover:from-emerald-500/10 hover:to-blue-500/10 dark:hover:from-emerald-500/5 dark:hover:to-blue-500/5 transition-all cursor-pointer group"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               initial={{ opacity: 0 }}
@@ -1487,20 +1686,20 @@ const Homepage = () => {
               transition={{ delay: 0.8 }}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-slate-300/50 dark:bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
-                    <span className="text-2xl text-slate-600 dark:text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">+</span>
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-slate-300/50 dark:bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:bg-emerald-500/20 transition-all">
+                    <span className="text-lg text-slate-600 dark:text-slate-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors">+</span>
                   </div>
                   <div>
                     <h5 className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                       Deploy New AI Workflow
                     </h5>
                     <p className="text-xs text-slate-500 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
-                      Choose from 50+ pre-built templates or create custom ones
+                      Choose from 50+ pre-built templates or create custom solutions
                     </p>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
+                <ArrowRight className="w-3 h-3 text-slate-500 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" />
               </div>
             </motion.div>
           </div>
@@ -1510,7 +1709,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-800 text-slate-900 dark:text-white relative overflow-hidden">
+    <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white relative">
       {/* Sophisticated background gradient that flows throughout */}
       <div className="fixed inset-0 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 pointer-events-none" />
       
@@ -1529,9 +1728,9 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-20 overflow-hidden">
         {/* Sophisticated Hero Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
+        <div className="absolute inset-0 bg-white" />
         
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-30 dark:opacity-20">
@@ -1616,25 +1815,25 @@ const Homepage = () => {
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-8"
+                className="text-5xl md:text-[3.5rem] lg:text-[3.5rem] font-bold text-slate-900 mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                Next-Generation<br />
-                <span className="text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500 bg-clip-text">
-                  AI Infrastructure<br />For Healthcare
+                Your Clinical Workflows,<br />
+                <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
+                  Transformed with AI
                 </span>
               </motion.h1>
               
               {/* Enhanced Subtitle */}
               <motion.p 
-                className="text-xl text-slate-600 dark:text-slate-300 chartr-body leading-relaxed max-w-2xl mb-12"
+                className="text-xl text-slate-800 font-medium leading-relaxed max-w-2xl mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Leverage unstructured clinical data, build AI-powered solutions, and deploy AI-integrated clinical workflows — all on one no-code platform.
+                Leverage clinical data, build AI-powered solutions, and deploy AI-integrated clinical workflows — all on one no-code platform.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -1645,8 +1844,9 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link href="/contact?tab=demo">
-                  <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white chartr-body-medium rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Book a Demo
+                  <button className="group px-8 py-4 bg-white border-2 border-indigo-600 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center space-x-2">
+                    <span>Schedule a Demo</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </motion.div>
@@ -1657,13 +1857,13 @@ const Homepage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-6 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
             >
               {/* Background color bar on the right */}
               <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-100/50 to-transparent dark:from-slate-900/50 pointer-events-none"></div>
               
               {/* Constrained graphic container */}
-              <div className="relative z-10 max-w-4xl">
+              <div className="relative z-10 max-w-2xl">
                 <ChartrOSControlCenter />
               </div>
             </motion.div>
@@ -1672,7 +1872,7 @@ const Homepage = () => {
       </section>
 
       {/* Introducing ChartrOS - Full-Width Accent Section */}
-      <section className="pt-12 pb-24 relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <section className="pt-20 pb-20 relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -1716,7 +1916,7 @@ const Homepage = () => {
 
           {/* Platform Architecture - Floating Design */}
           <motion.div 
-            className="relative max-w-5xl mx-auto mb-20"
+            className="relative max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -2019,39 +2219,40 @@ const Homepage = () => {
       </section>
 
       {/* Modular AI Infrastructure - Asymmetric Layout */}
-      <section className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-6 gap-12 items-center">
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+        <div className="w-full px-4 sm:px-4 lg:px-12">
+          <div className="grid lg:grid-cols-7 gap-8 items-center">
             {/* Left: Content - More Compact */}
             <motion.div
-              className="lg:col-span-2"
+              className="lg:col-span-3"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
-                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">Inside</span><br/>ChartrOS
+              <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">
+                Experience
+                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text"> ChartrOS</span>
               </h2>
               
-              <p className="text-base text-slate-600 dark:text-slate-300 mb-6 chartr-body">
-                Deploy AI intelligence without disrupting operations.
+              <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
+                Leverage AI intelligence for your existing clinical workflows.
               </p>
 
               {/* Feature List - Compact */}
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <motion.div 
                   className="group"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Healthcare Standards</h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Healthcare Standards</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         HIPAA-ready and continuously improving.
                       </p>
                     </div>
@@ -2064,13 +2265,13 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Seamlessly Compatible</h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Seamlessly Compatible</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         Integrates with your EMR and existing AI stack.
                       </p>
                     </div>
@@ -2083,13 +2284,13 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Intelligent Retrieval</h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Intelligent Retrieval</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         Proprietary, clinically-grounded retrieval layer.
                       </p>
                     </div>
@@ -2102,13 +2303,13 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Human-Validated</h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Human-Validated</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         Clinician review in every critical step.
                       </p>
                     </div>
@@ -2121,13 +2322,13 @@ const Homepage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <div className="flex items-start space-x-2">
-                    <div className="w-6 h-6 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Infrastructure</h3>
-                      <p className="text-xs text-slate-600 dark:text-slate-400 chartr-body">
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Infrastructure</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         Power diverse teams and tools on single platform.
                       </p>
                     </div>
@@ -2136,14 +2337,18 @@ const Homepage = () => {
               </div>
 
               {/* CTA Button - Compact */}
-              <div className="mt-6">
+              <div className="mt-8">
                 <Link href="/contact">
                   <motion.button 
-                    className="px-4 py-2 bg-gradient-to-r from-emerald-500 to-blue-500 text-white text-sm font-semibold rounded-lg hover:from-emerald-600 hover:to-blue-600 transition-all"
+                    className="group px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 relative overflow-hidden"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Request Demo
+                    <span className="relative z-10 flex items-center space-x-2">
+                      <span>Learn More</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </motion.button>
                 </Link>
               </div>
@@ -2156,266 +2361,363 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <PreOperativeRiskDemo />
+              <div className="max-w-none">
+                <PreOperativeRiskDemo />
+              </div>
             </motion.div>
-                      </div>
-                    </div>
+          </div>
+        </div>
       </section>
 
       {/* How We Are Different Section */}
-      <section className="py-24 relative overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-850 dark:to-slate-900">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-10 dark:opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.2) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-                  </div>
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+        {/* Geometric Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Large Decorative Circle - Top Right */}
+          <motion.div
+            className="absolute -top-32 -right-32 w-96 h-96 rounded-full border-2 border-emerald-500/20 dark:border-emerald-400/20"
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {/* Inner geometric pattern */}
+            <div className="absolute inset-8 rounded-full bg-gradient-to-br from-emerald-500/5 to-cyan-500/10 dark:from-emerald-400/5 dark:to-cyan-400/10">
+              {/* Hexagon pattern inside */}
+              <div className="absolute inset-0 rounded-full">
+                <svg className="w-full h-full" viewBox="0 0 100 100">
+                  <defs>
+                    <pattern id="hexPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <polygon 
+                        points="10,2 18,7 18,13 10,18 2,13 2,7" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.5"
+                        className="text-emerald-500/30 dark:text-emerald-400/30"
+                      />
+                    </pattern>
+                  </defs>
+                  <circle cx="50" cy="50" r="45" fill="url(#hexPattern)" />
+                </svg>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Medium Decorative Circle - Bottom Left */}
+          <motion.div
+            className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full border border-cyan-500/15 dark:border-cyan-400/15"
+            animate={{
+              rotate: [0, -360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/8 dark:from-cyan-400/5 dark:to-blue-400/8">
+              {/* Triangle pattern inside */}
+              <div className="absolute inset-0 rounded-full">
+                <svg className="w-full h-full" viewBox="0 0 100 100">
+                  <defs>
+                    <pattern id="trianglePattern" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+                      <polygon 
+                        points="7.5,2 13,11 2,11" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.5"
+                        className="text-cyan-500/25 dark:text-cyan-400/25"
+                      />
+                    </pattern>
+                  </defs>
+                  <circle cx="50" cy="50" r="45" fill="url(#trianglePattern)" />
+                </svg>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Floating Geometric Shapes */}
+          <motion.div
+            className="absolute top-20 right-1/4 w-8 h-8 border border-emerald-500/30 dark:border-emerald-400/30 rotate-45"
+            animate={{
+              y: [0, -10, 0],
+              rotate: [45, 90, 45],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          
+          <motion.div
+            className="absolute bottom-32 right-1/3 w-6 h-6 rounded-full border border-cyan-500/40 dark:border-cyan-400/40"
+            animate={{
+              y: [0, 8, 0],
+              x: [0, -5, 0],
+              opacity: [0.4, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+
+          <motion.div
+            className="absolute top-1/3 left-1/4 w-10 h-10 border border-blue-500/25 dark:border-blue-400/25"
+            style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
+            animate={{
+              y: [0, -8, 0],
+              rotate: [0, 15, 0],
+              opacity: [0.25, 0.6, 0.25],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.01]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(90deg, currentColor 1px, transparent 1px), linear-gradient(currentColor 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+          </div>
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
+          {/* Section Header - More refined */}
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            {/* Small accent badge */}
             <motion.div 
-              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-400/20 rounded-full px-6 py-3 mb-8"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              className="inline-flex items-center space-x-2 text-sm font-medium text-slate-600 dark:text-slate-400 mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-blue-300 uppercase tracking-wider">Why ChartrOS</span>
+              <div className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700"></div>
+              <span className="tracking-widest text-xs">Why ChartrOS</span>
+              <div className="w-12 h-[1px] bg-slate-300 dark:bg-slate-700"></div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">
               How We Are
-              <span className="text-transparent bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text"> Different</span>
+              <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text"> Different</span>
             </h2>
             
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto chartr-body leading-relaxed">
               Purpose-built for healthcare's unique challenges, ChartrOS goes beyond traditional AI solutions
             </p>
           </motion.div>
 
-          {/* Key Differentiators Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Key Differentiators Grid - Clean, professional design */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* 1. No-Code, Seamless Integration */}
-                    <motion.div 
+            <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Layers className="w-7 h-7 text-cyan-400" />
-                      </div>
-                      
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <Layers className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
+                
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Build AI workflows using clinical templates</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Build AI workflows using clinical templates</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Drag-and-drop configuration, no coding required</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Drag-and-drop configuration, no coding required</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Seamless and immediate EMR integration</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Seamless and immediate EMR integration</span>
                   </li>
                 </ul>
-                      </div>
-                    </motion.div>
+              </div>
+            </motion.div>
 
             {/* 2. Clinical Retrieval Layer */}
-                    <motion.div 
+            <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl blur-xl group-hover:from-emerald-500/20 group-hover:to-teal-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-emerald-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Target className="w-7 h-7 text-emerald-400" />
-                          </div>
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <Target className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Best-in-Class Clinical Retrieval</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Identify the most relevant clinical notes for decision-making</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify the most relevant clinical notes for decision-making</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Prevent false negatives with Smart Review</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Prevent false negatives with Smart Review</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Validate results in real time for confident decisions</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Validate results in real time for confident decisions</span>
                   </li>
                 </ul>
-                          </div>
+              </div>
             </motion.div>
 
             {/* 3. Flexible Deployment */}
-                          <motion.div
+            <motion.div
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl blur-xl group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-purple-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Network className="w-7 h-7 text-purple-400" />
-                      </div>
-                      
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <Network className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
+                
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No Vendor Lock-In</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Compatible with existing AI abstraction tools</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Compatible with existing AI abstraction tools</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Modular, API-first design for easy integration</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Modular, API-first design for easy integration</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Use as a full platform or standalone modules</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Use as a full platform or standalone modules</span>
                   </li>
                 </ul>
-                        </div>
+              </div>
             </motion.div>
 
             {/* 4. Bring Your Own AI */}
-                          <motion.div 
+            <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-2xl blur-xl group-hover:from-amber-500/20 group-hover:to-orange-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-amber-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Cpu className="w-7 h-7 text-amber-400" />
-                        </div>
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <Cpu className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Your AI, Your Way</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Deploy custom ML models or pre-built solutions</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deploy custom ML models or pre-built solutions</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Model-agnostic platform works with your stack</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Model-agnostic platform works with your stack</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Flexible AI deployment options</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Flexible AI deployment options</span>
                   </li>
                 </ul>
-                      </div>
-                    </motion.div>
+              </div>
+            </motion.div>
 
             {/* 5. Continuous Learning */}
-                    <motion.div 
+            <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 rounded-2xl blur-xl group-hover:from-indigo-500/20 group-hover:to-blue-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <TrendingUp className="w-7 h-7 text-indigo-400" />
-                      </div>
-                      
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <TrendingUp className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
+                
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Automated RLHF</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Continuously improve models with human feedback</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Continuously improve models with human feedback</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Automated training pipeline for real-time updates</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Automated training pipeline for real-time updates</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Human-in-the-loop validation ensures accuracy</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Human-in-the-loop validation ensures accuracy</span>
                   </li>
                 </ul>
-                      </div>
-                    </motion.div>
+              </div>
+            </motion.div>
 
             {/* 6. Smart Review */}
-                  <motion.div 
+            <motion.div 
               className="group relative"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl blur-xl group-hover:from-teal-500/20 group-hover:to-cyan-500/20 transition-all duration-300"></div>
-              <div className="relative bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 hover:border-teal-500/50 transition-all duration-300 h-full shadow-lg">
-                <div className="w-14 h-14 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <Users className="w-7 h-7 text-teal-400" />
-                        </div>
+              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
+                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
+                  <Users className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
+                </div>
                 
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Collaboration</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Route critical outputs to human reviewers</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Route critical outputs to human reviewers</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Built-in quality assurance checks</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Built-in quality assurance checks</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Maintain a full audit trail for compliance</span>
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Maintain a full audit trail for compliance</span>
                   </li>
                 </ul>
-                    </div>
-                  </motion.div>
-                </div>
+              </div>
+            </motion.div>
+          </div>
 
-          {/* Bottom CTA */}
-            <motion.div
-            className="text-center mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
-              Ready to experience the ChartrOS difference?
-            </p>
-            <Link href="/contact?tab=demo">
-              <motion.button 
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                See ChartrOS in Action
-              </motion.button>
-            </Link>
-          </motion.div>
+
         </div>
       </section>
 
@@ -2423,32 +2725,150 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden bg-gradient-to-br from-indigo-500/5 to-purple-500/5 dark:bg-slate-900">
-        {/* Subtle diagonal gradient transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-100/30 to-blue-200/60 dark:via-slate-900/50 dark:to-slate-850/80" />
-        {/* Subtle vertical ombre overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-indigo-100/10 to-purple-200/10 pointer-events-none" />
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+        {/* Enhanced Background Elements */}
+        <div className="absolute inset-0">
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/30 to-slate-100/40 dark:from-transparent dark:via-slate-900/30 dark:to-slate-800/40" />
+          
+          {/* Grid pattern */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+          </div>
+        </div>
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-                          className="space-y-4"
+            className="space-y-12"
           >
-
-            
-
-            
-            
+            {/* Main Heading with Enhanced Typography */}
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+                Ready to{' '}
+                <motion.span 
+                  className="relative inline-block"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <span className="text-transparent bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 dark:from-emerald-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text">
+                    transform
+                  </span>
+                  {/* Highlight effect on hover */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 rounded-lg blur-sm -z-10"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ opacity: 1, scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </motion.span>
+                {' '}your clinical workflows?
+              </h2>
+              
+              {/* CTA Button with Enhanced Design */}
+              <div className="flex justify-center">
+                <Link href="/contact">
+                  <motion.button 
+                    className="group px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden text-lg border-2 border-transparent hover:border-white/20"
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span className="relative z-10 flex items-center space-x-2">
+                      <span>See ChartR in Action</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Shimmer effect */}
+                    <div className="absolute inset-0 -top-2 -left-2 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-12 transform translate-x-full group-hover:translate-x-[-200%] transition-transform duration-700" />
+                  </motion.button>
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </div>
         
-        {/* Subtle Floating Elements */}
-        <div className="absolute top-20 left-20 w-3 h-3 bg-slate-400/20 rounded-full" />
-        <div className="absolute bottom-32 right-32 w-4 h-4 bg-slate-500/20 rounded-full" />
-        <div className="absolute top-1/2 left-16 w-2 h-2 bg-slate-400/20 rounded-full" />
+        {/* Enhanced Decorative Elements */}
+        <div className="absolute top-1/4 left-10 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        
+        {/* Floating icons */}
+        <motion.div 
+          className="absolute top-20 left-20 w-8 h-8 text-emerald-400/30"
+          animate={{ 
+            y: [0, -10, 0],
+            rotate: [0, 5, -5, 0]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Zap className="w-full h-full" />
+        </motion.div>
+        
+        <motion.div 
+          className="absolute bottom-20 right-20 w-6 h-6 text-cyan-400/30"
+          animate={{ 
+            y: [0, 10, 0],
+            rotate: [0, -5, 5, 0]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        >
+          <Shield className="w-full h-full" />
+        </motion.div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-100 dark:bg-slate-900 border-t-2 border-slate-300 dark:border-slate-700 relative z-10">
+        <div className="w-full px-4 sm:px-4 lg:px-12 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
+            {/* Left: Logo and Copyright */}
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-center space-x-3">
+                <img src="/logo.svg" alt="ChartR" className="h-8 w-8" />
+                <span className="text-xl font-semibold text-slate-900 dark:text-white">ChartR</span>
+              </div>
+              <p className="text-sm text-slate-600 dark:text-slate-400">
+                © 2025 ChartR Health Inc.
+              </p>
+            </div>
+
+            {/* Right: Address and LinkedIn */}
+            <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+              <div className="text-sm text-slate-600 dark:text-slate-400 text-left md:text-right">
+                251 Little Falls Drive<br />
+                Wilmington, DE 19808
+              </div>
+              
+              {/* LinkedIn Link */}
+              <a
+                href="https://www.linkedin.com/company/chartr-health"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span className="text-sm font-medium">LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
