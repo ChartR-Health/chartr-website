@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Brain, Users, CheckCircle, AlertTriangle, Cpu, Target, Shield, Zap, Eye, Edit, X, FileText, Loader2 } from 'lucide-react'
+import { Brain, Users, CheckCircle, AlertTriangle, Cpu, Target, Shield, Zap, Eye, Edit, X, FileText, Loader2, Database, Search, Calculator, UserCheck } from 'lucide-react'
 
 const extractedVariables = [
   { 
@@ -47,12 +47,12 @@ export default function DataExtractionDemo() {
   const [editValue, setEditValue] = useState('')
 
   const processingSteps = [
-    { label: "Connecting to EMR...", icon: Cpu, color: "text-blue-500" },
-    { label: "Retrieving notes with ChartrOS...", icon: FileText, color: "text-indigo-500" },
+    { label: "Connecting to EMR...", icon: Database, color: "text-blue-500" },
+    { label: "Retrieving notes with ChartrOS...", icon: Search, color: "text-indigo-500" },
     { label: "Analyzing Clinical Notes...", icon: Brain, color: "text-purple-500" },
     { label: "Extracting Variables...", icon: Target, color: "text-cyan-500" },
-    { label: "Calculating Confidence...", icon: Shield, color: "text-emerald-500" },
-    { label: "Human Validation...", icon: Users, color: "text-amber-500" }
+    { label: "Calculating Confidence...", icon: Calculator, color: "text-emerald-500" },
+    { label: "Human Validation...", icon: UserCheck, color: "text-amber-500" }
   ]
 
 
@@ -327,7 +327,7 @@ FINDINGS:
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* AI Processing Panel */}
           <motion.div 
             className="relative"
@@ -335,72 +335,65 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full max-h-[610px] flex flex-col">
-              {/* Header */}
-              <div className="flex items-center space-x-3 p-4 border-b border-slate-200/50 dark:border-slate-700/50 flex-shrink-0">
-                <div className="p-2 bg-cyan-600/20 rounded-lg">
-                  <Brain className="w-5 h-5 text-cyan-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Clinical Retrieval Workflow</h3>
-                </div>
-              </div>
-              
-              {/* Processing Steps */}
-              <div className="p-4 space-y-4 overflow-y-auto flex-1 scrollbar-hide">
-                <div className="space-y-3">
-                  {processingSteps.map((step, index) => {
-                    const Icon = step.icon
-                    const isHumanValidation = index === processingSteps.length - 1
-                    const isCompleted = !isHumanValidation
-                    const allConfirmed = areAllVariablesConfirmed()
-                    
-                    return (
-                      <div
-                        key={index}
-                        className={`flex items-center space-x-3 p-2 rounded-lg transition-all duration-500 border ${
-                          isCompleted || isHumanValidation
-                            ? 'bg-slate-200/50 dark:bg-slate-700/50 border-slate-300/30 dark:border-slate-500/30' 
-                            : 'bg-slate-100/50 dark:bg-slate-800/50 border-slate-200/30 dark:border-slate-600/30'
-                        }`}
-                      >
-                        <div className={`p-2 rounded-lg ${
-                          isCompleted || isHumanValidation ? 'bg-cyan-500/25 dark:bg-cyan-500/20' : 'bg-slate-700/30'
-                        }`}>
-                          {isCompleted ? (
-                            <CheckCircle className="w-4 h-4 text-cyan-400" />
-                          ) : isHumanValidation ? (
-                            allConfirmed ? (
-                              <CheckCircle className="w-4 h-4 text-cyan-400" />
-                            ) : (
-                              <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                              >
-                                <Loader2 className="w-4 h-4 text-blue-400" />
-                              </motion.div>
-                            )
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Clinical Retrieval Workflow</h3>
+              <div className="w-16 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+            
+            {/* Processing Steps */}
+            <div className="space-y-3">
+                {processingSteps.map((step, index) => {
+                  const Icon = step.icon
+                  const isHumanValidation = index === processingSteps.length - 1
+                  const isCompleted = !isHumanValidation
+                  const allConfirmed = areAllVariablesConfirmed()
+                  
+                  return (
+                    <div
+                      key={index}
+                      className={`flex items-center space-x-3 p-3 rounded-lg transition-all duration-500 ${
+                        isCompleted || isHumanValidation
+                          ? 'bg-slate-100/50 dark:bg-slate-700/30' 
+                          : 'bg-slate-50/50 dark:bg-slate-800/30'
+                      }`}
+                    >
+                      <div className={`p-2 rounded-lg ${
+                        isCompleted || isHumanValidation ? 'bg-emerald-500/20' : 'bg-slate-200/50 dark:bg-slate-600/50'
+                      }`}>
+                        {isCompleted ? (
+                          <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                        ) : isHumanValidation ? (
+                          allConfirmed ? (
+                            <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                           ) : (
-                            <Icon className="w-4 h-4 text-slate-400 group-hover:text-blue-300 transition-colors" />
-                          )}
-                        </div>
-                        <span className={`text-sm font-medium ${
-                          isCompleted || isHumanValidation ? 'text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400'
-                        }`}>
-                          {step.label}
-                        </span>
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                            >
+                              <Loader2 className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                            </motion.div>
+                          )
+                        ) : (
+                          <Icon className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+                        )}
                       </div>
-                    )
-                  })}
-                </div>
+                      <span className={`text-sm font-medium ${
+                        isCompleted || isHumanValidation ? 'text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400'
+                      }`}>
+                        {step.label}
+                      </span>
+                    </div>
+                  )
+                })}
                 
                 {/* Progress Bar */}
-                <div className="mt-4">
+                <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-800/30 rounded-lg">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-slate-600 dark:text-slate-400">Overall Progress</span>
                     <span className="text-sm font-medium text-slate-900 dark:text-white">{progress}%</span>
                   </div>
-                  <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
+                  <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                     <motion.div 
                       className={`h-full rounded-full transition-all duration-500 ${
                         progress === 100 
@@ -414,8 +407,7 @@ FINDINGS:
                   </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
           {/* Smart Review Panel */}
           <motion.div 
@@ -424,19 +416,21 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full flex flex-col">
-              {/* Header */}
-              <div className="flex items-center space-x-3 p-4 border-b border-slate-200/50 dark:border-slate-700/50 flex-shrink-0">
-                <div className="p-2 bg-cyan-600/20 rounded-lg">
-                  <Users className="w-5 h-5 text-cyan-600" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">ChartR Smart Review</h3>
-                </div>
+            {/* Header */}
+            <div className="text-center mb-6">
+              <div className="flex items-center justify-center space-x-2 mb-2">
+                <img 
+                  src="/logo.png" 
+                  alt="ChartR Logo" 
+                  className="w-5 h-5 object-contain"
+                />
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white">Smart Review</h3>
               </div>
-              
-              {/* Review Results */}
-              <div className="p-4 space-y-2">
+              <div className="w-16 h-0.5 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto rounded-full"></div>
+            </div>
+            
+            {/* Review Results */}
+            <div className="space-y-3">
                 <AnimatePresence>
                   {extractedVariables.map((variable, index) => {
                     const state = getVariableState(variable.name)
@@ -449,13 +443,7 @@ FINDINGS:
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: (!isProcessing ? index * 0.1 : 0) }}
-                        className={`p-3 rounded-lg border transition-all duration-300 bg-white/80 dark:bg-slate-700/50 ${
-                          index === 0 || index === 2 || index === 3 
-                            ? 'border-[#F0B84B]/30' 
-                            : index === 1 
-                              ? 'border-[#28D0C7]/30' 
-                              : 'border-slate-300/30 dark:border-slate-600/30'
-                        }`}
+                        className={`p-3 rounded-lg border transition-all duration-300 bg-white/80 dark:bg-slate-700/50 border-slate-300/30 dark:border-slate-600/30`}
                       >
                                                 {index === 1 ? (
                           <>
@@ -481,9 +469,9 @@ FINDINGS:
                                   <span>View</span>
                                 </button>
                                 
-                                {(variable.requiresReview || isConfirmed) && (
+                                {(variable.requiresReview || isConfirmed || variable.status === 'validated') && (
                                   <>
-                                    {!isConfirmed && (
+                                    {!isConfirmed && variable.status !== 'validated' && (
                                       <button 
                                         onClick={() => handleConfirm(variable.name)}
                                         className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-300 hover:text-emerald-200 transition-colors"
@@ -503,7 +491,7 @@ FINDINGS:
                                 )}
                               </div>
                             </div>
-                            <div className="mt-3 text-xs text-[#3ED598] bg-[#3ED598]/10 p-2 rounded">
+                            <div className="mt-3 text-xs text-black bg-[#3ED598]/10 p-2 rounded">
                               Confirmed by Reviewer
                             </div>
                           </>
@@ -533,9 +521,9 @@ FINDINGS:
                                   <span>View</span>
                                 </button>
                                 
-                                {(variable.requiresReview || isConfirmed) && (
+                                {(variable.requiresReview || isConfirmed || variable.status === 'validated') && (
                                   <>
-                                    {!isConfirmed && (
+                                    {!isConfirmed && variable.status !== 'validated' && (
                                       <button 
                                         onClick={() => handleConfirm(variable.name)}
                                         className="flex items-center space-x-1 px-2 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 rounded text-xs text-emerald-700 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200 transition-colors"
@@ -556,7 +544,7 @@ FINDINGS:
                               </div>
                             </div>
                             {(isConfirmed || variable.status === 'validated') && (
-                              <div className="mt-3 text-xs text-[#3ED598] bg-[#3ED598]/10 p-2 rounded">
+                              <div className="mt-3 text-xs text-black bg-[#3ED598]/10 p-2 rounded">
                                 Confirmed by Reviewer
                               </div>
                             )}
@@ -564,7 +552,7 @@ FINDINGS:
                         )}
                         
                         {(variable.requiresReview && !isConfirmed) && (
-                          <div className="mt-3 text-xs text-[#F0B84B] bg-[#F0B84B]/10 p-2 rounded">
+                          <div className="mt-3 text-xs text-black bg-[#F0B84B]/10 p-2 rounded">
                             Requires clinical review for accuracy
                           </div>
                         )}
@@ -573,8 +561,7 @@ FINDINGS:
                   })}
                 </AnimatePresence>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
         </div>
       </div>
 

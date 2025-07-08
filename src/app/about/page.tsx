@@ -421,10 +421,10 @@ const AboutPage = () => {
                 {/* Very subtle pulsing glow effect */}
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.05, 1],
-                    opacity: [0.1, 0.2, 0.1]
+                    scale: [1, 1.02, 1],
+                    opacity: [0.1, 0.15, 0.1]
                   }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute w-36 h-36 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl"
                 />
               </div>
@@ -432,9 +432,9 @@ const AboutPage = () => {
               {/* Logo with enhanced styling */}
               <motion.div
                 animate={{ 
-                  y: [-1, 1, -1]
+                  y: [-0.5, 0.5, -0.5]
                 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10 p-4 rounded-full bg-gradient-to-br from-white/80 to-slate-100/80 backdrop-blur-sm border border-slate-200/30 shadow-xl"
               >
                 <img 
@@ -927,19 +927,19 @@ const AboutPage = () => {
             <motion.div
               animate={{ 
                 rotate: [0, 360],
-                scale: [1, 1.15, 1],
-                opacity: [0.25, 0.4, 0.25]
+                scale: [1, 1.08, 1],
+                opacity: [0.25, 0.35, 0.25]
               }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >
               {/* Subtle glow ring */}
               <motion.div
                 animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.1, 0.3, 0.1]
+                  scale: [1, 1.15, 1],
+                  opacity: [0.1, 0.2, 0.1]
                 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 w-28 h-28 -m-2 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-md"
               />
               

@@ -35,7 +35,6 @@ const HospitalsSolutionsPage = () => {
   const marketStats = [
     { stat: "94%", description: "Of healthcare companies use AI/ML" },
     { stat: "90%", description: "Reduction in manual reporting time" },
-    { stat: "18%", description: "Faster data processing speed" },
     { stat: "100%", description: "Compliance achievement rate" }
   ]
 
@@ -90,8 +89,7 @@ const HospitalsSolutionsPage = () => {
   const roi_metrics = [
     { metric: "$15M+", description: "Annual savings per facility" },
     { metric: "90%", description: "Reduction in manual reporting time" },
-    { metric: "100%", description: "Compliance achievement rate" },
-    { metric: "18%", description: "Faster data processing speed" }
+    { metric: "100%", description: "Compliance achievement rate" }
   ]
 
   return (
@@ -122,7 +120,7 @@ const HospitalsSolutionsPage = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
           >
             {marketStats.map((item, index) => (
               <div key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-center p-6 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300">

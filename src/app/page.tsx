@@ -4,7 +4,15 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings, ClipboardCheck, ExternalLink, Eye, Flag } from 'lucide-react'
+import { 
+  ArrowRight, BarChart3, Layers, Database, FileText, Building, 
+  GraduationCap, Building2, DollarSign, Clock, Shield, Zap, 
+  TrendingUp, Users, Target, Network, Cpu, Activity, Heart, 
+  Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, 
+  Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, 
+  X, Calculator, Droplet, Beaker, Settings, ClipboardCheck, 
+  ExternalLink, Eye, Flag 
+} from 'lucide-react'
 
 const Homepage = () => {
 
@@ -37,6 +45,7 @@ const Homepage = () => {
 
   const [validationNote, setValidationNote] = useState("Lab value confirmed - approved for registry submission");
   const [circleColor, setCircleColor] = useState("emerald");
+  const [selectedFeature, setSelectedFeature] = useState(0);
 
   const CombinedDataVisualization = () => {
     return (
@@ -54,14 +63,14 @@ const Homepage = () => {
             <motion.div
               className="relative w-24 h-24 bg-white/5 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20 shadow-2xl"
               animate={{ 
-                scale: [1, 1.02, 1],
+                scale: [1, 1.01, 1],
                 boxShadow: [
-                  "0 0 0 0 rgba(255, 255, 255, 0.1)",
-                  "0 0 0 8px rgba(255, 255, 255, 0)",
+                  "0 0 0 0 rgba(255, 255, 255, 0.05)",
+                  "0 0 0 4px rgba(255, 255, 255, 0)",
                   "0 0 0 0 rgba(255, 255, 255, 0)"
                 ]
               }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <img 
                 src="/logo.svg" 
@@ -526,11 +535,29 @@ const Homepage = () => {
                         <div className="bg-blue-500/20 rounded px-2 py-1 border border-blue-400/30">
                           <div className="text-blue-200 text-xs font-medium">BP: 142/88 mmHg</div>
                         </div>
+                                            </div>
+                    </div>
+                  </div>
+                  
+                  {/* Color Legend - Subtle */}
+                  <div className="mt-3 pt-3 border-t border-slate-200/50 dark:border-slate-600/30">
+                    <div className="flex items-center justify-center space-x-4 text-[9px]">
+                      <div className="flex items-center space-x-1">
+                        <div className="w-2 h-2 bg-emerald-300/70 dark:bg-emerald-700/50 rounded"></div>
+                        <span className="text-slate-600 dark:text-slate-400">Procedures</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="w-2 h-2 bg-amber-300/70 dark:bg-amber-700/50 rounded"></div>
+                        <span className="text-slate-600 dark:text-slate-400">Conditions</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="w-2 h-2 bg-blue-300/70 dark:bg-blue-700/50 rounded"></div>
+                        <span className="text-slate-600 dark:text-slate-400">Measurements</span>
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
-            </div>
 
               {/* ASCVD Risk Calculator Module */}
               <div className="flex flex-col relative">
@@ -777,18 +804,18 @@ const Homepage = () => {
               <motion.div
                 className="relative flex flex-col items-center"
                 animate={{ 
-                  scale: isStructured ? [1, 1.15, 1.05] : 1
+                  scale: isStructured ? [1, 1.08, 1.03] : 1
                 }}
-                transition={{ duration: 2.5, ease: "easeInOut" }}
+                transition={{ duration: 3, ease: "easeInOut" }}
               >
                 {/* Animated background glow */}
                 <motion.div 
                   className="absolute -inset-8 bg-gradient-to-r from-blue-500/40 via-purple-500/40 to-teal-500/40 rounded-full blur-2xl"
                   animate={{ 
-                    opacity: isStructured ? [0.6, 1, 0.8] : 0.3,
-                    scale: isStructured ? [1, 1.2, 1.1] : 1
+                    opacity: isStructured ? [0.6, 0.9, 0.7] : 0.3,
+                    scale: isStructured ? [1, 1.1, 1.05] : 1
                   }}
-                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                  transition={{ duration: 3, ease: "easeInOut" }}
                 />
                 
                 <motion.img 
@@ -796,13 +823,13 @@ const Homepage = () => {
                   alt="ChartR Logo" 
                   className="w-16 h-16 sm:w-20 sm:h-20 mb-2"
                   animate={{
-                    scale: isStructured ? [1, 1.1, 1.05] : 1,
+                    scale: isStructured ? [1, 1.05, 1.02] : 1,
                     filter: isStructured ? 
-                      ['brightness(1)', 'brightness(1.4)', 'brightness(1.2)', 'brightness(1)'] : 
+                      ['brightness(1)', 'brightness(1.2)', 'brightness(1.1)', 'brightness(1)'] : 
                       'brightness(1)',
-                    opacity: isStructured ? [1, 0.8, 1, 0.9, 1] : 1
+                    opacity: isStructured ? [1, 0.9, 1, 0.95, 1] : 1
                   }}
-                  transition={{ duration: 2.5, ease: "easeInOut" }}
+                  transition={{ duration: 3, ease: "easeInOut" }}
                 />
                 
                 {/* Removed ChartR AI Layer Text */}
@@ -855,6 +882,28 @@ const Homepage = () => {
     const [showBuildModuleModal, setShowBuildModuleModal] = useState(false);
     const moduleSelectorRef = useRef<HTMLDivElement>(null);
     const workflowSettingsRef = useRef<HTMLDivElement>(null);
+    
+    const iconColorMap = {
+      rose: 'bg-rose-100 dark:bg-rose-900/30',
+      blue: 'bg-blue-100 dark:bg-blue-900/30',
+      purple: 'bg-purple-100 dark:bg-purple-900/30',
+      amber: 'bg-amber-100 dark:bg-amber-900/30',
+      red: 'bg-red-100 dark:bg-red-900/30',
+      cyan: 'bg-cyan-100 dark:bg-cyan-900/30',
+      emerald: 'bg-emerald-100 dark:bg-emerald-900/30',
+      orange: 'bg-orange-100 dark:bg-orange-900/30'
+    };
+    
+    const textColorMap = {
+      rose: 'text-rose-700 dark:text-rose-400',
+      blue: 'text-blue-700 dark:text-blue-400',
+      purple: 'text-purple-700 dark:text-purple-400',
+      amber: 'text-amber-700 dark:text-amber-400',
+      red: 'text-red-700 dark:text-red-400',
+      cyan: 'text-cyan-700 dark:text-cyan-400',
+      emerald: 'text-emerald-700 dark:text-emerald-400',
+      orange: 'text-orange-700 dark:text-orange-400'
+    };
     
     const availableModules = [
       { id: 'cardiac', name: 'Cardiac Risk', icon: Heart, color: 'rose' },
@@ -949,7 +998,7 @@ const Homepage = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => setShowWorkflowSettings(!showWorkflowSettings)}
-                  className="flex items-center space-x-1 px-2 py-1 bg-violet-500/20 hover:bg-violet-500/30 text-violet-700 dark:text-violet-300 text-xs rounded-md border border-violet-400/30 transition-all"
+                  className="flex items-center space-x-1 px-2 py-1 bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 dark:bg-slate-700/50 dark:hover:bg-slate-600/50 dark:text-slate-300 text-xs rounded-md border border-slate-300/50 dark:border-slate-600/50 transition-all"
                 >
                   <Settings className="w-3 h-3" />
                   <span>Workflow Settings</span>
@@ -1022,8 +1071,8 @@ const Homepage = () => {
                     }}
                     className="w-full flex items-center space-x-3 p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
                   >
-                    <div className={`w-8 h-8 bg-${module.color}-500/20 rounded-lg flex items-center justify-center`}>
-                      <module.icon className={`w-4 h-4 text-${module.color}-700 dark:text-${module.color}-400`} />
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${iconColorMap[module.color as keyof typeof iconColorMap]}`}>
+                      <module.icon className={`w-4 h-4 ${textColorMap[module.color as keyof typeof textColorMap]}`} />
                     </div>
                     <div className="text-left">
                       <div className="text-sm font-medium text-slate-900 dark:text-white">{module.name}</div>
@@ -1060,10 +1109,10 @@ const Homepage = () => {
                   <div className="mb-2 pb-2 border-b border-slate-200/50 dark:border-slate-600/30">
                     <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">Surgical Consultation</p>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1 py-0.5 rounded text-[10px] font-medium">Laparoscopic Gastrectomy</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Procedure:</span> <span className="bg-emerald-100/70 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-300 px-1 py-0.5 rounded text-[10px] font-medium">Laparoscopic Gastrectomy</span>
                     </p>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">DM Type 2</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">PMH:</span> <span className="bg-amber-100/70 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300 px-1 py-0.5 rounded text-[10px] font-medium">CAD</span>, <span className="bg-amber-100/70 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300 px-1 py-0.5 rounded text-[10px] font-medium">COPD</span>, <span className="bg-amber-100/70 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300 px-1 py-0.5 rounded text-[10px] font-medium">DM Type 2</span>
                     </p>
                     <div className="space-y-0.5 mt-1">
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-3/4"></div>
@@ -1077,7 +1126,7 @@ const Homepage = () => {
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-5/6"></div>
                     </div>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1 py-0.5 rounded text-[10px] font-medium">METs &lt;4</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Functional Status:</span> <span className="bg-blue-100/70 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-1 py-0.5 rounded text-[10px] font-medium">METs &lt;4</span>
                     </p>
                     <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                   </div>
@@ -1087,13 +1136,13 @@ const Homepage = () => {
                     <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">EMR Labs (03/14/24)</p>
                     <div className="space-y-0.5 text-[9px]">
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
-                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">Creatinine 1.8 mg/dL</span></p>
-                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">Hemoglobin 10.2 g/dL</span></p>
+                      <p><span className="bg-blue-100/70 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-1 py-0.5 rounded text-[10px] font-medium">Creatinine 1.8 mg/dL</span></p>
+                      <p><span className="bg-blue-100/70 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-1 py-0.5 rounded text-[10px] font-medium">Hemoglobin 10.2 g/dL</span></p>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
-                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">HbA1c 8.4%</span></p>
+                      <p><span className="bg-blue-100/70 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-1 py-0.5 rounded text-[10px] font-medium">HbA1c 8.4%</span></p>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
-                      <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">BNP 342 pg/mL</span></p>
+                      <p><span className="bg-blue-100/70 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 px-1 py-0.5 rounded text-[10px] font-medium">BNP 342 pg/mL</span></p>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-4/5"></div>
                     </div>
                   </div>
@@ -1118,13 +1167,13 @@ const Homepage = () => {
                     <div>
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Surgical Factors</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
-                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">Non-cardiac Surgery</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
+                        <div className="flex justify-between items-center bg-emerald-50/70 dark:bg-emerald-900/10 rounded px-2 py-1 border border-emerald-300/50 dark:border-emerald-700/30">
+                          <span className="text-emerald-800 dark:text-emerald-300 text-[10px] font-medium">Non-cardiac Surgery</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-emerald-700 dark:text-emerald-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
-                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">ASA Class III</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
+                        <div className="flex justify-between items-center bg-emerald-50/70 dark:bg-emerald-900/10 rounded px-2 py-1 border border-emerald-300/50 dark:border-emerald-700/30">
+                          <span className="text-emerald-800 dark:text-emerald-300 text-[10px] font-medium">ASA Class III</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-emerald-700 dark:text-emerald-400" />
                         </div>
                       </div>
                     </div>
@@ -1133,21 +1182,21 @@ const Homepage = () => {
                     <div>
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Risk Factors</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
-                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Ischemic Heart Disease</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        <div className="flex justify-between items-center bg-amber-50/70 dark:bg-amber-900/10 rounded px-2 py-1 border border-amber-300/50 dark:border-amber-700/30">
+                          <span className="text-amber-800 dark:text-amber-300 text-[10px] font-medium">Ischemic Heart Disease</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-700 dark:text-amber-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
-                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Insulin-dependent DM</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        <div className="flex justify-between items-center bg-amber-50/70 dark:bg-amber-900/10 rounded px-2 py-1 border border-amber-300/50 dark:border-amber-700/30">
+                          <span className="text-amber-800 dark:text-amber-300 text-[10px] font-medium">Insulin-dependent DM</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-700 dark:text-amber-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
-                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">COPD (Active)</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        <div className="flex justify-between items-center bg-amber-50/70 dark:bg-amber-900/10 rounded px-2 py-1 border border-amber-300/50 dark:border-amber-700/30">
+                          <span className="text-amber-800 dark:text-amber-300 text-[10px] font-medium">COPD (Active)</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-700 dark:text-amber-400" />
                         </div>
-                        <div className="flex justify-between items-center bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 border border-amber-200 dark:border-amber-800/50">
-                          <span className="text-amber-900 dark:text-amber-200 text-[10px] font-medium">Chronic Kidney Disease</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400" />
+                        <div className="flex justify-between items-center bg-amber-50/70 dark:bg-amber-900/10 rounded px-2 py-1 border border-amber-300/50 dark:border-amber-700/30">
+                          <span className="text-amber-800 dark:text-amber-300 text-[10px] font-medium">Chronic Kidney Disease</span>
+                          <CheckCircle className="w-2.5 h-2.5 text-amber-700 dark:text-amber-400" />
                         </div>
                       </div>
                     </div>
@@ -1156,9 +1205,9 @@ const Homepage = () => {
                     <div>
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Functional Status</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 rounded px-2 py-0.5 border border-blue-200 dark:border-blue-800/50">
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px]">Mobility</span>
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px] font-medium">Limited</span>
+                        <div className="flex justify-between items-center bg-blue-50/70 dark:bg-blue-900/10 rounded px-2 py-0.5 border border-blue-300/50 dark:border-blue-700/30">
+                          <span className="text-blue-800 dark:text-blue-300 text-[10px]">Mobility</span>
+                          <span className="text-blue-800 dark:text-blue-300 text-[10px] font-medium">Limited</span>
                         </div>
                       </div>
                     </div>
@@ -1167,13 +1216,13 @@ const Homepage = () => {
                     <div>
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Lab Abnormalities</h5>
                       <div className="space-y-1">
-                        <div className="flex justify-between items-center bg-rose-50 dark:bg-rose-900/20 rounded px-2 py-0.5 border border-rose-200 dark:border-rose-800/50">
-                          <span className="text-rose-900 dark:text-rose-200 text-[10px]">Renal Function</span>
-                          <span className="text-rose-900 dark:text-rose-200 text-[10px] font-medium">Impaired</span>
+                        <div className="flex justify-between items-center bg-rose-50/70 dark:bg-rose-900/10 rounded px-2 py-0.5 border border-rose-300/50 dark:border-rose-700/30">
+                          <span className="text-rose-800 dark:text-rose-300 text-[10px]">Renal Function</span>
+                          <span className="text-rose-800 dark:text-rose-300 text-[10px] font-medium">Impaired</span>
                         </div>
-                        <div className="flex justify-between items-center bg-orange-50 dark:bg-orange-900/20 rounded px-2 py-0.5 border border-orange-200 dark:border-orange-800/50">
-                          <span className="text-orange-900 dark:text-orange-200 text-[10px]">Anemia</span>
-                          <span className="text-orange-900 dark:text-orange-200 text-[10px] font-medium">Moderate</span>
+                        <div className="flex justify-between items-center bg-blue-50/70 dark:bg-blue-900/10 rounded px-2 py-0.5 border border-blue-300/50 dark:border-blue-700/30">
+                          <span className="text-blue-800 dark:text-blue-300 text-[10px]">Anemia</span>
+                          <span className="text-blue-800 dark:text-blue-300 text-[10px] font-medium">Moderate</span>
                         </div>
                       </div>
                     </div>
@@ -1216,22 +1265,13 @@ const Homepage = () => {
 
                       const data = riskData[moduleId as keyof typeof riskData];
                       const Icon = module.icon;
-                      const colorClasses = {
-                        rose: 'from-rose-500/20 to-rose-600/20 border-rose-500/50',
-                        blue: 'from-blue-500/20 to-blue-600/20 border-blue-500/50',
-                        purple: 'from-purple-500/20 to-purple-600/20 border-purple-500/50',
-                        amber: 'from-amber-500/20 to-amber-600/20 border-amber-500/50',
-                        red: 'from-red-500/20 to-red-600/20 border-red-500/50',
-                        cyan: 'from-cyan-500/20 to-cyan-600/20 border-cyan-500/50',
-                        emerald: 'from-emerald-500/20 to-emerald-600/20 border-emerald-500/50',
-                        orange: 'from-orange-500/20 to-orange-600/20 border-orange-500/50'
-                      };
+                      const colorClasses = 'from-slate-100/50 to-slate-200/50 dark:from-slate-700/30 dark:to-slate-600/30 border-slate-300/50 dark:border-slate-600/50';
 
                       if (moduleId === 'preop-planning' && 'items' in data) {
                         return (
                           <motion.div
                             key={moduleId}
-                            className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} border rounded-lg p-3 relative col-span-2`}
+                            className={`bg-gradient-to-br ${colorClasses} border rounded-lg p-3 relative col-span-2`}
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.8, opacity: 0 }}
@@ -1245,9 +1285,9 @@ const Homepage = () => {
                             </button>
                             
                             <div className="flex items-center space-x-2 mb-2">
-                              <div className={`w-6 h-6 bg-${module.color}-500/30 rounded-lg flex items-center justify-center`}>
-                                <Icon className={`w-3 h-3 text-${module.color}-700 dark:text-${module.color}-400`} />
-                              </div>
+                                                          <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${iconColorMap[module.color as keyof typeof iconColorMap]}`}>
+                              <Icon className={`w-3 h-3 ${textColorMap[module.color as keyof typeof textColorMap]}`} />
+                            </div>
                               <h5 className="text-[10px] font-medium text-slate-900 dark:text-white">{module.name}</h5>
                             </div>
                             
@@ -1274,7 +1314,7 @@ const Homepage = () => {
                       return (
                         <motion.div
                           key={moduleId}
-                          className={`bg-gradient-to-br ${colorClasses[module.color as keyof typeof colorClasses]} border rounded-lg p-3 relative`}
+                          className={`bg-gradient-to-br ${colorClasses} border rounded-lg p-3 relative`}
                           initial={{ scale: 0.8, opacity: 0 }}
                           animate={{ scale: 1, opacity: 1 }}
                           exit={{ scale: 0.8, opacity: 0 }}
@@ -1288,18 +1328,24 @@ const Homepage = () => {
                           </button>
                           
                           <div className="flex items-center space-x-1 mb-1">
-                            <div className={`w-5 h-5 bg-${module.color}-500/30 rounded-lg flex items-center justify-center`}>
-                              <Icon className={`w-3 h-3 text-${module.color}-700 dark:text-${module.color}-400`} />
+                            <div className={`w-5 h-5 rounded-lg flex items-center justify-center ${iconColorMap[module.color as keyof typeof iconColorMap]}`}>
+                              <Icon className={`w-3 h-3 ${textColorMap[module.color as keyof typeof textColorMap]}`} />
                             </div>
                             <h5 className="text-[10px] font-medium text-slate-900 dark:text-white">{module.name}</h5>
                           </div>
                           
                           <div className="text-center mb-1">
                             <div className="text-sm font-bold text-slate-900 dark:text-white">{data.score}</div>
-                            <div className="text-[10px] opacity-80 text-slate-700 dark:text-slate-300">{data.level} Risk</div>
+                            <div className={`text-[10px] font-medium ${
+                              data.level === 'High' || data.level === 'Elevated' 
+                                ? 'text-rose-700 dark:text-rose-400' 
+                                : data.level === 'Moderate' || data.level === 'Pre-frail'
+                                  ? 'text-amber-700 dark:text-amber-400'
+                                  : 'text-slate-700 dark:text-slate-300'
+                            }`}>{data.level} Risk</div>
                           </div>
-                          <div className="text-[10px] opacity-90 text-slate-700 dark:text-slate-300">
-                            <span className="font-medium">Action:</span> {data.recommendation}
+                          <div className="text-[10px] text-slate-600 dark:text-slate-400">
+                            <span className="font-medium text-slate-700 dark:text-slate-300">Action:</span> {data.recommendation}
                           </div>
                         </motion.div>
                       );
@@ -1553,7 +1599,7 @@ const Homepage = () => {
             <div className="space-y-2">
               {/* Cardiovascular Risk Assessment */}
               <motion.div 
-                className="bg-gradient-to-r from-teal-500/20 to-teal-600/20 dark:from-teal-500/15 dark:to-teal-600/15 border border-teal-500/50 dark:border-teal-500/40 rounded-lg p-3 hover:from-teal-500/30 hover:to-teal-600/30 dark:hover:from-teal-500/20 dark:hover:to-teal-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-br from-slate-100/50 to-slate-200/50 dark:from-slate-700/30 dark:to-slate-600/30 border border-slate-300/50 dark:border-slate-600/50 rounded-lg p-3 hover:from-slate-200/50 hover:to-slate-300/50 dark:hover:from-slate-600/30 dark:hover:to-slate-500/30 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
@@ -1595,7 +1641,7 @@ const Homepage = () => {
 
               {/* Medicare Advantage Coding */}
               <motion.div 
-                className="bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 dark:from-cyan-500/15 dark:to-cyan-600/15 border border-cyan-500/50 dark:border-cyan-500/40 rounded-lg p-3 hover:from-cyan-500/30 hover:to-cyan-600/30 dark:hover:from-cyan-500/20 dark:hover:to-cyan-600/20 transition-all cursor-pointer"
+                className="bg-gradient-to-br from-slate-100/50 to-slate-200/50 dark:from-slate-700/30 dark:to-slate-600/30 border border-slate-300/50 dark:border-slate-600/50 rounded-lg p-3 hover:from-slate-200/50 hover:to-slate-300/50 dark:hover:from-slate-600/30 dark:hover:to-slate-500/30 transition-all cursor-pointer"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
@@ -1644,7 +1690,7 @@ const Homepage = () => {
 
               {/* Sepsis Screening */}
               <motion.div 
-                className="bg-gradient-to-r from-blue-400/20 to-blue-500/20 dark:from-blue-400/15 dark:to-blue-500/15 border border-blue-400/50 dark:border-blue-400/40 rounded-lg p-3 hover:from-blue-400/30 hover:to-blue-500/30 dark:hover:from-blue-400/20 dark:hover:to-blue-500/20 transition-all cursor-pointer group"
+                className="bg-gradient-to-br from-slate-100/50 to-slate-200/50 dark:from-slate-700/30 dark:to-slate-600/30 border border-slate-300/50 dark:border-slate-600/50 rounded-lg p-3 hover:from-slate-200/50 hover:to-slate-300/50 dark:hover:from-slate-600/30 dark:hover:to-slate-500/30 transition-all cursor-pointer group"
                 initial={{ x: 20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.6 }}
@@ -1678,7 +1724,7 @@ const Homepage = () => {
 
             {/* Add New Workflow - Improved Design */}
             <motion.div 
-              className="mt-3 bg-gradient-to-r from-slate-200/50 to-slate-300/50 dark:from-slate-700/20 dark:to-slate-600/20 border-2 border-dashed border-slate-300 dark:border-slate-600/50 rounded-lg p-3 hover:border-emerald-500/50 hover:from-emerald-500/10 hover:to-blue-500/10 dark:hover:from-emerald-500/5 dark:hover:to-blue-500/5 transition-all cursor-pointer group"
+              className="mt-3 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 dark:from-emerald-500/5 dark:to-blue-500/5 border-2 border-dashed border-emerald-500/30 dark:border-emerald-500/20 rounded-lg p-3 hover:border-emerald-500/50 hover:from-emerald-500/15 hover:to-blue-500/15 dark:hover:from-emerald-500/8 dark:hover:to-blue-500/8 transition-all cursor-pointer group"
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               initial={{ opacity: 0 }}
@@ -1800,10 +1846,10 @@ const Homepage = () => {
                   className="w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center"
                   animate={{ 
                     rotateY: [0, 180, 360],
-                    scale: [1, 1.1, 1]
+                    scale: [1, 1.05, 1]
                   }}
                   transition={{ 
-                    duration: 3, 
+                    duration: 4, 
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
@@ -1821,19 +1867,19 @@ const Homepage = () => {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
                 Your Clinical Workflows,<br />
-                AI-Powered in <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
-                  Minutes, Not Months
+                 <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
+                  Transformed with AI
                 </span>
               </motion.h1>
               
               {/* Enhanced Subtitle */}
               <motion.p 
-                className="text-xl text-slate-800 font-medium leading-relaxed max-w-2xl mb-12"
+                className="text-lg text-slate-800 font-medium leading-relaxed max-w-2xl mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-               Transform unstructured EMR data into validated insights that power better decisions, streamline compliance, and improve patient outcomes — all without writing a single line of code.
+               Go from unstructured EMR data to AI-powered workflows that streamline compliance, support clinical decision-making, and improve patient outcomes — all without writing a single line of code.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -1909,8 +1955,8 @@ const Homepage = () => {
               </span>
             </h2>
             
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
-              A flexible operating system that works with your existing EMR and technology stack to power automated healthcare operations.
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto chartr-body">
+              A flexible operating system that works seamlessly with your existing EMR and technology stack to power any healthcare AI use case - from building new models to integration at the point of care.
             </p>
           </motion.div>
 
@@ -1926,7 +1972,7 @@ const Homepage = () => {
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 {/* Input Sources */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Data Sources</h3>
+                  <h3 className="text-sm text-center font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Data Sources</h3>
                   <div className="space-y-3">
                     <motion.div 
                       className="bg-slate-100 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600/50 rounded-lg p-4 hover:border-blue-500/50 transition-all"
@@ -2155,7 +2201,7 @@ const Homepage = () => {
 
                 {/* Output Modules */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Robust Applications</h3>
+                  <h3 className="text-sm text-center font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Robust Applications</h3>
                   <div className="space-y-3">
                     <motion.div 
                       className="bg-gradient-to-r from-[#0FE3C2]/10 to-[#0FE3C2]/20 border border-[#0FE3C2]/30 rounded-lg p-4 hover:border-[#0FE3C2]/50 transition-all"
@@ -2178,7 +2224,7 @@ const Homepage = () => {
                         <FileCheck className="w-5 h-5 text-[#4EA9FF]" />
                         <div>
                           <div className="font-medium text-slate-900 dark:text-slate-200">Regulatory Reporting</div>
-                          <div className="text-xs text-slate-600 dark:text-slate-400">CMS Quality Measures, Registry Submission</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">CMS Quality Measures, Registries</div>
                         </div>
                       </div>
                     </motion.div>
@@ -2190,7 +2236,7 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Users className="w-5 h-5 text-[#7E88F6]" />
                         <div>
-                          <div className="font-medium text-slate-900 dark:text-slate-200">Patient Identification</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">Patient Screening</div>
                           <div className="text-xs text-slate-600 dark:text-slate-400">Clinical Trials, Care Gaps</div>
                         </div>
                       </div>
@@ -2237,7 +2283,7 @@ const Homepage = () => {
               </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
-                Leverage AI intelligence for your complex clinical workflows.
+                Turn your <i>system of record</i> into a <b className="text-black dark:text-white">system of action</b>.
               </p>
 
               {/* Feature List - Compact */}
@@ -2272,7 +2318,7 @@ const Homepage = () => {
                       <Shield className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Ready Security</h3>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Security</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         HIPAA-compliant platform with role-based access control and audit trails.
                       </p>
@@ -2371,111 +2417,6 @@ const Homepage = () => {
             </motion.div>
           </div>
           
-          {/* Built for Every Healthcare Team - Professional Market Cards */}
-          <motion.div
-            className="mt-16 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-2xl font-semibold text-center text-slate-900 dark:text-white mb-12">
-              Built for Every Healthcare Team
-            </h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Hospitals */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-emerald-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-colors">
-                  <Building2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Hospitals</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Automate compliance reporting and reduce audit preparation by 80%.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-
-              {/* Registries */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 dark:group-hover:bg-cyan-500/30 transition-colors">
-                  <Database className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Registries</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Extract validated data 50x faster with 99%+ accuracy for submissions.
-                </p>
-                <Link
-                  href="/solutions/medical-societies"
-                  className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-
-              {/* Clinicians */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-blue-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors">
-                  <Stethoscope className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Clinicians</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Focus on patient care while AI handles documentation and risk assessments.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-
-              {/* Researchers */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-purple-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/20 dark:group-hover:bg-purple-500/30 transition-colors">
-                  <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Researchers</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Database building, outcomes research, and clinical trial enrollment.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -2637,173 +2578,402 @@ const Homepage = () => {
             </p>
           </motion.div>
 
-          {/* Key Differentiators Grid - Clean, professional design */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Key Differentiators - Layer Health Style Interactive Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             
-            {/* 1. No-Code, Seamless Integration */}
-            <motion.div 
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <Layers className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
-                
-                <ul className="space-y-3">
-                <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deploy in days, not months, with pre-built templates and intuitive interfaces</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Drag-and-drop configuration, no coding required</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                         {/* Left Side: Numbered List */}
+             <div className="space-y-3">
+               {[
+                 {
+                   number: "1",
+                   title: "Best-in-Class Clinical Retrieval",
+                   icon: Target
+                 },
+                 {
+                   number: "2", 
+                   title: "No-Code AI Integration",
+                   icon: Layers
+                 },
+                 {
+                   number: "3",
+                   title: "No Vendor Lock-In", 
+                   icon: Network
+                 },
+                 {
+                   number: "4",
+                   title: "Your AI, Your Way",
+                   icon: Cpu
+                 },
+                 {
+                   number: "5",
+                   title: "Built-in RLHF and Machine Learning Tools",
+                   icon: TrendingUp
+                 },
+                 {
+                   number: "6",
+                   title: "Human-AI Integration",
+                   icon: Users
+                 }
+               ].map((item, index) => (
+                 <motion.div
+                   key={index}
+                   className={`group cursor-pointer transition-all duration-300 ${
+                     selectedFeature === index ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                   }`}
+                   initial={{ opacity: 0, x: -20 }}
+                   animate={{ opacity: selectedFeature === index ? 1 : 0.6, x: 0 }}
+                   transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                   onClick={() => setSelectedFeature(index)}
+                 >
+                   <div className={`flex items-center space-x-4 p-4 rounded-lg border transition-all duration-300 ${
+                     selectedFeature === index 
+                       ? 'border-green-200 dark:border-green-700 bg-green-50/50 dark:bg-green-900/20' 
+                       : 'border-slate-200/50 dark:border-slate-700/50 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50/50 dark:hover:bg-slate-800/50'
+                   }`}>
+                     {/* Number */}
+                     <div className={`flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+                       selectedFeature === index 
+                         ? 'bg-green-100 dark:bg-green-800' 
+                         : 'bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700'
+                     }`}>
+                       <span className={`text-sm font-semibold ${
+                         selectedFeature === index 
+                           ? 'text-green-700 dark:text-green-300' 
+                           : 'text-slate-700 dark:text-slate-300'
+                       }`}>
+                         {item.number}
+                       </span>
+                     </div>
+                     
+                     {/* Content */}
+                     <div className="flex-1">
+                       <h3 className={`text-sm font-medium transition-colors ${
+                         selectedFeature === index 
+                           ? 'text-green-900 dark:text-green-100' 
+                           : 'text-slate-900 dark:text-white group-hover:text-slate-800 dark:group-hover:text-slate-200'
+                       }`}>
+                         {item.title}
+                       </h3>
+                     </div>
+                     
+                     {/* Icon */}
+                     <div className={`flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center transition-colors ${
+                       selectedFeature === index 
+                         ? 'bg-green-100 dark:bg-green-800' 
+                         : 'bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700'
+                     }`}>
+                       <item.icon className={`w-3 h-3 ${
+                         selectedFeature === index 
+                           ? 'text-green-600 dark:text-green-400' 
+                           : 'text-slate-600 dark:text-slate-400'
+                       }`} />
+                     </div>
+                   </div>
+                 </motion.div>
+               ))}
+             </div>
 
-            {/* 2. Clinical Retrieval Layer */}
-            <motion.div 
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <Target className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Best-in-Class Clinical Retrieval</h3>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify the most relevant clinical notes to power any clinical use case</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Enable smarter validation and auditing, with in-built source highlighting</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                         {/* Right Side: Clean Detail Panel */}
+             <div className="sticky top-8">
+               <motion.div
+                 key={selectedFeature}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.4 }}
+                 className="space-y-6"
+               >
+                 {selectedFeature === 0 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       Best-in-Class Clinical Retrieval
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Identify the most relevant clinical notes to power any clinical use case
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Enable smarter validation and auditing, with in-built source highlighting
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Longitudinal patient chart analysis with physician-level reasoning
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
 
-            {/* 3. Flexible Deployment */}
-            <motion.div
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <Network className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No Vendor Lock-In</h3>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Works alongside your existing AI tools - enhance rather than replace</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Flexible architecture adapts to your technology choices</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                 {selectedFeature === 1 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       No-Code AI Integration
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Deploy in days, not months, with pre-built templates and intuitive interfaces
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Drag-and-drop configuration, no coding required
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Seamless integration with existing clinical workflows
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
 
-            {/* 4. Bring Your Own AI */}
-            <motion.div 
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <Cpu className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Your AI, Your Way</h3>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Integrate ML models and fine-tuned LLMs to power complex clinical workflows</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Run your models in our secure environment with advanced tools for continuous learning</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                 {selectedFeature === 2 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       No Vendor Lock-In
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Works alongside your existing AI tools - enhance rather than replace
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Flexible architecture adapts to your technology choices
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           API-first architecture with multi-cloud deployment options
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
 
-            {/* 5. Continuous Learning */}
-            <motion.div 
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <TrendingUp className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Automated RLHF</h3>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Continuously improve models to reflect your patients and your practice</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Automated training pipeline for real-time updates based on human feedback</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                 {selectedFeature === 3 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       Your AI, Your Way
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Integrate ML models and fine-tuned LLMs to power complex clinical workflows
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Run your models in our secure environment with advanced tools
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Custom model deployment with fine-tuning capabilities
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
 
-            {/* 6. Smart Review */}
-            <motion.div 
-              className="group relative"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-            >
-              <div className="relative bg-white dark:bg-slate-900 rounded-xl p-8 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 h-full shadow-sm hover:shadow-md">
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/20 transition-colors">
-                  <Users className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
-                </div>
-                
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Integration</h3>
-                
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Route critical outputs to human reviewers for validation and auditing</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">ChartR Smart Review and confidence flagging enhances data accuracy</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+                 {selectedFeature === 4 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       Built-in RLHF and Machine Learning Tools
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Continuously improve models to reflect your patients and your practice
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Built-in ML and data visualization to design and test your own models
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Reinforcement learning from human feedback with automated retraining
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
+
+                 {selectedFeature === 5 && (
+                   <div>
+                     <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                       Human-AI Integration
+                     </h3>
+                     
+                     <ul className="space-y-4">
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Route critical outputs to human reviewers for validation and auditing
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           ChartR Smart Review and confidence flagging enhances data accuracy
+                         </span>
+                       </li>
+                       <li className="flex items-start space-x-3">
+                         <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                         <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                           Automated confidence scoring with human-in-the-loop validation
+                         </span>
+                       </li>
+                     </ul>
+                   </div>
+                 )}
+               </motion.div>
+             </div>
           </div>
 
 
+        </div>
+      </section>
+
+      {/* Solutions for Every Stakeholder - Professional Market Cards */}
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-12">
+              Solutions for Every Stakeholder
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Hospitals */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-emerald-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-colors">
+                  <Building2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Hospitals</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Automate compliance reporting and reduce audit preparation by 80%.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Registries */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 dark:group-hover:bg-cyan-500/30 transition-colors">
+                  <Database className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Registries</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Extract validated data 50x faster with 99%+ accuracy for submissions.
+                </p>
+                <Link
+                  href="/solutions/medical-societies"
+                  className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Clinicians */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-blue-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors">
+                  <Stethoscope className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Clinicians</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Support patient care with workflows for planning, triage, and guideline-based therapy.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Researchers */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-purple-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/20 dark:group-hover:bg-purple-500/30 transition-colors">
+                  <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Researchers</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Database building, outcomes research, and clinical trial enrollment.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -2811,7 +2981,7 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+      <section className="pt-12 pb-16 relative overflow-hidden bg-white dark:bg-slate-950">
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           {/* Subtle gradient overlay */}
@@ -2826,20 +2996,20 @@ const Homepage = () => {
           </div>
         </div>
         
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-12"
+            className="space-y-8"
           >
             {/* Main Heading with Enhanced Typography */}
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">
+            <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-slate-900 dark:text-white tracking-tight leading-tight">
                 Ready to{' '}
                 <motion.span 
                   className="relative inline-block"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
                   <span className="text-transparent bg-gradient-to-r from-emerald-600 via-cyan-600 to-blue-600 dark:from-emerald-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text">
@@ -2849,29 +3019,25 @@ const Homepage = () => {
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-cyan-500/20 to-blue-500/20 rounded-lg blur-sm -z-10"
                     initial={{ opacity: 0, scale: 0.8 }}
-                    whileHover={{ opacity: 1, scale: 1.1 }}
+                    whileHover={{ opacity: 1, scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                 </motion.span>
                 {' '}your clinical workflows?
               </h2>
               
-              {/* CTA Button with Enhanced Design */}
+              {/* CTA Button with Professional Design */}
               <div className="flex justify-center">
                 <Link href="/contact">
                   <motion.button 
-                    className="group px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden text-lg border-2 border-transparent hover:border-white/20"
-                    whileHover={{ scale: 1.05, y: -3 }}
+                    className="group px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-200 relative overflow-hidden text-sm border border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 shadow-sm hover:shadow-md"
+                    whileHover={{ scale: 1.02, y: -1 }}
                     whileTap={{ scale: 0.98 }}
                   >
                     <span className="relative z-10 flex items-center space-x-2">
-                      <span>See ChartR in Action</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      <span>Get Started</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 -top-2 -left-2 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-12 transform translate-x-full group-hover:translate-x-[-200%] transition-transform duration-700" />
                   </motion.button>
                 </Link>
               </div>

@@ -2,11 +2,59 @@
 
 import React from 'react'
 import Link from 'next/link'
-
 import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Search, Users, Zap, CheckCircle, BookOpen, FileSearch, Brain, Database, Clock, Eye } from 'lucide-react'
+import { ArrowRight, FileText, Search, Users, Zap, CheckCircle, BookOpen, FileSearch, Brain, Database, Clock, Eye, ChevronRight, DollarSign, TrendingUp, AlertTriangle, Shield, FileCheck } from 'lucide-react'
 
 const LiteraturePage = () => {
+  const painPoints = [
+    {
+      icon: AlertTriangle,
+      title: "Time-Intensive Reviews",
+      description: "Systematic literature reviews take 6-18 months to complete, delaying research publication and clinical implementation"
+    },
+    {
+      icon: Clock,
+      title: "Manual Data Extraction",
+      description: "Researchers spend 60% of their time on manual data extraction and quality assessment, reducing time for analysis"
+    },
+    {
+      icon: FileCheck,
+      title: "Quality Inconsistencies",
+      description: "Human reviewers introduce bias and inconsistencies, leading to unreliable systematic review outcomes"
+    }
+  ]
+
+  const solutions = [
+    {
+      title: "AI-Powered Paper Screening",
+      features: [
+        "Intelligent relevance scoring and filtering",
+        "Automated duplicate detection and removal",
+        "Customizable inclusion/exclusion criteria",
+        "Real-time screening progress tracking"
+      ]
+    },
+    {
+      title: "Automated Data Extraction",
+      features: [
+        "Structured data extraction from PDFs",
+        "Methodology and results identification",
+        "Quality assessment automation",
+        "Bias detection and risk assessment"
+      ]
+    },
+    {
+      title: "Collaborative Workflow",
+      description: "Team-based research management with shared projects and review workflows",
+      features: [
+        "Multi-user collaboration tools",
+        "Project-based organization",
+        "Review workflow management",
+        "Version control and audit trails"
+      ]
+    }
+  ]
+
   const features = [
     {
       icon: FileSearch,
@@ -17,7 +65,7 @@ const LiteraturePage = () => {
         "Customizable screening criteria",
         "Automated duplicate detection"
       ],
-      color: "from-purple-600 to-pink-700"
+      color: "from-teal-600 to-cyan-700"
     },
     {
       icon: Brain,
@@ -39,7 +87,7 @@ const LiteraturePage = () => {
         "Study quality scoring",
         "Evidence level classification"
       ],
-      color: "from-green-600 to-teal-700"
+      color: "from-emerald-600 to-teal-700"
     },
     {
       icon: Database,
@@ -50,7 +98,7 @@ const LiteraturePage = () => {
         "Project-based organization",
         "Review workflow management"
       ],
-      color: "from-amber-600 to-orange-700"
+      color: "from-cyan-600 to-blue-700"
     }
   ]
 
@@ -87,93 +135,113 @@ const LiteraturePage = () => {
     }
   ]
 
-  const stats = [
-    { label: 'Time Reduction', value: '75%', description: 'Faster systematic reviews' },
-    { label: 'Accuracy Rate', value: '95%', description: 'AI extraction accuracy' },
-    { label: 'Papers Processed', value: '1M+', description: 'Research papers analyzed' },
-    { label: 'Teams Supported', value: '500+', description: 'Research organizations' },
-  ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
-        {/* Enhanced Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-blue-200/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-100/30 via-pink-100/30 to-indigo-100/30" />
-        <div className="absolute top-0 left-0 w-full h-full opacity-20">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-pink-500/10 to-indigo-500/10 rounded-full blur-3xl" />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="relative pt-24 pb-16 px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
           >
-            <div className="flex flex-col items-center mb-8">
-              <img 
-                src="/logo.svg" 
-                alt="ChartR Logo" 
-                width={120} 
-                height={120} 
-                className="mb-6" 
-              />
-              <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-6 tracking-tight">
-                Literature
-              </h1>
-              <p className="text-2xl md:text-3xl text-purple-600 font-bold mb-8">
-                Systematic Literature Review Platform
-              </p>
-              <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-12">
-                AI-powered systematic literature review and meta-analysis platform that transforms months of manual work into days of intelligent automation.
-              </p>
+            <div className="flex items-center justify-center gap-2 text-teal-600 mb-6">
+              <span className="text-sm font-medium tracking-wide uppercase">ChartR Literature</span>
+              <ChevronRight className="w-4 h-4" />
             </div>
-            
-            <div className="inline-block px-4 py-2 bg-white/80 rounded-full text-purple-600 text-sm font-medium mb-8 backdrop-blur-sm border border-purple-200/30">
-              <span className="font-semibold">Powered by ChartR AI</span>
-            </div>
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+              Transform <span className="bg-gradient-to-r from-teal-500 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-gradient">Literature Reviews</span> with AI
+            </h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              AI-powered systematic literature review and meta-analysis platform that transforms months of manual work into days of intelligent automation.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Pain Points Section */}
+      <section className="py-20 px-6 bg-white/80">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
-              Transform Your Research Process
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
+              The Hidden Cost of Manual Literature Reviews
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Complete systematic literature reviews in days, not months
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Researchers waste months on administrative tasks. ChartR Literature transforms this burden into a competitive advantage.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {painPoints.map((point, index) => (
               <motion.div
                 key={index}
-                className="relative group"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 * index }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-red-300/50 dark:hover:border-red-500/50 transition-all duration-300"
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-purple-200/50">
-                  <div className="text-4xl font-black mb-4 text-purple-600">
-                    {stat.value}
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <point.icon className="w-6 h-6 text-red-600" />
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-slate-900">{stat.label}</h3>
-                  <p className="text-slate-600 text-sm">{stat.description}</p>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{point.title}</h3>
                 </div>
+                <p className="text-slate-600 dark:text-slate-400">{point.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Solutions Overview */}
+      <section className="py-20 px-6 bg-white/80">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-2 text-teal-600 mb-6">
+              <Users className="w-6 h-6" />
+              <span className="text-lg font-medium tracking-wide uppercase">For Research Teams</span>
+            </div>
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
+              One Platform. Every Review. Intelligent Automation.
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+              Streamline systematic literature reviews with AI-powered automation and collaborative workflows.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {solutions.map((solution, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-teal-300/50 dark:hover:border-teal-500/50 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 mb-4">{solution.title}</h3>
+                {solution.description && (
+                  <p className="text-slate-600 dark:text-slate-400 mb-6">{solution.description}</p>
+                )}
+                <ul className="space-y-3">
+                  {solution.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start space-x-3 text-sm text-slate-600 dark:text-slate-400">
+                      <div className="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -181,10 +249,10 @@ const LiteraturePage = () => {
       </section>
 
       {/* Workflow Section */}
-      <section className="py-24 relative">
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -206,13 +274,13 @@ const LiteraturePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 * index }}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 h-full hover:border-purple-200/50">
-                  <div className="text-2xl font-black text-purple-600 mb-4">
+                <div className="absolute -inset-1 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 h-full hover:border-teal-200/50">
+                  <div className="text-2xl font-black text-teal-600 mb-4">
                     {item.step}
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-6 h-6 text-teal-600" />
                   </div>
                   <h3 className="text-lg font-bold mb-3 text-slate-900">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
@@ -224,10 +292,10 @@ const LiteraturePage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 relative">
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            className="text-center mb-20"
+            className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -250,7 +318,7 @@ const LiteraturePage = () => {
                 transition={{ duration: 0.8, delay: 0.2 * index }}
               >
                 <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color.replace('-600', '-200/30').replace('-700', '-300/30')} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
-                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 h-full hover:border-purple-200/50">
+                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 h-full hover:border-teal-200/50">
                   <div className={`h-1 bg-gradient-to-r ${feature.color}`}></div>
                   <div className="p-8">
                     <div className="flex items-center space-x-4 mb-6">
@@ -279,33 +347,33 @@ const LiteraturePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 to-pink-100/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-200/20 via-pink-200/20 to-indigo-200/20" />
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-100/30 to-cyan-100/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-200/20 via-cyan-200/20 to-blue-200/20" />
         
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight leading-tight">
               Transform Your
               <br />
-              <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
                 Literature Reviews
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Join leading research institutions in revolutionizing systematic literature review. 
-              Complete reviews <span className="text-purple-600 font-medium">75% faster</span> with AI-powered automation.
+              Complete reviews <span className="text-teal-600 font-medium">75% faster</span> with AI-powered automation.
             </p>
             
-            <div className="flex justify-center mt-12">
+            <div className="flex justify-center mt-8">
               <Link 
                 href="/contact" 
-                className="bg-gradient-to-r from-purple-600 to-pink-700 text-white px-8 py-4 rounded-lg font-medium hover:from-purple-700 hover:to-pink-800 transition-all duration-300 flex items-center space-x-2"
+                className="bg-gradient-to-r from-teal-600 to-cyan-700 text-white px-8 py-4 rounded-lg font-medium hover:from-teal-700 hover:to-cyan-800 transition-all duration-300 flex items-center space-x-2"
               >
                 <span>Contact Us</span>
                 <ArrowRight className="w-5 h-5" />

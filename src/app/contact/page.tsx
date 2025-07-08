@@ -117,30 +117,50 @@ const ContactPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white relative">
+      {/* Sophisticated background gradient that flows throughout */}
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 pointer-events-none" />
+      
+      {/* Subtle Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 w-96 h-96 bg-blue-500/8 dark:bg-blue-500/3 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/8 dark:bg-purple-500/3 rounded-full blur-3xl" />
+        
+        {/* Very subtle grid Pattern */}
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]">
+          <div className="h-full w-full" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.1) 1px, transparent 0)`,
+            backgroundSize: '50px 50px'
+          }} />
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 to-purple-100/20" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 mt-16">
-              Get In Touch
-            </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Ready to transform your healthcare data management? We'd love to hear from you. 
-              Reach out to learn more about ChartR's AI-powered solutions.
-            </p>
-          </motion.div>
+      <section className="relative pt-20 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-white" />
+        
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6">
+                Get In Touch
+              </h1>
+              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                Ready to transform your healthcare data management? We'd love to hear from you. 
+                Reach out to learn more about ChartR's AI-powered solutions.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-16">
+      <section className="py-16 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -154,14 +174,14 @@ const ContactPage = () => {
                 key={index}
                 variants={fadeInUp}
                 transition={{ duration: 0.6 }}
-                className="text-center p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-slate-200/30 hover:border-blue-200/50 transition-all duration-300 flex flex-col justify-center"
+                className="text-center p-8 rounded-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50 hover:border-blue-300/50 dark:hover:border-blue-600/50 transition-all duration-300 flex flex-col justify-center shadow-lg hover:shadow-xl"
               >
-                <div className="text-blue-400 mb-4 flex justify-center">
+                <div className="text-blue-600 dark:text-blue-400 mb-4 flex justify-center">
                   {info.icon}
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{info.title}</h3>
-                <p className="text-lg text-blue-600 font-medium mb-2">{info.content}</p>
-                <p className="text-sm text-slate-500">{info.description}</p>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{info.title}</h3>
+                <p className="text-lg text-blue-600 dark:text-blue-400 font-medium mb-2">{info.content}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400">{info.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -169,7 +189,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20">
+      <section className="py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -178,8 +198,8 @@ const ContactPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">Send Us a Message</h2>
-            <p className="text-xl text-slate-600">
+            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Send Us a Message</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300">
               Tell us about your healthcare data challenges and how we can help
             </p>
           </motion.div>
@@ -191,12 +211,12 @@ const ContactPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-100/20 to-purple-100/20 rounded-3xl blur-lg" />
-            <div className="relative bg-white/80 backdrop-blur-xl border border-slate-200/30 rounded-3xl p-8 md:p-12">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-3xl blur-lg" />
+            <div className="relative bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-200/50 dark:border-slate-700/50 rounded-3xl p-8 md:p-12 shadow-2xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Inquiry Type Selection */}
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 mb-3">
+                  <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">
                     What can we help you with?
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -205,8 +225,8 @@ const ContactPage = () => {
                         key={type.value}
                         className={`flex items-center justify-center p-3 rounded-xl border cursor-pointer transition-all duration-300 ${
                           formData.inquiryType === type.value
-                            ? 'border-blue-400 bg-blue-100/40 text-blue-700'
-                            : 'border-slate-200 bg-slate-100 text-slate-600 hover:border-blue-200 hover:bg-slate-200'
+                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
+                            : 'border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300 hover:border-blue-300 dark:hover:border-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700'
                         }`}
                       >
                         <input
@@ -229,7 +249,7 @@ const ContactPage = () => {
                 {/* Personal Information */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-600 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -239,12 +259,12 @@ const ContactPage = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your full name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-600 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -254,7 +274,7 @@ const ContactPage = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your email address"
                     />
                   </div>
@@ -263,7 +283,7 @@ const ContactPage = () => {
                 {/* Company Information */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-slate-600 mb-2">
+                    <label htmlFor="company" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                       Company/Organization
                     </label>
                     <input
@@ -272,12 +292,12 @@ const ContactPage = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="Enter your company name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="role" className="block text-sm font-medium text-slate-600 mb-2">
+                    <label htmlFor="role" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                       Your Role
                     </label>
                     <input
@@ -286,7 +306,7 @@ const ContactPage = () => {
                       name="role"
                       value={formData.role}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                       placeholder="e.g., CTO, Chief Medical Officer"
                     />
                   </div>
@@ -294,7 +314,7 @@ const ContactPage = () => {
 
                 {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-slate-600 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                     Subject *
                   </label>
                   <input
@@ -304,14 +324,14 @@ const ContactPage = () => {
                     required
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="What's this about?"
                   />
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-600 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">
                     Message *
                   </label>
                   <textarea
@@ -321,7 +341,7 @@ const ContactPage = () => {
                     rows={6}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us about your healthcare data challenges, what you're looking to achieve, or any questions you have about ChartR..."
                   />
                 </div>
@@ -331,7 +351,7 @@ const ContactPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full md:w-auto inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-800 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -352,7 +372,7 @@ const ContactPage = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center p-4 bg-green-500/10 border border-green-400/20 rounded-xl text-green-700"
+                    className="flex items-center p-4 bg-green-500/10 dark:bg-green-500/20 border border-green-400/20 dark:border-green-400/30 rounded-xl text-green-700 dark:text-green-300"
                   >
                     <CheckCircle className="w-5 h-5 mr-2" />
                     Thank you! Your message has been sent successfully. We'll get back to you soon.
@@ -363,7 +383,7 @@ const ContactPage = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center p-4 bg-red-500/10 border border-red-400/20 rounded-xl text-red-700"
+                    className="flex items-center p-4 bg-red-500/10 dark:bg-red-500/20 border border-red-400/20 dark:border-red-400/30 rounded-xl text-red-700 dark:text-red-300"
                   >
                     <AlertCircle className="w-5 h-5 mr-2" />
                     Sorry, there was an error sending your message. Please try again or email us directly.
@@ -374,7 +394,6 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </section>
-
 
     </div>
   )
