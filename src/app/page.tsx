@@ -1879,7 +1879,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-               Go from unstructured EMR data to AI-powered workflows that streamline compliance, support clinical decision-making, and improve patient outcomes — all without writing a single line of code.
+               Turn unstructured EMR data into AI-powered workflows. Streamline compliance, support clinical decision-making, and improve patient outcomes — all without writing a single line of code.
               </motion.p>
 
               {/* CTA Buttons */}
