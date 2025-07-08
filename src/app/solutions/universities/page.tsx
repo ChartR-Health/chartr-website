@@ -95,7 +95,7 @@ const UniversitiesSolutionsPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
@@ -105,15 +105,15 @@ const UniversitiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <div className="flex items-center justify-center gap-2 text-blue-400 mb-6">
+            <div className="flex items-center justify-center gap-2 text-blue-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Universities</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Accelerate Research with
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> AI</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Empower your institution with AI-driven grant discovery, mentor matching, and literature reviews. Top universities use ChartR to secure funding faster and synthesize evidence with greater accuracy.
             </p>
           </motion.div>
@@ -131,10 +131,10 @@ const UniversitiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className={`text-center p-6 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
+                className={`text-center p-6 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-sm rounded-2xl border border-blue-200/20`}
               >
-                <div className="text-4xl font-bold mb-2 text-blue-400">{item.stat}</div>
-                <div className="text-slate-300">{item.description}</div>
+                <div className="text-4xl font-bold mb-2 text-blue-600">{item.stat}</div>
+                <div className="text-slate-600">{item.description}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -150,10 +150,10 @@ const UniversitiesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Why Top Institutions Trust ChartR
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Our AI platform boosts research efficiency and grant success for universities worldwide.
             </p>
           </motion.div>
@@ -171,16 +171,16 @@ const UniversitiesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className={`p-8 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-2xl border border-blue-400/10`}
+                className={`p-8 bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-sm rounded-2xl border border-blue-200/20`}
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-blue-500/20 rounded-lg">
-                    <benefit.icon className="w-6 h-6 text-blue-400" />
+                    <benefit.icon className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-4 text-blue-400">{benefit.title}</h3>
-                    <p className="text-slate-300 mb-4">{benefit.description}</p>
-                    <div className="text-sm font-semibold text-blue-400">{benefit.metric}</div>
+                    <h3 className="text-xl font-semibold mb-4 text-blue-600">{benefit.title}</h3>
+                    <p className="text-slate-600 mb-4">{benefit.description}</p>
+                    <div className="text-sm font-semibold text-blue-600">{benefit.metric}</div>
                   </div>
                 </div>
               </motion.div>
@@ -190,13 +190,13 @@ const UniversitiesSolutionsPage = () => {
       </section>
 
       {/* Solutions Overview */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-20 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               End-to-End Research Intelligence
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               From grant discovery to evidence synthesis, ChartR supports every stage of the research lifecycle.
             </p>
           </motion.div>
@@ -207,15 +207,15 @@ const UniversitiesSolutionsPage = () => {
                 key={index}
                 {...fadeInUp}
                 transition={{ delay: index * 0.2 }}
-                className={`bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-lg rounded-3xl p-8 border border-blue-400/10`}
+                className={`bg-gradient-to-r from-blue-400/10 to-indigo-400/10 backdrop-blur-sm rounded-3xl p-8 border border-blue-200/20`}
               >
-                <h3 className="text-2xl font-bold mb-4 text-blue-400">{feature.title}</h3>
-                <p className="text-slate-300 mb-6">{feature.description}</p>
+                <h3 className="text-2xl font-bold mb-4 text-blue-600">{feature.title}</h3>
+                <p className="text-slate-600 mb-6">{feature.description}</p>
                 <ul className="space-y-3">
                   {feature.features.map((capability, capIndex) => (
                     <li key={capIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 text-blue-400" />
-                      <span className="text-slate-300">{capability}</span>
+                      <CheckCircle className="w-5 h-5 mt-0.5 text-blue-600" />
+                      <span className="text-slate-600">{capability}</span>
                     </li>
                   ))}
                 </ul>
@@ -226,20 +226,20 @@ const UniversitiesSolutionsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+      <section className="py-20 px-6 bg-gradient-to-r from-blue-200/20 to-purple-200/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div {...fadeInUp}>
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Ready to Accelerate Your Research?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-600 mb-8">
               Join leading research institutions using ChartR to secure more funding and accelerate discoveries.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Schedule Demo
               </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-lg text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 font-semibold rounded-xl border border-slate-200/30 hover:bg-white transition-all duration-300">
                 Download Research Brief
               </button>
             </div>

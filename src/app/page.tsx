@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import DataExtractionDemo from '@/components/demos/DataExtractionDemo'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings, ClipboardCheck, ExternalLink, Eye } from 'lucide-react'
+import { ArrowRight, BarChart3, Layers, Database, FileText, Building, GraduationCap, Building2, DollarSign, Clock, Shield, Zap, TrendingUp, Users, Target, Network, Cpu, Activity, Heart, Brain, Pill, TestTube, Stethoscope, Clipboard, User, FileCheck, Dna, HeartPulse, CheckCircle, BookOpen, AlertTriangle, Plus, X, Calculator, Droplet, Beaker, Settings, ClipboardCheck, ExternalLink, Eye, Flag } from 'lucide-react'
 
 const Homepage = () => {
 
@@ -852,6 +852,7 @@ const Homepage = () => {
     const [selectedModules, setSelectedModules] = useState(['cardiac', 'pulmonary', 'preop-planning']);
     const [showModuleSelector, setShowModuleSelector] = useState(false);
     const [showWorkflowSettings, setShowWorkflowSettings] = useState(false);
+    const [showBuildModuleModal, setShowBuildModuleModal] = useState(false);
     const moduleSelectorRef = useRef<HTMLDivElement>(null);
     const workflowSettingsRef = useRef<HTMLDivElement>(null);
     
@@ -862,8 +863,8 @@ const Homepage = () => {
       { id: 'frailty', name: 'Frailty Assessment', icon: Users, color: 'amber' },
       { id: 'bleeding', name: 'Bleeding Risk', icon: Droplet, color: 'red' },
       { id: 'renal', name: 'Renal Risk', icon: Beaker, color: 'cyan' },
-      { id: 'preop-planning', name: 'Pre-operative Planning', icon: ClipboardCheck, color: 'emerald' },
-      { id: 'dvt', name: 'DVT Risk Assessment', icon: AlertTriangle, color: 'orange' }
+      { id: 'preop-planning', name: 'Pre-Operative Planning', icon: ClipboardCheck, color: 'emerald' },
+      { id: 'dvt', name: 'DVT Risk Assessment', icon: Flag, color: 'orange' }
     ];
 
     const toggleModule = (moduleId: string) => {
@@ -888,12 +889,12 @@ const Homepage = () => {
         level: 'In Progress', 
         recommendation: 'DVT prophylaxis pending', 
         items: [
-          { name: 'Cardiac Risk', status: 'completed', icon: CheckCircle },
-          { name: 'DVT Prophylaxis', status: 'pending', icon: Clock, note: 'Add DVT Risk Module' },
-          { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle }
+          { name: 'Patient is NPO', status: 'completed', icon: CheckCircle },
+          { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle },
+          { name: 'DVT Prophylaxis', status: 'pending', icon: selectedModules.includes('dvt') ? Flag : AlertTriangle, note: selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Add DVT Risk Module' }
         ]
       },
-      dvt: { score: 'Pending', level: 'Unknown', recommendation: 'Assess DVT risk' }
+      dvt: { score: '18%', level: 'Moderate', recommendation: 'Add Lovenox 40 mg SQ daily' }
     };
 
     const activeRisks = selectedModules.map(moduleId => ({
@@ -915,6 +916,9 @@ const Homepage = () => {
   // Click outside to close dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Don't close dropdowns if modal is open
+      if (showBuildModuleModal) return;
+      
       if (moduleSelectorRef.current && !moduleSelectorRef.current.contains(event.target as Node)) {
         setShowModuleSelector(false);
       }
@@ -925,7 +929,7 @@ const Homepage = () => {
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  }, [showBuildModuleModal]);
 
   return (
       <div className="relative w-full">
@@ -978,16 +982,17 @@ const Homepage = () => {
                   <Settings className="w-4 h-4 mr-2" />
                   <span className="text-xs font-medium">Edit Variables</span>
                 </button>
-                <button
-                  onClick={() => {
-                    setShowModuleSelector(true);
-                    setShowWorkflowSettings(false);
-                  }}
-                  className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
-                >
-                  <Plus className="w-4 h-4 mr-2" />
-                  <span className="text-xs font-medium">Add New Module</span>
-                </button>
+
+                                  <button
+                    onClick={() => {
+                      setShowBuildModuleModal(true);
+                      setShowWorkflowSettings(false);
+                    }}
+                    className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
+                  >
+                    <TrendingUp className="w-4 h-4 mr-2" />
+                    <span className="text-xs font-medium">Build New Module</span>
+                  </button>
                 <button
                   className="w-full flex items-center p-2 rounded-lg border border-slate-200/50 dark:border-slate-600/30 text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-all"
                 >
@@ -1053,36 +1058,33 @@ const Homepage = () => {
                 </div>
                 <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-3 text-xs text-slate-700 dark:text-slate-300 leading-relaxed border border-slate-200/50 dark:border-slate-600/20 h-full">
                   <div className="mb-2 pb-2 border-b border-slate-200/50 dark:border-slate-600/30">
-                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1">Surgical Consultation</p>
-                    <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded mb-1"></div>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">Surgical Consultation</p>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1 py-0.5 rounded text-[10px] font-medium">Laparoscopic Cholecystectomy</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Procedure:</span> <span className="bg-violet-500/30 text-violet-800 dark:text-violet-200 px-1 py-0.5 rounded text-[10px] font-medium">Laparoscopic Gastrectomy</span>
                     </p>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">DM Type 2</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">PMH:</span> <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">CAD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">COPD</span>, <span className="bg-amber-500/30 text-amber-800 dark:text-amber-200 px-1 py-0.5 rounded text-[10px] font-medium">DM Type 2</span>
                     </p>
                     <div className="space-y-0.5 mt-1">
-                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
-                      <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-3/4"></div>
                     </div>
                   </div>
                   
                   <div className="mb-2 pb-2 border-b border-slate-200/50 dark:border-slate-600/30">
-                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1">Pre-Op Assessment</p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">Pre-Op Assessment</p>
                     <div className="space-y-0.5 mb-1">
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded w-5/6"></div>
                     </div>
                     <p className="mb-1">
-                      <span className="text-slate-700 dark:text-slate-300">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1 py-0.5 rounded text-[10px] font-medium">METs &lt;4</span>
+                      <span className="text-slate-700 dark:text-slate-300 text-[10px]">Functional Status:</span> <span className="bg-blue-500/30 text-blue-800 dark:text-blue-200 px-1 py-0.5 rounded text-[10px] font-medium">METs &lt;4</span>
                     </p>
                     <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                   </div>
                   
                   {/* EMR Lab Values */}
                   <div>
-                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1">EMR Labs (03/14/24)</p>
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-medium">EMR Labs (03/14/24)</p>
                     <div className="space-y-0.5 text-[9px]">
                       <div className="h-2 bg-slate-300/30 dark:bg-slate-600/30 rounded"></div>
                       <p><span className="bg-cyan-500/30 text-cyan-800 dark:text-cyan-200 px-1 py-0.5 rounded text-[10px] font-medium">Creatinine 1.8 mg/dL</span></p>
@@ -1117,15 +1119,11 @@ const Homepage = () => {
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Surgical Factors</h5>
                       <div className="space-y-1">
                         <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
-                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">Intraperitoneal Surgery</span>
+                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">Non-cardiac Surgery</span>
                           <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
                         </div>
                         <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
                           <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">ASA Class III</span>
-                          <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
-                        </div>
-                        <div className="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 rounded px-2 py-1 border border-indigo-200 dark:border-indigo-800/50">
-                          <span className="text-indigo-900 dark:text-indigo-200 text-[10px] font-medium">General Anesthesia</span>
                           <CheckCircle className="w-2.5 h-2.5 text-indigo-600 dark:text-indigo-400" />
                         </div>
                       </div>
@@ -1159,16 +1157,8 @@ const Homepage = () => {
                       <h5 className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mb-1">Functional Status</h5>
                       <div className="space-y-1">
                         <div className="flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 rounded px-2 py-0.5 border border-blue-200 dark:border-blue-800/50">
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px]">METs</span>
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px] font-medium">&lt;4 (Poor)</span>
-                        </div>
-                        <div className="flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 rounded px-2 py-0.5 border border-blue-200 dark:border-blue-800/50">
                           <span className="text-blue-900 dark:text-blue-200 text-[10px]">Mobility</span>
                           <span className="text-blue-900 dark:text-blue-200 text-[10px] font-medium">Limited</span>
-                        </div>
-                        <div className="flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 rounded px-2 py-0.5 border border-blue-200 dark:border-blue-800/50">
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px]">Frailty Score</span>
-                          <span className="text-blue-900 dark:text-blue-200 text-[10px] font-medium">Pre-frail</span>
                         </div>
                       </div>
                     </div>
@@ -1216,12 +1206,12 @@ const Homepage = () => {
                           level: 'In Progress', 
                           recommendation: 'DVT prophylaxis pending', 
                           items: [
-                            { name: 'Cardiac Risk', status: 'completed', icon: CheckCircle },
-                            { name: 'DVT Prophylaxis', status: 'pending', icon: Clock, note: 'Add DVT Risk Module' },
-                            { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle }
+                            { name: 'Patient is NPO', status: 'completed', icon: CheckCircle },
+                            { name: 'Anesthesia Clearance', status: 'completed', icon: CheckCircle },
+                            { name: 'DVT Prophylaxis', status: 'pending', icon: selectedModules.includes('dvt') ? Flag : AlertTriangle, note: selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Add DVT Risk Module' }
                           ]
                         },
-                        dvt: { score: 'Pending', level: 'Unknown', recommendation: 'Assess DVT risk' }
+                        dvt: { score: '18%', level: 'Moderate', recommendation: 'Add Lovenox 40 mg SQ daily' }
                       };
 
                       const data = riskData[moduleId as keyof typeof riskData];
@@ -1267,11 +1257,11 @@ const Homepage = () => {
                                 return (
                                   <div key={idx} className="flex items-center justify-between text-[10px]">
                                     <div className="flex items-center space-x-1">
-                                      <ItemIcon className={`w-3 h-3 ${item.status === 'completed' ? 'text-emerald-600' : 'text-orange-600'}`} />
+                                      <ItemIcon className={`w-3 h-3 ${item.status === 'completed' ? 'text-emerald-600' : item.name === 'DVT Prophylaxis' ? (selectedModules.includes('dvt') ? 'text-orange-600' : 'text-red-600') : 'text-orange-600'}`} />
                                       <span className="text-slate-700 dark:text-slate-300">{item.name}</span>
                                     </div>
                                     {item.note && (
-                                      <span className="text-orange-600 dark:text-orange-400 text-[9px] font-medium">{item.note}</span>
+                                      <span className={`text-[9px] font-medium ${item.name === 'DVT Prophylaxis' ? (selectedModules.includes('dvt') ? 'text-orange-600 dark:text-orange-400' : 'text-red-600 dark:text-red-400') : 'text-orange-600 dark:text-orange-400'}`}>{item.note}</span>
                                     )}
                                   </div>
                                 );
@@ -1405,15 +1395,24 @@ const Homepage = () => {
                             </button>
                           </div>
                         )}
-                        {!selectedModules.includes('dvt') && selectedModules.includes('preop-planning') && (
+                                                {selectedModules.includes('preop-planning') && (
                           <div className="flex items-start justify-between">
                             <div className="flex items-start space-x-2 flex-1">
-                              <AlertTriangle className="w-4 h-4 text-orange-500 dark:text-orange-400 mt-0.5 flex-shrink-0" />
+                              {selectedModules.includes('dvt') ? (
+                                <Flag className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-500 dark:text-orange-400" />
+                              ) : (
+                                <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0 text-red-500 dark:text-red-400" />
+                              )}
                               <div className="flex-1">
-                                <div className="text-orange-700 dark:text-orange-300 text-sm">
-                                  <span className="font-medium">DVT risk assessment pending</span>
+                                <div className={`text-sm ${selectedModules.includes('dvt') ? 'text-orange-700 dark:text-orange-300' : 'text-red-700 dark:text-red-300'}`}>
+                                  <span className="font-medium">
+                                    {selectedModules.includes('dvt') ? 'Order DVT prophylaxis' : 'Needs DVT Prophylaxis Assessment'}
+                                  </span>
                                   <p className="text-xs mt-1 text-slate-600 dark:text-slate-400">
-                                    Consider adding DVT Risk Assessment module for complete evaluation
+                                    {selectedModules.includes('dvt') 
+                                      ? 'Risk assessment complete - recommend Lovenox 40 mg SQ daily'
+                                      : 'Consider adding DVT Risk Assessment module for complete evaluation'
+                                    }
                                   </p>
                                 </div>
                               </div>
@@ -1434,6 +1433,87 @@ const Homepage = () => {
             </div>
           </div>
         </div>
+
+        {/* Build Module Modal - Rendered outside main container */}
+        {showBuildModuleModal && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 bg-black/30"
+              onClick={() => setShowBuildModuleModal(false)}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-lg mx-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl overflow-hidden"
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 px-6 py-4 border-b border-slate-200/30 dark:border-slate-700/30">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-lg flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Build Custom AI Models</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">with ChartrOS</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setShowBuildModuleModal(false)}
+                    className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 rounded-lg transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <p className="text-slate-700 dark:text-slate-300 mb-6">
+                  Use ChartrOS to create AI models unique to your patient population and practice - with built-in ML tools for no-code development. Choose from our templates or design your own:
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  {[
+                    { icon: Target, title: 'Risk Assessment Models', desc: 'Custom scoring algorithms for your specialty' },
+                    { icon: Users, title: 'Clinical Triage Algorithms', desc: 'Intelligent patient prioritization systems' },
+                    { icon: ClipboardCheck, title: 'Treatment Planning Tools', desc: 'Evidence-based care pathway automation' },
+                    { icon: BarChart3, title: 'Quality Metrics Tracking', desc: 'Outcome monitoring and benchmarking' }
+                  ].map((template, idx) => (
+                    <div key={idx} className="flex items-start space-x-3 p-3 rounded-lg bg-slate-50/50 dark:bg-slate-700/30 border border-slate-200/30 dark:border-slate-600/30">
+                      <div className="w-8 h-8 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <template.icon className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-slate-900 dark:text-slate-100 text-sm">{template.title}</h4>
+                        <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">{template.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200/30 dark:border-slate-700/30">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Ready to build? Contact our team to get started.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm font-medium rounded-lg transition-all transform hover:scale-105 inline-block"
+                  >
+                    Contact Team
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     );
   };
@@ -1648,7 +1728,7 @@ const Homepage = () => {
       </div>
       
       {/* Hero Section */}
-      <section className="relative pb-16 overflow-hidden">
+      <section className="relative pt-20 pb-20 overflow-hidden">
         {/* Sophisticated Hero Background */}
         <div className="absolute inset-0 bg-white" />
         
@@ -1735,14 +1815,14 @@ const Homepage = () => {
 
               {/* Hero Tagline */}
               <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-8"
+                className="text-5xl md:text-[3.5rem] lg:text-[3.5rem] font-bold text-slate-900 mb-8"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                Clinical Workflows,<br />
+                Your Clinical Workflows,<br />
                 <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
-                  Reimagined with AI
+                  Transformed with AI
                 </span>
               </motion.h1>
               
@@ -1777,7 +1857,7 @@ const Homepage = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-6 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
+              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-24 lg:pt-24 relative"
             >
               {/* Background color bar on the right */}
               <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-100/50 to-transparent dark:from-slate-900/50 pointer-events-none"></div>
@@ -1792,7 +1872,7 @@ const Homepage = () => {
       </section>
 
       {/* Introducing ChartrOS - Full-Width Accent Section */}
-      <section className="pt-12 pb-24 relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+      <section className="pt-20 pb-20 relative bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
           <motion.div 
@@ -1836,7 +1916,7 @@ const Homepage = () => {
 
           {/* Platform Architecture - Floating Design */}
           <motion.div 
-            className="relative max-w-5xl mx-auto mb-20"
+            className="relative max-w-5xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -2139,7 +2219,7 @@ const Homepage = () => {
       </section>
 
       {/* Modular AI Infrastructure - Asymmetric Layout */}
-      <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
         <div className="w-full px-4 sm:px-4 lg:px-12">
           <div className="grid lg:grid-cols-7 gap-8 items-center">
             {/* Left: Content - More Compact */}
@@ -2155,7 +2235,7 @@ const Homepage = () => {
               </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
-                Deploy AI intelligence without disrupting operations.
+                Leverage AI intelligence for your existing clinical workflows.
               </p>
 
               {/* Feature List - Compact */}
@@ -2290,19 +2370,137 @@ const Homepage = () => {
       </section>
 
       {/* How We Are Different Section */}
-      <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950">
-        {/* Subtle background pattern - more professional */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-            backgroundSize: '24px 24px'
-          }} />
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
+        {/* Geometric Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Large Decorative Circle - Top Right */}
+          <motion.div
+            className="absolute -top-32 -right-32 w-96 h-96 rounded-full border-2 border-emerald-500/20 dark:border-emerald-400/20"
+            animate={{
+              rotate: [0, 360],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 30,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            {/* Inner geometric pattern */}
+            <div className="absolute inset-8 rounded-full bg-gradient-to-br from-emerald-500/5 to-cyan-500/10 dark:from-emerald-400/5 dark:to-cyan-400/10">
+              {/* Hexagon pattern inside */}
+              <div className="absolute inset-0 rounded-full">
+                <svg className="w-full h-full" viewBox="0 0 100 100">
+                  <defs>
+                    <pattern id="hexPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <polygon 
+                        points="10,2 18,7 18,13 10,18 2,13 2,7" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.5"
+                        className="text-emerald-500/30 dark:text-emerald-400/30"
+                      />
+                    </pattern>
+                  </defs>
+                  <circle cx="50" cy="50" r="45" fill="url(#hexPattern)" />
+                </svg>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Medium Decorative Circle - Bottom Left */}
+          <motion.div
+            className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full border border-cyan-500/15 dark:border-cyan-400/15"
+            animate={{
+              rotate: [0, -360],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-cyan-500/5 to-blue-500/8 dark:from-cyan-400/5 dark:to-blue-400/8">
+              {/* Triangle pattern inside */}
+              <div className="absolute inset-0 rounded-full">
+                <svg className="w-full h-full" viewBox="0 0 100 100">
+                  <defs>
+                    <pattern id="trianglePattern" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+                      <polygon 
+                        points="7.5,2 13,11 2,11" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="0.5"
+                        className="text-cyan-500/25 dark:text-cyan-400/25"
+                      />
+                    </pattern>
+                  </defs>
+                  <circle cx="50" cy="50" r="45" fill="url(#trianglePattern)" />
+                </svg>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Floating Geometric Shapes */}
+          <motion.div
+            className="absolute top-20 right-1/4 w-8 h-8 border border-emerald-500/30 dark:border-emerald-400/30 rotate-45"
+            animate={{
+              y: [0, -10, 0],
+              rotate: [45, 90, 45],
+              opacity: [0.3, 0.7, 0.3],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          
+          <motion.div
+            className="absolute bottom-32 right-1/3 w-6 h-6 rounded-full border border-cyan-500/40 dark:border-cyan-400/40"
+            animate={{
+              y: [0, 8, 0],
+              x: [0, -5, 0],
+              opacity: [0.4, 0.8, 0.4],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+
+          <motion.div
+            className="absolute top-1/3 left-1/4 w-10 h-10 border border-blue-500/25 dark:border-blue-400/25"
+            style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
+            animate={{
+              y: [0, -8, 0],
+              rotate: [0, 15, 0],
+              opacity: [0.25, 0.6, 0.25],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.01]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `linear-gradient(90deg, currentColor 1px, transparent 1px), linear-gradient(currentColor 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header - More refined */}
           <motion.div 
-            className="text-center mb-20"
+            className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -2527,7 +2725,7 @@ const Homepage = () => {
       <DataExtractionDemo />
 
       {/* CTA Section */}
-      <section className="py-32 relative overflow-hidden bg-white dark:bg-slate-950">
+      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
         {/* Enhanced Background Elements */}
         <div className="absolute inset-0">
           {/* Subtle gradient overlay */}
@@ -2574,7 +2772,7 @@ const Homepage = () => {
               
               {/* CTA Button with Enhanced Design */}
               <div className="flex justify-center">
-                <Link href="/demo">
+                <Link href="/contact">
                   <motion.button 
                     className="group px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden text-lg border-2 border-transparent hover:border-white/20"
                     whileHover={{ scale: 1.05, y: -3 }}

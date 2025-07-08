@@ -137,7 +137,7 @@ const DeviceCompaniesSolutionsPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
@@ -147,15 +147,15 @@ const DeviceCompaniesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <div className="flex items-center justify-center gap-2 text-orange-400 mb-6">
+            <div className="flex items-center justify-center gap-2 text-orange-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Device Companies</span>
               <ChevronRight className="w-4 h-4" />
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Navigate FDA Regulations with
               <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"> AI Precision</span>
             </h1>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Reduce regulatory costs, accelerate time to market, and ensure compliance with ChartR's 
               AI-powered clinical data platform designed for medical device companies.
             </p>
@@ -179,20 +179,20 @@ const DeviceCompaniesSolutionsPage = () => {
                   index === 1 ? "from-orange-500/10 to-orange-600/10" :
                   index === 2 ? "from-orange-600/10 to-orange-700/10" :
                   "from-orange-700/10 to-orange-700/10"
-                } backdrop-blur-lg rounded-2xl border ${
-                  index === 0 ? "border-orange-400/10" :
-                  index === 1 ? "border-orange-500/10" :
-                  index === 2 ? "border-orange-600/10" :
-                  "border-orange-700/10"
+                } backdrop-blur-sm rounded-2xl border ${
+                  index === 0 ? "border-orange-200/30" :
+                  index === 1 ? "border-orange-300/30" :
+                  index === 2 ? "border-orange-400/30" :
+                  "border-orange-500/30"
                 }`}
               >
                 <div className={`text-4xl font-bold mb-2 ${
-                  index === 0 ? "text-orange-400" :
-                  index === 1 ? "text-orange-500" :
-                  index === 2 ? "text-orange-600" :
-                  "text-orange-700"
+                  index === 0 ? "text-orange-600" :
+                  index === 1 ? "text-orange-700" :
+                  index === 2 ? "text-orange-800" :
+                  "text-orange-900"
                 }`}>{item.stat}</div>
-                <div className="text-slate-300">{item.description}</div>
+                <div className="text-slate-600">{item.description}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -200,7 +200,7 @@ const DeviceCompaniesSolutionsPage = () => {
       </section>
 
       {/* Regulatory Costs Table */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-20 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -208,22 +208,22 @@ const DeviceCompaniesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               2025 Costs: The Rising Burden of Compliance
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               FDA fee increases, skyrocketing regulatory costs, complex data requirements, and extended review times make efficiency more critical than ever
             </p>
           </motion.div>
 
           <div className="overflow-x-auto">
-            <table className="w-full bg-gradient-to-br from-red-900/40 to-red-800/30 backdrop-blur-lg rounded-2xl border border-red-400/20">
+            <table className="w-full bg-gradient-to-br from-red-100/40 to-red-50/30 backdrop-blur-sm rounded-2xl border border-red-200/30">
               <thead>
-                <tr className="border-b border-red-400/20">
-                  <th className="text-left p-6 text-white font-semibold">Submission Type</th>
-                  <th className="text-center p-6 text-white font-semibold">Standard Fee</th>
-                  <th className="text-center p-6 text-white font-semibold">Small Business Fee</th>
-                  <th className="text-left p-6 text-white font-semibold">Description</th>
+                <tr className="border-b border-red-200/30">
+                  <th className="text-left p-6 text-slate-900 font-semibold">Submission Type</th>
+                  <th className="text-center p-6 text-slate-900 font-semibold">Standard Fee</th>
+                  <th className="text-center p-6 text-slate-900 font-semibold">Small Business Fee</th>
+                  <th className="text-left p-6 text-slate-900 font-semibold">Description</th>
                 </tr>
               </thead>
               <tbody>
@@ -233,12 +233,12 @@ const DeviceCompaniesSolutionsPage = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                    className="border-b border-red-400/10 hover:bg-red-900/20 transition-all duration-300"
+                    className="border-b border-red-200/20 hover:bg-red-100/20 transition-all duration-300"
                   >
-                    <td className="p-6 text-white font-medium">{cost.submission}</td>
-                    <td className="p-6 text-center text-red-300 font-bold">{cost.standardFee}</td>
-                    <td className="p-6 text-center text-red-300 font-bold">{cost.smallBusinessFee}</td>
-                    <td className="p-6 text-slate-300">{cost.description}</td>
+                    <td className="p-6 text-slate-900 font-medium">{cost.submission}</td>
+                    <td className="p-6 text-center text-red-700 font-bold">{cost.standardFee}</td>
+                    <td className="p-6 text-center text-red-700 font-bold">{cost.smallBusinessFee}</td>
+                    <td className="p-6 text-slate-600">{cost.description}</td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -256,10 +256,10 @@ const DeviceCompaniesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Comprehensive Solutions
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             ChartR helps device companies streamline compliance, reduce costs, and accelerate approval.            </p>
           </motion.div>
 
@@ -274,27 +274,27 @@ const DeviceCompaniesSolutionsPage = () => {
                   index === 0 ? "from-orange-400/10 to-orange-500/10" :
                   index === 1 ? "from-orange-500/10 to-orange-600/10" :
                   "from-orange-600/10 to-orange-700/10"
-                } backdrop-blur-lg rounded-2xl border ${
-                  index === 0 ? "border-orange-400/10" :
-                  index === 1 ? "border-orange-500/10" :
-                  "border-orange-600/10"
+                } backdrop-blur-sm rounded-2xl border ${
+                  index === 0 ? "border-orange-200/30" :
+                  index === 1 ? "border-orange-300/30" :
+                  "border-orange-400/30"
                 }`}
               >
                 <h3 className={`text-xl font-semibold mb-4 ${
-                  index === 0 ? "text-orange-400" :
-                  index === 1 ? "text-orange-500" :
-                  "text-orange-600"
+                  index === 0 ? "text-orange-600" :
+                  index === 1 ? "text-orange-700" :
+                  "text-orange-800"
                 }`}>{solution.title}</h3>
-                <p className="text-slate-300 mb-6">{solution.description}</p>
+                <p className="text-slate-600 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <CheckCircle className={`w-5 h-5 mt-0.5 ${
-                        index === 0 ? "text-orange-400" :
-                        index === 1 ? "text-orange-500" :
-                        "text-orange-600"
+                        index === 0 ? "text-orange-600" :
+                        index === 1 ? "text-orange-700" :
+                        "text-orange-800"
                       }`} />
-                      <span className="text-slate-300">{feature}</span>
+                      <span className="text-slate-600">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -305,7 +305,7 @@ const DeviceCompaniesSolutionsPage = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 px-6 bg-slate-800/30">
+      <section className="py-20 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -313,10 +313,10 @@ const DeviceCompaniesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Transform Your Regulatory Strategy
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Leading device companies use ChartR to reduce costs, accelerate approvals, and maintain compliance.
             </p>
           </motion.div>
@@ -328,16 +328,16 @@ const DeviceCompaniesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/50 to-slate-700/30 backdrop-blur-lg rounded-2xl border border-white/10 hover:border-orange-400/50 transition-all duration-300"
+                className="p-8 bg-gradient-to-br from-slate-100/80 to-slate-50/60 backdrop-blur-sm rounded-2xl border border-slate-200/30 hover:border-orange-300/50 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-orange-500/20 rounded-lg">
-                    <benefit.icon className="w-6 h-6 text-orange-400" />
+                    <benefit.icon className="w-6 h-6 text-orange-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
-                    <p className="text-slate-300 mb-4">{benefit.description}</p>
-                    <div className="text-sm font-semibold text-orange-400">{benefit.metric}</div>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-3">{benefit.title}</h3>
+                    <p className="text-slate-600 mb-4">{benefit.description}</p>
+                    <div className="text-sm font-semibold text-orange-600">{benefit.metric}</div>
                   </div>
                 </div>
               </motion.div>
@@ -355,10 +355,10 @@ const DeviceCompaniesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Trusted by Industry Leaders
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               See how leading device companies are transforming their regulatory processes with ChartR.
             </p>
           </motion.div>
@@ -370,12 +370,12 @@ const DeviceCompaniesSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-800/60 to-slate-700/40 backdrop-blur-lg rounded-2xl border border-white/10"
+                className="p-8 bg-gradient-to-br from-slate-100/80 to-slate-50/60 backdrop-blur-sm rounded-2xl border border-slate-200/30"
               >
-                <p className="text-lg text-slate-300 mb-6 italic">"{testimonial.quote}"</p>
+                <p className="text-lg text-slate-600 mb-6 italic">"{testimonial.quote}"</p>
                 <div>
-                  <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-sm text-slate-400">{testimonial.role}, {testimonial.company}</div>
+                  <div className="font-semibold text-slate-900">{testimonial.author}</div>
+                  <div className="text-sm text-slate-500">{testimonial.role}, {testimonial.company}</div>
                 </div>
               </motion.div>
             ))}
@@ -384,24 +384,24 @@ const DeviceCompaniesSolutionsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-orange-600/20 to-red-600/20">
+      <section className="py-20 px-6 bg-gradient-to-r from-orange-200/20 to-red-200/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Ready to Reduce Your Regulatory Burden?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-600 mb-8">
               Join leading device companies using ChartR to streamline regulatory processes and accelerate time to market.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-red-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Calculate ROI
               </button>
-              <button className="px-8 py-4 bg-white/10 backdrop-blur-lg text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 font-semibold rounded-xl border border-slate-200/30 hover:bg-white transition-all duration-300">
                 Download Regulatory Guide
               </button>
             </div>
