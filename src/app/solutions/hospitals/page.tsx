@@ -9,8 +9,8 @@ const HospitalsSolutionsPage = () => {
     {
       icon: DollarSign,
       title: "Massive Cost Savings",
-      description: "Save $7.5M+ annually per hospital facility through automated regulatory reporting",
-      metric: "$7.5M+ annual savings"
+      description: "Save $15M+ annually per hospital facility through automated regulatory reporting",
+      metric: "$15M+ annual savings"
     },
     {
       icon: Shield,
@@ -88,7 +88,7 @@ const HospitalsSolutionsPage = () => {
   ]
 
   const roi_metrics = [
-    { metric: "$7.5M+", description: "Annual savings per facility" },
+    { metric: "$15M+", description: "Annual savings per facility" },
     { metric: "90%", description: "Reduction in manual reporting time" },
     { metric: "100%", description: "Compliance achievement rate" },
     { metric: "18%", description: "Faster data processing speed" }
@@ -110,10 +110,10 @@ const HospitalsSolutionsPage = () => {
               <ChevronRight className="w-4 h-4" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-              Save <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-cyan-500 bg-clip-text text-transparent animate-gradient">$7.5M+</span> Per Hospital with ChartR
+              Save <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-cyan-500 bg-clip-text text-transparent animate-gradient">$15M+</span> Per Hospital with ChartR
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Unlock measurable returns on investment—streamline compliance, reduce costs, and accelerate reporting with one AI-powered platform.
+              Unlock measurable returns on investment—streamline compliance, accelerate reporting, and improve care with one AI-powered platform.
             </p>
           </motion.div>
 
@@ -125,25 +125,9 @@ const HospitalsSolutionsPage = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
           >
             {marketStats.map((item, index) => (
-              <div key={index} className={`text-center p-6 backdrop-blur-sm rounded-xl border ${
-                index === 0 
-                  ? "bg-gradient-to-br from-green-500/20 to-green-400/20 border-green-400/20" 
-                  : index === 1 
-                  ? "bg-gradient-to-br from-green-400/20 to-emerald-500/20 border-emerald-400/20"
-                  : index === 2
-                  ? "bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border-cyan-400/20"
-                  : "bg-gradient-to-br from-cyan-500/20 to-cyan-400/20 border-cyan-400/20"
-              }`}>
-                <div className={`text-3xl font-bold mb-2 ${
-                  index === 0 
-                    ? "text-green-600" 
-                    : index === 1 
-                    ? "text-emerald-600"
-                    : index === 2
-                    ? "text-cyan-600"
-                    : "text-cyan-600"
-                }`}>{item.stat}</div>
-                <div className="text-sm text-slate-600">{item.description}</div>
+              <div key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-center p-6 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300">
+                <div className="text-3xl font-bold mb-2 text-emerald-600 dark:text-emerald-400">{item.stat}</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">{item.description}</div>
               </div>
             ))}
           </motion.div>
@@ -174,15 +158,15 @@ const HospitalsSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-red-100/60 to-orange-100/60 backdrop-blur-sm rounded-2xl border border-red-200/30"
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-red-300/50 dark:hover:border-red-500/50 transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-red-500/20 rounded-lg">
                     <point.icon className="w-6 h-6 text-red-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">{point.title}</h3>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{point.title}</h3>
                 </div>
-                <p className="text-slate-600">{point.description}</p>
+                <p className="text-slate-600 dark:text-slate-400">{point.description}</p>
               </motion.div>
             ))}
           </div>
@@ -217,27 +201,15 @@ const HospitalsSolutionsPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className={`bg-gradient-to-br backdrop-blur-sm rounded-3xl p-8 border ${
-                  index === 0 
-                    ? "from-green-500/20 to-emerald-500/20 border-green-200/30" 
-                    : index === 1 
-                    ? "from-emerald-500/20 to-cyan-500/20 border-emerald-200/30"
-                    : "from-cyan-500/20 to-green-500/20 border-cyan-200/30"
-                }`}
+                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
               >
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{solution.title}</h3>
-                <p className="text-slate-600 mb-6">{solution.description}</p>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{solution.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6">{solution.description}</p>
                 <ul className="space-y-3">
                   {solution.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-                        index === 0 
-                          ? "text-green-600" 
-                          : index === 1 
-                          ? "text-emerald-600"
-                          : "text-cyan-600"
-                      }`} />
-                      <span className="text-slate-600">{feature}</span>
+                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-slate-600 dark:text-slate-400">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -273,33 +245,33 @@ const HospitalsSolutionsPage = () => {
               initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="bg-gradient-to-br from-green-200/40 to-emerald-200/40 backdrop-blur-sm rounded-3xl p-8 border border-green-200/30"
+              className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-8 border border-slate-200/30 dark:border-slate-700/30 hover:border-green-300/50 dark:hover:border-green-500/50 transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-green-500/20 rounded-lg">
                   <Target className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900">Precision Patient Screening</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Precision Patient Screening</h3>
               </div>
-              <p className="text-slate-600 mb-6">
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
                 AI-driven tools for clinical condition detection, risk targeting, and trial matching.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Automated risk stratification + alerts</span>
+                  <span className="text-slate-600 dark:text-slate-400">Automated risk stratification + alerts</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Population-level health tracking</span>
+                  <span className="text-slate-600 dark:text-slate-400">Population-level health tracking</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Preventive care opportunity detection</span>
+                  <span className="text-slate-600 dark:text-slate-400">Preventive care opportunity detection</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Clinical trial eligibility screening</span>
+                  <span className="text-slate-600 dark:text-slate-400">Clinical trial eligibility screening</span>
                 </li>
               </ul>
             </motion.div>
@@ -308,33 +280,33 @@ const HospitalsSolutionsPage = () => {
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-              className="bg-gradient-to-br from-emerald-200/40 to-cyan-200/40 backdrop-blur-sm rounded-3xl p-8 border border-emerald-200/30"
+              className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-8 border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-emerald-500/20 rounded-lg">
                   <Brain className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900">Evidence-Based Decision Support</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Evidence-Based Decision Support</h3>
               </div>
-              <p className="text-slate-600 mb-6">
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
                 Live access to clinical guidelines, evidence, and treatment recommendations.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Real-time clinical guideline delivery</span>
+                  <span className="text-slate-600 dark:text-slate-400">Real-time clinical guideline delivery</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Evidence synthesis and pathway suggestions</span>
+                  <span className="text-slate-600 dark:text-slate-400">Evidence synthesis and pathway suggestions</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Drug interaction + contraindication alerts</span>
+                  <span className="text-slate-600 dark:text-slate-400">Drug interaction + contraindication alerts</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Personalized treatment recommendations</span>
+                  <span className="text-slate-600 dark:text-slate-400">Personalized treatment recommendations</span>
                 </li>
               </ul>
             </motion.div>
@@ -368,30 +340,30 @@ const HospitalsSolutionsPage = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="bg-gradient-to-br from-green-100/60 to-emerald-100/60 backdrop-blur-sm rounded-3xl p-8 border border-green-200/30"
+              className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-8 border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-green-500/20 rounded-lg">
                   <BarChart3 className="w-8 h-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Research Insights</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Research Insights</h3>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Real-world evidence generation</span>
+                  <span className="text-slate-600 dark:text-slate-400">Real-world evidence generation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Health economics & value tracking</span>
+                  <span className="text-slate-600 dark:text-slate-400">Health economics & value tracking</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Comparative effectiveness analytics</span>
+                  <span className="text-slate-600 dark:text-slate-400">Comparative effectiveness analytics</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Study-ready dataset preparation</span>
+                  <span className="text-slate-600 dark:text-slate-400">Study-ready dataset preparation</span>
                 </li>
               </ul>
             </motion.div>
@@ -400,30 +372,30 @@ const HospitalsSolutionsPage = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-              className="bg-gradient-to-br from-emerald-100/60 to-cyan-100/60 backdrop-blur-sm rounded-3xl p-8 border border-emerald-200/30"
+              className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-8 border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-emerald-500/20 rounded-lg">
                   <Database className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Database Building</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Database Building</h3>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Clinical database automation</span>
+                  <span className="text-slate-600 dark:text-slate-400">Clinical database automation</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Longitudinal patient tracking</span>
+                  <span className="text-slate-600 dark:text-slate-400">Longitudinal patient tracking</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Registry + biobank integration</span>
+                  <span className="text-slate-600 dark:text-slate-400">Registry + biobank integration</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Cross-site data harmonization</span>
+                  <span className="text-slate-600 dark:text-slate-400">Cross-site data harmonization</span>
                 </li>
               </ul>
             </motion.div>
@@ -432,30 +404,30 @@ const HospitalsSolutionsPage = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-              className="bg-gradient-to-br from-cyan-100/60 to-green-100/60 backdrop-blur-sm rounded-3xl p-8 border border-cyan-200/30"
+              className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-8 border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
             >
               <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-cyan-500/20 rounded-lg">
                   <Search className="w-8 h-8 text-cyan-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">Clinical Trials Screening</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Clinical Trials Screening</h3>
               </div>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Automated patient eligibility screening</span>
+                  <span className="text-slate-600 dark:text-slate-400">Automated patient eligibility screening</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Clinical trial feasibility assessment</span>
+                  <span className="text-slate-600 dark:text-slate-400">Clinical trial feasibility assessment</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Recruitment optimization</span>
+                  <span className="text-slate-600 dark:text-slate-400">Recruitment optimization</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" />
-                  <span className="text-slate-600">Site selection and performance analysis</span>
+                  <span className="text-slate-600 dark:text-slate-400">Site selection and performance analysis</span>
                 </li>
               </ul>
             </motion.div>
@@ -472,18 +444,17 @@ const HospitalsSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
-              Ready to Save $7.5M+ Annually?
+              Ready to Save $15M+ Annually?
             </h2>
             <p className="text-xl text-slate-600 mb-8">
               Join leading healthcare systems using ChartR to automate compliance and achieve measurable cost savings.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-xl hover:from-green-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Calculate Your ROI
-              </button>
-              <button className="px-8 py-4 bg-white/80 backdrop-blur-sm text-slate-900 font-semibold rounded-xl border border-slate-200/30 hover:bg-white transition-all duration-300">
-                Download Case Study
-              </button>
+              <a href="/contact">
+                <button className="px-8 py-4 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-xl hover:from-green-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  Schedule a Demo
+                </button>
+              </a>
             </div>
           </motion.div>
         </div>

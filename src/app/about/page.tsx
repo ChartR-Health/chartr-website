@@ -43,7 +43,7 @@ const AboutPage = () => {
       role: "CEO & Founder",
       bio: "3rd year M.D. Candidate | Columbia University",
       image: "/team/akash_kapoor.jpeg",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/akashkapp/",
       email: "akash@chartrhealth.com"
     },
     {
@@ -670,13 +670,24 @@ const AboutPage = () => {
                       className={`flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-300 ${
                         selectedValue === index 
                           ? 'bg-gradient-to-br from-blue-600/50 to-purple-600/50 scale-110' 
-                          : 'bg-gradient-to-br from-blue-500/30 to-purple-500/30 group-hover:scale-110'
+                          : 'bg-gradient-to-br from-blue-600/70 to-purple-600/70 group-hover:scale-110'
                       }`}
                       animate={selectedValue === index ? { 
                         rotate: [0, 5, -5, 0],
                         scale: [1.1, 1.15, 1.1]
-                      } : {}}
-                      transition={{ duration: 0.8, repeat: selectedValue === index ? Infinity : 0 }}
+                      } : {
+                        scale: [1, 1.05, 1],
+                        rotate: [0, 2, -2, 0]
+                      }}
+                      transition={selectedValue === index ? { 
+                        duration: 0.8, 
+                        repeat: Infinity 
+                      } : {
+                        duration: 3 + index * 0.5,
+                        repeat: Infinity,
+                        delay: index * 0.8,
+                        ease: "easeInOut"
+                      }}
                     >
                       <div className="text-white">
                         {value.icon}
@@ -739,12 +750,12 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-blue-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
               Our Leaders
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto mb-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              We are driven by a shared commitment to advancing healthcare through innovation and collaboration. With a unique blend of expertise and fresh perspectives, we work together to create solutions that drive meaningful change and improve patient outcomes
+              We are driven by a shared commitment to advancing healthcare through innovation and collaboration.
             </p>
           </motion.div>
 
@@ -806,10 +817,10 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              Board Advisors
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent">
+              Our Advisors
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Industry leaders and experts guiding our strategic direction
             </p>
@@ -855,10 +866,10 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-              Our Summer Fellows
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600 bg-clip-text text-transparent">
+              Our Fellows
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-nowrap">
               Driven students and recent graduates offering fresh perspectives and innovative ideas.
             </p>

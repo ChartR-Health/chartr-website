@@ -9,7 +9,7 @@ import { ArrowRight, BarChart3, Layers, Database, FileText, Building, Graduation
 const Homepage = () => {
 
   const stats = [
-    { label: 'Annual Hospital Regulatory Spend', value: '$7.5M+', description: 'Per hospital on compliance reporting' },
+    { label: 'Annual Hospital Regulatory Spend', value: '$15M+', description: 'Per hospital on compliance reporting' },
     { label: 'Time Savings', value: '80x', description: 'Faster than manual review' },
     { label: 'Accuracy Improvement', value: '50x', description: 'More precise data extraction' },
     { label: 'Market Size', value: '$100B+', description: 'Total healthcare data market' },
@@ -937,7 +937,7 @@ const Homepage = () => {
         <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg">
           {/* Enhanced Header with Module Controls */}
           <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10 hidden md:flex">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between w-full">
               <div className="flex items-center space-x-3">
                 <img 
                   src="/logo.svg" 
@@ -1579,7 +1579,7 @@ const Homepage = () => {
                 <div className="mt-2 grid grid-cols-3 gap-2 text-center">
                   <div>
                     <div className="text-xs font-bold text-teal-600 dark:text-teal-400">12</div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400">Models Deployed</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-400">Integrated Models</div>
                   </div>
                   <div>
                     <div className="text-xs font-bold text-teal-600 dark:text-teal-400">8.4K</div>
@@ -1821,8 +1821,8 @@ const Homepage = () => {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
                 Your Clinical Workflows,<br />
-                <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
-                  Transformed with AI
+                AI-Powered in <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
+                  Minutes, Not Months
                 </span>
               </motion.h1>
               
@@ -1833,7 +1833,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Leverage clinical data, build AI-powered solutions, and deploy AI-integrated clinical workflows — all on one no-code platform.
+               Transform unstructured EMR data into validated insights that power better decisions, streamline compliance, and improve patient outcomes — all without writing a single line of code.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -1910,7 +1910,7 @@ const Homepage = () => {
             </h2>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto chartr-body">
-              A modular operating system that powers AI-enhanced clinical workflows.
+              A flexible operating system that works with your existing EMR and technology stack to power automated healthcare operations.
             </p>
           </motion.div>
 
@@ -2155,7 +2155,7 @@ const Homepage = () => {
 
                 {/* Output Modules */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Modular AI Workflows</h3>
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-400 uppercase tracking-wider mb-4">Robust Applications</h3>
                   <div className="space-y-3">
                     <motion.div 
                       className="bg-gradient-to-r from-[#0FE3C2]/10 to-[#0FE3C2]/20 border border-[#0FE3C2]/30 rounded-lg p-4 hover:border-[#0FE3C2]/50 transition-all"
@@ -2178,7 +2178,7 @@ const Homepage = () => {
                         <FileCheck className="w-5 h-5 text-[#4EA9FF]" />
                         <div>
                           <div className="font-medium text-slate-900 dark:text-slate-200">Regulatory Reporting</div>
-                          <div className="text-xs text-slate-600 dark:text-slate-400">Risk Management, QI, Registries</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">CMS Quality Measures, Registry Submission</div>
                         </div>
                       </div>
                     </motion.div>
@@ -2190,8 +2190,8 @@ const Homepage = () => {
                       <div className="flex items-center space-x-3">
                         <Users className="w-5 h-5 text-[#7E88F6]" />
                         <div>
-                          <div className="font-medium text-slate-900 dark:text-slate-200">Patient Screening</div>
-                          <div className="text-xs text-slate-600 dark:text-slate-400">Clinical Trials, Organ Donation</div>
+                          <div className="font-medium text-slate-900 dark:text-slate-200">Patient Identification</div>
+                          <div className="text-xs text-slate-600 dark:text-slate-400">Clinical Trials, Care Gaps</div>
                         </div>
                       </div>
                     </motion.div>
@@ -2215,6 +2215,8 @@ const Homepage = () => {
 
             </div>
           </motion.div>
+
+
         </div>
       </section>
 
@@ -2235,7 +2237,7 @@ const Homepage = () => {
               </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
-                Leverage AI intelligence for your existing clinical workflows.
+                Leverage AI intelligence for your complex clinical workflows.
               </p>
 
               {/* Feature List - Compact */}
@@ -2248,12 +2250,12 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
+                      <Layers className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Healthcare Standards</h3>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Works With What You Have</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
-                        HIPAA-ready and continuously improving.
+                        Connects to your EMR and existing technology stack without disruption.
                       </p>
                     </div>
                   </div>
@@ -2267,12 +2269,12 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
+                      <Shield className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Seamlessly Compatible</h3>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Ready Security</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
-                        Integrates with your EMR and existing AI stack.
+                        HIPAA-compliant platform with role-based access control and audit trails.
                       </p>
                     </div>
                   </div>
@@ -2286,10 +2288,10 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
+                      <Target className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Intelligent Retrieval</h3>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Intelligent Source Retrieval</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
                         Proprietary, clinically-grounded retrieval layer.
                       </p>
@@ -2305,7 +2307,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
+                      <Users className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Human-Validated</h3>
@@ -2324,16 +2326,18 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
+                      <Settings className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Infrastructure</h3>
+                      <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Modular Workflow Builder</h3>
                       <p className="text-sm text-slate-600 dark:text-slate-400 chartr-body">
-                        Power diverse teams and tools on single platform.
+                        Configure and deploy custom workflows for any department or use case.
                       </p>
                     </div>
                   </div>
                 </motion.div>
+
+
               </div>
 
               {/* CTA Button - Compact */}
@@ -2366,6 +2370,112 @@ const Homepage = () => {
               </div>
             </motion.div>
           </div>
+          
+          {/* Built for Every Healthcare Team - Professional Market Cards */}
+          <motion.div
+            className="mt-16 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h3 className="text-2xl font-semibold text-center text-slate-900 dark:text-white mb-12">
+              Built for Every Healthcare Team
+            </h3>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Hospitals */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-emerald-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-colors">
+                  <Building2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Hospitals</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Automate compliance reporting and reduce audit preparation by 80%.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Registries */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 dark:group-hover:bg-cyan-500/30 transition-colors">
+                  <Database className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Registries</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Extract validated data 50x faster with 99%+ accuracy for submissions.
+                </p>
+                <Link
+                  href="/solutions/medical-societies"
+                  className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Clinicians */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-blue-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors">
+                  <Stethoscope className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Clinicians</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Focus on patient care while AI handles documentation and risk assessments.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+
+              {/* Researchers */}
+              <motion.div
+                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-purple-500/50 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                whileHover={{ y: -2 }}
+              >
+                <div className="w-12 h-12 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/20 dark:group-hover:bg-purple-500/30 transition-colors">
+                  <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Researchers</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                  Database building, outcomes research, and clinical trial enrollment.
+                </p>
+                <Link
+                  href="/solutions/hospitals"
+                  className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                >
+                  View Solutions →
+                </Link>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -2522,8 +2632,8 @@ const Homepage = () => {
               <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text"> Different</span>
             </h2>
             
-            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto chartr-body leading-relaxed">
-              Purpose-built for healthcare's unique challenges, ChartrOS goes beyond traditional AI solutions
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto chartr-body leading-relaxed">
+              Purpose-built for healthcare's unique challenges, ChartrOS reimagines clinical AI integration.
             </p>
           </motion.div>
 
@@ -2545,17 +2655,13 @@ const Homepage = () => {
                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">No-Code AI Integration</h3>
                 
                 <ul className="space-y-3">
-                  <li className="flex items-start space-x-2">
+                <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Build AI workflows using clinical templates</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deploy in days, not months, with pre-built templates and intuitive interfaces</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Drag-and-drop configuration, no coding required</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Seamless and immediate EMR integration</span>
                   </li>
                 </ul>
               </div>
@@ -2578,15 +2684,11 @@ const Homepage = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify the most relevant clinical notes for decision-making</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify the most relevant clinical notes to power any clinical use case</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Prevent false negatives with Smart Review</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Validate results in real time for confident decisions</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Enable smarter validation and auditing, with in-built source highlighting</span>
                   </li>
                 </ul>
               </div>
@@ -2609,15 +2711,11 @@ const Homepage = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Compatible with existing AI abstraction tools</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Works alongside your existing AI tools - enhance rather than replace</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Modular, API-first design for easy integration</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Use as a full platform or standalone modules</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Flexible architecture adapts to your technology choices</span>
                   </li>
                 </ul>
               </div>
@@ -2640,15 +2738,11 @@ const Homepage = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deploy custom ML models or pre-built solutions</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Integrate ML models and fine-tuned LLMs to power complex clinical workflows</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Model-agnostic platform works with your stack</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Flexible AI deployment options</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Run your models in our secure environment with advanced tools for continuous learning</span>
                   </li>
                 </ul>
               </div>
@@ -2671,15 +2765,11 @@ const Homepage = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Continuously improve models with human feedback</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Continuously improve models to reflect your patients and your practice</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Automated training pipeline for real-time updates</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Human-in-the-loop validation ensures accuracy</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Automated training pipeline for real-time updates based on human feedback</span>
                   </li>
                 </ul>
               </div>
@@ -2697,20 +2787,16 @@ const Homepage = () => {
                   <Users className="w-6 h-6 text-slate-700 dark:text-slate-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors" />
                 </div>
                 
-                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Collaboration</h3>
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">Human-AI Integration</h3>
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Route critical outputs to human reviewers</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Route critical outputs to human reviewers for validation and auditing</span>
                   </li>
                   <li className="flex items-start space-x-2">
                     <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Built-in quality assurance checks</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
-                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Maintain a full audit trail for compliance</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">ChartR Smart Review and confidence flagging enhances data accuracy</span>
                   </li>
                 </ul>
               </div>
@@ -2838,11 +2924,10 @@ const Homepage = () => {
             {/* Left: Logo and Copyright */}
             <div className="flex flex-col space-y-4">
               <div className="flex items-center space-x-3">
-                <img src="/logo.svg" alt="ChartR" className="h-8 w-8" />
-                <span className="text-xl font-semibold text-slate-900 dark:text-white">ChartR</span>
+                <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400">
-                © 2025 ChartR Health Inc.
+                © 2025 Health Inc.
               </p>
             </div>
 
@@ -2858,12 +2943,11 @@ const Homepage = () => {
                 href="https://www.linkedin.com/company/chartr-health"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
-                <span className="text-sm font-medium">LinkedIn</span>
               </a>
             </div>
           </div>

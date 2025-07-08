@@ -424,7 +424,7 @@ FINDINGS:
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full max-h-[610px] flex flex-col">
+            <div className="bg-white/90 dark:bg-slate-800/50 backdrop-blur-xl rounded-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden shadow-xl h-full flex flex-col">
               {/* Header */}
               <div className="flex items-center space-x-3 p-4 border-b border-slate-200/50 dark:border-slate-700/50 flex-shrink-0">
                 <div className="p-2 bg-cyan-600/20 rounded-lg">
@@ -436,7 +436,7 @@ FINDINGS:
               </div>
               
               {/* Review Results */}
-              <div className="p-4 space-y-2 overflow-y-auto flex-1 scrollbar-hide">
+              <div className="p-4 space-y-2">
                 <AnimatePresence>
                   {extractedVariables.map((variable, index) => {
                     const state = getVariableState(variable.name)
