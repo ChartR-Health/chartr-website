@@ -421,7 +421,7 @@ const Homepage = () => {
           <div className="p-6 lg:p-8">
             <div className="grid md:grid-cols-4 gap-4 relative">
               {/* Clinical Retrieval Module */}
-              <div className="flex flex-col relative">
+              <div className="hidden md:flex flex-col relative">
                 <div className="mb-3">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-sm font-medium text-slate-300 flex items-center">
@@ -936,7 +936,7 @@ const Homepage = () => {
         {/* Main Container - Professional Healthcare Design */}
         <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg">
           {/* Enhanced Header with Module Controls */}
-          <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10">
+          <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10 hidden md:flex">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <img 
@@ -1046,7 +1046,7 @@ const Homepage = () => {
           <div className="p-6 lg:p-8">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Clinical Notes - Enhanced for Surgery */}
-              <div className="flex flex-col relative flex-1 md:max-w-2xl">
+              <div className="hidden md:flex flex-col relative flex-1 md:max-w-2xl">
                 <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
                   <FileText className="w-3 h-3 mr-1 text-blue-400" />
                   Clinical Retrieval
@@ -2248,7 +2248,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Healthcare Standards</h3>
@@ -2267,7 +2267,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Seamlessly Compatible</h3>
@@ -2286,7 +2286,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Intelligent Retrieval</h3>
@@ -2305,7 +2305,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Human-Validated</h3>
@@ -2324,7 +2324,7 @@ const Homepage = () => {
                 >
                   <div className="flex items-start space-x-3">
                     <div className="w-8 h-8 bg-cyan-500/25 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500/35 dark:group-hover:bg-cyan-500/30 transition-colors">
-                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+                      <CheckCircle className="w-4 h-4 text-cyan-600 dark:text-cyan-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-1">Enterprise-Grade Infrastructure</h3>
@@ -2546,15 +2546,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Build AI workflows using clinical templates</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Drag-and-drop configuration, no coding required</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Seamless and immediate EMR integration</span>
                   </li>
                 </ul>
@@ -2577,15 +2577,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Identify the most relevant clinical notes for decision-making</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Prevent false negatives with Smart Review</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Validate results in real time for confident decisions</span>
                   </li>
                 </ul>
@@ -2608,15 +2608,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Compatible with existing AI abstraction tools</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Modular, API-first design for easy integration</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Use as a full platform or standalone modules</span>
                   </li>
                 </ul>
@@ -2639,15 +2639,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Deploy custom ML models or pre-built solutions</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Model-agnostic platform works with your stack</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Flexible AI deployment options</span>
                   </li>
                 </ul>
@@ -2670,15 +2670,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Continuously improve models with human feedback</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Automated training pipeline for real-time updates</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Human-in-the-loop validation ensures accuracy</span>
                   </li>
                 </ul>
@@ -2701,15 +2701,15 @@ const Homepage = () => {
                 
                 <ul className="space-y-3">
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Route critical outputs to human reviewers</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Built-in quality assurance checks</span>
                   </li>
                   <li className="flex items-start space-x-2">
-                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 mt-0.5 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-slate-400 dark:text-slate-500 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 mt-0.5 flex-shrink-0 transition-colors" />
                     <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Maintain a full audit trail for compliance</span>
                   </li>
                 </ul>

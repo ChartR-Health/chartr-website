@@ -245,12 +245,11 @@ const AboutPage = () => {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
-        {/* Dynamic Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-200/30 to-purple-200/40" />
-        
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-white">
+        {/* Removed farthest back gradient for pure white background */}
+
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
           <svg className="w-full h-full" viewBox="0 0 1200 800">
@@ -357,7 +356,7 @@ const AboutPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-8">
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 items-center">
             {/* Mission */}
@@ -466,11 +465,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values */}
-      <section className="pt-16 pb-20 relative overflow-hidden">
-        {/* Enhanced background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 via-slate-900/15 to-purple-500/3" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent opacity-30" />
-        
+      <section className="pt-16 pb-20 relative overflow-hidden bg-white">
         {/* Animated Background Graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating geometric shapes */}
@@ -712,10 +707,7 @@ const AboutPage = () => {
       </section>
 
       {/* Core Team */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/10 via-slate-900/15 to-slate-800/10" />
-        
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
         {/* Minimal background graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Single subtle line */}
@@ -771,73 +763,40 @@ const AboutPage = () => {
       </section>
 
       {/* Board Advisors */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background with different gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/3 via-slate-900/20 to-blue-500/3" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-purple-500/5 via-transparent to-transparent opacity-30" />
-        
-        {/* Subtle geometric accents */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating premium particles */}
-          <div className="absolute inset-0">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full backdrop-blur-sm"
-                style={{
-                  left: `${20 + i * 12}%`,
-                  top: `${30 + (i % 2) * 40}%`,
-                }}
-                animate={{
-                  y: [-10, 10, -10],
-                  x: [-5, 5, -5],
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{
-                  duration: 6 + i,
-                  repeat: Infinity,
-                  delay: i * 0.8,
-                  ease: "easeInOut"
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Elegant connecting constellation */}
-          <motion.div
-            className="absolute bottom-16 left-16 w-48 h-32"
-            animate={{ opacity: [0.2, 0.6, 0.2] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg viewBox="0 0 192 128" className="w-full h-full opacity-12">
-              <defs>
-                <linearGradient id="constellationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#a855f7" stopOpacity="0.7" />
-                </linearGradient>
-              </defs>
-              
-              {/* Elegant connection lines */}
-              <g stroke="url(#constellationGradient)" strokeWidth="1" fill="none">
-                <path d="M20,40 Q60,20 100,40 Q140,60 180,40" opacity="0.6" />
-                <path d="M40,80 Q80,60 120,80 Q160,100 180,80" opacity="0.5" />
-                <path d="M20,40 L40,80" opacity="0.4" />
-                <path d="M100,40 L120,80" opacity="0.4" />
-                <path d="M180,40 L180,80" opacity="0.4" />
-              </g>
-              
-              {/* Premium nodes */}
-              <circle cx="20" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="100" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.9" />
-              <circle cx="180" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="40" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
-              <circle cx="120" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="180" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
-            </svg>
-          </motion.div>
-        </div>
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
+        {/* Elegant connecting constellation */}
+        <motion.div
+          className="absolute bottom-16 left-16 w-48 h-32"
+          animate={{ opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg viewBox="0 0 192 128" className="w-full h-full opacity-12">
+            <defs>
+              <linearGradient id="constellationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#a855f7" stopOpacity="0.7" />
+              </linearGradient>
+            </defs>
+            
+            {/* Elegant connection lines */}
+            <g stroke="url(#constellationGradient)" strokeWidth="1" fill="none">
+              <path d="M20,40 Q60,20 100,40 Q140,60 180,40" opacity="0.6" />
+              <path d="M40,80 Q80,60 120,80 Q160,100 180,80" opacity="0.5" />
+              <path d="M20,40 L40,80" opacity="0.4" />
+              <path d="M100,40 L120,80" opacity="0.4" />
+              <path d="M180,40 L180,80" opacity="0.4" />
+            </g>
+            
+            {/* Premium nodes */}
+            <circle cx="20" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="100" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.9" />
+            <circle cx="180" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="40" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
+            <circle cx="120" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="180" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
+          </svg>
+        </motion.div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -871,11 +830,7 @@ const AboutPage = () => {
       </section>
 
       {/* Summer Fellows */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background with unique gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/3 via-slate-900/15 to-purple-500/3" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_var(--tw-gradient-stops))] from-blue-400/4 via-transparent to-transparent opacity-25" />
-        
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
         {/* Dynamic grid pattern */}
         <div className="absolute inset-0 overflow-hidden opacity-2">
           <motion.div
@@ -924,7 +879,7 @@ const AboutPage = () => {
       </section>
 
       {/* Join Us CTA */}
-      <section className="py-16 bg-gradient-to-r from-blue-600/20 to-purple-600/20 relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Artistic Background Logos */}
         <div className="absolute inset-0">
           {/* Large subtle logo top-left */}
