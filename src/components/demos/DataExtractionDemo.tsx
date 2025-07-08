@@ -328,9 +328,9 @@ FINDINGS:
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* AI Processing Panel */}
+          {/* AI Processing Panel - Hidden on mobile */}
           <motion.div 
-            className="relative"
+            className="relative hidden lg:block"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -409,9 +409,9 @@ FINDINGS:
               </div>
             </motion.div>
 
-          {/* Smart Review Panel */}
+          {/* Smart Review Panel - Full width on mobile */}
           <motion.div 
-            className="relative"
+            className="relative lg:col-span-1"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
