@@ -985,7 +985,7 @@ const Homepage = () => {
         {/* Main Container - Professional Healthcare Design */}
         <div className="relative bg-white/90 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-slate-200/50 dark:border-slate-200/10 overflow-hidden shadow-lg">
           {/* Enhanced Header with Module Controls */}
-          <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10 hidden md:flex">
+          <div className="bg-slate-100/50 dark:bg-slate-700/30 px-6 py-3 border-b border-slate-200/30 dark:border-slate-200/10">
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center space-x-3">
                 <img 
@@ -1001,7 +1001,7 @@ const Homepage = () => {
                   className="flex items-center space-x-1 px-2 py-1 bg-slate-100/80 hover:bg-slate-200/80 text-slate-700 dark:bg-slate-700/50 dark:hover:bg-slate-600/50 dark:text-slate-300 text-xs rounded-md border border-slate-300/50 dark:border-slate-600/50 transition-all"
                 >
                   <Settings className="w-3 h-3" />
-                  <span>Workflow Settings</span>
+                  <span className="hidden md:inline">Workflow Settings</span>
                 </button>
               </div>
             </div>
@@ -1056,7 +1056,7 @@ const Homepage = () => {
           {showModuleSelector && (
             <div 
               ref={moduleSelectorRef}
-              className="absolute right-6 top-16 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-50"
+              className="absolute right-2 md:top-16 top-auto bottom-80 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 z-50"
             >
               <div className="p-3 border-b border-slate-200 dark:border-slate-700">
                 <h4 className="text-sm font-medium text-slate-900 dark:text-white">Available Modules</h4>
@@ -1095,7 +1095,7 @@ const Homepage = () => {
           <div className="p-6 lg:p-8">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Clinical Notes - Enhanced for Surgery */}
-              <div className="hidden md:flex flex-col relative flex-1 md:max-w-2xl">
+              <div className="flex flex-col relative flex-1 md:max-w-2xl">
                 <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
                   <FileText className="w-3 h-3 mr-1 text-blue-400" />
                   Clinical Retrieval
@@ -1149,8 +1149,8 @@ const Homepage = () => {
                 </div>
               </div>
 
-              {/* Data Extraction - Enhanced */}
-              <div className="flex flex-col relative flex-1 md:max-w-2xl">
+              {/* Data Extraction - Enhanced - Hidden on mobile */}
+              <div className="hidden md:flex flex-col relative flex-1 md:max-w-2xl">
                 <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
                   <Database className="w-3 h-3 mr-1 text-purple-400" />
                   Data Mapping
@@ -1230,11 +1230,21 @@ const Homepage = () => {
                 </div>
               </div>
 
+              {/* Mobile Arrow and Data Mapping Indicator */}
+              <div className="flex md:hidden flex-col items-center py-1">
+                <ArrowRight className="w-4 h-4 text-purple-500 rotate-90 mb-1" />
+                <div className="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center border border-purple-400/30 mb-1">
+                  <Database className="w-3 h-3 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div className="text-[10px] text-purple-600 dark:text-purple-400 font-medium mb-1">Intelligent Data Mapping</div>
+                <ArrowRight className="w-4 h-4 text-purple-500 rotate-90" />
+              </div>
+
               {/* Integrated AI Modules - Dynamic Display */}
               <div className="flex flex-col w-full md:w-[300px]">
                 <h4 className="text-xs font-medium text-slate-800 dark:text-slate-300 mb-2 flex items-center">
                   <BarChart3 className="w-3 h-3 mr-1 text-violet-400" />
-                  Integrated Modules
+                  Integrated AI Modules
                 </h4>
                 <div className="bg-slate-100/50 dark:bg-slate-700/20 rounded-lg p-3 border border-slate-200/50 dark:border-slate-600/20">
                   <div className="grid grid-cols-2 gap-2">
@@ -2426,7 +2436,7 @@ const Homepage = () => {
         <div className="absolute inset-0 overflow-hidden">
           {/* Large Decorative Circle - Top Right */}
           <motion.div
-            className="absolute -top-32 -right-32 w-96 h-96 rounded-full border-2 border-emerald-500/20 dark:border-emerald-400/20"
+            className="absolute -top-32 -right-32 w-64 h-64 md:w-96 md:h-96 rounded-full border-2 border-emerald-500/10 dark:border-emerald-400/10 md:border-emerald-500/20 md:dark:border-emerald-400/20"
             animate={{
               rotate: [0, 360],
               scale: [1, 1.05, 1],
@@ -2438,7 +2448,7 @@ const Homepage = () => {
             }}
           >
             {/* Inner geometric pattern */}
-            <div className="absolute inset-8 rounded-full bg-gradient-to-br from-emerald-500/5 to-cyan-500/10 dark:from-emerald-400/5 dark:to-cyan-400/10">
+            <div className="absolute inset-8 rounded-full bg-gradient-to-br from-emerald-500/3 to-cyan-500/6 dark:from-emerald-400/3 dark:to-cyan-400/6 md:from-emerald-500/5 md:to-cyan-500/10 md:dark:from-emerald-400/5 md:dark:to-cyan-400/10">
               {/* Hexagon pattern inside */}
               <div className="absolute inset-0 rounded-full">
                 <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -2449,7 +2459,7 @@ const Homepage = () => {
                         fill="none" 
                         stroke="currentColor" 
                         strokeWidth="0.5"
-                        className="text-emerald-500/30 dark:text-emerald-400/30"
+                        className="text-emerald-500/20 dark:text-emerald-400/20 md:text-emerald-500/30 md:dark:text-emerald-400/30"
                       />
                     </pattern>
                   </defs>
@@ -2863,119 +2873,7 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Solutions for Every Stakeholder - Professional Market Cards */}
-      <section className="pt-20 pb-20 relative overflow-hidden bg-white dark:bg-slate-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-12">
-              Solutions for Every Stakeholder
-            </h3>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Hospitals */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-emerald-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 dark:group-hover:bg-emerald-500/30 transition-colors">
-                  <Building2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Hospitals</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Automate compliance reporting and reduce audit preparation by 80%.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
 
-              {/* Registries */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-cyan-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 dark:group-hover:bg-cyan-500/30 transition-colors">
-                  <Database className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Registries</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Extract validated data 50x faster with 99%+ accuracy for submissions.
-                </p>
-                <Link
-                  href="/solutions/medical-societies"
-                  className="text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-
-              {/* Clinicians */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-blue-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors">
-                  <Stethoscope className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Clinicians</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Support patient care with workflows for planning, triage, and guideline-based therapy.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-
-              {/* Researchers */}
-              <motion.div
-                className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-6 hover:border-purple-500/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                whileHover={{ y: -2 }}
-              >
-                <div className="w-12 h-12 bg-purple-500/10 dark:bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/20 dark:group-hover:bg-purple-500/30 transition-colors">
-                  <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                </div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Researchers</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-                  Database building, outcomes research, and clinical trial enrollment.
-                </p>
-                <Link
-                  href="/solutions/hospitals"
-                  className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
-                >
-                  View Solutions →
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Live Demo Sections */}
       <DataExtractionDemo />
