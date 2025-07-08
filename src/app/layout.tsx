@@ -40,16 +40,16 @@ export const metadata: Metadata = {
   authors: [{ name: 'ChartR Health' }],
   viewport: 'width=device-width, initial-scale=1',
   openGraph: {
-    title: 'ChartR - AI Platform Transforming Healthcare Data',
-    description: 'The comprehensive AI health technology platform transforming healthcare through intelligent data analysis.',
+    title: 'ChartR - Healthcare AI Reimagined',
+    description: 'Building the industry\'s first AI-native operating system for healthcare.',
     type: 'website',
     url: 'https://chartrhealth.com',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ChartR - AI Platform Transforming Healthcare Data',
-    description: 'The comprehensive AI health technology platform transforming healthcare through intelligent data analysis.',
-  },
+    title: 'ChartR - Healthcare AI Reimagined',
+      description: 'Building the industry\'s first AI-native operating system for healthcare.',
+    },
 }
 
 export default function RootLayout({
