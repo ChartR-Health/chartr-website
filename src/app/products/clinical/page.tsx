@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import PatientNotesDemo from '@/components/demos/PatientNotesDemo'
 
 import { motion } from 'framer-motion'
 import { ArrowRight, FileText, Database, BarChart3, CheckCircle, Users, Clock, Shield, Activity, TrendingUp, Building, Brain, FileUp, Settings } from 'lucide-react'
@@ -95,16 +96,16 @@ const ClinicalPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-black">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 overflow-hidden">
         {/* Enhanced Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20" />
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-indigo-500/25 to-purple-500/25 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-blue-200/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-indigo-100/30 to-purple-100/30" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-20">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -122,19 +123,19 @@ const ClinicalPage = () => {
                 height={120} 
                 className="mb-6" 
               />
-              <h1 className="text-6xl md:text-8xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+              <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-6 tracking-tight">
                 Clinical
               </h1>
-              <p className="text-2xl md:text-3xl text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text font-bold mb-8">
+              <p className="text-2xl md:text-3xl text-blue-600 font-bold mb-8">
                 AI-Powered Clinical Data Platform
               </p>
-              <p className="text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-12">
+              <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed mb-12">
                 The structured layer on top of your EMR system of record. Transform clinical data into actionable insights with AI-powered curation and automated registry reporting.
               </p>
             </div>
             
-            <div className="inline-block px-4 py-2 bg-white/10 rounded-full text-white text-sm font-medium mb-8 backdrop-blur-xl border border-white/20">
-              <span className="text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text font-semibold">Powered by ChartR AI</span>
+            <div className="inline-block px-4 py-2 bg-white/80 rounded-full text-blue-600 text-sm font-medium mb-8 backdrop-blur-sm border border-blue-200/30">
+              <span className="font-semibold">Powered by ChartR AI</span>
             </div>
           </motion.div>
         </div>
@@ -149,10 +150,10 @@ const ClinicalPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
               Transform Clinical Data Management
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Save millions annually while improving compliance and clinical outcomes
             </p>
           </motion.div>
@@ -166,13 +167,13 @@ const ClinicalPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 * index }}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300">
-                  <div className="text-4xl font-black mb-4 text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl p-8 text-center hover:scale-105 transition-all duration-300 hover:border-blue-200/50">
+                  <div className="text-4xl font-black mb-4 text-blue-600">
                     {stat.value}
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-white">{stat.label}</h3>
-                  <p className="text-slate-300 text-sm">{stat.description}</p>
+                  <h3 className="text-lg font-bold mb-2 text-slate-900">{stat.label}</h3>
+                  <p className="text-slate-600 text-sm">{stat.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -189,10 +190,10 @@ const ClinicalPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
               Streamlined Clinical Workflow
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               From EMR data to registry compliance - automated and validated every step of the way
             </p>
           </motion.div>
@@ -206,22 +207,25 @@ const ClinicalPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 * index }}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 h-full">
-                  <div className="text-2xl font-black text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text mb-4">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 h-full hover:border-blue-200/50">
+                  <div className="text-2xl font-black text-blue-600 mb-4">
                     {item.step}
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500/30 to-indigo-500/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-bold mb-3 text-white">{item.title}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg font-bold mb-3 text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Clinical Notes to Structured Data Demo */}
+      <PatientNotesDemo />
 
       {/* Features Section */}
       <section className="py-24 relative">
@@ -232,10 +236,10 @@ const ClinicalPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
               Comprehensive Clinical Intelligence
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Advanced AI capabilities that transform your clinical data management
             </p>
           </motion.div>
@@ -249,22 +253,22 @@ const ClinicalPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 * index }}
               >
-                <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color.replace('-600', '-500/20').replace('-700', '-600/20')} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
-                <div className="relative bg-slate-800/40 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 h-full">
+                <div className={`absolute -inset-1 bg-gradient-to-r ${feature.color.replace('-600', '-200/30').replace('-700', '-300/30')} rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-all duration-300`} />
+                <div className="relative bg-white/80 backdrop-blur-sm border border-slate-200/30 rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 h-full hover:border-blue-200/50">
                   <div className={`h-1 bg-gradient-to-r ${feature.color}`}></div>
                   <div className="p-8">
                     <div className="flex items-center space-x-4 mb-6">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${feature.color.replace('-600', '-500/30').replace('-700', '-600/30')} rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/20`}>
-                        <feature.icon className="w-7 h-7 text-white" />
+                      <div className={`w-14 h-14 bg-gradient-to-r ${feature.color.replace('-600', '-200/30').replace('-700', '-300/30')} rounded-xl flex items-center justify-center backdrop-blur-sm border border-slate-200/30`}>
+                        <feature.icon className="w-7 h-7 text-slate-700" />
                       </div>
-                      <h3 className="text-xl font-black text-white">{feature.title}</h3>
+                      <h3 className="text-xl font-black text-slate-900">{feature.title}</h3>
                     </div>
                     
-                    <p className="text-slate-300 mb-6 leading-relaxed">{feature.description}</p>
+                    <p className="text-slate-600 mb-6 leading-relaxed">{feature.description}</p>
                     
                     <ul className="space-y-3">
                       {feature.benefits.map((benefit, benefitIndex) => (
-                        <li key={benefitIndex} className="flex items-start space-x-3 text-sm text-slate-300">
+                        <li key={benefitIndex} className="flex items-start space-x-3 text-sm text-slate-600">
                           <div className={`w-2 h-2 bg-gradient-to-r ${feature.color.replace('-600', '-400').replace('-700', '-500')} rounded-full mt-2 flex-shrink-0`}></div>
                           <span>{benefit}</span>
                         </li>
@@ -278,12 +282,10 @@ const ClinicalPage = () => {
         </div>
       </section>
 
-
-
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-indigo-600/20 to-purple-600/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-purple-100/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-200/20 via-indigo-200/20 to-purple-200/20" />
         
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
@@ -292,16 +294,16 @@ const ClinicalPage = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-300 bg-clip-text mb-6 tracking-tight leading-tight">
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
               Transform Your
               <br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 Clinical Data Management
               </span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
               Join leading healthcare organizations in revolutionizing clinical data curation. 
-              Save <span className="text-transparent bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text font-medium">$7.5M+ annually</span> while improving compliance and outcomes.
+              Save <span className="text-blue-600 font-medium">$7.5M+ annually</span> while improving compliance and outcomes.
             </p>
             
             <div className="flex justify-center mt-12">

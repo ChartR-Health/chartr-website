@@ -43,7 +43,7 @@ const AboutPage = () => {
       role: "CEO & Founder",
       bio: "3rd year M.D. Candidate | Columbia University",
       image: "/team/akash_kapoor.jpeg",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/akashkapp/",
       email: "akash@chartrhealth.com"
     },
     {
@@ -177,7 +177,7 @@ const AboutPage = () => {
       transition={{ duration: 0.6 }}
       className="group relative w-80 flex flex-col"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-white/10 p-6 hover:border-white/20 transition-all duration-300 h-full flex flex-col">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/80 to-slate-100/80 backdrop-blur-sm border border-slate-200/30 p-6 hover:border-blue-200/50 transition-all duration-300 h-full flex flex-col">
         {/* Background gradient effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
@@ -205,35 +205,35 @@ const AboutPage = () => {
           {/* Member Info */}
           <div className="text-center flex flex-col flex-1">
             <div className="flex-1 flex flex-col justify-start">
-              <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
-              <p className="text-lg text-blue-400 font-medium mb-2">{member.role}</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-1">{member.name}</h3>
+              <p className="text-lg text-blue-600 font-medium mb-2">{member.role}</p>
               {member.title && (
-                <p className="text-base text-slate-400 mb-3">{member.title}</p>
+                <p className="text-base text-slate-500 mb-3">{member.title}</p>
               )}
               {member.school && (
-                <p className="text-base text-slate-400 mb-2">{member.school}</p>
+                <p className="text-base text-slate-500 mb-2">{member.school}</p>
               )}
-              <p className="text-base text-slate-300 leading-relaxed mb-4 flex-1">{member.bio}</p>
+              <p className="text-base text-slate-700 leading-relaxed mb-4 flex-1">{member.bio}</p>
             </div>
             {/* Social Links */}
             <div className="flex justify-center space-x-3 mt-auto pt-4">
               {member.linkedin && (
-                <a href={member.linkedin} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                <a href={member.linkedin} className="text-slate-400 hover:text-blue-600 transition-colors duration-300">
                   <Linkedin className="w-5 h-5" />
                 </a>
               )}
               {member.website && (
-                <a href={member.website} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                <a href={member.website} className="text-slate-400 hover:text-blue-600 transition-colors duration-300">
                   <Globe className="w-5 h-5" />
                 </a>
               )}
               {member.twitter && (
-                <a href={member.twitter} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                <a href={member.twitter} className="text-slate-400 hover:text-blue-600 transition-colors duration-300">
                   <Twitter className="w-5 h-5" />
                 </a>
               )}
               {showEmail && member.email && (
-                <a href={`mailto:${member.email}`} className="text-slate-400 hover:text-blue-400 transition-colors duration-300">
+                <a href={`mailto:${member.email}`} className="text-slate-400 hover:text-blue-600 transition-colors duration-300">
                   <Mail className="w-5 h-5" />
                 </a>
               )}
@@ -245,12 +245,11 @@ const AboutPage = () => {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
-        {/* Dynamic Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/20 to-purple-900/30" />
-        
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-white">
+        {/* Removed farthest back gradient for pure white background */}
+
         {/* Animated Neural Network Background */}
         <div className="absolute inset-0 overflow-hidden opacity-20">
           <svg className="w-full h-full" viewBox="0 0 1200 800">
@@ -318,7 +317,7 @@ const AboutPage = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.8, delay: 0.2 }}
-                 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white"
+                 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-slate-900"
                >
                  Clinician-Led. AI-Enhanced.
                </motion.h1>
@@ -327,9 +326,9 @@ const AboutPage = () => {
                  initial={{ opacity: 0, y: 20 }}
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.8, delay: 0.4 }}
-                 className="text-xl text-slate-300 leading-relaxed mb-8"
+                 className="text-xl text-slate-600 leading-relaxed mb-8"
                >
-                 We believe healthcare data should work for clinicians, not against them. ChartR bridges the gap between complex medical information and actionable insights—making every decision faster, smarter, and more confident.
+                 We believe healthcare data should work for clinicians, not against them.
                </motion.p>
 
           <motion.div
@@ -338,16 +337,16 @@ const AboutPage = () => {
                  transition={{ duration: 0.8, delay: 0.6 }}
                  className="flex flex-wrap gap-4 justify-center"
                >
-                 <div className="flex items-center space-x-2 text-blue-400">
-                   <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                 <div className="flex items-center space-x-2 text-blue-600">
+                   <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                    <span className="text-sm font-medium">Transparent AI</span>
                  </div>
-                 <div className="flex items-center space-x-2 text-indigo-400">
-                   <div className="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                 <div className="flex items-center space-x-2 text-indigo-600">
+                   <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
                    <span className="text-sm font-medium">HIPAA Compliant</span>
                  </div>
-                 <div className="flex items-center space-x-2 text-purple-400">
-                   <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                 <div className="flex items-center space-x-2 text-purple-600">
+                   <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
                    <span className="text-sm font-medium">Instant Insights</span>
                  </div>
                </motion.div>
@@ -357,7 +356,7 @@ const AboutPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-8">
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 items-center">
             {/* Mission */}
@@ -368,10 +367,10 @@ const AboutPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Our Mission
               </h3>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-600 leading-relaxed">
                 To unlock the potential of unstructured clinical data through intelligent AI-human collaboration—empowering healthcare professionals and researchers with secure, transparent tools that accelerate insight without compromising accuracy or compliance.
               </p>
             </motion.div>
@@ -422,10 +421,10 @@ const AboutPage = () => {
                 {/* Very subtle pulsing glow effect */}
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.05, 1],
-                    opacity: [0.1, 0.2, 0.1]
+                    scale: [1, 1.02, 1],
+                    opacity: [0.1, 0.15, 0.1]
                   }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="absolute w-36 h-36 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl"
                 />
               </div>
@@ -433,10 +432,10 @@ const AboutPage = () => {
               {/* Logo with enhanced styling */}
               <motion.div
                 animate={{ 
-                  y: [-1, 1, -1]
+                  y: [-0.5, 0.5, -0.5]
                 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 p-4 rounded-full bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-sm border border-white/5 shadow-xl"
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10 p-4 rounded-full bg-gradient-to-br from-white/80 to-slate-100/80 backdrop-blur-sm border border-slate-200/30 shadow-xl"
               >
                 <img 
                   src="/logo.png" 
@@ -454,10 +453,10 @@ const AboutPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <h3 className="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 Our Vision
               </h3>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-slate-600 leading-relaxed">
                 A healthcare system where clinical data flows seamlessly to fuel continuous learning—driving every decision with comprehensive, actionable intelligence to improve outcomes, advance research, and deliver more efficient care.
               </p>
             </motion.div>
@@ -466,11 +465,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values */}
-      <section className="pt-16 pb-20 relative overflow-hidden">
-        {/* Enhanced background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-slate-900/30 to-purple-500/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent opacity-50" />
-        
+      <section className="pt-16 pb-20 relative overflow-hidden bg-white">
         {/* Animated Background Graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating geometric shapes */}
@@ -546,11 +541,11 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-500 bg-clip-text text-transparent">
               ChartR's Values
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Building the future of healthcare through intelligent, ethical AI
             </p>
           </motion.div>
@@ -573,7 +568,7 @@ const AboutPage = () => {
                 <div className={`h-full flex flex-col p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 relative overflow-hidden group ${
                   selectedValue === index 
                     ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/50 shadow-2xl shadow-blue-500/20' 
-                    : 'bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-white/10 hover:border-white/20'
+                    : 'bg-gradient-to-br from-white/80 to-slate-100/80 border-slate-200/30 hover:border-blue-200/50'
                 }`}>
                   {/* Card background graphics */}
                   <div className={`absolute inset-0 bg-gradient-to-br from-blue-500/3 to-purple-500/3 transition-opacity duration-300 ${
@@ -674,22 +669,35 @@ const AboutPage = () => {
                     <motion.div 
                       className={`flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-300 ${
                         selectedValue === index 
-                          ? 'bg-gradient-to-br from-blue-500/40 to-purple-500/40 scale-110' 
-                          : 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:scale-110'
+                          ? 'bg-gradient-to-br from-blue-600/50 to-purple-600/50 scale-110' 
+                          : 'bg-gradient-to-br from-blue-600/70 to-purple-600/70 group-hover:scale-110'
                       }`}
                       animate={selectedValue === index ? { 
                         rotate: [0, 5, -5, 0],
                         scale: [1.1, 1.15, 1.1]
-                      } : {}}
-                      transition={{ duration: 0.8, repeat: selectedValue === index ? Infinity : 0 }}
+                      } : {
+                        scale: [1, 1.05, 1],
+                        rotate: [0, 2, -2, 0]
+                      }}
+                      transition={selectedValue === index ? { 
+                        duration: 0.8, 
+                        repeat: Infinity 
+                      } : {
+                        duration: 3 + index * 0.5,
+                        repeat: Infinity,
+                        delay: index * 0.8,
+                        ease: "easeInOut"
+                      }}
                     >
-                  {value.icon}
+                      <div className="text-white">
+                        {value.icon}
+                      </div>
                     </motion.div>
                     
                     <h3 className={`text-xl font-semibold mb-4 transition-colors duration-300 ${
                       selectedValue === index 
-                        ? 'text-blue-300 font-bold' 
-                        : 'text-white group-hover:text-blue-300'
+                        ? 'text-blue-700 font-bold' 
+                        : 'text-slate-900 group-hover:text-blue-600'
                     }`}>
                       {value.title}
                     </h3>
@@ -697,7 +705,7 @@ const AboutPage = () => {
                     <p className={`leading-relaxed flex-1 transition-colors duration-300 ${
                       selectedValue === index 
                         ? 'text-slate-100 font-medium' 
-                        : 'text-slate-300 group-hover:text-slate-200'
+                        : 'text-slate-600 group-hover:text-slate-700'
                     }`}>
                       {value.description}
                     </p>
@@ -710,30 +718,27 @@ const AboutPage = () => {
       </section>
 
       {/* Core Team */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800/20 via-slate-900/30 to-slate-800/20" />
-        
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
         {/* Minimal background graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Single subtle line */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.15 }}
-            className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/20 to-transparent"
+            className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400/10 to-transparent"
           />
           
           {/* Two small accent dots */}
           <motion.div
             animate={{ opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-16 right-16 w-1 h-1 bg-purple-400/30 rounded-full"
+            className="absolute top-16 right-16 w-1 h-1 bg-purple-400/15 rounded-full"
           />
           
           <motion.div
             animate={{ opacity: [0.15, 0.35, 0.15] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-            className="absolute bottom-20 left-20 w-1 h-1 bg-blue-400/25 rounded-full"
+            className="absolute bottom-20 left-20 w-1 h-1 bg-blue-400/12 rounded-full"
           />
         </div>
         
@@ -745,12 +750,12 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-blue-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
               Our Leaders
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              We are driven by a shared commitment to advancing healthcare through innovation and collaboration. With a unique blend of expertise and fresh perspectives, we work together to create solutions that drive meaningful change and improve patient outcomes
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              We are driven by a shared commitment to advancing healthcare through innovation and collaboration.
             </p>
           </motion.div>
 
@@ -769,73 +774,40 @@ const AboutPage = () => {
       </section>
 
       {/* Board Advisors */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background with different gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-slate-900/40 to-blue-500/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_var(--tw-gradient-stops))] from-purple-500/10 via-transparent to-transparent opacity-60" />
-        
-        {/* Subtle geometric accents */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Floating premium particles */}
-          <div className="absolute inset-0">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-gradient-to-r from-blue-400/40 to-purple-400/40 rounded-full backdrop-blur-sm"
-                style={{
-                  left: `${20 + i * 12}%`,
-                  top: `${30 + (i % 2) * 40}%`,
-                }}
-                animate={{
-                  y: [-10, 10, -10],
-                  x: [-5, 5, -5],
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{
-                  duration: 6 + i,
-                  repeat: Infinity,
-                  delay: i * 0.8,
-                  ease: "easeInOut"
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Elegant connecting constellation */}
-          <motion.div
-            className="absolute bottom-16 left-16 w-48 h-32"
-            animate={{ opacity: [0.2, 0.6, 0.2] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <svg viewBox="0 0 192 128" className="w-full h-full opacity-25">
-              <defs>
-                <linearGradient id="constellationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-                  <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#a855f7" stopOpacity="0.7" />
-                </linearGradient>
-              </defs>
-              
-              {/* Elegant connection lines */}
-              <g stroke="url(#constellationGradient)" strokeWidth="1" fill="none">
-                <path d="M20,40 Q60,20 100,40 Q140,60 180,40" opacity="0.6" />
-                <path d="M40,80 Q80,60 120,80 Q160,100 180,80" opacity="0.5" />
-                <path d="M20,40 L40,80" opacity="0.4" />
-                <path d="M100,40 L120,80" opacity="0.4" />
-                <path d="M180,40 L180,80" opacity="0.4" />
-              </g>
-              
-              {/* Premium nodes */}
-              <circle cx="20" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="100" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.9" />
-              <circle cx="180" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="40" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
-              <circle cx="120" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.8" />
-              <circle cx="180" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
-            </svg>
-          </motion.div>
-        </div>
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
+        {/* Elegant connecting constellation */}
+        <motion.div
+          className="absolute bottom-16 left-16 w-48 h-32"
+          animate={{ opacity: [0.2, 0.6, 0.2] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <svg viewBox="0 0 192 128" className="w-full h-full opacity-12">
+            <defs>
+              <linearGradient id="constellationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#a855f7" stopOpacity="0.7" />
+              </linearGradient>
+            </defs>
+            
+            {/* Elegant connection lines */}
+            <g stroke="url(#constellationGradient)" strokeWidth="1" fill="none">
+              <path d="M20,40 Q60,20 100,40 Q140,60 180,40" opacity="0.6" />
+              <path d="M40,80 Q80,60 120,80 Q160,100 180,80" opacity="0.5" />
+              <path d="M20,40 L40,80" opacity="0.4" />
+              <path d="M100,40 L120,80" opacity="0.4" />
+              <path d="M180,40 L180,80" opacity="0.4" />
+            </g>
+            
+            {/* Premium nodes */}
+            <circle cx="20" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="100" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.9" />
+            <circle cx="180" cy="40" r="2.5" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="40" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
+            <circle cx="120" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.8" />
+            <circle cx="180" cy="80" r="2" fill="url(#constellationGradient)" opacity="0.7" />
+          </svg>
+        </motion.div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <motion.div
@@ -845,11 +817,11 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-              Board Advisors
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-indigo-500 to-blue-500 bg-clip-text text-transparent">
+              Our Advisors
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto mb-6 rounded-full"></div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Industry leaders and experts guiding our strategic direction
             </p>
           </motion.div>
@@ -869,13 +841,9 @@ const AboutPage = () => {
       </section>
 
       {/* Summer Fellows */}
-      <section className="pt-16 pb-16 relative overflow-hidden">
-        {/* Enhanced background with unique gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-400/5 via-slate-900/30 to-purple-500/5" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_var(--tw-gradient-stops))] from-blue-400/8 via-transparent to-transparent opacity-50" />
-        
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
         {/* Dynamic grid pattern */}
-        <div className="absolute inset-0 overflow-hidden opacity-5">
+        <div className="absolute inset-0 overflow-hidden opacity-2">
           <motion.div
             animate={{ opacity: [0.3, 0.7, 0.3] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -898,11 +866,11 @@ const AboutPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-              Our Summer Fellows
+            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600 bg-clip-text text-transparent">
+              Our Fellows
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed whitespace-nowrap">
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-500 mx-auto mb-6 rounded-full"></div>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-nowrap">
               Driven students and recent graduates offering fresh perspectives and innovative ideas.
             </p>
           </motion.div>
@@ -922,7 +890,7 @@ const AboutPage = () => {
       </section>
 
       {/* Join Us CTA */}
-      <section className="py-16 bg-gradient-to-r from-blue-600/20 to-purple-600/20 relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Artistic Background Logos */}
         <div className="absolute inset-0">
           {/* Large subtle logo top-left */}
@@ -959,19 +927,19 @@ const AboutPage = () => {
             <motion.div
               animate={{ 
                 rotate: [0, 360],
-                scale: [1, 1.15, 1],
-                opacity: [0.25, 0.4, 0.25]
+                scale: [1, 1.08, 1],
+                opacity: [0.25, 0.35, 0.25]
               }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >
               {/* Subtle glow ring */}
               <motion.div
                 animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.1, 0.3, 0.1]
+                  scale: [1, 1.15, 1],
+                  opacity: [0.1, 0.2, 0.1]
                 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 w-28 h-28 -m-2 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-md"
               />
               
@@ -1040,8 +1008,8 @@ const AboutPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl font-bold text-white mb-6">Join Our Mission</h2>
-            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+            <h2 className="text-4xl font-bold text-slate-900 mb-6">Join Our Mission</h2>
+            <p className="text-xl text-slate-600 mb-8 leading-relaxed">
               Reimagining healthcare with AI takes all kinds of minds. If you're a builder, thinker, or innovator—clinical or technical—ChartR is where your work can shape the future.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

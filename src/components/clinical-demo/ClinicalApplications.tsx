@@ -23,8 +23,8 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       description: 'Automated regulatory compliance and quality reporting',
       color: 'from-orange-600 to-red-700',
       borderColor: 'border-orange-500',
-      bgColor: 'bg-orange-50',
-      textColor: 'text-orange-700',
+      bgColor: 'bg-orange-200/80',
+      textColor: 'text-orange-800',
       metrics: {
         primary: '$7.5M+',
         primaryLabel: 'Annual Savings',
@@ -47,8 +47,8 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       description: 'Quality monitoring with predictive analytics',
       color: 'from-green-600 to-teal-700',
       borderColor: 'border-green-500',
-      bgColor: 'bg-green-50',
-      textColor: 'text-green-700',
+      bgColor: 'bg-green-200/80',
+      textColor: 'text-green-800',
       metrics: {
         primary: '23%',
         primaryLabel: 'Readmission Reduction',
@@ -71,8 +71,8 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       description: 'Identify patients for studies and programs',
       color: 'from-purple-600 to-pink-700',
       borderColor: 'border-purple-500',
-      bgColor: 'bg-purple-50',
-      textColor: 'text-purple-700',
+      bgColor: 'bg-purple-200/80',
+      textColor: 'text-purple-800',
       metrics: {
         primary: '40%',
         primaryLabel: 'Faster Recruitment',
@@ -95,8 +95,8 @@ export function ClinicalApplications({ onNavigate }: ClinicalApplicationsProps) 
       description: 'Specialty-specific clinical decision support tools',
       color: 'from-blue-600 to-indigo-700',
       borderColor: 'border-blue-500',
-      bgColor: 'bg-blue-50',
-      textColor: 'text-blue-700',
+      bgColor: 'bg-blue-200/80',
+      textColor: 'text-blue-800',
       metrics: {
         primary: '65%',
         primaryLabel: 'Workflow Efficiency',
