@@ -34,8 +34,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'ChartR - AI Platform Transforming Healthcare Data',
-  description: 'ChartR is the comprehensive AI health technology platform that transforms healthcare through intelligent data curation, extraction, and analysis across research, literature, and clinical domains.',
+  title: 'ChartR - Healthcare AI Reimagined',
+  description: 'Building the industry\'s first AI-native operating system for healthcare.',
   keywords: ['AI healthcare', 'clinical data', 'regulatory reporting', 'systematic literature review', 'research grants', 'medical AI'],
   authors: [{ name: 'ChartR Health' }],
   viewport: 'width=device-width, initial-scale=1',
@@ -56,11 +56,11 @@ export const metadata: Metadata = {
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
     type: 'website',
-    url: 'https://chartrhealth.com',
+    url: 'https://www.chartrhealth.com',
     siteName: 'ChartR Health',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://chartr-website-i7n4apdj0-chartrhealth.vercel.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ChartR - Healthcare AI Reimagined',
@@ -71,7 +71,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
-    images: ['/og-image.png'],
+    images: ['https://chartr-website-i7n4apdj0-chartrhealth.vercel.app/og-image.png'],
+    creator: '@chartrhealth',
+  },
+  other: {
+    'twitter:domain': 'chartrhealth.com',
+    'twitter:url': 'https://www.chartrhealth.com',
   },
 }
 
