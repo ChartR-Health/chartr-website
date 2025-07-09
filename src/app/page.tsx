@@ -1866,25 +1866,25 @@ const Homepage = () => {
                 >
                   <Layers className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                 </motion.div>
-                <span className="text-indigo-700 dark:text-indigo-300 chartr-hero-subheading text-xs sm:text-sm">AI-Enhanced Clinical Intelligence</span>
+                <span className="text-indigo-700 dark:text-indigo-300 chartr-hero-subheading text-sm sm:text-base">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
               {/* Hero Tagline - Mobile Optimized */}
               <motion.h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] chartr-hero-heading text-slate-900 mb-6 sm:mb-8 lg:mb-10"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] chartr-hero-heading text-slate-900 mb-6 sm:mb-8 lg:mb-10"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                <span className="block">Your Clinical Workflows,</span>
+                <span className="block">Your Workflows,</span>
                 <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
-                  Transformed with AI
+                  Transformed with AI.
                 </span>
               </motion.h1>
               
               {/* Enhanced Subtitle - Mobile Optimized */}
               <motion.p 
-                className="text-base sm:text-lg chartr-hero-subheading text-slate-800 max-w-2xl mb-8 sm:mb-10 lg:mb-12"
+                className="text-lg sm:text-xl chartr-hero-subheading text-slate-800 max-w-2xl mb-8 sm:mb-10 lg:mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
