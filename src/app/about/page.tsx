@@ -20,7 +20,7 @@ import marcSpenceImage from '@/assets/team/marc_spence_headshot_720.jpg'
 import JohnBollardImage from '@/assets/team/John_Bollard.png'
 
 const AboutPage = () => {
-  const [selectedValue, setSelectedValue] = useState<number | null>(null);
+  // Removed selectedValue state to prevent layout issues
 
   // Animation variants
   const fadeInUp = {
@@ -562,127 +562,20 @@ const AboutPage = () => {
                   y: -5,
                   transition: { duration: 0.2 }
                 }}
-                className="h-[280px] cursor-pointer relative z-10"
-                onClick={() => setSelectedValue(selectedValue === index ? null : index)}
+                className="h-[280px] relative z-10"
               >
-                <div className={`h-full flex flex-col p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 relative overflow-hidden group ${
-                  selectedValue === index 
-                    ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/50 shadow-lg shadow-blue-500/10' 
-                    : 'bg-gradient-to-br from-white/80 to-slate-100/80 border-slate-200/30 hover:border-blue-200/50'
-                }`}>
-                  {/* Card background graphics */}
-                  <div className={`absolute inset-0 bg-gradient-to-br from-blue-500/3 to-purple-500/3 transition-opacity duration-300 ${
-                    selectedValue === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                  }`} />
-                  
-                  {/* Illumination effects when selected */}
-                  {selectedValue === index && (
-                    <>
-                      {/* Particle effects */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="absolute inset-0"
-                      >
-                        {[...Array(8)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ 
-                              x: '50%', 
-                              y: '50%',
-                              scale: 0
-                            }}
-                            animate={{
-                              x: `${50 + (Math.cos(i * Math.PI / 6) * 50)}%`,
-                              y: `${50 + (Math.sin(i * Math.PI / 6) * 50)}%`,
-                              scale: [0, 1.2, 0],
-                              opacity: [0, 0.9, 0]
-                            }}
-                            transition={{
-                              duration: 1.8,
-                              repeat: Infinity,
-                              delay: i * 0.15,
-                              ease: "easeOut"
-                            }}
-                            className="absolute w-2 h-2 bg-blue-400/50 rounded-full shadow-sm shadow-blue-400/30"
-                          />
-                        ))}
-                      </motion.div>
-                      
-                      {/* Energy lines */}
-                      <motion.div
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={{ pathLength: 1, opacity: 0.8 }}
-                        transition={{ duration: 1, ease: "easeInOut" }}
-                        className="absolute inset-0"
-                      >
-                        <svg className="w-full h-full">
-                          <defs>
-                            <linearGradient id={`energyGradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.9" />
-                              <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.9" />
-                            </linearGradient>
-                          </defs>
-                          <motion.path
-                            d="M15,15 Q90,8 165,15 T285,15"
-                            stroke={`url(#energyGradient-${index})`}
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, ease: "easeInOut" }}
-                          />
-                          <motion.path
-                            d="M15,265 Q90,258 165,265 T285,265"
-                            stroke={`url(#energyGradient-${index})`}
-                            strokeWidth="2"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
-                          />
-                          {/* Vertical energy lines */}
-                          <motion.path
-                            d="M15,15 Q8,90 15,165 T15,285"
-                            stroke={`url(#energyGradient-${index})`}
-                            strokeWidth="1.5"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.8, delay: 0.6, ease: "easeInOut" }}
-                          />
-                          <motion.path
-                            d="M285,15 Q278,90 285,165 T285,285"
-                            stroke={`url(#energyGradient-${index})`}
-                            strokeWidth="1.5"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.8, delay: 0.9, ease: "easeInOut" }}
-                          />
-                        </svg>
-                      </motion.div>
-                    </>
-                  )}
+                <div className="h-full flex flex-col p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 relative overflow-hidden group bg-gradient-to-br from-white/80 to-slate-100/80 border-slate-200/30 hover:border-blue-200/50">
+                                    {/* Card background graphics */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/3 to-purple-500/3 transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
                   
                   <div className="relative z-10 flex flex-col h-full">
                     <motion.div 
-                      className={`flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-300 ${
-                        selectedValue === index 
-                          ? 'bg-gradient-to-br from-blue-600/50 to-purple-600/50 scale-110' 
-                          : 'bg-gradient-to-br from-blue-600/70 to-purple-600/70 group-hover:scale-110'
-                      }`}
-                      animate={selectedValue === index ? { 
-                        rotate: [0, 5, -5, 0],
-                        scale: [1.1, 1.15, 1.1]
-                      } : {
+                      className="flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-300 bg-gradient-to-br from-blue-600/70 to-purple-600/70 group-hover:scale-110"
+                      animate={{
                         scale: [1, 1.05, 1],
                         rotate: [0, 2, -2, 0]
                       }}
-                      transition={selectedValue === index ? { 
-                        duration: 0.8, 
-                        repeat: Infinity 
-                      } : {
+                      transition={{
                         duration: 3 + index * 0.5,
                         repeat: Infinity,
                         delay: index * 0.8,
@@ -694,19 +587,11 @@ const AboutPage = () => {
                       </div>
                     </motion.div>
                     
-                    <h3 className={`text-xl font-semibold mb-4 transition-colors duration-300 ${
-                      selectedValue === index 
-                        ? 'text-blue-700 font-bold' 
-                        : 'text-slate-900 group-hover:text-blue-600'
-                    }`}>
+                    <h3 className="text-xl font-semibold mb-4 transition-colors duration-300 text-slate-900 group-hover:text-blue-600">
                       {value.title}
                     </h3>
                     
-                    <p className={`leading-relaxed flex-1 transition-colors duration-300 ${
-                      selectedValue === index 
-                        ? 'text-slate-100 font-medium' 
-                        : 'text-slate-600 group-hover:text-slate-700'
-                    }`}>
+                    <p className="leading-relaxed flex-1 transition-colors duration-300 text-slate-600 group-hover:text-slate-700">
                       {value.description}
                     </p>
                   </div>
