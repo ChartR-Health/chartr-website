@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronRight, DollarSign, Shield, Clock, TrendingUp, Heart, FileCheck, AlertTriangle, CheckCircle, BarChart3, Stethoscope, Users, Search, Database, Target, Brain } from 'lucide-react'
+import { ChevronRight, DollarSign, Shield, Clock, TrendingUp, Heart, FileCheck, AlertTriangle, CheckCircle, BarChart3, Stethoscope, Users, Search, Database, Target, Brain, Layers, Network, Cpu, Settings } from 'lucide-react'
 
 const HospitalsSolutionsPage = () => {
+  const [selectedFeature, setSelectedFeature] = useState(0);
   const benefits = [
     {
       icon: DollarSign,
@@ -58,16 +59,20 @@ const HospitalsSolutionsPage = () => {
 
   const solutions = [
     {
+      number: "1",
       title: "Any Format, Fully Adaptive",
+      icon: Layers,
       features: [
-        "Export to any registry standard (CMS, Joint Commission, specialty societies)",
+        "Export to any registry standard (CMS, Joint Commission, National Societies)",
         "Auto-update to meet evolving requirements",
-        "Real-time data synchronization across multiple registries simultaneously",
+        "Real-time data synchronization across multiple registries",
         "Custom field mapping for any quality program"
       ]
     },
     {
+      number: "2",
       title: "Smart Review + Real-Time Monitoring",
+      icon: Shield,
       features: [
         "AI-assisted clinical documentation review",
         "Human validation of key decisions",
@@ -76,8 +81,9 @@ const HospitalsSolutionsPage = () => {
       ]
     },
     {
+      number: "3",
       title: "Seamless, Scalable Workflow",
-      description: "Real-time insights for operational excellence and patient care optimization",
+      icon: Settings,
       features: [
         "Real-time data sync across multiple registries",
         "Risk stratification and quality improvement insights",
@@ -192,27 +198,124 @@ const HospitalsSolutionsPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => (
+          {/* Interactive Solutions Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Side: Numbered List */}
+            <div className="space-y-3">
+              {solutions.map((solution, index) => (
+                <div key={index}>
+                  <motion.div
+                    className={`group cursor-pointer transition-all duration-300 ${
+                      selectedFeature === index ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                    }`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: selectedFeature === index ? 1 : 0.6, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    onClick={() => setSelectedFeature(index)}
+                  >
+                    <div className={`flex items-center space-x-4 p-4 rounded-lg border transition-all duration-300 ${
+                      selectedFeature === index 
+                        ? 'border-green-200 dark:border-green-700 bg-green-50/50 dark:bg-green-900/20' 
+                        : 'border-slate-200/50 dark:border-slate-700/50 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50/50 dark:hover:bg-slate-800/50'
+                    }`}>
+                      {/* Number */}
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+                        selectedFeature === index 
+                          ? 'bg-green-100 dark:bg-green-800' 
+                          : 'bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700'
+                      }`}>
+                        <span className={`text-sm font-semibold ${
+                          selectedFeature === index 
+                            ? 'text-green-700 dark:text-green-300' 
+                            : 'text-slate-700 dark:text-slate-300'
+                        }`}>
+                          {solution.number}
+                        </span>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="flex-1">
+                        <h3 className={`text-sm font-medium transition-colors ${
+                          selectedFeature === index 
+                            ? 'text-green-900 dark:text-green-100' 
+                            : 'text-slate-900 dark:text-white group-hover:text-slate-800 dark:group-hover:text-slate-200'
+                        }`}>
+                          {solution.title}
+                        </h3>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className={`flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center transition-colors ${
+                        selectedFeature === index 
+                          ? 'bg-green-100 dark:bg-green-800' 
+                          : 'bg-slate-100 dark:bg-slate-800 group-hover:bg-slate-200 dark:group-hover:bg-slate-700'
+                      }`}>
+                        <solution.icon className={`w-3 h-3 ${
+                          selectedFeature === index 
+                            ? 'text-green-600 dark:text-green-400' 
+                            : 'text-slate-600 dark:text-slate-400'
+                        }`} />
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Mobile: Detailed Content appears directly under each feature */}
+                  <div className="lg:hidden">
+                    {selectedFeature === index && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 p-4 bg-slate-50/50 dark:bg-slate-800/30 rounded-lg border border-slate-200/30 dark:border-slate-700/30"
+                      >
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+                          {solution.title}
+                        </h3>
+                        <ul className="space-y-3">
+                          {solution.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start space-x-3">
+                              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                {feature}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right Side: Clean Detail Panel - Desktop Only */}
+            <div className="hidden lg:block sticky top-8">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
+                key={selectedFeature}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300"
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{solution.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">{solution.description}</p>
-                <ul className="space-y-3">
-                  {solution.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-slate-600 dark:text-slate-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-6">
+                    {solutions[selectedFeature].title}
+                  </h3>
+                  
+                  <ul className="space-y-4">
+                    {solutions[selectedFeature].features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
