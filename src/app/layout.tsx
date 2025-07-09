@@ -58,21 +58,23 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://chartrhealth.com',
     siteName: 'ChartR Health',
-    images: [
-      {
-        url: 'https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433',
-        width: 1200,
-        height: 653,
-        alt: 'ChartR - Healthcare AI Reimagined',
-      },
-    ],
+    // Custom OG image (commented out - using fallback style instead)
+    // images: [
+    //   {
+    //     url: 'https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433',
+    //     width: 1200,
+    //     height: 653,
+    //     alt: 'ChartR - Healthcare AI Reimagined',
+    //   },
+    // ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
-    images: ['https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433'],
     creator: '@chartrhealth',
+    // Custom Twitter image (commented out - using fallback style instead)
+    // images: ['https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433'],
   },
   other: {
     'twitter:domain': 'chartrhealth.com',
