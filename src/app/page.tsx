@@ -1876,7 +1876,7 @@ const Homepage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                <span className="block">Your Workflows,</span>
+                <span className="block">Your Clinical Workflows,</span>
                 <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
                   Transformed with AI.
                 </span>
@@ -1957,7 +1957,7 @@ const Homepage = () => {
               </div>
             </motion.div>
             
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
               The Industry's First
               <br />
               <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text">
@@ -2287,10 +2287,10 @@ const Homepage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                Experience
-                <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text"> ChartrOS</span>
-              </h2>
+                          <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
+              Experience
+              <span className="text-transparent bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text"> ChartrOS</span>
+            </h2>
               
               <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 chartr-body">
                 Turn your <i>system of record</i> into a <b className="text-black dark:text-white">system of action</b>.
@@ -2397,7 +2397,7 @@ const Homepage = () => {
               </div>
 
               {/* CTA Button - Compact */}
-              <div className="mt-8">
+              <div className="mt-8 mb-12 lg:mb-8">
                 <Link href="/contact">
                   <motion.button 
                     className="group px-6 py-3 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all duration-300 relative overflow-hidden"
