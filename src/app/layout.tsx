@@ -56,13 +56,13 @@ export const metadata: Metadata = {
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
     type: 'website',
-    url: 'https://www.chartrhealth.com',
+    url: 'https://chartrhealth.com',
     siteName: 'ChartR Health',
     images: [
       {
-        url: 'https://www.chartrhealth.com/og-image.png',
+        url: 'https://opengraph.b-cdn.net/production/images/c4e55d7a-7b8f-4f3c-ad78-2e17baa7249f.png?token=RapEx-CgW74uQgtwnRUNKMnIyv_XzfXuirAEOa4ZtV4&height=515&width=1200&expires=33288022273',
         width: 1200,
-        height: 630,
+        height: 515,
         alt: 'ChartR - Healthcare AI Reimagined',
       },
     ],
@@ -71,12 +71,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
-    images: ['https://www.chartrhealth.com/og-image.png'],
+    images: ['https://opengraph.b-cdn.net/production/images/c4e55d7a-7b8f-4f3c-ad78-2e17baa7249f.png?token=RapEx-CgW74uQgtwnRUNKMnIyv_XzfXuirAEOa4ZtV4&height=515&width=1200&expires=33288022273'],
     creator: '@chartrhealth',
   },
   other: {
     'twitter:domain': 'chartrhealth.com',
-    'twitter:url': 'https://www.chartrhealth.com',
+    'twitter:url': 'https://chartrhealth.com',
   },
 }
 
