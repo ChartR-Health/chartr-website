@@ -190,6 +190,21 @@
     letter-spacing: -0.01em;
     line-height: 1.5;
   }
+  
+  /* Professional Hero Typography - WorkOS Style */
+  .chartr-hero-heading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  
+  .chartr-hero-subheading {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
 
   /* Updated Background Patterns for Light Mode */
   .chartr-bg-primary {

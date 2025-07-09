@@ -1783,8 +1783,8 @@ const Homepage = () => {
         </div>
       </div>
       
-      {/* Hero Section */}
-      <section className="relative pt-16 sm:pt-16 lg:pt-20 pb-20 overflow-hidden">
+      {/* Hero Section - Mobile Optimized */}
+      <section className="relative pt-16 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20 overflow-hidden">
         {/* Sophisticated Hero Background */}
         <div className="absolute inset-0 bg-white" />
         
@@ -1843,17 +1843,17 @@ const Homepage = () => {
 
         <div className="relative z-10">
           <div className="lg:flex lg:items-center">
-            {/* Left Column - Text Content - Constrained */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-20 sm:pt-24 lg:pt-24">
-              {/* ChartR Badge */}
+            {/* Left Column - Text Content - Mobile Optimized */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:pl-12 lg:pr-8 lg:w-1/2 pt-16 sm:pt-20 lg:pt-24">
+              {/* ChartR Badge - Mobile Optimized */}
               <motion.div 
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 dark:from-indigo-500/10 dark:to-purple-500/10 border border-indigo-400/30 dark:border-indigo-400/20 rounded-full px-6 py-3 backdrop-blur-sm mb-8"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-indigo-500/15 to-purple-500/15 dark:from-indigo-500/10 dark:to-purple-500/10 border border-indigo-400/30 dark:border-indigo-400/20 rounded-full px-4 sm:px-6 py-2 sm:py-3 backdrop-blur-sm mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <motion.div 
-                  className="w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center"
+                  className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center"
                   animate={{ 
                     rotateY: [0, 180, 360],
                     scale: [1, 1.05, 1]
@@ -1864,27 +1864,27 @@ const Homepage = () => {
                     ease: "easeInOut"
                   }}
                 >
-                  <Layers className="w-4 h-4 text-white" />
+                  <Layers className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                 </motion.div>
-                <span className="text-indigo-700 dark:text-indigo-300 inter text-sm font-medium">AI-Enhanced Clinical Intelligence</span>
+                <span className="text-indigo-700 dark:text-indigo-300 chartr-hero-subheading text-xs sm:text-sm">AI-Enhanced Clinical Intelligence</span>
               </motion.div>
 
-              {/* Hero Tagline */}
+              {/* Hero Tagline - Mobile Optimized */}
               <motion.h1 
-                className="text-5xl md:text-[3.5rem] lg:text-[3.5rem] font-bold text-slate-900 mb-10"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] chartr-hero-heading text-slate-900 mb-6 sm:mb-8 lg:mb-10"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
               >
-                Your Clinical Workflows,<br />
-                 <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
+                <span className="block">Your Clinical Workflows,</span>
+                <span className="text-transparent bg-gradient-to-r from-blue-700 to-purple-500 bg-clip-text font-extrabold drop-shadow-sm">
                   Transformed with AI
                 </span>
               </motion.h1>
               
-              {/* Enhanced Subtitle */}
+              {/* Enhanced Subtitle - Mobile Optimized */}
               <motion.p 
-                className="text-lg text-slate-800 font-medium leading-relaxed max-w-2xl mb-12"
+                className="text-base sm:text-lg chartr-hero-subheading text-slate-800 max-w-2xl mb-8 sm:mb-10 lg:mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -1892,7 +1892,7 @@ const Homepage = () => {
                Turn unstructured EMR data into AI-powered workflows. Streamline compliance, support clinical decision-making, and improve patient outcomes — all without writing a single line of code.
               </motion.p>
 
-              {/* CTA Buttons */}
+              {/* CTA Buttons - Mobile Optimized */}
               <motion.div 
                 className="flex flex-col sm:flex-row gap-4 items-start"
                 initial={{ opacity: 0, y: 20 }}
@@ -1900,7 +1900,7 @@ const Homepage = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link href="/contact?tab=demo">
-                  <button className="group px-8 py-4 bg-white border-2 border-indigo-600 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center space-x-2">
+                  <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-indigo-600 text-indigo-600 font-semibold rounded-xl hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center space-x-2 text-sm sm:text-base">
                     <span>Schedule a Demo</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -1908,18 +1908,18 @@ const Homepage = () => {
               </motion.div>
             </div>
 
-            {/* Right Column - Visual with background bar */}
+            {/* Right Column - Visual with background bar - Mobile Optimized */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-20 lg:pt-24 relative"
+              className="mt-8 sm:mt-12 lg:mt-0 lg:flex-1 lg:pl-16 px-4 sm:px-6 lg:px-0 pt-8 sm:pt-12 lg:pt-24 relative"
             >
               {/* Background color bar on the right */}
               <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-slate-100/50 to-transparent dark:from-slate-900/50 pointer-events-none"></div>
               
-              {/* Constrained graphic container */}
-              <div className="relative z-10 max-w-2xl">
+              {/* Constrained graphic container - Mobile Optimized */}
+              <div className="relative z-10 max-w-2xl mx-auto">
                 <ChartrOSControlCenter />
               </div>
             </motion.div>
@@ -2991,7 +2991,7 @@ const Homepage = () => {
                 <img src="/logo.svg" alt="Logo" className="h-8 w-8" />
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400">
-                © 2025 Health Inc.
+                © 2025 ChartRHealth Inc.
               </p>
             </div>
 
