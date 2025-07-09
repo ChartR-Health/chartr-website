@@ -465,7 +465,7 @@ const AboutPage = () => {
       </section>
 
       {/* Values */}
-      <section className="pt-16 pb-20 relative overflow-hidden bg-white">
+      <section className="pt-16 pb-20 relative overflow-hidden bg-white isolate">
         {/* Animated Background Graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Floating geometric shapes */}
@@ -550,7 +550,7 @@ const AboutPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -562,12 +562,12 @@ const AboutPage = () => {
                   y: -5,
                   transition: { duration: 0.2 }
                 }}
-                className="h-[280px] cursor-pointer"
+                className="h-[280px] cursor-pointer relative z-10"
                 onClick={() => setSelectedValue(selectedValue === index ? null : index)}
               >
                 <div className={`h-full flex flex-col p-8 rounded-2xl backdrop-blur-sm border transition-all duration-500 relative overflow-hidden group ${
                   selectedValue === index 
-                    ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/50 shadow-2xl shadow-blue-500/20' 
+                    ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-blue-400/50 shadow-lg shadow-blue-500/10' 
                     : 'bg-gradient-to-br from-white/80 to-slate-100/80 border-slate-200/30 hover:border-blue-200/50'
                 }`}>
                   {/* Card background graphics */}
@@ -584,7 +584,7 @@ const AboutPage = () => {
                         animate={{ opacity: 1 }}
                         className="absolute inset-0"
                       >
-                        {[...Array(12)].map((_, i) => (
+                        {[...Array(8)].map((_, i) => (
                           <motion.div
                             key={i}
                             initial={{ 
@@ -604,7 +604,7 @@ const AboutPage = () => {
                               delay: i * 0.15,
                               ease: "easeOut"
                             }}
-                            className="absolute w-3 h-3 bg-blue-400/70 rounded-full shadow-lg shadow-blue-400/50"
+                            className="absolute w-2 h-2 bg-blue-400/50 rounded-full shadow-sm shadow-blue-400/30"
                           />
                         ))}
                       </motion.div>
@@ -718,7 +718,7 @@ const AboutPage = () => {
       </section>
 
       {/* Core Team */}
-      <section className="pt-16 pb-16 relative overflow-hidden bg-white">
+      <section className="pt-16 pb-16 relative overflow-hidden bg-white isolate">
         {/* Minimal background graphics */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Single subtle line */}
