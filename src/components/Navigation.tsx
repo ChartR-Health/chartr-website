@@ -15,6 +15,7 @@ const Navigation = () => {
 
   const solutionsItems = [
     { name: 'Hospitals', href: '/solutions/hospitals' },
+    { name: 'Device Companies', href: '/solutions/device-companies' },
     { name: 'Medical Registries', href: '/solutions/medical-societies' },
     { name: 'ChartR Literature', href: '/products/literature' },
   ]
