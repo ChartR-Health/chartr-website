@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: 'ChartR Health',
     images: [
       {
-        url: 'https://chartr-website-i7n4apdj0-chartrhealth.vercel.app/og-image.png',
+        url: 'https://www.chartrhealth.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ChartR - Healthcare AI Reimagined',
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
-    images: ['https://chartr-website-i7n4apdj0-chartrhealth.vercel.app/og-image.png'],
+    images: ['https://www.chartrhealth.com/og-image.png'],
     creator: '@chartrhealth',
   },
   other: {
