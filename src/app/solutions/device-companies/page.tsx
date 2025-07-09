@@ -5,32 +5,7 @@ import { motion } from 'framer-motion'
 import { ChevronRight, Shield, DollarSign, Clock, TrendingUp, FileCheck, AlertTriangle, Target, CheckCircle, BarChart3, Database, Users, Zap, Brain, Heart, Stethoscope, Search, Eye } from 'lucide-react'
 
 const DeviceCompaniesSolutionsPage = () => {
-  const benefits = [
-    {
-      icon: Database,
-      title: "Unified Data Management",
-      description: "Streamline data entry from legacy systems and EMRs into a unified, HIPAA-compliant database",
-      metric: "50x faster data extraction"
-    },
-    {
-      icon: Search,
-      title: "Patient Screening & Identification",
-      description: "Proactively identify patients who need your devices under evolving clinical guidelines",
-      metric: "25% more patients reached"
-    },
-    {
-      icon: Brain,
-      title: "Accelerate R&D",
-      description: "AI-powered insights accelerate research, development, and innovation cycles",
-      metric: "60% faster R&D cycles"
-    },
-    {
-      icon: Shield,
-      title: "Risk Assessment & Compliance",
-      description: "Comprehensive risk assessment with real-time monitoring and regulatory compliance",
-      metric: "100% compliance rate"
-    }
-  ]
+
 
   const challenges = [
     {
@@ -60,6 +35,7 @@ const DeviceCompaniesSolutionsPage = () => {
       title: "Unified Data Platform",
       description: "Integrate data from legacy systems, custom databases, and EMR systems into one platform",
       icon: Database,
+      metric: "50x faster data extraction",
       features: [
         "Seamless integration with existing clinical workflows",
         "Real-time data synchronization and validation",
@@ -70,6 +46,7 @@ const DeviceCompaniesSolutionsPage = () => {
       title: "Patient Screening & Device Matching",
       description: "Get your devices to the patients who need them with AI-powered patient identification",
       icon: Search,
+      metric: "25% more patients reached",
       features: [
         "Proactive patient identification under evolving guidelines",
         "Automated screening for device eligibility criteria",
@@ -77,9 +54,10 @@ const DeviceCompaniesSolutionsPage = () => {
       ]
     },
     {
-      title: "Regulatory Reporting",
-      description: "Streamline FDA submissions and compliance monitoring with automated reporting",
+      title: "Risk Assessment & Compliance",
+      description: "Comprehensive risk assessment with real-time monitoring and regulatory compliance",
       icon: FileCheck,
+      metric: "100% compliance rate",
       features: [
         "Automated regulatory reporting and compliance monitoring",
         "Clinical data extraction for FDA submissions",
@@ -87,9 +65,10 @@ const DeviceCompaniesSolutionsPage = () => {
       ]
     },
     {
-      title: "Outcomes Research",
-      description: "Accelerate research and development with AI-powered clinical insights",
+      title: "Accelerate R&D",
+      description: "AI-powered insights accelerate research, development, and innovation cycles",
       icon: BarChart3,
+      metric: "60% faster R&D cycles",
       features: [
         "Automated clinical data extraction and synthesis",
         "Advanced analytics for outcomes research",
@@ -123,13 +102,13 @@ const DeviceCompaniesSolutionsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6">
+      <section className="relative pt-24 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-orange-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Device Companies</span>
@@ -157,7 +136,7 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              The Patient Screening Challenge
+              The Hidden Cost of Disconnected Data
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Medical device companies face complex data challenges that prevent them from reaching patients who need their devices
@@ -191,47 +170,7 @@ const DeviceCompaniesSolutionsPage = () => {
         </div>
       </section>
 
-      {/* Benefits Section - Moved above solutions */}
-      <section className="py-16 px-6 bg-white/80">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Transform Your Impact
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Leading device companies use ChartR to increase patient reach, decrease costs, and enhance clinical outcomes.
-            </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                className="p-8 bg-gradient-to-br from-slate-100/80 to-slate-50/60 backdrop-blur-sm rounded-2xl border border-slate-200/30 hover:border-orange-300/50 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-orange-500/20 rounded-lg">
-                    <benefit.icon className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-slate-900 mb-3">{benefit.title}</h3>
-                    <p className="text-slate-600 mb-4">{benefit.description}</p>
-                    <div className="text-sm font-semibold text-orange-600">{benefit.metric}</div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Solutions Section */}
       <section className="py-16 relative">
@@ -243,10 +182,10 @@ const DeviceCompaniesSolutionsPage = () => {
             className="text-center mb-12"
           >
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Comprehensive Solutions
+              Transform Your Impact
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              ChartR helps device companies unify data systems, accelerate patient screening, streamline regulatory processes, and accelerate research.
+              Leading device companies use ChartR to increase patient reach, decrease costs, and enhance clinical outcomes.
             </p>
           </motion.div>
 
@@ -294,6 +233,13 @@ const DeviceCompaniesSolutionsPage = () => {
                         }`}>
                           {solution.title}
                         </h3>
+                        <div className={`text-xs font-medium mt-1 ${
+                          selectedSolution === index 
+                            ? 'text-orange-600' 
+                            : 'text-slate-500'
+                        }`}>
+                          {solution.metric}
+                        </div>
                       </div>
                       
                       {/* Icon */}
@@ -320,9 +266,12 @@ const DeviceCompaniesSolutionsPage = () => {
                         transition={{ duration: 0.3 }}
                         className="mt-4 p-4 bg-slate-50/50 rounded-lg border border-slate-200/30"
                       >
-                        <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                        <h3 className="text-lg font-semibold text-slate-900 mb-2">
                           {solution.title}
                         </h3>
+                        <div className="text-sm font-semibold text-orange-600 mb-3">
+                          {solution.metric}
+                        </div>
                         <p className="text-slate-600 mb-4 text-sm">
                           {solution.description}
                         </p>
@@ -354,9 +303,12 @@ const DeviceCompaniesSolutionsPage = () => {
                 className="space-y-6"
               >
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2">
                     {solutions[selectedSolution].title}
                   </h3>
+                  <div className="text-lg font-semibold text-orange-600 mb-4">
+                    {solutions[selectedSolution].metric}
+                  </div>
                   <p className="text-slate-600 mb-6">
                     {solutions[selectedSolution].description}
                   </p>
