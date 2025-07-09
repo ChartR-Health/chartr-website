@@ -1,10 +1,12 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronRight, Users, BookOpen, TrendingUp, Award, Clock, Shield, Target, CheckCircle, BarChart3, Database, FileText, Settings, Download, Stethoscope, AlertTriangle } from 'lucide-react'
 
 const ClinicalRegistriesSolutionsPage = () => {
+  const [selectedFeature, setSelectedFeature] = useState(0);
+
   const benefits = [
     {
       icon: Clock,
@@ -56,45 +58,65 @@ const ClinicalRegistriesSolutionsPage = () => {
     }
   ]
 
-  const solutions = [
+  const comprehensiveSolutions = [
     {
+      number: "1",
       title: "Smart Data Collection",
+      icon: Clock,
       description: "Accelerate and error-proof data entry with intelligent automation.",
       features: [
         "65% faster entry with real-time error prompts",
-        "Automated data validation and quality assurance"
+        "Automated data validation and quality assurance",
+        "Intuitive interfaces designed for clinical workflows",
+        "Real-time error detection and correction"
       ]
     },
     {
+      number: "2",
       title: "Real-Time Variable Management",
+      icon: TrendingUp,
       description: "Apply evolving guidelines instantly across all registry sites.",
       features: [
         "Instant propagation of updates across all sites",
-        "Eliminate months of delay from manual edits"
+        "Eliminate months of delay from manual edits",
+        "Version control and change tracking",
+        "Automated notification system for updates"
       ]
     },
     {
+      number: "3",
       title: "Accurate Risk Modeling",
+      icon: Target,
       description: "Power predictive analytics and benchmarking with clinical-grade models.",
       features: [
         "95% accuracy in risk prediction models",
-        "Outcome tracking + quality improvement"
+        "Outcome tracking + quality improvement",
+        "Real-time risk calculations",
+        "Benchmarking against national standards"
       ]
     },
     {
+      number: "4",
       title: "Research-Ready Data Exports",
+      icon: Database,
       description: "Enable secure, compliant research with flexible export options.",
       features: [
         "PHI-anonymized, analysis-ready exports",
-        "Custom formats with data dictionaries"
+        "Custom formats with data dictionaries",
+        "Compliance with HIPAA and research standards",
+        "Automated data quality reports"
       ]
     },
     {
+      number: "5",
       title: "Point-of-Care Clinical Modules",
+      icon: Stethoscope,
       description: "Bring clinical insights directly into physician workflows.",
       features: [
         "Risk calculators + treatment decision support",
-        "Patient-specific outcome prediction tools"
+        "Patient-specific outcome prediction tools",
+        "Integration with existing clinical systems",
+        "Real-time clinical decision support"
       ]
     }
   ]
@@ -124,13 +146,13 @@ const ClinicalRegistriesSolutionsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-6">
+      <section className="relative pt-24 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-purple-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Clinical Registries</span>
@@ -139,38 +161,15 @@ const ClinicalRegistriesSolutionsPage = () => {
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
               Modern Registry Infrastructure, Built for <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Clinical Impact</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Streamline data entry, manage variables in real-time, and deliver point-of-care decision support—all in one integrated platform designed for today's clinical registries.
+            <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+              Streamline data entry, manage variables in real-time, and deliver point-of-care decision support—all in one integrated platform intentionally designed for clinical registries.
             </p>
-          </motion.div>
-
-          {/* Market Stats */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {marketStats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-6 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-purple-300/50 dark:hover:border-purple-500/50 transition-all duration-300"
-              >
-                <div className="text-3xl font-bold mb-2 text-purple-700 dark:text-purple-400">
-                  {stat.stat}
-                </div>
-                <div className="text-slate-600 dark:text-slate-400 text-sm">{stat.description}</div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Challenges Section */}
-      <section className="py-20 px-6 bg-white/80">
+      <section className="py-16 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -209,8 +208,8 @@ const ClinicalRegistriesSolutionsPage = () => {
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section className="py-24 relative">
+      {/* Comprehensive Solutions Section */}
+      <section className="py-16 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -218,6 +217,10 @@ const ClinicalRegistriesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center mb-16"
           >
+            <div className="flex items-center justify-center gap-2 text-purple-600 mb-6">
+              <Users className="w-6 h-6" />
+              <span className="text-lg font-medium tracking-wide uppercase">Integrated Platform Solutions</span>
+            </div>
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
               Comprehensive Solutions
             </h2>
@@ -226,50 +229,130 @@ const ClinicalRegistriesSolutionsPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {solutions.slice(0, 3).map((solution, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-purple-300/50 dark:hover:border-purple-500/50 transition-all duration-300 h-[350px]"
-              >
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{solution.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">{solution.description}</p>
-                <ul className="space-y-3">
-                  {solution.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-purple-600 dark:text-purple-400" />
-                      <span className="text-slate-600 dark:text-slate-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+          {/* Interactive Features Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Side: Feature List */}
+            <div className="space-y-3">
+              {comprehensiveSolutions.map((feature, index) => (
+                <div key={index}>
+                  <motion.div
+                    className={`group cursor-pointer transition-all duration-300 ${
+                      selectedFeature === index ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                    }`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: selectedFeature === index ? 1 : 0.6, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    onClick={() => setSelectedFeature(index)}
+                  >
+                    <div className={`flex items-center space-x-4 p-4 rounded-lg border transition-all duration-300 ${
+                      selectedFeature === index 
+                        ? 'border-purple-200 bg-purple-50/50' 
+                        : 'border-slate-200/50 hover:border-slate-300 hover:bg-slate-50/50'
+                    }`}>
+                      {/* Number */}
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center transition-colors ${
+                        selectedFeature === index 
+                          ? 'bg-purple-100' 
+                          : 'bg-slate-100 group-hover:bg-slate-200'
+                      }`}>
+                        <span className={`text-sm font-semibold ${
+                          selectedFeature === index 
+                            ? 'text-purple-700' 
+                            : 'text-slate-700'
+                        }`}>
+                          {feature.number}
+                        </span>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="flex-1">
+                        <h3 className={`font-semibold text-sm ${
+                          selectedFeature === index 
+                            ? 'text-purple-700' 
+                            : 'text-slate-900'
+                        }`}>
+                          {feature.title}
+                        </h3>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className={`flex-shrink-0 w-6 h-6 rounded-md flex items-center justify-center transition-colors ${
+                        selectedFeature === index 
+                          ? 'bg-purple-100' 
+                          : 'bg-slate-100 group-hover:bg-slate-200'
+                      }`}>
+                        <feature.icon className={`w-3 h-3 ${
+                          selectedFeature === index 
+                            ? 'text-purple-600' 
+                            : 'text-slate-600'
+                        }`} />
+                      </div>
+                    </div>
+                  </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-            {solutions.slice(3).map((solution, index) => (
+                  {/* Mobile: Detailed Content appears directly under each feature */}
+                  <div className="lg:hidden">
+                    {selectedFeature === index && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4 p-4 bg-slate-50/50 rounded-lg border border-slate-200/30"
+                      >
+                        <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                          {feature.title}
+                        </h3>
+                        <p className="text-slate-600 mb-4 text-sm">
+                          {feature.description}
+                        </p>
+                        
+                        <ul className="space-y-3">
+                          {feature.features.map((feat, featureIndex) => (
+                            <li key={featureIndex} className="flex items-start space-x-3">
+                              <CheckCircle className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-slate-600 leading-relaxed">
+                                {feat}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Right Side: Detailed Content */}
+            <div className="hidden lg:block sticky top-8">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
+                key={selectedFeature}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.2 }}
-                className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-8 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-purple-300/50 dark:hover:border-purple-500/50 transition-all duration-300 h-[350px]"
+                transition={{ duration: 0.4 }}
+                className="space-y-6"
               >
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{solution.title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6">{solution.description}</p>
-                <ul className="space-y-3">
-                  {solution.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0 text-purple-600 dark:text-purple-400" />
-                      <span className="text-slate-600 dark:text-slate-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">
+                    {comprehensiveSolutions[selectedFeature].title}
+                  </h3>
+                  <p className="text-slate-600 mb-6">
+                    {comprehensiveSolutions[selectedFeature].description}
+                  </p>
+                  
+                  <ul className="space-y-4">
+                    {comprehensiveSolutions[selectedFeature].features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-3">
+                        <CheckCircle className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-slate-600 leading-relaxed">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </motion.div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -277,7 +360,7 @@ const ClinicalRegistriesSolutionsPage = () => {
 
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-purple-200/20 to-pink-200/20">
+      <section className="py-16 px-6 bg-gradient-to-r from-purple-200/20 to-pink-200/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
@@ -285,10 +368,10 @@ const ClinicalRegistriesSolutionsPage = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
-              Ready to Transform Your Evidence Synthesis?
+              Ready to Transform Your Registry Infrastructure?
             </h2>
             <p className="text-xl text-slate-600 mb-8">
-              Join leading clinical registries using ChartR to accelerate reviews and improve evidence quality.
+              Join leading clinical registries using ChartR to accelerate data collection and improve clinical outcomes.
             </p>
             <div className="flex justify-center">
               <a href="/contact">
