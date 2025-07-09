@@ -107,7 +107,7 @@ const HospitalsSolutionsPage = () => {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-green-600 mb-6">
               <span className="text-sm font-medium tracking-wide uppercase">Solutions for Hospitals</span>
@@ -120,38 +120,23 @@ const HospitalsSolutionsPage = () => {
               Unlock measurable returns on investment—streamline compliance, accelerate reporting, and improve care with one AI-powered platform.
             </p>
           </motion.div>
-
-          {/* Market Stats */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-          >
-            {marketStats.map((item, index) => (
-              <div key={index} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-center p-6 rounded-xl border border-slate-200/30 dark:border-slate-700/30 hover:border-emerald-300/50 dark:hover:border-emerald-500/50 transition-all duration-300">
-                <div className="text-3xl font-bold mb-2 text-emerald-600 dark:text-emerald-400">{item.stat}</div>
-                <div className="text-sm text-slate-600 dark:text-slate-400">{item.description}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
       {/* Pain Points Section */}
-      <section className="py-20 px-6 bg-white/80">
+      <section className="py-12 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
-              The Real Cost of Manual Compliance
+              The Real Cost of Manual Data Processing
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Hospitals are drowning in administrative work. ChartR transforms this burden into a competitive advantage.
+              Hospitals are drowning in administrative work that limits quality improvement and innovation. ChartR transforms this burden into a competitive advantage.
             </p>
           </motion.div>
 
@@ -178,13 +163,13 @@ const HospitalsSolutionsPage = () => {
       </section>
 
       {/* Solutions Overview */}
-      <section className="py-20 px-6 bg-white/80">
+      <section className="py-12 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-green-600 mb-6">
               <Users className="w-6 h-6" />
@@ -193,7 +178,7 @@ const HospitalsSolutionsPage = () => {
             <h2 className="text-4xl font-bold text-slate-900 mb-6">
               One Registry Platform. Every Requirement. Zero Disruption.
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-16">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               Streamline data workflows and compliance across all registries with one adaptive system.
             </p>
           </motion.div>
@@ -321,13 +306,13 @@ const HospitalsSolutionsPage = () => {
       </section>
 
       {/* For Clinicians Section */}
-      <section className="py-20 px-6">
+      <section className="py-12 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-green-600 mb-6">
               <Stethoscope className="w-6 h-6" />
@@ -416,13 +401,13 @@ const HospitalsSolutionsPage = () => {
       </section>
 
       {/* For Researchers Section */}
-      <section className="py-20 px-6 bg-white/80">
+      <section className="py-12 px-6 bg-white/80">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="text-center mb-8"
           >
             <div className="flex items-center justify-center gap-2 text-green-600 mb-6">
               <Users className="w-6 h-6" />
@@ -537,7 +522,7 @@ const HospitalsSolutionsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-green-200/20 to-blue-200/20">
+      <section className="py-12 px-6 bg-gradient-to-r from-green-200/20 to-blue-200/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
