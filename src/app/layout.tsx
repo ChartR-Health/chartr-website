@@ -60,9 +60,9 @@ export const metadata: Metadata = {
     siteName: 'ChartR Health',
     images: [
       {
-        url: 'https://opengraph.b-cdn.net/production/images/c4e55d7a-7b8f-4f3c-ad78-2e17baa7249f.png?token=RapEx-CgW74uQgtwnRUNKMnIyv_XzfXuirAEOa4ZtV4&height=515&width=1200&expires=33288022273',
+        url: 'https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433',
         width: 1200,
-        height: 515,
+        height: 653,
         alt: 'ChartR - Healthcare AI Reimagined',
       },
     ],
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ChartR - Healthcare AI Reimagined',
     description: 'Building the industry\'s first AI-native operating system for healthcare.',
-    images: ['https://opengraph.b-cdn.net/production/images/c4e55d7a-7b8f-4f3c-ad78-2e17baa7249f.png?token=RapEx-CgW74uQgtwnRUNKMnIyv_XzfXuirAEOa4ZtV4&height=515&width=1200&expires=33288022273'],
+    images: ['https://opengraph.b-cdn.net/production/images/9474df1d-c4bd-4ef8-959b-db4ac119881e.png?token=SsOLgDhIp6A-S04DmvHjbO7fARgoXPDkEJuDfUPOe-A&height=653&width=1200&expires=33288022433'],
     creator: '@chartrhealth',
   },
   other: {
