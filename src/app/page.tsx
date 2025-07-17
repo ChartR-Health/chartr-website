@@ -3178,11 +3178,29 @@ const Homepage = () => {
 
             {/* Right: Address and LinkedIn */}
             <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
+              {/* Terms and Privacy Links */}
+              <div className="flex flex-row space-x-6 mb-2 md:mb-0">
+                <a
+                  href="/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </a>
+              </div>
               <div className="text-sm text-slate-600 dark:text-slate-400 text-left md:text-right">
                 251 Little Falls Drive<br />
                 Wilmington, DE 19808
               </div>
-              
               {/* LinkedIn Link */}
               <a
                 href="https://www.linkedin.com/company/chartr-health"
