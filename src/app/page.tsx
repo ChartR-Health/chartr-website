@@ -3196,6 +3196,14 @@ const Homepage = () => {
                 >
                   Privacy Policy
                 </a>
+                <a
+                  href="https://app.drata.com/trust/7fbca4a3-a813-433e-a03a-97fbd3a7ca60"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                >
+                  Trust Center
+                </a>
               </div>
               <div className="text-sm text-slate-600 dark:text-slate-400 text-left md:text-right">
                 251 Little Falls Drive<br />
